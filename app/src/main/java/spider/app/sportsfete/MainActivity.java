@@ -18,6 +18,7 @@ import com.mxn.soul.flowingdrawer_core.FlowingDrawer;
 import spider.app.sportsfete.Following.SubscribeFragment;
 import spider.app.sportsfete.Home.HomeFragment;
 import spider.app.sportsfete.Leaderboard.LeaderboardFragment;
+import spider.app.sportsfete.Marathon.MarathonRegistration;
 import spider.app.sportsfete.SportDetails.SportDetailsFragment;
 import spider.app.sportsfete.Schedule.ScheduleFragment;
 
@@ -118,6 +119,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             fragmentTransaction.replace(R.id.fragment_container, sportDetailsFragment);
             fragmentTransaction.commit();
             getSupportActionBar().setTitle("Sports");
+        }else if(id == R.id.nav_registration){
+            lastViewFragment = 5;
+            MarathonRegistration marathonRegistration = new MarathonRegistration();
+            FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.fragment_container, marathonRegistration);
+            fragmentTransaction.commit();
+            getSupportActionBar().setTitle("Marathon Registration");
         }
         flowingDrawer.closeMenu(true);
 

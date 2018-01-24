@@ -4,7 +4,10 @@ package spider.app.sportsfete.API;
  * Created by srikanth on 21/1/17.
  */
 
+import com.google.gson.JsonObject;
+
 import java.util.List;
+import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.Retrofit;
@@ -14,6 +17,8 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
+import retrofit2.http.QueryMap;
 
 
 public interface ApiInterface {
@@ -31,5 +36,8 @@ public interface ApiInterface {
     @FormUrlEncoded
     @POST("user/marathon/register")
     Call<String> registerForMarathon(@Field("rollno") String rollNo, @Field("password") String password);
+
+    @GET("/marathon")
+    Call<JsonObject> registerUserForMarathon(@QueryMap Map<String, String> params);
 
 }
