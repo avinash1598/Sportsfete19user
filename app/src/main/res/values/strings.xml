@@ -29,22 +29,28 @@
     <string-array name="sport_array">
         <item>Athletics</item>
         <item>Badminton</item>
-        <item>Basketball</item>
+        <item>Basketball(Boys)</item>
+        <item>Basketball(Girls)</item>
         <item>Carrom</item>
         <item>Chess</item>
-        <item>Cricket</item>
-        <item>Football</item>
+        <item>Cricket(Boys)</item>
+        <item>Cricket(Girls)</item>
+        <item>Football(Boys)</item>
+        <item>Football(Girls)</item>
         <item>Handball</item>
         <item>Hockey</item>
         <item>Kabaddi</item>
-        <item>Kho Kho</item>
+        <item>Kho Kho(Boys)</item>
+        <item>Kho Kho(Girls)</item>
         <item>Marathon</item>
         <item>Power Lifting</item>
         <item>Swimming</item>
         <item>Table Tennis</item>
-        <item>Tennis</item>
+        <item>Tennis(Boys)</item>
+        <item>Tennis(Girls)</item>
         <item>Throwball</item>
-        <item>Volley Ball</item>
+        <item>Volley Ball(Boys)</item>
+        <item>Volley Ball(Girls)</item>
         <item>Water Polo</item>
     </string-array>
 
@@ -64,6 +70,7 @@
         <item>PHD_MSC</item>
         <item>PROD</item>
     </string-array>
+
  <string name="Athletics">
         <![CDATA[
  <b>
@@ -187,7 +194,15 @@
 
             </p><br>
 
-            <h3>Basketball(girls)</h3>
+
+   ]]>
+    </string>
+
+    <string name="Basketball_Girls">
+
+        <![CDATA[
+
+        <h3>Basketball(girls)</h3>
 
              <p>
                 POINTS:- <b>
@@ -236,7 +251,7 @@
 
             </p>
 
-   ]]>
+        ]]>
     </string>
 
     <string name="Carrom">
@@ -357,6 +372,13 @@
 
             </p><br>
 
+   ]]>
+    </string>
+
+
+    <string name="Cricket_Girls">
+            <![CDATA[
+
             <h3>Cricket(Girls)</h3>
             <p>
                 <b>POINTS:-
@@ -403,7 +425,7 @@
     </string>
 
 
-          <string name="Football">
+    <string name="Football">
             <![CDATA[
                         <h3>Football(Boys)</h3>
   <p>
@@ -444,6 +466,11 @@
 
             </p><br>
 
+   ]]>
+    </string>
+
+    <string name="Football_Girls">
+            <![CDATA[
 
             <h3>Football(Girls)</h3>
             <p>
@@ -478,7 +505,7 @@
    ]]>
     </string>
 
-              <string name="Handball">
+    <string name="Handball">
             <![CDATA[
  <p>
                 <b>POINTS:-
@@ -642,6 +669,12 @@
             <p>CONTACT :
                     <p>Bibek : 8122349537</p>
             </p><br>
+
+   ]]>
+    </string>
+
+    <string name="KhoKho_Girls">
+            <![CDATA[
 
             <h3>Kho-Kho(Girls)</h3>
             <p><b>POINTS:-
@@ -891,6 +924,12 @@
                     <p>Siddharth Palanichamy : 8754112843</p>
                 </p><br>
 
+   ]]>
+    </string>
+
+    <string name="Tennis_Girls">
+            <![CDATA[
+
                  <h3>Tennis (WOMEN)</h3>
                 <p><b>POINTS:-
                 <br>&emsp;&emsp;&emsp;1st place - 10 points
@@ -974,6 +1013,14 @@
                 <p>CONTACT :
                    <p>Aravind : 9791504254</p>
                 </p><br>
+
+
+   ]]>
+    </string>
+
+
+    <string name="Volleyball_Girls">
+            <![CDATA[
 
                  <h3>VolleyBall (Girls)</h3>
                 <p><b>POINTS:-
