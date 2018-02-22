@@ -2,11 +2,15 @@ package spider.app.sportsfete.SportDetails;
 
 
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
+import android.text.style.StyleSpan;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
@@ -104,7 +108,8 @@ public class FixturesFragment extends Fragment {
     private TextView match1teams, match2teams, match3teams, match4teams, match5teams, match6teams, match7teams, match8teams,
             match9teams,match10teams,match11teams,match12teams,match13teams,match14teams;
     private TextView match1,match2,match3,match4,match5,match6,match7,match8,match9,match10,match11,match12,match13,match14;
-    private TextView knockout, quarterfinals, semifinals, bronze, finals;
+    private TextView knockout, quarterfinals, semifinals, bronze, finals, standings;
+    private TextView position1, position2, position3;
 
     public FixturesFragment() {
     }
@@ -158,18 +163,27 @@ public class FixturesFragment extends Fragment {
             e.printStackTrace();
         }
 
+        position1 = (TextView)getActivity().findViewById(R.id.position1);
+        position2 = (TextView)getActivity().findViewById(R.id.position2);
+        position3 = (TextView)getActivity().findViewById(R.id.position3);
+
+        position1.setTypeface(Typeface.createFromAsset(getActivity().getAssets(),  "fonts/HammersmithOneRegular.ttf"));
+        position2.setTypeface(Typeface.createFromAsset(getActivity().getAssets(),  "fonts/HammersmithOneRegular.ttf"));
+        position3.setTypeface(Typeface.createFromAsset(getActivity().getAssets(),  "fonts/HammersmithOneRegular.ttf"));
+
         knockout = (TextView)getActivity().findViewById(R.id.knockout);
         quarterfinals = (TextView)getActivity().findViewById(R.id.quarterfinals);
         semifinals = (TextView)getActivity().findViewById(R.id.semifinals);
         bronze = (TextView)getActivity().findViewById(R.id.bronze);
         finals = (TextView)getActivity().findViewById(R.id.finals);
+        standings = (TextView)getActivity().findViewById(R.id.Standings);
 
         knockout.setTypeface(Typeface.createFromAsset(getActivity().getAssets(),  "fonts/HammersmithOneRegular.ttf"));
         quarterfinals.setTypeface(Typeface.createFromAsset(getActivity().getAssets(),  "fonts/HammersmithOneRegular.ttf"));
         semifinals.setTypeface(Typeface.createFromAsset(getActivity().getAssets(),  "fonts/HammersmithOneRegular.ttf"));
         bronze.setTypeface(Typeface.createFromAsset(getActivity().getAssets(),  "fonts/HammersmithOneRegular.ttf"));
         finals.setTypeface(Typeface.createFromAsset(getActivity().getAssets(),  "fonts/HammersmithOneRegular.ttf"));
-
+        standings.setTypeface(Typeface.createFromAsset(getActivity().getAssets(),  "fonts/HammersmithOneRegular.ttf"));
 
         match1 = (TextView)getActivity().findViewById(R.id.match1);
         match2 = (TextView)getActivity().findViewById(R.id.match2);
@@ -305,5 +319,34 @@ public class FixturesFragment extends Fragment {
         recyclerView.setAdapter(fixturesRecyclerAdapter);
 */
     }
+
+    //green color for team won
+    public void styleMatchWonText(String team1, String team2, TextView textView){
+        SpannableStringBuilder sb = new SpannableStringBuilder(
+                team1 + " Vs " + team2);
+        StyleSpan b = new StyleSpan(Color.GREEN);
+        sb.setSpan(b, 0, team1.length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+        textView.setText(sb);
+    }
+
+    //grey color for one undecided team
+    public void styleUndecidedText(String team1, TextView textView){
+        SpannableStringBuilder sb = new SpannableStringBuilder(
+                team1 + " Vs " + "TBD");
+        StyleSpan b = new StyleSpan(Color.DKGRAY);
+        sb.setSpan(b, team1.length()+4,team1.length()+7, Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+        textView.setText(sb);
+    }
+
+    //grey color with both team undecided
+    public void styleUndecidedText2(TextView textView){
+        textView.setTextColor(Color.DKGRAY);
+        SpannableStringBuilder sb = new SpannableStringBuilder(
+                "TBD" + " Vs " + "TBD");
+        StyleSpan b = new StyleSpan(Color.BLACK);
+        sb.setSpan(b, 4,6, Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+        textView.setText(sb);
+    }
+
 
 }
