@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#EF6C00</color>
-    <color name="colorPrimaryDark">#E65100</color>
+    <color name="colorPrimary">#38003c</color>
+    <color name="colorPrimaryDark">#310035</color>
     <color name="colorAccent">#89430d</color>
     <color name="splashColor">#FFFFFF</color>
     <color name="selectedTextColor">#FFE0B2</color>
+    <color name="fixtureElement">#e5a5e9</color>
+    <color name="fixtureElementText">#434242</color>
 </resources>

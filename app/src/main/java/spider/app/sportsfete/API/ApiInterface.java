@@ -13,6 +13,7 @@ import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Field;
+import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
@@ -37,7 +38,8 @@ public interface ApiInterface {
     @POST("user/marathon/register")
     Call<String> registerForMarathon(@Field("rollno") String rollNo, @Field("password") String password);
 
-    @GET("/marathon")
-    Call<JsonObject> registerUserForMarathon(@QueryMap Map<String, String> params);
+    @FormUrlEncoded
+    @POST("/marathon")
+    Call<JsonObject> registerUserForMarathon(@FieldMap Map<String, String> params);
 
 }
