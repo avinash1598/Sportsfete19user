@@ -155,7 +155,7 @@
 
     </string>
 
-        <string name="Basketball">
+    <string name="Basketball">
             <![CDATA[
 
             <h3>Basketball(Boys)</h3>
@@ -292,7 +292,7 @@
    ]]>
     </string>
 
-      <string name="Chess">
+    <string name="Chess">
             <![CDATA[
     <p>
                 POINTS:-<b>
@@ -322,7 +322,7 @@
    ]]>
     </string>
 
-          <string name="Cricket">
+    <string name="Cricket">
             <![CDATA[
 
             <h3>Cricket(Boys)</h3>
@@ -541,7 +541,7 @@
    ]]>
     </string>
 
-                  <string name="Hockey">
+    <string name="Hockey">
             <![CDATA[
   <p>
                 <b>POINTS:-
@@ -765,7 +765,7 @@
    ]]>
     </string>
 
-             <string name="PowerLifting">
+    <string name="PowerLifting">
             <![CDATA[
    <p><b>POINTS:-
                 <br>&emsp;&emsp;&emsp;1st place - 5 points
@@ -810,7 +810,7 @@
    ]]>
     </string>
 
-             <string name="Swimming">
+    <string name="Swimming">
             <![CDATA[
   <p>POINTS:-
                 <p><b>INDIVIDUAL:
@@ -865,7 +865,7 @@
     </string>
 
 
-             <string name="TableTennis">
+    <string name="TableTennis">
             <![CDATA[
   <p><b>POINTS:-
                 <br>&emsp;&emsp;&emsp;1st place - 12 points
@@ -896,7 +896,7 @@
    ]]>
     </string>
 
-             <string name="Tennis">
+    <string name="Tennis">
             <![CDATA[
                             <h3>Tennis (MEN)</h3>
   <p><b>POINTS:-
@@ -953,7 +953,7 @@
    ]]>
     </string>
 
-             <string name="Throwball">
+    <string name="Throwball">
             <![CDATA[
  <p><b>POINTS:-
                 <br>&emsp;&emsp;&emsp;1st place - 15 points
@@ -987,7 +987,7 @@
    ]]>
     </string>
 
-             <string name="Volleyball">
+    <string name="Volleyball">
             <![CDATA[
                             <h3>VolleyBall (Boys)</h3>
   <p><b>POINTS:-
@@ -1049,7 +1049,7 @@
    ]]>
     </string>
 
-             <string name="WaterPolo">
+    <string name="WaterPolo">
             <![CDATA[
    <p><b>POINTS:-
                  <br>&emsp;&emsp;&emsp;1st place - 20 points

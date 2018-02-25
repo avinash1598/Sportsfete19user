@@ -34,7 +34,7 @@ public class SubscribeRecyclerAdapter extends RecyclerView.Adapter<SubscribeView
         this.departmentList=departmentList;
         this.checked=checked;
         this.context=context;
-        customFont = Typeface.createFromAsset(context.getAssets(),  "fonts/InconsolataBold.ttf");
+//        customFont = Typeface.createFromAsset(context.getAssets(),  "fonts/InconsolataBold.ttf");
     }
 
     @Override
