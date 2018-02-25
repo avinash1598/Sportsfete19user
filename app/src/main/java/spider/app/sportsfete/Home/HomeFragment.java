@@ -41,27 +41,29 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import rx.functions.Action1;
 import spider.app.sportsfete.API.ApiInterface;
-import spider.app.sportsfete.API.Event;
+import spider.app.sportsfete.API.EventDetailsPOJO;
+import spider.app.sportsfete.API.StatusEventDetailsPOJO;
 import spider.app.sportsfete.DatabaseHelper;
 import spider.app.sportsfete.EventInfo.EventInfoActivity;
 import spider.app.sportsfete.R;
-import spider.app.sportsfete.Schedule.EventRecyclerAdapter;
+import spider.app.sportsfete.Schedule.StatusEventsDetailRecyclerAdapter;
+import spider.app.sportsfete.Schedule.StatusEventsDetailRecyclerAdapter;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class HomeFragment extends Fragment implements Callback<List<Event>>, SwipeRefreshLayout.OnRefreshListener{
+public class HomeFragment extends Fragment implements Callback<List<StatusEventDetailsPOJO>>, SwipeRefreshLayout.OnRefreshListener{
 
     private static final String TAG="HomeFragment";
-    List<Event> eventList=new ArrayList<>();
-    EventRecyclerAdapter eventRecyclerAdapter;
+    List<StatusEventDetailsPOJO> eventList=new ArrayList<>();
+    StatusEventsDetailRecyclerAdapter eventRecyclerAdapter;
     RecyclerView recyclerView;
     LoadingView loadingView;
     SwipeRefreshLayout swipeRefreshLayout;
-    Call<List<Event>> call;
+    Call<List<StatusEventDetailsPOJO>> call;
     ApiInterface apiInterface;
     DatabaseHelper helper;
-    Dao<Event,Long> dao;
+    Dao<StatusEventDetailsPOJO,Long> dao;
     Context context;
     SharedPreferences prefs;
     String lastUpdatedTimestamp;
@@ -104,7 +106,7 @@ public class HomeFragment extends Fragment implements Callback<List<Event>>, Swi
 
         try {
             helper= OpenHelperManager.getHelper(context,DatabaseHelper.class);
-            dao=helper.getEventsDao();
+            dao=helper.getStatusEventsDetailDao();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -130,11 +132,12 @@ public class HomeFragment extends Fragment implements Callback<List<Event>>, Swi
         loadingView.setVisibility(View.GONE);
 
 
-        eventRecyclerAdapter=new EventRecyclerAdapter(eventList,context);
+        eventRecyclerAdapter=new StatusEventsDetailRecyclerAdapter(eventList,context);
         recyclerView.setAdapter(eventRecyclerAdapter);
 
         swipeRefreshLayout= (SwipeRefreshLayout) view.findViewById(R.id.home_swipe_to_refresh);
         swipeRefreshLayout.setOnRefreshListener(this);
+        swipeRefreshLayout.setRefreshing(true);
 
         onRefresh();
 
@@ -146,7 +149,7 @@ public class HomeFragment extends Fragment implements Callback<List<Event>>, Swi
         observable.subscribe(new Action1<String>() {
             @Override
             public void call(String s) {
-                Event selectedEvent=eventList.get(Integer.parseInt(s));
+                StatusEventDetailsPOJO selectedEvent=eventList.get(Integer.parseInt(s));
                 Intent intent = new Intent(context, EventInfoActivity.class);
                 intent.putExtra("SELECTED_EVENT", new Gson().toJson(selectedEvent));
                 startActivity(intent);
@@ -155,17 +158,19 @@ public class HomeFragment extends Fragment implements Callback<List<Event>>, Swi
     }
 
     @Override
-    public void onResponse(Call<List<Event>> call, Response<List<Event>> response) {
-        final List<Event> responseList=response.body();
+    public void onResponse(Call<List<StatusEventDetailsPOJO>> call, Response<List<StatusEventDetailsPOJO>> response) {
+        final List<StatusEventDetailsPOJO> responseList=response.body();
+        Log.d("response","");
         if(responseList!=null){
             eventList.clear();
+            Log.d("list size","-------"+responseList.size());
             if(responseList.size()>0) {
                 Log.d(TAG, "onResponse:response received ");
                 Thread thread=new Thread(new Runnable() {
                     @Override
                     public void run() {
                         try {
-                            TableUtils.clearTable(helper.getConnectionSource(), Event.class);
+                            TableUtils.clearTable(helper.getConnectionSource(), StatusEventDetailsPOJO.class);
                             for (int i = 0; i <responseList.size() ; i++) {
                                 dao.create(responseList.get(i));
                             }
@@ -182,7 +187,7 @@ public class HomeFragment extends Fragment implements Callback<List<Event>>, Swi
             showEventsLastUpdate();
 
             for (int i = 0; i <responseList.size() ; i++) {
-                if(responseList.get(i).getStatus().equals("l")){
+                if(responseList.get(i).getStatus().equals("live")){
                     eventList.add(responseList.get(i));
                 }
             }
@@ -198,7 +203,7 @@ public class HomeFragment extends Fragment implements Callback<List<Event>>, Swi
     }
 
     @Override
-    public void onFailure(Call<List<Event>> call, Throwable t) {
+    public void onFailure(Call<List<StatusEventDetailsPOJO>> call, Throwable t) {
         Log.d(TAG, "onFailure: "+t.toString());
         //loadingView.setVisibility(View.INVISIBLE);
         swipeRefreshLayout.setRefreshing(false);
@@ -210,7 +215,7 @@ public class HomeFragment extends Fragment implements Callback<List<Event>>, Swi
 
     @Override
     public void onRefresh() {
-        call = apiInterface.getSchedule(-1);
+        call = apiInterface.getEventByStatus("live");
         call.enqueue(this);
         //loadingView.startAnimation();
         //loadingView.setVisibility(View.VISIBLE);
@@ -223,11 +228,11 @@ public class HomeFragment extends Fragment implements Callback<List<Event>>, Swi
 
     public void updateAdapter(){
         try {
-            QueryBuilder<Event,Long> queryBuilder= null;
-            queryBuilder = helper.getEventsDao().queryBuilder();
+            QueryBuilder<StatusEventDetailsPOJO,Long> queryBuilder= null;
+            queryBuilder = helper.getStatusEventsDetailDao().queryBuilder();
             queryBuilder.where().eq("status","l");
             eventList=queryBuilder.query();
-            eventRecyclerAdapter=new EventRecyclerAdapter(eventList,context);
+            eventRecyclerAdapter=new StatusEventsDetailRecyclerAdapter(eventList,context);
             recyclerView.setAdapter(eventRecyclerAdapter);
         } catch (SQLException e) {
             e.printStackTrace();

@@ -18,6 +18,7 @@ import java.util.List;
 import rx.Observable;
 import rx.subjects.PublishSubject;
 import spider.app.sportsfete.API.Event;
+import spider.app.sportsfete.API.EventDetailsPOJO;
 import spider.app.sportsfete.R;
 
 /**

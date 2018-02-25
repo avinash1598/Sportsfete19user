@@ -15,6 +15,8 @@
     app:cardCornerRadius="5dp"
     android:foreground="?attr/selectableItemBackground"
     android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:gravity="center"
@@ -24,38 +26,47 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:layout_height="wrap_content"
-            android:textColor="#000000"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_marginLeft="5dp"
             android:id="@+id/department_rank"
-            android:textSize="30sp"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:textColor="#000000"
+            android:textSize="30sp" />
 
         <TextView
             android:id="@+id/department"
-            android:textColor="#000000"
-            android:layout_width="0dp"
-            android:layout_weight="3"
-            android:textSize="30sp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-             />
+            android:layout_weight="3"
+            android:textColor="#000000"
+            android:textSize="30sp" />
 
         <ImageView
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
             android:id="@+id/medal"
-            android:visibility="invisible"
-            android:src="@mipmap/ic_launcher" />
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@mipmap/ic_launcher"
+            android:visibility="invisible" />
+
         <TextView
             android:id="@+id/score"
-            android:layout_width="0dp"
-            android:textSize="30sp"
-            android:layout_weight="1"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:textColor="#000000"
-           />
+            android:textSize="30sp" />
+
+        <net.cachapa.expandablelayout.ExpandableLayout
+            android:id="@+id/expandableLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:el_duration="300"
+            app:el_expanded="false">
+
+        </net.cachapa.expandablelayout.ExpandableLayout>
+
     </LinearLayout>
 </android.support.v7.widget.CardView>
 </LinearLayout>

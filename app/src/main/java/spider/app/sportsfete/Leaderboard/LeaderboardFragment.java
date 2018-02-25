@@ -13,7 +13,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
@@ -21,7 +20,6 @@ import android.widget.Toast;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.dao.Dao;
-import com.j256.ormlite.stmt.QueryBuilder;
 import com.j256.ormlite.table.TableUtils;
 import com.twotoasters.jazzylistview.JazzyHelper;
 import com.twotoasters.jazzylistview.recyclerview.JazzyRecyclerViewScrollListener;
@@ -31,7 +29,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 import java.util.TimeZone;
 
 import io.saeid.fabloading.LoadingView;
@@ -39,12 +36,9 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import spider.app.sportsfete.API.ApiInterface;
-import spider.app.sportsfete.API.Event;
 import spider.app.sportsfete.API.Standing;
 import spider.app.sportsfete.DatabaseHelper;
-import spider.app.sportsfete.MainActivity;
 import spider.app.sportsfete.R;
-import spider.app.sportsfete.Schedule.EventRecyclerAdapter;
 
 /**
  * Created by akashj on 21/1/17.

@@ -3,6 +3,7 @@ package spider.app.sportsfete.Schedule;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -43,6 +44,7 @@ public class ScheduleFragment extends Fragment{
     ViewGroup viewGroup;
     int selectedDay;
     int index;
+    ScheduleViewPagerAdapter scheduleViewPagerAdapter;
     ViewPager viewPager;
 
     public ScheduleFragment() {
@@ -80,7 +82,8 @@ public class ScheduleFragment extends Fragment{
         deptList=new ArrayList();
         deptList= Arrays.asList(dialogItems);
         viewPager = (ViewPager)view. findViewById(R.id.schedule_view_pager);
-        viewPager.setAdapter(new ScheduleViewPagerAdapter(getFragmentManager()));
+        scheduleViewPagerAdapter = new ScheduleViewPagerAdapter(getFragmentManager());
+        viewPager.setAdapter(scheduleViewPagerAdapter);
         TabLayout tabLayout = (TabLayout) view.findViewById(R.id.schedule_tab_layout);
         tabLayout.setupWithViewPager(viewPager);
         TabLayout.Tab currentTab = tabLayout.getTabAt(index);
@@ -130,7 +133,10 @@ public class ScheduleFragment extends Fragment{
                         dialog.dismiss();
                         selectedDept=dialogItems[which];
                         onUpdateDept(selectedDept);
-                        departmentUpdateCallback.updateScheduleFragment();
+                        Intent intent = new Intent();
+                        intent.setAction("update_department");
+                        getActivity().sendBroadcast(intent);
+                        //departmentUpdateCallback.updateScheduleFragment();
                     }
                 });
 

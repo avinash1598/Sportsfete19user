@@ -24,15 +24,21 @@ import retrofit2.http.QueryMap;
 
 public interface ApiInterface {
     Retrofit retrofit = new Retrofit.Builder()
-            .baseUrl("http://139.59.58.3/api/")
+            .baseUrl("https://us-central1-sportsfete-732bf.cloudfunctions.net")
             .addConverterFactory(GsonConverterFactory.create())
             .build();
 
-    @GET("scores")
+    @GET("/leaderboard")
     Call<List<Standing>> getLeaderBoard();
 
-    @GET("events/day/{day}")
-    Call<List<Event>> getSchedule(@Path("day") int day);
+    @GET("/day_events")
+    Call<List<Event>> getSchedule(@Query("day") int day);
+
+    @GET("/day_events")
+    Call<List<EventDetailsPOJO>> getSchedule2(@Query("day") int day);
+
+    @GET("/status_events")
+    Call<List<StatusEventDetailsPOJO>> getEventByStatus(@Query("status") String status);
 
     @FormUrlEncoded
     @POST("user/marathon/register")

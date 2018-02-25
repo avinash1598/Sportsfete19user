@@ -46,7 +46,7 @@ public class SubscribeSport extends Fragment {
     private static final String TAG="SubscribeFragment";
     boolean[] checked=new boolean[15];
     List<String> deptList=new ArrayList();
-    String[] deptArraySharedPreference=new String[15];
+    String[] sportsArraySharedPreference=new String[15];
     RecyclerView recyclerView;
     SubscribeRecyclerAdapter adapter;
     Context context;
@@ -100,15 +100,15 @@ public class SubscribeSport extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         prefs = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
 
-        deptArraySharedPreference=getResources().getStringArray(R.array.department_array_shared_preference);
+        sportsArraySharedPreference=getResources().getStringArray(R.array.sport_array);
 
 
-        for ( int i = 0; i < deptArraySharedPreference.length; i ++)
-            deptList.add(deptArraySharedPreference[i]);
+        for ( int i = 0; i < sportsArraySharedPreference.length; i ++)
+            deptList.add(sportsArraySharedPreference[i]);
 
 
         for (int i = 0; i < deptList.size(); i++) {
-            checked[i]=prefs.getBoolean(deptArraySharedPreference[i]+"Checked",false);
+            checked[i]=prefs.getBoolean(sportsArraySharedPreference[i]+"Checked",false);
         }
 
         recyclerView= (RecyclerView) view.findViewById(R.id.subscribe_recycler_view);
@@ -167,14 +167,14 @@ public class SubscribeSport extends Fragment {
                 int selected=Integer.parseInt(s);
                 if (!checked[selected]){
                     checked[selected]=true;
-                    Toast.makeText(getContext(), "Subscribed to "+deptArraySharedPreference[selected], Toast.LENGTH_SHORT).show();
-                    FirebaseMessaging.getInstance().subscribeToTopic(deptArraySharedPreference[selected]);
-                    prefs.edit().putBoolean(deptArraySharedPreference[selected]+"Checked", true).apply();
+                    Toast.makeText(getContext(), "Subscribed to "+sportsArraySharedPreference[selected], Toast.LENGTH_SHORT).show();
+                    FirebaseMessaging.getInstance().subscribeToTopic(sportsArraySharedPreference[selected]);
+                    prefs.edit().putBoolean(sportsArraySharedPreference[selected]+"Checked", true).apply();
                 }else {
                     checked[selected]=false;
-                    Toast.makeText(getContext(), "Unsubscribed to "+deptArraySharedPreference[selected], Toast.LENGTH_SHORT).show();
-                    FirebaseMessaging.getInstance().unsubscribeFromTopic(deptArraySharedPreference[selected]);
-                    prefs.edit().putBoolean(deptArraySharedPreference[selected]+"Checked", false).apply();
+                    Toast.makeText(getContext(), "Unsubscribed to "+sportsArraySharedPreference[selected], Toast.LENGTH_SHORT).show();
+                    FirebaseMessaging.getInstance().unsubscribeFromTopic(sportsArraySharedPreference[selected]);
+                    prefs.edit().putBoolean(sportsArraySharedPreference[selected]+"Checked", false).apply();
                 }
             }
         });

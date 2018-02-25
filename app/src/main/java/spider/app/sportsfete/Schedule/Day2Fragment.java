@@ -1,8 +1,10 @@
 package spider.app.sportsfete.Schedule;
 
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -22,6 +24,7 @@ import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.gson.Gson;
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.dao.Dao;
+import com.j256.ormlite.stmt.DeleteBuilder;
 import com.j256.ormlite.stmt.QueryBuilder;
 import com.j256.ormlite.table.TableUtils;
 import com.twotoasters.jazzylistview.JazzyHelper;
@@ -40,7 +43,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import rx.functions.Action1;
 import spider.app.sportsfete.API.ApiInterface;
-import spider.app.sportsfete.API.Event;
+import spider.app.sportsfete.API.EventDetailsPOJO;
 import spider.app.sportsfete.DatabaseHelper;
 import spider.app.sportsfete.DepartmentUpdateCallback;
 import spider.app.sportsfete.EventInfo.EventInfoActivity;
@@ -49,18 +52,18 @@ import spider.app.sportsfete.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Day2Fragment extends Fragment implements Callback<List<Event>>, SwipeRefreshLayout.OnRefreshListener {
+public class Day2Fragment extends Fragment implements Callback<List<EventDetailsPOJO>>, SwipeRefreshLayout.OnRefreshListener{
 
     private static final String TAG="Day2Fragment";
-    List<Event> eventList=new ArrayList<>();
-    EventRecyclerAdapter eventRecyclerAdapter;
+    List<EventDetailsPOJO> eventList=new ArrayList<>();
+    Day2EventsDetailRecyclerAdapter eventRecyclerAdapter;
     RecyclerView recyclerView;
     LoadingView loadingView;
     SwipeRefreshLayout swipeRefreshLayout;
-    Call<List<Event>> call;
+    Call<List<EventDetailsPOJO>> call;
     ApiInterface apiInterface;
     DatabaseHelper helper;
-    Dao<Event,Long> dao;
+    Dao<EventDetailsPOJO,Long> dao;
     int selectedDay=2;
     String selectedDept;
     Context context;
@@ -73,6 +76,13 @@ public class Day2Fragment extends Fragment implements Callback<List<Event>>, Swi
     private int currentTransitionEffect = JazzyHelper.TILT;
     JazzyRecyclerViewScrollListener jazzyRecyclerViewScrollListener;
 
+    BroadcastReceiver receiver = new BroadcastReceiver(){
+        @Override
+        public void onReceive(Context contextBroadcast, Intent intent) {
+            getSelectedDept();
+            updateAdapter();
+        }
+    };
 
     public Day2Fragment() {
     }
@@ -84,23 +94,24 @@ public class Day2Fragment extends Fragment implements Callback<List<Event>>, Swi
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+    public void onActivityCreated(Bundle bundle) {
+        super.onActivityCreated(bundle);
+
         context=getContext();
         departmentUpdateCallback= (DepartmentUpdateCallback) getActivity();
-        prefs = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
+        prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
         apiInterface = ApiInterface.retrofit.create(ApiInterface.class);
 
         getSelectedDept();
 
         try {
             helper= OpenHelperManager.getHelper(context,DatabaseHelper.class);
-            dao=helper.getEventsDao();
+            dao=helper.getEventsDetailDao();
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        recyclerView= (RecyclerView) view.findViewById(R.id.day_2_recycler_view);
+        recyclerView= (RecyclerView) getActivity().findViewById(R.id.day_2_recycler_view);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
 
@@ -109,7 +120,7 @@ public class Day2Fragment extends Fragment implements Callback<List<Event>>, Swi
         recyclerView.setOnScrollListener(jazzyRecyclerViewScrollListener);
 
 
-        loadingView = (LoadingView)view. findViewById(R.id.day_2_loading_view);
+        loadingView = (LoadingView)getActivity(). findViewById(R.id.day_2_loading_view);
 
         loadingView.addAnimation(Color.WHITE,R.drawable.basketball, LoadingView.FROM_LEFT);
         loadingView.addAnimation(Color.WHITE,R.drawable.cricket, LoadingView.FROM_TOP);
@@ -122,17 +133,29 @@ public class Day2Fragment extends Fragment implements Callback<List<Event>>, Swi
         loadingView.setRepeat(100);
         loadingView.setVisibility(View.GONE);
 
-        updateAdapter();
         Log.d(TAG, "onViewCreated: selectedDept"+selectedDept);
 
-        eventRecyclerAdapter=new EventRecyclerAdapter(eventList,context);
+        eventRecyclerAdapter=new Day2EventsDetailRecyclerAdapter(eventList,context);
         recyclerView.setAdapter(eventRecyclerAdapter);
 
-        swipeRefreshLayout= (SwipeRefreshLayout) view.findViewById(R.id.day_2_swipe_to_refresh);
+        swipeRefreshLayout= (SwipeRefreshLayout) getActivity().findViewById(R.id.day_2_swipe_to_refresh);
         swipeRefreshLayout.setOnRefreshListener(this);
 
+        updateAdapter();
+
+        if(bundle==null){
+            swipeRefreshLayout.setRefreshing(true);
+            onRefresh();
+        }
+
         setClickListener();
+
+        IntentFilter filter = new IntentFilter();
+        filter.addAction("update_department");
+        getActivity().registerReceiver(receiver, filter);
+
     }
+
 
     private void putSelectedDay() {
         Log.d(TAG, "putSelectedDay: "+selectedDay);
@@ -141,13 +164,12 @@ public class Day2Fragment extends Fragment implements Callback<List<Event>>, Swi
         editor.apply();
     }
 
-
     void setClickListener(){
         rx.Observable<String> observable= eventRecyclerAdapter.getPositionClicks();
         observable.subscribe(new Action1<String>() {
             @Override
             public void call(String s) {
-                Event selectedEvent=eventList.get(Integer.parseInt(s));
+                EventDetailsPOJO selectedEvent=eventList.get(Integer.parseInt(s));
                 Intent intent = new Intent(context, EventInfoActivity.class);
                 intent.putExtra("SELECTED_EVENT", new Gson().toJson(selectedEvent));
                 startActivity(intent);
@@ -156,8 +178,8 @@ public class Day2Fragment extends Fragment implements Callback<List<Event>>, Swi
     }
 
     @Override
-    public void onResponse(Call<List<Event>> call, Response<List<Event>> response) {
-        final List<Event> responseList=response.body();
+    public void onResponse(Call<List<EventDetailsPOJO>> call, Response<List<EventDetailsPOJO>> response) {
+        final List<EventDetailsPOJO> responseList=response.body();
         if(responseList!=null){
             if(responseList.size()>0) {
                 Log.d(TAG, "onResponse:response received ");
@@ -165,7 +187,10 @@ public class Day2Fragment extends Fragment implements Callback<List<Event>>, Swi
                     @Override
                     public void run() {
                         try {
-                            TableUtils.clearTable(helper.getConnectionSource(), Event.class);
+                            //TableUtils.clearTable(helper.getConnectionSource(), EventDetailsPOJO.class);
+                            DeleteBuilder<EventDetailsPOJO, Long> deleteBuilder = dao.deleteBuilder();
+                            deleteBuilder.where().eq("day",2);
+                            deleteBuilder.delete();
                             for (int i = 0; i <responseList.size() ; i++) {
                                 dao.create(responseList.get(i));
                             }
@@ -178,7 +203,8 @@ public class Day2Fragment extends Fragment implements Callback<List<Event>>, Swi
                                 putEventsLastUpdate();
                                 loadingView.setVisibility(View.INVISIBLE);
                                 swipeRefreshLayout.setRefreshing(false);
-                                departmentUpdateCallback.updateScheduleFragment();
+                                updateAdapter();
+                                //departmentUpdateCallback.updateScheduleFragment();
                             }
                         });
                     }
@@ -190,8 +216,9 @@ public class Day2Fragment extends Fragment implements Callback<List<Event>>, Swi
     }
 
     @Override
-    public void onFailure(Call<List<Event>> call, Throwable t) {
-        Log.d(TAG, "onFailure: "+t.toString());
+    public void onFailure(Call<List<EventDetailsPOJO>> call, Throwable t) {
+        //Log.d(TAG, "onFailure: "+t.toString());
+        t.printStackTrace();
         loadingView.setVisibility(View.INVISIBLE);
         swipeRefreshLayout.setRefreshing(false);
         Toast.makeText(context, "Device Offline", Toast.LENGTH_SHORT).show();
@@ -200,10 +227,10 @@ public class Day2Fragment extends Fragment implements Callback<List<Event>>, Swi
 
     @Override
     public void onRefresh() {
-        call = apiInterface.getSchedule(-1);
+        call = apiInterface.getSchedule2(2);
         call.enqueue(this);
-        loadingView.startAnimation();
-        loadingView.setVisibility(View.VISIBLE);
+        //loadingView.startAnimation();
+        //loadingView.setVisibility(View.VISIBLE);
         swipeRefreshLayout.setRefreshing(true);
         FirebaseAnalytics mFirebaseAnalytics = FirebaseAnalytics.getInstance(context);
         Bundle bundle = new Bundle();
@@ -217,29 +244,27 @@ public class Day2Fragment extends Fragment implements Callback<List<Event>>, Swi
     }
 
     public void updateAdapter(){
-        List<Event>dbList,newDbList=new ArrayList<>();
+        List<EventDetailsPOJO>dbList,newDbList=new ArrayList<>();
         try {
-            QueryBuilder<Event,Long> queryBuilder= null;
-            queryBuilder = helper.getEventsDao().queryBuilder();
+            QueryBuilder<EventDetailsPOJO,Long> queryBuilder= null;
+            queryBuilder = helper.getEventsDetailDao().queryBuilder();
             Log.d(TAG, "updateAdapter: "+selectedDay);
             queryBuilder.where().eq("day",selectedDay);
             dbList=queryBuilder.query();
             if(selectedDept.equals("ALL")){
-                eventList=dbList;
+                eventList.clear();
+                eventList.addAll(dbList);
+                eventRecyclerAdapter.notifyDataSetChanged();
             }else {
-                for (int i = 0; i < dbList.size(); i++) {
-                    if(dbList.get(i).getParticipants().contains(selectedDept)){
-                        newDbList.add(dbList.get(i));
-                    }
-                    else if(dbList.get(i).getParticipants().size()==0 && dbList.get(i).getTeamA()!=null &&
-                            dbList.get(i).getTeamB()!=null)
-                    {
-                        if (dbList.get(i).getTeamA().contains(selectedDept) || dbList.get(i).getTeamB().contains(selectedDept)) {
-                            newDbList.add(dbList.get(i));
-                        }
+                for(EventDetailsPOJO eventDetails : dbList){
+                    if(eventDetails.getDept1().equalsIgnoreCase(selectedDept) ||
+                            eventDetails.getDept2().equalsIgnoreCase(selectedDept)){
+                        newDbList.add(eventDetails);
                     }
                 }
-                eventList=newDbList;
+                eventList.clear();
+                eventList.addAll(newDbList);
+                eventRecyclerAdapter.notifyDataSetChanged();
             }
         } catch (SQLException e) {
             e.printStackTrace();
