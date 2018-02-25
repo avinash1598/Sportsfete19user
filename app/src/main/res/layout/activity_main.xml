@@ -9,7 +9,6 @@
     android:clipChildren="false"
     android:clipToPadding="false"
     app:edPosition="1"
-    android:background="@drawable/triangle"
     app:edMenuSize="260dp"
     app:edMenuBackground="#dddddd">
 

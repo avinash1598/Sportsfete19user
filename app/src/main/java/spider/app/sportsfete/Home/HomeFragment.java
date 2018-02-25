@@ -193,14 +193,14 @@ public class HomeFragment extends Fragment implements Callback<List<Event>>, Swi
         eventRecyclerAdapter.notifyDataSetChanged();
         Log.d(TAG, "onResponse: ");
 
-        loadingView.setVisibility(View.INVISIBLE);
+        //loadingView.setVisibility(View.INVISIBLE);
         swipeRefreshLayout.setRefreshing(false);
     }
 
     @Override
     public void onFailure(Call<List<Event>> call, Throwable t) {
         Log.d(TAG, "onFailure: "+t.toString());
-        loadingView.setVisibility(View.INVISIBLE);
+        //loadingView.setVisibility(View.INVISIBLE);
         swipeRefreshLayout.setRefreshing(false);
         Toast.makeText(context, "Device Offline", Toast.LENGTH_SHORT).show();
         updateAdapter();
@@ -212,8 +212,8 @@ public class HomeFragment extends Fragment implements Callback<List<Event>>, Swi
     public void onRefresh() {
         call = apiInterface.getSchedule(-1);
         call.enqueue(this);
-        loadingView.startAnimation();
-        loadingView.setVisibility(View.VISIBLE);
+        //loadingView.startAnimation();
+        //loadingView.setVisibility(View.VISIBLE);
         swipeRefreshLayout.setRefreshing(true);
         FirebaseAnalytics mFirebaseAnalytics = FirebaseAnalytics.getInstance(context);
         Bundle bundle = new Bundle();

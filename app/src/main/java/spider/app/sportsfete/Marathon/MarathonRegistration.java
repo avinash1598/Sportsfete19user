@@ -45,6 +45,7 @@ public class MarathonRegistration extends android.support.v4.app.Fragment {
 
     EditText reg_user_name;
     EditText reg_user_rollno;
+    EditText user_password;
     Spinner department_spinner;
     Button register;
     ViewGroup viewGroup;
@@ -87,7 +88,7 @@ public class MarathonRegistration extends android.support.v4.app.Fragment {
         super.onActivityCreated(savedInstanceState);
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://us-central1-sportsfete-732bf.cloudfunctions.net")
+                .baseUrl("https://pacific-fortress-57124.herokuapp.com")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         final ApiInterface apiInterface = retrofit.create(ApiInterface.class);
@@ -96,6 +97,7 @@ public class MarathonRegistration extends android.support.v4.app.Fragment {
         progressDialog.setMessage("Registering user");
 
         reg_user_name = (EditText) getActivity().findViewById(R.id.user_name);
+        user_password = (EditText) getActivity().findViewById(R.id.user_password);
         reg_user_rollno = (EditText) getActivity().findViewById(R.id.user_rollno);
         department_spinner = (Spinner) getActivity().findViewById(R.id.department);
         register = (Button) getActivity().findViewById(R.id.register);
@@ -103,6 +105,7 @@ public class MarathonRegistration extends android.support.v4.app.Fragment {
         reg_user_rollno.setTypeface(Typeface.createFromAsset(getActivity().getAssets(),  "fonts/HammersmithOneRegular.ttf"));
         reg_user_name.setTypeface(Typeface.createFromAsset(getActivity().getAssets(),  "fonts/HammersmithOneRegular.ttf"));
         register.setTypeface(Typeface.createFromAsset(getActivity().getAssets(),  "fonts/HammersmithOneRegular.ttf"));
+        user_password.setTypeface(Typeface.createFromAsset(getActivity().getAssets(),  "fonts/HammersmithOneRegular.ttf"));
 
         CustomAdapter adapter = new CustomAdapter(getActivity(),R.layout.dept_spinner_element,dept);
         department_spinner.setAdapter(adapter);
@@ -116,6 +119,7 @@ public class MarathonRegistration extends android.support.v4.app.Fragment {
                     map.put("roll",reg_user_rollno.getText().toString().trim());
                     map.put("name",reg_user_name.getText().toString().trim());
                     map.put("dept",dept[selectedPosition]);
+                    map.put("password",user_password.getText().toString().trim());
 
                     apiInterface.registerUserForMarathon(map).enqueue(new Callback<JsonObject>() {
                         @Override
@@ -123,12 +127,23 @@ public class MarathonRegistration extends android.support.v4.app.Fragment {
                             progressDialog.dismiss();
                             if(response.isSuccessful()){
                                 Log.e("response",response.body().toString());
-                                Snackbar.make(viewGroup,"Registered successfully-:)", Snackbar.LENGTH_SHORT).show();
+                                if(response.body().get("response code").getAsInt()==1){
+                                    Snackbar.make(viewGroup,"Registered successfully-:)", Snackbar.LENGTH_SHORT).show();
+                                }
+                                if(response.body().get("response code").getAsInt()==-1){
+                                    Snackbar.make(viewGroup,"User already registered!!", Snackbar.LENGTH_SHORT).show();
+                                }
+                                if(response.body().get("response code").getAsInt()==-2){
+                                    Snackbar.make(viewGroup,"Invalid Roll Number or password!!", Snackbar.LENGTH_SHORT).show();
+                                }
+                                if(response.body().get("response code").getAsInt()==-3){
+                                    Snackbar.make(viewGroup,"Internal Server Error!!", Snackbar.LENGTH_SHORT).show();
+                                }
                             }else
                                 try {
                                     String error = response.errorBody().string();
                                     Log.e("error response",error+"");
-                                    Snackbar.make(viewGroup,""+error.split(":")[2].trim(), Snackbar.LENGTH_SHORT).show();
+                                    Snackbar.make(viewGroup,""+error, Snackbar.LENGTH_SHORT).show();
                                 } catch (IOException e) {
                                     e.printStackTrace();
                                 }
