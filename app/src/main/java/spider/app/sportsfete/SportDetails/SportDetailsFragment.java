@@ -72,6 +72,7 @@ public class SportDetailsFragment extends Fragment {
             public void call(String s) {
                 Intent intent=new Intent(getActivity(), SportDetailsActivity.class);
                 intent.putExtra("SELECTED_SPORT",s);
+                intent.putExtra("FIXTURE_TYPE",5);
                 startActivity(intent);
 
 

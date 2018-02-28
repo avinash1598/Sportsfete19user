@@ -10,6 +10,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,9 +45,9 @@ public class SubscribeSport extends Fragment {
     private String mParam2;
 
     private static final String TAG="SubscribeFragment";
-    boolean[] checked=new boolean[15];
-    List<String> deptList=new ArrayList();
-    String[] sportsArraySharedPreference=new String[15];
+    boolean[] checked=new boolean[25];
+    List<String> deptList;
+    String[] sportsArraySharedPreference=new String[25];
     RecyclerView recyclerView;
     SubscribeRecyclerAdapter adapter;
     Context context;
@@ -100,6 +101,8 @@ public class SubscribeSport extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         prefs = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
 
+        deptList=new ArrayList();
+
         sportsArraySharedPreference=getResources().getStringArray(R.array.sport_array);
 
 
@@ -108,6 +111,7 @@ public class SubscribeSport extends Fragment {
 
 
         for (int i = 0; i < deptList.size(); i++) {
+            Log.d("deptList size",deptList.size()+"");
             checked[i]=prefs.getBoolean(sportsArraySharedPreference[i]+"Checked",false);
         }
 

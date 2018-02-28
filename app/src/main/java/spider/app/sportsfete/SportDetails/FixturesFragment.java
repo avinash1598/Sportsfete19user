@@ -51,6 +51,7 @@ public class FixturesFragment extends Fragment {
     View view;
     String selectedSport,selectedSportName, selectedLayout = "";
 
+    public final String fixtureType = "two";
     String[] sportNames = {
             "athletics",
             "badminton(Mixed)",
@@ -98,6 +99,76 @@ public class FixturesFragment extends Fragment {
             "water polo"
     };
 
+    Integer[] fixture_type = {
+            R.layout.fixture_layout,
+            R.layout.fixture_layout_two,
+            R.layout.fixture_layout_three,
+            R.layout.fixture_layout_four,
+            R.layout.fixture_layout_five,
+            R.layout.fixture_layout_six
+    };
+
+    Integer[] matchId = {
+            R.id.match1,
+            R.id.match2,
+            R.id.match3,
+            R.id.match4,
+            R.id.match5,
+            R.id.match6,
+            R.id.match7,
+            R.id.match8,
+            R.id.match9,
+            R.id.match10,
+            R.id.match11,
+            R.id.match12,
+            R.id.match13,
+            R.id.match14,
+            R.id.match15,
+            R.id.match16,
+            R.id.match17,
+            R.id.match18,
+            R.id.match19,
+            R.id.match20,
+            R.id.match21,
+            R.id.match22,
+            R.id.match23,
+            R.id.match24,
+            R.id.match25,
+            R.id.match26
+    };
+
+    Integer[] matchTeamsId = {
+            R.id.match1teams,
+            R.id.match2teams,
+            R.id.match3teams,
+            R.id.match4teams,
+            R.id.match5teams,
+            R.id.match6teams,
+            R.id.match7teams,
+            R.id.match8teams,
+            R.id.match9teams,
+            R.id.match10teams,
+            R.id.match11teams,
+            R.id.match12teams,
+            R.id.match13teams,
+            R.id.match14teams,
+            R.id.match15teams,
+            R.id.match16teams,
+            R.id.match17teams,
+            R.id.match18teams,
+            R.id.match19teams,
+            R.id.match20teams,
+            R.id.match21teams,
+            R.id.match22teams,
+            R.id.match23teams,
+            R.id.match24teams,
+            R.id.match25teams,
+            R.id.match26teams
+    };
+
+    TextView[] match;
+    TextView[] matchTeams;
+
     private LinearLayout linearLayout;
     private HorizontalScrollView horizontalScrollView;
     private float mScale = 1f;
@@ -122,23 +193,7 @@ public class FixturesFragment extends Fragment {
         int selectedSportInt = Integer.parseInt(selectedSport);
                 selectedSportName=sportNames[selectedSportInt];
 
-        for(String sports: fixture_layout_one){
-            if(sports.equalsIgnoreCase(selectedSportName)){
-                selectedLayout = "one";
-                return inflater.inflate(R.layout.fixture_layout, container, false);
-            }
-        }
-
-        for(String sports: fixture_layout_two){
-            if(sports.equalsIgnoreCase(selectedSportName)){
-                selectedLayout = "two";
-                return inflater.inflate(R.layout.fixture_layout_two, container, false);
-            }
-        }
-
-        selectedLayout = "";
-
-        return inflater.inflate(R.layout.fixture_layout, container, false);
+        return inflater.inflate(fixture_type[5], container, false);
     }
 
 
@@ -163,6 +218,9 @@ public class FixturesFragment extends Fragment {
             e.printStackTrace();
         }
 
+        match = new TextView[matchId.length];
+        matchTeams = new TextView[matchTeamsId.length];
+
         position1 = (TextView)getActivity().findViewById(R.id.position1);
         position2 = (TextView)getActivity().findViewById(R.id.position2);
         position3 = (TextView)getActivity().findViewById(R.id.position3);
@@ -185,71 +243,14 @@ public class FixturesFragment extends Fragment {
         finals.setTypeface(Typeface.createFromAsset(getActivity().getAssets(),  "fonts/HammersmithOneRegular.ttf"));
         standings.setTypeface(Typeface.createFromAsset(getActivity().getAssets(),  "fonts/HammersmithOneRegular.ttf"));
 
-        match1 = (TextView)getActivity().findViewById(R.id.match1);
-        match2 = (TextView)getActivity().findViewById(R.id.match2);
-        match3 = (TextView)getActivity().findViewById(R.id.match3);
-        match4 = (TextView)getActivity().findViewById(R.id.match4);
-        match5 = (TextView)getActivity().findViewById(R.id.match5);
-        match6 = (TextView)getActivity().findViewById(R.id.match6);
-        match7 = (TextView)getActivity().findViewById(R.id.match7);
-        match8 = (TextView)getActivity().findViewById(R.id.match8);
-        match9 = (TextView)getActivity().findViewById(R.id.match9);
-        match10 = (TextView)getActivity().findViewById(R.id.match10);
-        match11 = (TextView)getActivity().findViewById(R.id.match11);
-        match12 = (TextView)getActivity().findViewById(R.id.match12);
-        if(!selectedLayout.matches("two")) {
-            match13 = (TextView) getActivity().findViewById(R.id.match13);
-            match14 = (TextView) getActivity().findViewById(R.id.match14);
-
-        }
-
-        match1teams = (TextView)getActivity().findViewById(R.id.match1teams);
-        match2teams = (TextView)getActivity().findViewById(R.id.match2teams);
-        match3teams = (TextView)getActivity().findViewById(R.id.match3teams);
-        match4teams = (TextView)getActivity().findViewById(R.id.match4teams);
-        match5teams = (TextView)getActivity().findViewById(R.id.match5teams);
-        match6teams = (TextView)getActivity().findViewById(R.id.match6teams);
-        match7teams = (TextView)getActivity().findViewById(R.id.match7teams);
-        match8teams = (TextView)getActivity().findViewById(R.id.match8teams);
-        match9teams = (TextView)getActivity().findViewById(R.id.match9teams);
-        match10teams = (TextView)getActivity().findViewById(R.id.match10teams);
-        match11teams = (TextView)getActivity().findViewById(R.id.match11teams);
-        match12teams = (TextView)getActivity().findViewById(R.id.match12teams);
-        if(!selectedLayout.matches("two")) {
-            match13teams = (TextView) getActivity().findViewById(R.id.match13teams);
-            match14teams = (TextView) getActivity().findViewById(R.id.match14teams);
-
-        }
-
-        match1teams.setTypeface(Typeface.createFromAsset(getActivity().getAssets(),  "fonts/HammersmithOneRegular.ttf"));
-        match1.setTypeface(Typeface.createFromAsset(getActivity().getAssets(),  "fonts/HammersmithOneRegular.ttf"));
-        match2teams.setTypeface(Typeface.createFromAsset(getActivity().getAssets(),  "fonts/HammersmithOneRegular.ttf"));
-        match2.setTypeface(Typeface.createFromAsset(getActivity().getAssets(),  "fonts/HammersmithOneRegular.ttf"));
-        match3teams.setTypeface(Typeface.createFromAsset(getActivity().getAssets(),  "fonts/HammersmithOneRegular.ttf"));
-        match3.setTypeface(Typeface.createFromAsset(getActivity().getAssets(),  "fonts/HammersmithOneRegular.ttf"));
-        match4teams.setTypeface(Typeface.createFromAsset(getActivity().getAssets(),  "fonts/HammersmithOneRegular.ttf"));
-        match4.setTypeface(Typeface.createFromAsset(getActivity().getAssets(),  "fonts/HammersmithOneRegular.ttf"));
-        match5teams.setTypeface(Typeface.createFromAsset(getActivity().getAssets(),  "fonts/HammersmithOneRegular.ttf"));
-        match5.setTypeface(Typeface.createFromAsset(getActivity().getAssets(),  "fonts/HammersmithOneRegular.ttf"));
-        match6teams.setTypeface(Typeface.createFromAsset(getActivity().getAssets(),  "fonts/HammersmithOneRegular.ttf"));
-        match6.setTypeface(Typeface.createFromAsset(getActivity().getAssets(),  "fonts/HammersmithOneRegular.ttf"));
-        match7teams.setTypeface(Typeface.createFromAsset(getActivity().getAssets(),  "fonts/HammersmithOneRegular.ttf"));
-        match7.setTypeface(Typeface.createFromAsset(getActivity().getAssets(),  "fonts/HammersmithOneRegular.ttf"));
-        match8teams.setTypeface(Typeface.createFromAsset(getActivity().getAssets(),  "fonts/HammersmithOneRegular.ttf"));
-        match8.setTypeface(Typeface.createFromAsset(getActivity().getAssets(),  "fonts/HammersmithOneRegular.ttf"));
-        match9teams.setTypeface(Typeface.createFromAsset(getActivity().getAssets(),  "fonts/HammersmithOneRegular.ttf"));
-        match9.setTypeface(Typeface.createFromAsset(getActivity().getAssets(),  "fonts/HammersmithOneRegular.ttf"));
-        match10teams.setTypeface(Typeface.createFromAsset(getActivity().getAssets(),  "fonts/HammersmithOneRegular.ttf"));
-        match10.setTypeface(Typeface.createFromAsset(getActivity().getAssets(),  "fonts/HammersmithOneRegular.ttf"));
-        match11teams.setTypeface(Typeface.createFromAsset(getActivity().getAssets(),  "fonts/HammersmithOneRegular.ttf"));
-        match11.setTypeface(Typeface.createFromAsset(getActivity().getAssets(),  "fonts/HammersmithOneRegular.ttf"));
-        match12teams.setTypeface(Typeface.createFromAsset(getActivity().getAssets(),  "fonts/HammersmithOneRegular.ttf"));
-        match12.setTypeface(Typeface.createFromAsset(getActivity().getAssets(), "fonts/HammersmithOneRegular.ttf"));
-        if(!selectedLayout.matches("two")) {
-            match13teams.setTypeface(Typeface.createFromAsset(getActivity().getAssets(), "fonts/HammersmithOneRegular.ttf"));
-            match13.setTypeface(Typeface.createFromAsset(getActivity().getAssets(), "fonts/HammersmithOneRegular.ttf"));
-            match14teams.setTypeface(Typeface.createFromAsset(getActivity().getAssets(), "fonts/HammersmithOneRegular.ttf"));
-            match14.setTypeface(Typeface.createFromAsset(getActivity().getAssets(), "fonts/HammersmithOneRegular.ttf"));
+        for(int i = 0; i<matchId.length; i++){
+            Log.d("position",""+i);
+            match[i] = (TextView)getActivity().findViewById(matchId[i]);
+            if(match[i]!=null)
+                match[i].setTypeface(Typeface.createFromAsset(getActivity().getAssets(),  "fonts/HammersmithOneRegular.ttf"));
+            matchTeams[i] = (TextView)getActivity().findViewById(matchTeamsId[i]);
+            if(matchTeams[i]!=null)
+                matchTeams[i].setTypeface(Typeface.createFromAsset(getActivity().getAssets(),  "fonts/HammersmithOneRegular.ttf"));
         }
 
         horizontalScrollView = (HorizontalScrollView)getActivity().findViewById(R.id.parent_view);

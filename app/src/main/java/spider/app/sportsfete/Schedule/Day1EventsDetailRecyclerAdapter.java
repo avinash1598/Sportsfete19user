@@ -115,13 +115,15 @@ public class Day1EventsDetailRecyclerAdapter extends RecyclerView.Adapter<EventV
                 }
             }
             holder.statusTv.setText(status);
-            holder.itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    onClickSubject.onNext(String.valueOf(position));
-                }
-            });
         }
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onClickSubject.onNext(String.valueOf(position));
+            }
+        });
+
     }
 
     @Override

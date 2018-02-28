@@ -135,7 +135,8 @@ public class Day1Fragment extends Fragment implements Callback<List<EventDetails
 
         Log.d(TAG, "onViewCreated: selectedDept"+selectedDept);
 
-        eventRecyclerAdapter=new Day1EventsDetailRecyclerAdapter(eventList,getActivity());
+        eventRecyclerAdapter=new Day1EventsDetailRecyclerAdapter(eventList, getActivity());
+
         recyclerView.setAdapter(eventRecyclerAdapter);
 
         swipeRefreshLayout= (SwipeRefreshLayout) getActivity().findViewById(R.id.day_1_swipe_to_refresh);
@@ -148,11 +149,11 @@ public class Day1Fragment extends Fragment implements Callback<List<EventDetails
             onRefresh();
         }
 
-        setClickListener();
-
         IntentFilter filter = new IntentFilter();
         filter.addAction("update_department");
         getActivity().registerReceiver(receiver, filter);
+
+        setClickListener();
 
     }
 
@@ -170,6 +171,7 @@ public class Day1Fragment extends Fragment implements Callback<List<EventDetails
         observable.subscribe(new Action1<String>() {
             @Override
             public void call(String s) {
+                Log.d("cbdhcb","day1 click");
                 EventDetailsPOJO selectedEvent=eventList.get(Integer.parseInt(s));
                 Intent intent = new Intent(context, EventInfoActivity.class);
                 intent.putExtra("SELECTED_EVENT", new Gson().toJson(selectedEvent));

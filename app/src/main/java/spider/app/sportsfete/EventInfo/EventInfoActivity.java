@@ -31,6 +31,7 @@ import java.util.List;
 
 import pl.droidsonroids.gif.GifTextView;
 import spider.app.sportsfete.API.Event;
+import spider.app.sportsfete.API.EventDetailsPOJO;
 import spider.app.sportsfete.FireBaseServices.Comment;
 import spider.app.sportsfete.FireBaseServices.Score;
 import spider.app.sportsfete.R;
@@ -115,7 +116,7 @@ public class EventInfoActivity extends AppCompatActivity{
         }
         Typeface inconsolataBoldFont = Typeface.createFromAsset(getAssets(),  "fonts/InconsolataBold.ttf");
         Typeface hammersmithOnefont = Typeface.createFromAsset(getAssets(),  "fonts/HammersmithOneRegular.ttf");
-        Event eventInfo = new Gson().fromJson(JsonEventInfo, Event.class);
+        EventDetailsPOJO eventInfo = new Gson().fromJson(JsonEventInfo, EventDetailsPOJO.class);
 
         eventNameTv = (TextView)findViewById(R.id.info_event_name);
         team1Tv= (TextView)findViewById(R.id.info_team_1);
@@ -136,22 +137,23 @@ public class EventInfoActivity extends AppCompatActivity{
         eventNameTv.setText(eventInfo.getName());
         roundTv.setTypeface(hammersmithOnefont);
         roundTv.setText(eventInfo.getRound());
-        if(eventInfo.getParticipants().size()==2){
-            versusEventLl.setVisibility(View.VISIBLE);
-            nonVersusEventLl.setVisibility(View.GONE);
-            team1Tv.setTypeface(inconsolataBoldFont);
-            team2Tv.setTypeface(inconsolataBoldFont);
-            team1Tv.setText(eventInfo.getParticipants().get(0));
-            team2Tv.setText(eventInfo.getParticipants().get(1));
-        }else {
+
+        if(eventInfo.getEliminationType().equalsIgnoreCase("individual")){
             versusEventLl.setVisibility(View.GONE);
             nonVersusEventLl.setVisibility(View.VISIBLE);
             participantsTv.setTypeface(inconsolataBoldFont);
             String participantsString="";
-            for (int i = 0; i <eventInfo.getParticipants().size(); i++) {
+            /*for (int i = 0; i <eventInfo.getParticipants().size(); i++) {
                 participantsString += (eventInfo.getParticipants().get(i)+"\n");
-            }
+            }*/
             participantsTv.setText(participantsString);
+        }else{
+            versusEventLl.setVisibility(View.VISIBLE);
+            nonVersusEventLl.setVisibility(View.GONE);
+            team1Tv.setTypeface(inconsolataBoldFont);
+            team2Tv.setTypeface(inconsolataBoldFont);
+            team1Tv.setText(eventInfo.getDept1());
+            team2Tv.setText(eventInfo.getDept2());
         }
 
         recyclerView = (RecyclerView)findViewById(R.id.commentary_recycler_view);
@@ -167,7 +169,7 @@ public class EventInfoActivity extends AppCompatActivity{
         //Loading comments
 
         //TODO : Add event id here
-        event_id = String.valueOf(eventInfo.getId());
+        event_id = String.valueOf(eventInfo.getName());
         commentList.clear();
 
     }
