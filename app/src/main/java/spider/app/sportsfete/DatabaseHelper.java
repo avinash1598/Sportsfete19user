@@ -13,7 +13,7 @@ import java.sql.SQLException;
 
 import spider.app.sportsfete.API.Event;
 import spider.app.sportsfete.API.EventDetailsPOJO;
-import spider.app.sportsfete.API.Standing;
+import spider.app.sportsfete.API.Leaderboard;
 import spider.app.sportsfete.API.StatusEventDetailsPOJO;
 import spider.app.sportsfete.FireBaseServices.Comment;
 
@@ -28,7 +28,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     private Dao<Event,Long> eventsDao;
     private Dao<EventDetailsPOJO, Long> eventDetailsDao;
     private Dao<StatusEventDetailsPOJO, Long> statusEventDetailsDao;
-    private Dao<Standing,Long> standingsDao;
+    private Dao<Leaderboard,Long> standingsDao;
     private ConnectionSource connectionSource;
 
     public DatabaseHelper(Context context) {
@@ -41,7 +41,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
             TableUtils.createTable(connectionSource, Event.class);
             TableUtils.createTable(connectionSource, EventDetailsPOJO.class);
             TableUtils.createTable(connectionSource, StatusEventDetailsPOJO.class);
-            TableUtils.createTable(connectionSource, Standing.class);
+            TableUtils.createTable(connectionSource, Leaderboard.class);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -53,7 +53,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
             TableUtils.dropTable(connectionSource, Event.class,false);
             TableUtils.dropTable(connectionSource, EventDetailsPOJO.class,false);
             TableUtils.dropTable(connectionSource, StatusEventDetailsPOJO.class,false);
-            TableUtils.dropTable(connectionSource, Standing.class,false);
+            TableUtils.dropTable(connectionSource, Leaderboard.class,false);
             onCreate(database,connectionSource);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -67,9 +67,9 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
         return eventsDao;
     }
 
-    public Dao<Standing, Long> getStandingsDao() throws SQLException {
+    public Dao<Leaderboard, Long> getStandingsDao() throws SQLException {
         if(standingsDao == null) {
-            standingsDao = getDao(Standing.class);
+            standingsDao = getDao(Leaderboard.class);
         }
         return standingsDao;
     }

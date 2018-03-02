@@ -10,9 +10,20 @@
         android:layout_height="wrap_content"
         app:tabTextColor="#FFFFFF"
         app:tabIndicatorHeight="3dp"
-        app:tabSelectedTextColor="@color/selectedTextColor"
+        app:tabTextAppearance="@style/NavigationTheme"
+        app:tabSelectedTextColor="@color/green_text"
         android:background="@color/colorPrimary"
-        app:tabIndicatorColor="#ffffff"/>
+        app:tabIndicatorColor="@color/green_text"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/dept_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+    </android.support.v7.widget.RecyclerView>>
 
     <android.support.v4.view.ViewPager
         android:id="@+id/schedule_view_pager"

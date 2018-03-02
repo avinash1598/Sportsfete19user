@@ -2,6 +2,7 @@ package spider.app.sportsfete.Following;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -113,13 +114,14 @@ public class SubscribeDepartment extends Fragment {
 
         recyclerView= (RecyclerView) view.findViewById(R.id.subscribe_recycler_view);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(context));
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         jazzyRecyclerViewScrollListener = new JazzyRecyclerViewScrollListener();
         jazzyRecyclerViewScrollListener.setTransitionEffect(currentTransitionEffect);
         recyclerView.setOnScrollListener(jazzyRecyclerViewScrollListener);
 
-        adapter=new SubscribeRecyclerAdapter(deptList,context,checked);
+        adapter=new SubscribeRecyclerAdapter(deptList,context,checked,
+                Typeface.createFromAsset(getActivity().getAssets(),  "fonts/InconsolataBold.ttf"));
         recyclerView.setAdapter(adapter);
 
         setClickListener();

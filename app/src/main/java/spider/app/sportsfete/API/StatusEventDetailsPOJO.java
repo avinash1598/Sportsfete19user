@@ -2,8 +2,11 @@ package spider.app.sportsfete.API;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import com.j256.ormlite.field.DataType;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
+
+import java.util.ArrayList;
 
 /**
  * Created by AVINASH on 2/24/2018.
@@ -39,7 +42,23 @@ public class StatusEventDetailsPOJO {
     @DatabaseField
     @SerializedName("fixture")
     @Expose
-    private String fixture;
+    private Integer fixture;
+    @DatabaseField
+    @SerializedName("fixture_index")
+    @Expose
+    private Integer fixtureIndex;
+    @DatabaseField
+    @SerializedName("fixture_type")
+    @Expose
+    private Integer fixtureType;
+    @DatabaseField
+    @SerializedName("hint")
+    @Expose
+    private String hint;
+    @DatabaseField
+    @SerializedName("loser_dept_next")
+    @Expose
+    private String loserDeptNext;
     @DatabaseField
     @SerializedName("loser_next_match")
     @Expose
@@ -48,6 +67,10 @@ public class StatusEventDetailsPOJO {
     @SerializedName("name")
     @Expose
     private String name;
+    @DatabaseField(dataType = DataType.SERIALIZABLE)
+    @SerializedName("participating_teams")
+    @Expose
+    private ArrayList<String> participatingTeams = null;
     @DatabaseField
     @SerializedName("round")
     @Expose
@@ -55,7 +78,7 @@ public class StatusEventDetailsPOJO {
     @DatabaseField
     @SerializedName("start_time")
     @Expose
-    private String startTime;
+    private Integer startTime;
     @DatabaseField
     @SerializedName("status")
     @Expose
@@ -69,9 +92,13 @@ public class StatusEventDetailsPOJO {
     @Expose
     private String winner;
     @DatabaseField
+    @SerializedName("winner_dept_next")
+    @Expose
+    private Integer winnerDeptNext;
+    @DatabaseField
     @SerializedName("winner_next_match")
     @Expose
-    private String winnerNextMatch;
+    private Integer winnerNextMatch;
 
     public Integer getDay() {
         return day;
@@ -117,16 +144,48 @@ public class StatusEventDetailsPOJO {
         return eliminationType;
     }
 
-    public void setEliminationType(String eleminationType) {
-        this.eliminationType = eleminationType;
+    public void setEliminationType(String eliminationType) {
+        this.eliminationType = eliminationType;
     }
 
-    public String getFixture() {
+    public Integer getFixture() {
         return fixture;
     }
 
-    public void setFixture(String fixture) {
+    public void setFixture(Integer fixture) {
         this.fixture = fixture;
+    }
+
+    public Integer getFixtureIndex() {
+        return fixtureIndex;
+    }
+
+    public void setFixtureIndex(Integer fixtureIndex) {
+        this.fixtureIndex = fixtureIndex;
+    }
+
+    public Integer getFixtureType() {
+        return fixtureType;
+    }
+
+    public void setFixtureType(Integer fixtureType) {
+        this.fixtureType = fixtureType;
+    }
+
+    public String getHint() {
+        return hint;
+    }
+
+    public void setHint(String hint) {
+        this.hint = hint;
+    }
+
+    public String getLoserDeptNext() {
+        return loserDeptNext;
+    }
+
+    public void setLoserDeptNext(String loserDeptNext) {
+        this.loserDeptNext = loserDeptNext;
     }
 
     public String getLoserNextMatch() {
@@ -145,6 +204,14 @@ public class StatusEventDetailsPOJO {
         this.name = name;
     }
 
+    public ArrayList<String> getParticipatingTeams() {
+        return participatingTeams;
+    }
+
+    public void setParticipatingTeams(ArrayList<String> participatingTeams) {
+        this.participatingTeams = participatingTeams;
+    }
+
     public String getRound() {
         return round;
     }
@@ -153,11 +220,11 @@ public class StatusEventDetailsPOJO {
         this.round = round;
     }
 
-    public String getStartTime() {
+    public Integer getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(String startTime) {
+    public void setStartTime(Integer startTime) {
         this.startTime = startTime;
     }
 
@@ -185,11 +252,19 @@ public class StatusEventDetailsPOJO {
         this.winner = winner;
     }
 
-    public String getWinnerNextMatch() {
+    public Integer getWinnerDeptNext() {
+        return winnerDeptNext;
+    }
+
+    public void setWinnerDeptNext(Integer winnerDeptNext) {
+        this.winnerDeptNext = winnerDeptNext;
+    }
+
+    public Integer getWinnerNextMatch() {
         return winnerNextMatch;
     }
 
-    public void setWinnerNextMatch(String winnerNextMatch) {
+    public void setWinnerNextMatch(Integer winnerNextMatch) {
         this.winnerNextMatch = winnerNextMatch;
     }
 }

@@ -64,7 +64,7 @@ public class Day2Fragment extends Fragment implements Callback<List<EventDetails
     ApiInterface apiInterface;
     DatabaseHelper helper;
     Dao<EventDetailsPOJO,Long> dao;
-    int selectedDay=2;
+    int selectedDay=1;
     String selectedDept;
     Context context;
     SimpleDateFormat simpleDateFormat;
@@ -180,6 +180,7 @@ public class Day2Fragment extends Fragment implements Callback<List<EventDetails
     @Override
     public void onResponse(Call<List<EventDetailsPOJO>> call, Response<List<EventDetailsPOJO>> response) {
         final List<EventDetailsPOJO> responseList=response.body();
+        swipeRefreshLayout.setRefreshing(false);
         if(responseList!=null){
             if(responseList.size()>0) {
                 Log.d(TAG, "onResponse:response received ");
@@ -227,7 +228,7 @@ public class Day2Fragment extends Fragment implements Callback<List<EventDetails
 
     @Override
     public void onRefresh() {
-        call = apiInterface.getSchedule2(2);
+        call = apiInterface.getSchedule2(1);
         call.enqueue(this);
         //loadingView.startAnimation();
         //loadingView.setVisibility(View.VISIBLE);
@@ -238,9 +239,11 @@ public class Day2Fragment extends Fragment implements Callback<List<EventDetails
         mFirebaseAnalytics.logEvent("Schedule",bundle);
     }
 
-    public void getSelectedDept (){
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
-        selectedDept= prefs.getString("DEPT","ALL");
+    public void getSelectedDept() {
+        if (getActivity() != null) {
+            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
+            selectedDept = prefs.getString("DEPT", "ALL");
+        }
     }
 
     public void updateAdapter(){

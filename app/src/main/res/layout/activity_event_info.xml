@@ -9,7 +9,6 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/triangle"
         android:fitsSystemWindows="true"
         tools:context="spider.app.sportsfete.EventInfo.EventInfoActivity">
 
@@ -34,151 +33,184 @@
             </android.support.design.widget.AppBarLayout>
 
             <android.support.v7.widget.CardView
-                android:layout_marginTop="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:transitionName="scene_transition"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="8dp">
+
                 <LinearLayout
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="5dp"
-                    android:layout_height="wrap_content">
+                    android:padding="5dp">
+
                     <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="18sp"
-                        android:gravity="left"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginLeft="5dp"
                         android:id="@+id/info_event_name"
-                        android:text="event_name"
-                        android:textAllCaps="true"/>
-                    <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="14sp"
-                        android:layout_marginLeft="5dp"
+                        android:gravity="center"
+                        android:text="event_name"
                         android:textAllCaps="true"
+                        android:textColor="#000000"
+                        android:textSize="25sp" />
+
+                    <TextView
                         android:id="@+id/info_event_round"
-                        android:text="round"
-                        android:textStyle="italic"/>
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Round"
+                        android:textColor="#000000"
+                        android:textStyle="bold" />
+
                     <LinearLayout
-                        android:layout_width="match_parent"
-                        android:orientation="vertical"
                         android:id="@+id/info_versus_event"
-                        android:layout_height="wrap_content">
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:orientation="horizontal">
+
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
                             android:orientation="horizontal">
+
                             <TextView
-                                android:layout_width="0dp"
-                                android:layout_weight="1"
                                 android:id="@+id/info_team_1"
-                                android:textSize="25sp"
-                                android:gravity="center"
-                                android:textColor="#000000"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
+                                android:layout_gravity="left"
+                                android:layout_weight="1"
+                                android:gravity="center"
                                 android:text="team_1"
-                                android:layout_gravity="left"/>
+                                android:textColor="#000000"
+                                android:textSize="25sp" />
+
                             <LinearLayout
+                                android:id="@+id/info_score"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:id="@+id/info_score"
+                                android:layout_gravity="center"
                                 android:layout_marginLeft="5dp"
                                 android:layout_marginRight="5dp"
-                                android:orientation="horizontal"
-                                android:layout_gravity="center">
+                                android:layout_weight="1"
+                                android:orientation="horizontal">
+
                                 <TextView
-                                    android:layout_width="0dp"
-                                    android:layout_weight="1"
                                     android:id="@+id/info_score1"
-                                    android:textSize="28sp"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:paddingLeft="5dp"
+                                    android:text=""
                                     android:textColor="#AA0000"
-                                    android:gravity="center"
-                                    android:layout_height="wrap_content"
-                                    android:text=""
-                                    android:textStyle=""
-                                    android:paddingLeft="5dp"/>
-                                <TextView
-                                    android:layout_width="0dp"
-                                    android:layout_weight="1"
-                                    android:textSize="24sp"
-                                    android:textColor="#000000"
-                                    android:gravity="center"
-                                    android:layout_height="wrap_content"
-                                    android:text=""
-                                    android:fontFamily="sans-serif-condensed"
-                                    android:textStyle=""
-                                    android:paddingLeft="5dp"/>
-                                <TextView
-                                    android:layout_width="0dp"
-                                    android:layout_weight="1"
-                                    android:textColor="#00AA00"
-                                    android:id="@+id/info_score2"
                                     android:textSize="28sp"
-                                    android:paddingRight="5dp"
-                                    android:gravity="center"
-                                    android:textStyle=""
+                                    android:textStyle="" />
+
+                                <TextView
+                                    android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:text=""/>
+                                    android:layout_weight="1"
+                                    android:fontFamily="sans-serif-condensed"
+                                    android:gravity="center"
+                                    android:paddingLeft="5dp"
+                                    android:text=""
+                                    android:textColor="#000000"
+                                    android:textSize="24sp"
+                                    android:textStyle="" />
+
+                                <TextView
+                                    android:id="@+id/info_score2"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:paddingRight="5dp"
+                                    android:text=""
+                                    android:textColor="#00AA00"
+                                    android:textSize="28sp"
+                                    android:textStyle="" />
                             </LinearLayout>
+
                             <TextView
+                                android:id="@+id/info_team_2"
                                 android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="end"
                                 android:layout_weight="1"
                                 android:gravity="center"
-                                android:textColor="#000000"
-                                android:id="@+id/info_team_2"
-                                android:textSize="25sp"
-                                android:layout_height="wrap_content"
                                 android:text="team_2"
-                                android:layout_gravity="end"/>
+                                android:textColor="#000000"
+                                android:textSize="25sp" />
                         </LinearLayout>
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_margin="5dp"
                         android:id="@+id/info_non_versus_event"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content">
+
                         <TextView
+                            android:id="@+id/info_non_versus_event_participants"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Participants"
-                            android:textColor="#000000"
-                            android:gravity="center"
                             android:layout_margin="10dp"
-                            android:textSize="25sp"
-                            android:id="@+id/info_non_versus_event_participants"/>
+                            android:ellipsize="marquee"
+                            android:gravity="center"
+                            android:marqueeRepeatLimit="marquee_forever"
+                            android:maxLines="1"
+                            android:scrollHorizontally="true"
+                            android:text="Participants"
+                            android:textSize="25sp" />
                     </LinearLayout>
+
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
-                        <TextView
+
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginRight="5dp"
-                            android:id="@+id/info_event_hint"
-                            android:textStyle="bold"
-                            android:gravity="center"
-                            android:text=""/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:textColor="#000000"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/info_event_time"
-                            android:text=""
-                            android:ellipsize="marquee"
-                            android:marqueeRepeatLimit="marquee_forever"/>
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:orientation="horizontal">
 
+                            <TextView
+                                android:id="@+id/info_event_status"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:maxLines="1"
+                                android:text="status" />
+
+                            <TextView
+                                android:id="@+id/info_event_hint"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text="event_venue"
+                                android:textColor="#000000" />
+
+                            <TextView
+                                android:id="@+id/info_event_time"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text="Timestamp" />
+
+                        </LinearLayout>
                     </RelativeLayout>
+
 
                 </LinearLayout>
             </android.support.v7.widget.CardView>
+
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

@@ -138,6 +138,7 @@ public class EventInfoActivity extends AppCompatActivity{
         roundTv.setTypeface(hammersmithOnefont);
         roundTv.setText(eventInfo.getRound());
 
+     /*
         if(eventInfo.getEliminationType().equalsIgnoreCase("individual")){
             versusEventLl.setVisibility(View.GONE);
             nonVersusEventLl.setVisibility(View.VISIBLE);
@@ -145,7 +146,7 @@ public class EventInfoActivity extends AppCompatActivity{
             String participantsString="";
             /*for (int i = 0; i <eventInfo.getParticipants().size(); i++) {
                 participantsString += (eventInfo.getParticipants().get(i)+"\n");
-            }*/
+            }
             participantsTv.setText(participantsString);
         }else{
             versusEventLl.setVisibility(View.VISIBLE);
@@ -155,7 +156,7 @@ public class EventInfoActivity extends AppCompatActivity{
             team1Tv.setText(eventInfo.getDept1());
             team2Tv.setText(eventInfo.getDept2());
         }
-
+*/
         recyclerView = (RecyclerView)findViewById(R.id.commentary_recycler_view);
         commentRecyclerAdapter = new CommentRecyclerAdapter(commentList, context);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

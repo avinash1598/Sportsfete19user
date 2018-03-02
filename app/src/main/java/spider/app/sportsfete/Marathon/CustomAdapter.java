@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.support.annotation.NonNull;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -21,27 +22,33 @@ public class CustomAdapter extends ArrayAdapter<String> {
 
     Context context;
     String[] items;
+    LayoutInflater inflator;
 
     public CustomAdapter(@NonNull Context context, int resource, String[] items) {
         super(context, resource, items);
         this.context = context;
         this.items = items;
+        inflator = LayoutInflater.from(context);
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        TextView view = (TextView) super.getView(position, convertView, parent);
-        view.setTypeface(Typeface.createFromAsset(context.getAssets(),  "fonts/HammersmithOneRegular.ttf"));
+        convertView = inflator.inflate(R.layout.dept_spinner_element, null);
+        TextView tv = (TextView) convertView.findViewById(R.id.sport_name);
+        tv.setTypeface(Typeface.createFromAsset(context.getAssets(),  "fonts/HammersmithOneRegular.ttf"));
+        tv.setText(items[position]);
         if(items[position].equalsIgnoreCase("select department")){
-            view.setTextColor(Color.parseColor("#60000000"));
+            tv.setTextColor(Color.parseColor("#60000000"));
         }
-        return view;
+        return convertView;
     }
 
     @Override
     public View getDropDownView(int position, View convertView, ViewGroup parent) {
-        TextView view = (TextView) super.getDropDownView(position, convertView, parent);
-        view.setTypeface(Typeface.createFromAsset(context.getAssets(),  "fonts/HammersmithOneRegular.ttf"));
-        return view;
+        convertView = inflator.inflate(R.layout.dept_spinner_element, null);
+        TextView tv = (TextView) convertView.findViewById(R.id.sport_name);
+        tv.setText(items[position]);
+        tv.setTypeface(Typeface.createFromAsset(context.getAssets(),  "fonts/HammersmithOneRegular.ttf"));
+        return convertView;
     }
 }

@@ -17,6 +17,7 @@ public class SportDetailsActivity extends AppCompatActivity {
     private static final String TAG="SportDetailsActivity";
     String selectedSportName;
     String[] sports;
+    public int fixture_index;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

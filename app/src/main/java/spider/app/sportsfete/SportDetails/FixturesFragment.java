@@ -100,12 +100,18 @@ public class FixturesFragment extends Fragment {
     };
 
     Integer[] fixture_type = {
-            R.layout.fixture_layout,
+            R.layout.fixture_layout_one,
             R.layout.fixture_layout_two,
             R.layout.fixture_layout_three,
             R.layout.fixture_layout_four,
             R.layout.fixture_layout_five,
-            R.layout.fixture_layout_six
+            R.layout.fixture_layout_six,
+            R.layout.fixture_layout_seven,
+            R.layout.fixture_layout_eight,
+            R.layout.fixture_layout_nine,
+            R.layout.fixture_layout_ten,
+            R.layout.fixture_layout_ten,
+            R.layout.fixture_layout_eleven
     };
 
     Integer[] matchId = {

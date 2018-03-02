@@ -72,6 +72,8 @@ public class HomeFragment extends Fragment implements Callback<List<StatusEventD
     View view;
     ViewGroup viewGroup;
 
+    String status = "live";
+
     private int currentTransitionEffect = JazzyHelper.TILT;
     JazzyRecyclerViewScrollListener jazzyRecyclerViewScrollListener;
 
@@ -101,6 +103,10 @@ public class HomeFragment extends Fragment implements Callback<List<StatusEventD
         getEventsLastUpdate();
 
         showEventsLastUpdate();
+
+        Bundle arguments = getArguments();
+        String target = arguments.getString("target");
+        status = target;
 
         apiInterface = ApiInterface.retrofit.create(ApiInterface.class);
 
@@ -166,6 +172,7 @@ public class HomeFragment extends Fragment implements Callback<List<StatusEventD
             Log.d("list size","-------"+responseList.size());
             if(responseList.size()>0) {
                 Log.d(TAG, "onResponse:response received ");
+                /*
                 Thread thread=new Thread(new Runnable() {
                     @Override
                     public void run() {
@@ -180,6 +187,7 @@ public class HomeFragment extends Fragment implements Callback<List<StatusEventD
                     }
                 });
                 thread.start();
+                */
             }
 
             putEventsLastUpdate();
@@ -187,7 +195,7 @@ public class HomeFragment extends Fragment implements Callback<List<StatusEventD
             showEventsLastUpdate();
 
             for (int i = 0; i <responseList.size() ; i++) {
-                if(responseList.get(i).getStatus().equals("live")){
+                {
                     eventList.add(responseList.get(i));
                 }
             }
@@ -215,7 +223,7 @@ public class HomeFragment extends Fragment implements Callback<List<StatusEventD
 
     @Override
     public void onRefresh() {
-        call = apiInterface.getEventByStatus("live");
+        call = apiInterface.getEventByStatus(status);
         call.enqueue(this);
         //loadingView.startAnimation();
         //loadingView.setVisibility(View.VISIBLE);
@@ -253,7 +261,7 @@ public class HomeFragment extends Fragment implements Callback<List<StatusEventD
 
     private void showEventsLastUpdate(){
         if(viewGroup.getContext()!=null){
-            Snackbar.make(viewGroup, lastUpdatedTimestamp,Snackbar.LENGTH_LONG).show();
+            //Snackbar.make(viewGroup, lastUpdatedTimestamp,Snackbar.LENGTH_LONG).show();
         }
     }
 }

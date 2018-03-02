@@ -3,6 +3,7 @@ package spider.app.sportsfete.Following;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -17,6 +18,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.messaging.FirebaseMessaging;
@@ -27,6 +30,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import rx.functions.Action1;
+import spider.app.sportsfete.MainActivity;
 import spider.app.sportsfete.R;
 
 /**
@@ -38,6 +42,7 @@ public class SubscribeFragment extends Fragment {
 
     Context context;
     SharedPreferences prefs;
+    TabLayout tabLayout;
 
     public SubscribeFragment() {
     }
@@ -64,7 +69,7 @@ public class SubscribeFragment extends Fragment {
 
 
 
-        TabLayout tabLayout = (TabLayout) view.findViewById(R.id.tabLayout);
+        tabLayout = (TabLayout) view.findViewById(R.id.tabLayout);
         tabLayout.addTab(tabLayout.newTab().setText("Department"));
         tabLayout.addTab(tabLayout.newTab().setText("Sport"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
@@ -91,10 +96,33 @@ public class SubscribeFragment extends Fragment {
             }
         });
 
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                LinearLayout tabLay = (LinearLayout)((ViewGroup) tabLayout.getChildAt(0)).getChildAt(tab.getPosition());
+                TextView tabTextView = (TextView) tabLay.getChildAt(1);
+                tabTextView.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+            }
 
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+                LinearLayout tabLay = (LinearLayout)((ViewGroup) tabLayout.getChildAt(0)).getChildAt(tab.getPosition());
+                TextView tabTextView = (TextView) tabLay.getChildAt(1);
+                tabTextView.setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL));
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+
+        LinearLayout tabLay = (LinearLayout)((ViewGroup) tabLayout.getChildAt(0)).getChildAt(0);
+        TextView tabTextView = (TextView) tabLay.getChildAt(1);
+        tabTextView.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+
+        ((MainActivity)getActivity()).view.setVisibility(View.GONE);
 
     }
-
-
 
 }

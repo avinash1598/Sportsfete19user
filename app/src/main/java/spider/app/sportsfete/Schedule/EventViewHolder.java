@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import spider.app.sportsfete.R;
 
 /**
@@ -14,7 +15,8 @@ import spider.app.sportsfete.R;
 public class EventViewHolder extends RecyclerView.ViewHolder {
 
     TextView nameTV,participantsTV,venueTV,team1Tv,team2Tv,statusTv, startTimeTv, roundTv, vsTv;
-    LinearLayout versusEventLl,nonVersusEventLl;
+    LinearLayout versusEventLl,nonVersusEventLl, scene_ll;
+    CircleImageView dept_icon1, dept_icon2;
 
     public EventViewHolder(View itemView) {
         super(itemView);
@@ -29,5 +31,8 @@ public class EventViewHolder extends RecyclerView.ViewHolder {
         statusTv= (TextView) itemView.findViewById(R.id.event_status);
         startTimeTv=(TextView) itemView.findViewById(R.id.event_timestamp);
         vsTv = (TextView)itemView.findViewById(R.id.vs_text);
+        scene_ll = (LinearLayout) itemView.findViewById(R.id.scene_transition);
+        dept_icon1 = (CircleImageView) itemView.findViewById(R.id.department1_icon);
+        dept_icon2 = (CircleImageView) itemView.findViewById(R.id.department2_icon);
     }
 }

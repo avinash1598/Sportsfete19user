@@ -21,9 +21,9 @@
             android:layout_height="wrap_content"
             app:tabTextColor="#FFFFFF"
             app:tabIndicatorHeight="3dp"
-            app:tabSelectedTextColor="@color/selectedTextColor"
+            app:tabSelectedTextColor="@color/green_text"
             android:background="@color/colorPrimary"
-            app:tabIndicatorColor="#ffffff"/>
+            app:tabIndicatorColor="@color/green_text"/>
 
     </android.support.design.widget.AppBarLayout>
 

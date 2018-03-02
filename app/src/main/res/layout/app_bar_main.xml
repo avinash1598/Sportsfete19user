@@ -6,12 +6,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+    android:background="#f1efef"
     tools:context="spider.app.sportsfete.MainActivity">
 
     <LinearLayout
+        android:id="@+id/scaling_layout"
         android:layout_width="match_parent"
         android:orientation="vertical"
         android:layout_height="match_parent">
+
         <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -21,20 +24,36 @@
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:background="?attr/colorPrimary"
-                app:popupTheme="@style/AppTheme.PopupOverlay"
-                />
+                android:layout_height="?android:attr/actionBarSize"
+                android:layout_gravity="top"
+                android:theme="@style/MyCustomToolbarStyle"
+                android:background="@color/colorPrimary"
+                app:contentInsetEnd="16dp"
+                app:contentInsetLeft="16dp"
+                app:contentInsetStart="16dp"
+                app:title=""
+                app:titleTextColor="#4d4b4b" >
+
+            </android.support.v7.widget.Toolbar>
 
         </android.support.design.widget.AppBarLayout>
 
+        <View
+            android:id="@+id/view_id"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/appbar_id"
+            android:background="#9e9c9c"
+            android:visibility="gone" />
+
         <RelativeLayout
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"
             android:id="@+id/fragment_container"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         </RelativeLayout>
+
     </LinearLayout>
 
 </android.support.design.widget.CoordinatorLayout>

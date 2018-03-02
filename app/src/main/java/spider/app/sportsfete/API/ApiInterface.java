@@ -29,7 +29,7 @@ public interface ApiInterface {
             .build();
 
     @GET("/leaderboard")
-    Call<List<Standing>> getLeaderBoard();
+    Call<List<Leaderboard>> getLeaderBoard();
 
     @GET("/day_events")
     Call<List<Event>> getSchedule(@Query("day") int day);

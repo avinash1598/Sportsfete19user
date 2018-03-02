@@ -1,24 +1,35 @@
 package spider.app.sportsfete.Schedule;
 
 
+import android.annotation.TargetApi;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.graphics.Rect;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.transition.Explode;
+import android.transition.Transition;
+import android.transition.TransitionManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.google.firebase.analytics.FirebaseAnalytics;
@@ -65,7 +76,7 @@ public class Day1Fragment extends Fragment implements Callback<List<EventDetails
     ApiInterface apiInterface;
     DatabaseHelper helper;
     Dao<EventDetailsPOJO,Long> dao;
-    int selectedDay=1;
+    int selectedDay=0;
     String selectedDept;
     Context context;
     SimpleDateFormat simpleDateFormat;
@@ -73,6 +84,7 @@ public class Day1Fragment extends Fragment implements Callback<List<EventDetails
     SharedPreferences prefs;
     DepartmentUpdateCallback departmentUpdateCallback;
     boolean isVisibleToUser=false;
+    LinearLayout shared_ll;
 
     private int currentTransitionEffect = JazzyHelper.TILT;
     JazzyRecyclerViewScrollListener jazzyRecyclerViewScrollListener;
@@ -117,6 +129,8 @@ public class Day1Fragment extends Fragment implements Callback<List<EventDetails
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
 
+        shared_ll = (LinearLayout) getActivity().findViewById(R.id.scene_transition);
+
         jazzyRecyclerViewScrollListener = new JazzyRecyclerViewScrollListener();
         jazzyRecyclerViewScrollListener.setTransitionEffect(currentTransitionEffect);
         recyclerView.setOnScrollListener(jazzyRecyclerViewScrollListener);
@@ -135,7 +149,21 @@ public class Day1Fragment extends Fragment implements Callback<List<EventDetails
 
         Log.d(TAG, "onViewCreated: selectedDept"+selectedDept);
 
-        eventRecyclerAdapter=new Day1EventsDetailRecyclerAdapter(eventList, getActivity());
+        eventRecyclerAdapter=new Day1EventsDetailRecyclerAdapter(eventList, getActivity(), new Day1EventsDetailRecyclerAdapter.MyAdapterListener() {
+            @Override
+            public void onItemSelected(int position, View view) {
+                Log.d("cbdhcb","day1 click");
+                EventDetailsPOJO selectedEvent=eventList.get(position);
+                Intent intent = new Intent(context, EventInfoActivity.class);
+                ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                        getActivity(),
+                        view,
+                        "scene_transition");
+                intent.putExtra("SELECTED_EVENT", new Gson().toJson(selectedEvent));
+                //ActivityCompat.startActivity(getActivity(), intent, options.toBundle());
+                startActivity(intent);
+            }
+        });
 
         recyclerView.setAdapter(eventRecyclerAdapter);
 
@@ -169,11 +197,14 @@ public class Day1Fragment extends Fragment implements Callback<List<EventDetails
     void setClickListener(){
         rx.Observable<String> observable= eventRecyclerAdapter.getPositionClicks();
         observable.subscribe(new Action1<String>() {
+            @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void call(String s) {
                 Log.d("cbdhcb","day1 click");
                 EventDetailsPOJO selectedEvent=eventList.get(Integer.parseInt(s));
                 Intent intent = new Intent(context, EventInfoActivity.class);
+
                 intent.putExtra("SELECTED_EVENT", new Gson().toJson(selectedEvent));
                 startActivity(intent);
             }
@@ -184,10 +215,12 @@ public class Day1Fragment extends Fragment implements Callback<List<EventDetails
     public void onResponse(Call<List<EventDetailsPOJO>> call, Response<List<EventDetailsPOJO>> response) {
         final List<EventDetailsPOJO> responseList=response.body();
         Log.d("response","----------");
+        swipeRefreshLayout.setRefreshing(false);
         if(responseList!=null){
             Log.d("response list size","----------"+responseList.size());
             if(responseList.size()>0) {
                 Log.d(TAG, "onResponse:response received ");
+                /*
                 Thread thread=new Thread(new Runnable() {
                     @Override
                     public void run() {
@@ -215,6 +248,7 @@ public class Day1Fragment extends Fragment implements Callback<List<EventDetails
                     }
                 });
                 thread.start();
+                */
             }
         }
         Log.d(TAG, "onResponse: ");
@@ -233,7 +267,7 @@ public class Day1Fragment extends Fragment implements Callback<List<EventDetails
     @Override
     public void onRefresh() {
         Log.d("refresh","swipe refresh");
-        call = apiInterface.getSchedule2(1);
+        call = apiInterface.getSchedule2(0);
         call.enqueue(this);
         //loadingView.startAnimation();
         //loadingView.setVisibility(View.VISIBLE);
@@ -244,9 +278,11 @@ public class Day1Fragment extends Fragment implements Callback<List<EventDetails
         mFirebaseAnalytics.logEvent("Schedule",bundle);
     }
 
-    public void getSelectedDept (){
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
-        selectedDept= prefs.getString("DEPT","ALL");
+    public void getSelectedDept() {
+        if (getActivity() != null) {
+            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
+            selectedDept = prefs.getString("DEPT", "ALL");
+        }
     }
 
     public void updateAdapter(){
