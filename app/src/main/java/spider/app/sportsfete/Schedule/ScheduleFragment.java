@@ -127,6 +127,19 @@ public class ScheduleFragment extends Fragment{
         LinearLayout tabLay = (LinearLayout)((ViewGroup) tabLayout.getChildAt(0)).getChildAt(0);
         TextView tabTextView = (TextView) tabLay.getChildAt(1);
         tabTextView.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+        final Typeface hammersmithOnefont = Typeface.createFromAsset(getActivity().getAssets(),  "fonts/HammersmithOneRegular.ttf");
+        tabTextView.setTypeface(hammersmithOnefont);
+        tabLay = (LinearLayout)((ViewGroup) tabLayout.getChildAt(0)).getChildAt(1);
+        tabTextView = (TextView) tabLay.getChildAt(1);
+        tabTextView.setTypeface(hammersmithOnefont);
+
+        tabLay = (LinearLayout)((ViewGroup) tabLayout.getChildAt(0)).getChildAt(2);
+        tabTextView = (TextView) tabLay.getChildAt(1);
+        tabTextView.setTypeface(hammersmithOnefont);
+
+        tabLay = (LinearLayout)((ViewGroup) tabLayout.getChildAt(0)).getChildAt(3);
+        tabTextView = (TextView) tabLay.getChildAt(1);
+        tabTextView.setTypeface(hammersmithOnefont);
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -134,6 +147,7 @@ public class ScheduleFragment extends Fragment{
                 LinearLayout tabLay = (LinearLayout)((ViewGroup) tabLayout.getChildAt(0)).getChildAt(tab.getPosition());
                 TextView tabTextView = (TextView) tabLay.getChildAt(1);
                 tabTextView.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+                tabTextView.setTypeface(hammersmithOnefont);
             }
 
             @Override
@@ -141,6 +155,7 @@ public class ScheduleFragment extends Fragment{
                 LinearLayout tabLay = (LinearLayout)((ViewGroup) tabLayout.getChildAt(0)).getChildAt(tab.getPosition());
                 TextView tabTextView = (TextView) tabLay.getChildAt(1);
                 tabTextView.setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL));
+                tabTextView.setTypeface(hammersmithOnefont);
             }
 
             @Override
@@ -210,30 +225,6 @@ public class ScheduleFragment extends Fragment{
     public boolean onOptionsItemSelected(MenuItem item) {
         //if(item.getItemId()==R.id.dropdown) showDialog();
         return true;
-    }
-
-    public void showDialog() {
-        selectedDay=viewPager.getCurrentItem()+1;
-        putSelectedDay();
-        AlertDialog.Builder builder = new AlertDialog.Builder(getContext(),R.style.DialogTheme);
-        builder.setTitle(R.string.dialog_title);
-
-        builder.setSingleChoiceItems(dialogItems, prefs.getInt("DEPT_INDEX",0),
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                        selectedDept=dialogItems[which];
-                        onUpdateDept(selectedDept);
-                        Intent intent = new Intent();
-                        intent.setAction("update_department");
-                        getActivity().sendBroadcast(intent);
-                        //departmentUpdateCallback.updateScheduleFragment();
-                    }
-                });
-
-        AlertDialog dialog = builder.create();
-        dialog.show();
     }
 
     private void getEventsLastUpdate(){

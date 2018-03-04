@@ -6,4 +6,5 @@ package spider.app.sportsfete;
 
 public interface DepartmentUpdateCallback {
     void updateScheduleFragment();
+    void updateHomeFragment(String target);
 }

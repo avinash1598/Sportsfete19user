@@ -15,7 +15,6 @@
             android:id="@+id/parent_linearLayout"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginLeft="-300dp"
             android:orientation="horizontal">
 
             <!--knockout-->
@@ -81,7 +80,7 @@
                                 android:marqueeRepeatLimit="marquee_forever"
                                 android:scrollHorizontally="true"
                                 android:singleLine="true"
-                                android:text="ECE Vs EEE"
+                                android:text=""
                                 android:textAlignment="center"
                                 android:textAllCaps="false"
                                 android:textColor="@color/colorTabtext"
@@ -133,7 +132,7 @@
                                 android:marqueeRepeatLimit="marquee_forever"
                                 android:scrollHorizontally="true"
                                 android:singleLine="true"
-                                android:text="ECE Vs EEE"
+                                android:text=""
                                 android:textAlignment="center"
                                 android:textAllCaps="false"
                                 android:textColor="@color/colorTabtext"
@@ -185,7 +184,7 @@
                                 android:marqueeRepeatLimit="marquee_forever"
                                 android:scrollHorizontally="true"
                                 android:singleLine="true"
-                                android:text="ECE Vs EEE"
+                                android:text=""
                                 android:textAlignment="center"
                                 android:textAllCaps="false"
                                 android:textColor="@color/colorTabtext"
@@ -237,7 +236,7 @@
                                 android:marqueeRepeatLimit="marquee_forever"
                                 android:scrollHorizontally="true"
                                 android:singleLine="true"
-                                android:text="ECE Vs EEE"
+                                android:text=""
                                 android:textAlignment="center"
                                 android:textAllCaps="false"
                                 android:textColor="@color/colorTabtext"
@@ -289,7 +288,7 @@
                                 android:marqueeRepeatLimit="marquee_forever"
                                 android:scrollHorizontally="true"
                                 android:singleLine="true"
-                                android:text="ECE Vs EEE"
+                                android:text=""
                                 android:textAlignment="center"
                                 android:textAllCaps="false"
                                 android:textColor="@color/colorTabtext"
@@ -341,7 +340,7 @@
                                 android:marqueeRepeatLimit="marquee_forever"
                                 android:scrollHorizontally="true"
                                 android:singleLine="true"
-                                android:text="ECE Vs EEE"
+                                android:text=""
                                 android:textAlignment="center"
                                 android:textAllCaps="false"
                                 android:textColor="@color/colorTabtext"
@@ -371,20 +370,21 @@
                     android:layout_marginRight="30dp"
                     android:orientation="horizontal">
 
+
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="-20dp"
-                        android:layout_weight="0.3"
                         android:gravity="center_horizontal"
                         android:orientation="horizontal">
 
                         <TextView
                             android:id="@+id/quarterfinals"
-                            android:layout_width="wrap_content"
+                            android:layout_width="560dp"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="10dp"
                             android:layout_marginTop="10dp"
+                            android:gravity="center"
                             android:text="QUARTERFINAL"
                             android:textColor="@color/cardview_dark_background"
                             android:textStyle="bold|italic" />
@@ -394,16 +394,16 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.7"
                         android:gravity="center_horizontal"
                         android:orientation="horizontal">
 
                         <TextView
                             android:id="@+id/semifinals"
-                            android:layout_width="wrap_content"
+                            android:layout_width="200dp"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="10dp"
                             android:layout_marginTop="10dp"
+                            android:gravity="center"
                             android:text="SEMIFINAL"
                             android:textColor="@color/cardview_dark_background"
                             android:textStyle="bold|italic" />
@@ -413,18 +413,39 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.1"
                         android:gravity="center_horizontal"
                         android:orientation="horizontal">
 
                         <TextView
                             android:id="@+id/bronze"
-                            android:layout_width="wrap_content"
+                            android:layout_width="200dp"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="10dp"
                             android:layout_marginLeft="12dp"
                             android:layout_marginTop="10dp"
+                            android:gravity="center"
                             android:text="BRONZE MEDAL GAME"
+                            android:textColor="@color/cardview_dark_background"
+                            android:textStyle="bold|italic"
+                            android:visibility="gone" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/finals"
+                            android:layout_width="180dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginLeft="22dp"
+                            android:layout_marginTop="10dp"
+                            android:gravity="center"
+                            android:text="FINAL"
                             android:textColor="@color/cardview_dark_background"
                             android:textStyle="bold|italic" />
 
@@ -433,20 +454,20 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.2"
                         android:gravity="center_horizontal"
                         android:orientation="horizontal">
 
                         <TextView
-                            android:id="@+id/finals"
-                            android:layout_width="wrap_content"
+                            android:id="@+id/postfinals"
+                            android:layout_width="200dp"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="10dp"
-                            android:layout_marginLeft="22dp"
                             android:layout_marginTop="10dp"
-                            android:text="FINAL"
+                            android:gravity="center"
+                            android:text="FINAL-II"
                             android:textColor="@color/cardview_dark_background"
-                            android:textStyle="bold|italic" />
+                            android:textStyle="bold|italic"
+                            android:visibility="gone" />
 
                     </LinearLayout>
 
@@ -563,7 +584,7 @@
                                                                             android:marqueeRepeatLimit="marquee_forever"
                                                                             android:scrollHorizontally="true"
                                                                             android:singleLine="true"
-                                                                            android:text="ECE Vs EEE"
+                                                                            android:text=""
                                                                             android:textAlignment="center"
                                                                             android:textAllCaps="false"
                                                                             android:textColor="@color/colorTabtext"
@@ -623,7 +644,7 @@
                                                                             android:marqueeRepeatLimit="marquee_forever"
                                                                             android:scrollHorizontally="true"
                                                                             android:singleLine="true"
-                                                                            android:text="ECE Vs EEE"
+                                                                            android:text=""
                                                                             android:textAlignment="center"
                                                                             android:textAllCaps="false"
                                                                             android:textColor="@color/colorTabtext"
@@ -714,7 +735,7 @@
                                                                             android:marqueeRepeatLimit="marquee_forever"
                                                                             android:scrollHorizontally="true"
                                                                             android:singleLine="true"
-                                                                            android:text="ECE Vs EEE"
+                                                                            android:text=""
                                                                             android:textAlignment="center"
                                                                             android:textAllCaps="false"
                                                                             android:textColor="@color/colorTabtext"
@@ -773,7 +794,7 @@
                                                                             android:marqueeRepeatLimit="marquee_forever"
                                                                             android:scrollHorizontally="true"
                                                                             android:singleLine="true"
-                                                                            android:text="ECE Vs EEE"
+                                                                            android:text=""
                                                                             android:textAlignment="center"
                                                                             android:textAllCaps="false"
                                                                             android:textColor="@color/colorTabtext"
@@ -851,7 +872,7 @@
                                                             android:marqueeRepeatLimit="marquee_forever"
                                                             android:scrollHorizontally="true"
                                                             android:singleLine="true"
-                                                            android:text="ECE Vs EEE"
+                                                            android:text=""
                                                             android:textAlignment="center"
                                                             android:textAllCaps="false"
                                                             android:textColor="@color/colorTabtext"
@@ -896,7 +917,7 @@
                                                             android:marqueeRepeatLimit="marquee_forever"
                                                             android:scrollHorizontally="true"
                                                             android:singleLine="true"
-                                                            android:text="ECE Vs EEE"
+                                                            android:text=""
                                                             android:textAlignment="center"
                                                             android:textAllCaps="false"
                                                             android:textColor="@color/colorTabtext"
@@ -982,7 +1003,7 @@
                                                 android:marqueeRepeatLimit="marquee_forever"
                                                 android:scrollHorizontally="true"
                                                 android:singleLine="true"
-                                                android:text="ECE Vs EEE"
+                                                android:text=""
                                                 android:textAlignment="center"
                                                 android:textAllCaps="false"
                                                 android:textColor="@color/colorTabtext"
@@ -1051,7 +1072,7 @@
                                                 android:marqueeRepeatLimit="marquee_forever"
                                                 android:scrollHorizontally="true"
                                                 android:singleLine="true"
-                                                android:text="ECE Vs EEE"
+                                                android:text=""
                                                 android:textAlignment="center"
                                                 android:textAllCaps="false"
                                                 android:textColor="@color/colorTabtext"
@@ -1132,7 +1153,7 @@
                                                     android:marqueeRepeatLimit="marquee_forever"
                                                     android:scrollHorizontally="true"
                                                     android:singleLine="true"
-                                                    android:text="ECE Vs EEE"
+                                                    android:text=""
                                                     android:textAlignment="center"
                                                     android:textAllCaps="false"
                                                     android:textColor="@color/colorTabtext"
@@ -1197,7 +1218,7 @@
                                                     android:marqueeRepeatLimit="marquee_forever"
                                                     android:scrollHorizontally="true"
                                                     android:singleLine="true"
-                                                    android:text="ECE Vs EEE"
+                                                    android:text=""
                                                     android:textAlignment="center"
                                                     android:textAllCaps="false"
                                                     android:textColor="@color/colorTabtext"
@@ -1278,7 +1299,7 @@
                                                     android:marqueeRepeatLimit="marquee_forever"
                                                     android:scrollHorizontally="true"
                                                     android:singleLine="true"
-                                                    android:text="ECE Vs EEE"
+                                                    android:text=""
                                                     android:textAlignment="center"
                                                     android:textAllCaps="false"
                                                     android:textColor="@color/colorTabtext"
@@ -1345,7 +1366,7 @@
                                                     android:marqueeRepeatLimit="marquee_forever"
                                                     android:scrollHorizontally="true"
                                                     android:singleLine="true"
-                                                    android:text="ECE Vs EEE"
+                                                    android:text=""
                                                     android:textAlignment="center"
                                                     android:textAllCaps="false"
                                                     android:textColor="@color/colorTabtext"
@@ -1427,7 +1448,7 @@
                                                         android:marqueeRepeatLimit="marquee_forever"
                                                         android:scrollHorizontally="true"
                                                         android:singleLine="true"
-                                                        android:text="ECE Vs EEE"
+                                                        android:text=""
                                                         android:textAlignment="center"
                                                         android:textAllCaps="false"
                                                         android:textColor="@color/colorTabtext"
@@ -1488,7 +1509,7 @@
                                                         android:marqueeRepeatLimit="marquee_forever"
                                                         android:scrollHorizontally="true"
                                                         android:singleLine="true"
-                                                        android:text="ECE Vs EEE"
+                                                        android:text=""
                                                         android:textAlignment="center"
                                                         android:textAllCaps="false"
                                                         android:textColor="@color/colorTabtext"
@@ -1562,7 +1583,7 @@
                                             android:marqueeRepeatLimit="marquee_forever"
                                             android:scrollHorizontally="true"
                                             android:singleLine="true"
-                                            android:text="ECE Vs EEE"
+                                            android:text=""
                                             android:textAlignment="center"
                                             android:textAllCaps="false"
                                             android:textColor="@color/colorTabtext"
@@ -1634,7 +1655,7 @@
                                     android:marqueeRepeatLimit="marquee_forever"
                                     android:scrollHorizontally="true"
                                     android:singleLine="true"
-                                    android:text="ECE Vs EEE"
+                                    android:text=""
                                     android:textAlignment="center"
                                     android:textAllCaps="false"
                                     android:textColor="@color/colorTabtext"
@@ -1646,16 +1667,19 @@
                         </LinearLayout>
 
                         <View
+                            android:id="@+id/hide_next_arrow"
                             android:layout_width="30dp"
                             android:layout_height="10dp"
                             android:layout_marginBottom="5dp"
                             android:layout_marginTop="5dp"
-                            android:background="@drawable/next_match_arrow" />
+                            android:background="@drawable/next_match_arrow"
+                            android:visibility="invisible" />
 
                     </LinearLayout>
 
                     <!--post final-->
                     <LinearLayout
+                        android:id="@+id/postfinal_match"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="30dp"
@@ -1665,7 +1689,8 @@
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical">
+                            android:orientation="vertical"
+                            android:visibility="gone">
 
                             <LinearLayout
                                 android:layout_width="wrap_content"
@@ -1703,7 +1728,7 @@
                                     android:marqueeRepeatLimit="marquee_forever"
                                     android:scrollHorizontally="true"
                                     android:singleLine="true"
-                                    android:text="ECE Vs EEE"
+                                    android:text=""
                                     android:textAlignment="center"
                                     android:textAllCaps="false"
                                     android:textColor="@color/colorTabtext"
@@ -1724,7 +1749,7 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="10dp"
                 android:layout_marginRight="30dp"
                 android:gravity="center_horizontal"
                 android:orientation="vertical">
@@ -1747,6 +1772,7 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="25dp"
                         android:orientation="vertical">
 
                         <LinearLayout
@@ -1762,17 +1788,17 @@
 
                             <TextView
                                 android:id="@+id/position1"
-                                android:layout_width="wrap_content"
+                                android:layout_width="130dp"
                                 android:layout_height="match_parent"
-                                android:layout_margin="10dp"
+                                android:layout_marginBottom="10dp"
                                 android:layout_marginLeft="5dp"
                                 android:layout_marginRight="5dp"
+                                android:layout_marginTop="10dp"
                                 android:drawableLeft="@drawable/goldpos"
                                 android:drawablePadding="10dp"
                                 android:gravity="center_vertical"
-                                android:text="ECE"
                                 android:textAllCaps="false"
-                                android:textColor="@android:color/black"
+                                android:textColor="#DAA520"
                                 android:textSize="15sp"
                                 android:textStyle="bold" />
 
@@ -1791,17 +1817,17 @@
 
                             <TextView
                                 android:id="@+id/position2"
-                                android:layout_width="wrap_content"
+                                android:layout_width="130dp"
                                 android:layout_height="match_parent"
-                                android:layout_margin="10dp"
+                                android:layout_marginBottom="10dp"
                                 android:layout_marginLeft="5dp"
                                 android:layout_marginRight="5dp"
+                                android:layout_marginTop="10dp"
                                 android:drawableLeft="@drawable/silverpos"
                                 android:drawablePadding="10dp"
                                 android:gravity="center_vertical"
-                                android:text="EEE"
                                 android:textAllCaps="false"
-                                android:textColor="@android:color/black"
+                                android:textColor="#808080"
                                 android:textSize="15sp"
                                 android:textStyle="bold" />
 
@@ -1820,17 +1846,17 @@
 
                             <TextView
                                 android:id="@+id/position3"
-                                android:layout_width="wrap_content"
+                                android:layout_width="130dp"
                                 android:layout_height="match_parent"
-                                android:layout_margin="10dp"
+                                android:layout_marginBottom="10dp"
                                 android:layout_marginLeft="5dp"
                                 android:layout_marginRight="5dp"
+                                android:layout_marginTop="10dp"
                                 android:drawableLeft="@drawable/bronzepos"
                                 android:drawablePadding="10dp"
                                 android:gravity="center_vertical"
-                                android:text="EEE"
                                 android:textAllCaps="false"
-                                android:textColor="@android:color/black"
+                                android:textColor="#6C541E"
                                 android:textSize="15sp"
                                 android:textStyle="bold" />
 

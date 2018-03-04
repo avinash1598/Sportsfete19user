@@ -49,6 +49,7 @@ import spider.app.sportsfete.API.ApiInterface;
 import spider.app.sportsfete.API.EventDetailsPOJO;
 import spider.app.sportsfete.API.StatusEventDetailsPOJO;
 import spider.app.sportsfete.DatabaseHelper;
+import spider.app.sportsfete.DepartmentUpdateCallback;
 import spider.app.sportsfete.EventInfo.EventInfoActivity;
 import spider.app.sportsfete.R;
 import spider.app.sportsfete.Schedule.StatusEventsDetailRecyclerAdapter;
@@ -76,6 +77,7 @@ public class HomeFragment extends Fragment implements Callback<List<StatusEventD
     String formattedDate;
     View view;
     ViewGroup viewGroup;
+    DepartmentUpdateCallback departmentUpdateCallback;
 
     String status = "live";
 
@@ -284,15 +286,7 @@ public class HomeFragment extends Fragment implements Callback<List<StatusEventD
                 public void onItemSelected(int position, View view1, View view2, View view3, View view4) {
                     StatusEventDetailsPOJO selectedEvent=eventList.get(position);
                     Intent intent = new Intent(context, EventInfoActivity.class);
-
                     intent.putExtra("SELECTED_EVENT", new Gson().toJson(selectedEvent));
-                    Pair<View,String> pair1 = Pair.create(view1,"event_name");
-                    Pair<View,String> pair2 = Pair.create(view2,"event_round");
-                    Pair<View,String> pair3 = Pair.create(view3,"versus_event");
-                    Pair<View,String> pair4 = Pair.create(view4,"non_versus_event");
-                    //ActivityCompat.startActivity(getActivity(), intent, options.toBundle());
-                    ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
-                            getActivity(), pair1,pair2,pair3,pair4);
                     startActivity(intent);
                 }
             });

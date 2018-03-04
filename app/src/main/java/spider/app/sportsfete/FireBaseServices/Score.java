@@ -124,8 +124,8 @@ public class Score {
         return dept1_score;
     }
 
-    public void setDept1_score(String dept1Score) {
-        this.dept2_score = dept1Score;
+    public void setDept1_score(String dept1_score) {
+        this.dept2_score = dept1_score;
     }
 
     public String getDept2() {

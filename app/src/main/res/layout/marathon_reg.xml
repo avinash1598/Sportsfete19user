@@ -147,7 +147,7 @@
                 android:gravity="center"
                 android:singleLine="true"
                 android:text="Register"
-                android:textColor="@android:color/background_light"
+                android:textColor="@color/green_text"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:typeface="monospace" />

@@ -228,6 +228,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                flowingDrawer.openDrawer(Gravity.START);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    @Override
     public boolean onNavigationItemSelected(final MenuItem item) {
         final int id = item.getItemId();
 
@@ -342,5 +353,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         fragmentTransaction.commit();
         getSupportActionBar().setTitle("Schedule");
 
+    }
+
+    @Override
+    public void updateHomeFragment(String target) {
+        navigationTabBar.setSelected(true);
+        navigationTabBar.setModelIndex(0);
+        navigationTabBar.setVisibility(View.VISIBLE);
+        lastViewFragment = 0;
+        Bundle arguments = new Bundle();
+        arguments.putString("target", target);
+        HomeFragment homeFragment = new HomeFragment();
+        homeFragment.setArguments(arguments);
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_container, homeFragment);
+        fragmentTransaction.commit();
     }
 }

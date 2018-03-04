@@ -106,8 +106,8 @@ public class StatusEventsDetailRecyclerAdapter extends RecyclerView.Adapter<Even
                     holder.team1Tv.setTypeface(inconsolataBoldFont);
                     holder.undecided_match1.setTypeface(hammersmithOnefont);
                     holder.undecided_match2.setTypeface(hammersmithOnefont);
-                    holder.team1Tv.setText(event.getDept1());
 
+                    holder.team1Tv.setText(event.getDept1());
                     if(event.getDept1().contains("WINNER OF")||event.getDept1().contains("LOSER OF")){
                         holder.dept_icon1.setVisibility(View.GONE);
                         holder.undecided_match1.setVisibility(View.VISIBLE);
@@ -120,6 +120,9 @@ public class StatusEventsDetailRecyclerAdapter extends RecyclerView.Adapter<Even
                             holder.undecided_match1.setText("L"+event.getDept1().trim().split(" ")[2]);
                             holder.undecided_match1.setTextColor(Color.RED);
                         }
+                    }else{
+                        holder.dept_icon1.setVisibility(View.VISIBLE);
+                        holder.undecided_match1.setVisibility(View.GONE);
                     }
                     if(event.getDept2().contains("WINNER OF")||event.getDept2().contains("LOSER OF")){
                         holder.dept_icon2.setVisibility(View.GONE);
@@ -133,6 +136,9 @@ public class StatusEventsDetailRecyclerAdapter extends RecyclerView.Adapter<Even
                             holder.undecided_match2.setText("L"+event.getDept2().trim().split(" ")[2]);
                             holder.undecided_match2.setTextColor(Color.RED);
                         }
+                    }else{
+                        holder.dept_icon2.setVisibility(View.VISIBLE);
+                        holder.undecided_match2.setVisibility(View.GONE);
                     }
 
                     setDeptIcon(holder.dept_icon1,event.getDept1().trim());
@@ -150,7 +156,6 @@ public class StatusEventsDetailRecyclerAdapter extends RecyclerView.Adapter<Even
                     for(String participants: event.getParticipatingTeams()){
                         holder.participantsTV.setText(holder.participantsTV.getText()+"  "+participants+"  ");
                     }
-
                 }
             }
 
@@ -174,6 +179,7 @@ public class StatusEventsDetailRecyclerAdapter extends RecyclerView.Adapter<Even
             if (eventList.get(position).getStatus().equals(FLAG_STATUS_UPCOMING)) {
                 holder.statusTv.setTextColor(Color.parseColor("#009688"));
                 status = "UPCOMING";
+                holder.statusTv.setAnimation(null);
                 holder.startTimeTv.setText(getCurrentTime(Long.valueOf(event.getStartTime())));
             } else if (eventList.get(position).getStatus().equals(FLAG_STATUS_LIVE)) {
                 holder.statusTv.setTextColor(Color.parseColor("#FF5722"));
@@ -181,6 +187,7 @@ public class StatusEventsDetailRecyclerAdapter extends RecyclerView.Adapter<Even
                 holder.statusTv.startAnimation(blinkAnimation);
                 holder.startTimeTv.setText(getCurrentTime(Long.valueOf(event.getStartTime())));
             } else {
+                holder.statusTv.setAnimation(null);
                 holder.statusTv.setTextColor(Color.parseColor("#4CAF50"));
                 status = "COMPLETED";
                 holder.startTimeTv.setText("");
@@ -188,8 +195,13 @@ public class StatusEventsDetailRecyclerAdapter extends RecyclerView.Adapter<Even
                 //setting color
                 if (event.getWinner().equalsIgnoreCase(event.getDept1())) {
                     holder.team1Tv.setTextColor(Color.parseColor("#fbc02d"));
+                    holder.team2Tv.setTextColor(Color.parseColor("#404f50"));
                 } else if (event.getWinner().equalsIgnoreCase(event.getDept2())) {
                     holder.team2Tv.setTextColor(Color.parseColor("#fbc02d"));
+                    holder.team1Tv.setTextColor(Color.parseColor("#404f50"));
+                }else{
+                    holder.team2Tv.setTextColor(Color.parseColor("#404f50"));
+                    holder.team1Tv.setTextColor(Color.parseColor("#404f50"));
                 }
                 holder.startTimeTv.setText(getCurrentTime(Long.valueOf(event.getStartTime())));
             }
@@ -197,8 +209,7 @@ public class StatusEventsDetailRecyclerAdapter extends RecyclerView.Adapter<Even
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    //onClickSubject.onNext(String.valueOf(position));
-                    onClickListener.onItemSelected(position,holder.nameTV,holder.roundTv,holder.versusEventLl,holder.nonVersusEventLl);
+                    onClickSubject.onNext(String.valueOf(position));
                 }
             });
         }
@@ -207,21 +218,34 @@ public class StatusEventsDetailRecyclerAdapter extends RecyclerView.Adapter<Even
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void setDeptIcon(CircleImageView imageView, String dept){
         switch(dept){
-            case "ARCHI":imageView.setImageResource((dept_icon[0]));break;
-            case "CHEM":imageView.setImageResource((dept_icon[1]));break;
-            case "CIVIL":imageView.setImageResource((dept_icon[2]));break;
+            case "ARCHI":imageView.setImageResource((dept_icon[0]));
+                imageView.setFillColor(Color.WHITE);break;
+            case "CHEM":imageView.setImageResource((dept_icon[1]));
+                imageView.setFillColor(Color.WHITE);break;
+            case "CIVIL":imageView.setImageResource((dept_icon[2]));
+                imageView.setFillColor(Color.WHITE);break;
             case "CSE":imageView.setImageResource((dept_icon[3]));
                 imageView.setFillColor(Color.parseColor("#16282a"));break;
-            case "DOMS":imageView.setImageResource((dept_icon[4]));break;
-            case "ECE":imageView.setImageResource((dept_icon[5]));break;
-            case "EEE":imageView.setImageResource((dept_icon[6]));break;
-            case "ICE":imageView.setImageResource((dept_icon[7]));break;
-            case "MCA":imageView.setImageResource((dept_icon[8]));break;
-            case "MECH":imageView.setImageResource((dept_icon[9]));break;
-            case "META":imageView.setImageResource((dept_icon[10]));break;
-            case "M.TECH":imageView.setImageResource((dept_icon[11]));break;
-            case "Phd/MSc/MS":imageView.setImageResource((dept_icon[12]));break;
-            case "PROD":imageView.setImageResource((dept_icon[13]));break;
+            case "DOMS":imageView.setImageResource((dept_icon[4]));
+                imageView.setFillColor(Color.WHITE);break;
+            case "ECE":imageView.setImageResource((dept_icon[5]));
+                imageView.setFillColor(Color.WHITE);break;
+            case "EEE":imageView.setImageResource((dept_icon[6]));
+                imageView.setFillColor(Color.WHITE);break;
+            case "ICE":imageView.setImageResource((dept_icon[7]));
+                imageView.setFillColor(Color.WHITE);break;
+            case "MCA":imageView.setImageResource((dept_icon[8]));
+                imageView.setFillColor(Color.WHITE);break;
+            case "MECH":imageView.setImageResource((dept_icon[9]));
+                imageView.setFillColor(Color.WHITE);break;
+            case "META":imageView.setImageResource((dept_icon[10]));
+                imageView.setFillColor(Color.WHITE);break;
+            case "M.TECH":imageView.setImageResource((dept_icon[11]));
+                imageView.setFillColor(Color.WHITE);break;
+            case "Phd/MSc/MS":imageView.setImageResource((dept_icon[12]));
+                imageView.setFillColor(Color.WHITE);break;
+            case "PROD":imageView.setImageResource((dept_icon[13]));
+                imageView.setFillColor(Color.WHITE);break;
         }
     }
 

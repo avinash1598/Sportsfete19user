@@ -10,7 +10,7 @@
 
     <string-array name="department_array">
         <item>ALL</item>
-        <item>ARCH</item>
+        <item>ARCHI</item>
         <item>CHEM</item>
         <item>CIVIL</item>
         <item>CSE</item>
@@ -21,8 +21,8 @@
         <item>MCA</item>
         <item>MECH</item>
         <item>META</item>
-        <item>MTECH</item>
-        <item>PHD+MSC</item>
+        <item>M.TECH</item>
+        <item>PhD/MSc/MS</item>
         <item>PROD</item>
     </string-array>
 

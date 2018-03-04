@@ -9,13 +9,17 @@ import android.support.v7.widget.RecyclerView;
 import android.text.Html;
 import android.text.Spanned;
 import android.text.format.DateFormat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -29,16 +33,17 @@ import spider.app.sportsfete.R;
  * Created by dhananjay on 21/1/17.
  */
 
-public class Day1EventsDetailRecyclerAdapter extends RecyclerView.Adapter<EventViewHolder> {
+public class Day1EventsDetailRecyclerAdapter extends RecyclerView.Adapter<EventViewHolder> implements Filterable{
 
     private static final String TAG="EventAdapter";
-    List<EventDetailsPOJO> eventList;
+    List<EventDetailsPOJO> eventList, filterList , originalList = new ArrayList<>();
     Context context;
     Animation blinkAnimation;
     Typeface inconsolataBoldFont,francoisOneRegularFont;
     Typeface hammersmithOnefont;
     MyAdapterListener onClickListener;
     private final PublishSubject<String> onClickSubject = PublishSubject.create();
+    private CustomFilter customFilter;
 
     private static final String FLAG_STATUS_UPCOMING = "upcoming";
     private static final String FLAG_STATUS_LIVE = "live";
@@ -67,6 +72,7 @@ public class Day1EventsDetailRecyclerAdapter extends RecyclerView.Adapter<EventV
 
     public Day1EventsDetailRecyclerAdapter(List<EventDetailsPOJO> eventList, Context context, MyAdapterListener onClickListener){
         this.eventList=eventList;
+        this.filterList = eventList;
         this.context=context;
         inconsolataBoldFont = Typeface.createFromAsset(context.getAssets(),  "fonts/InconsolataBold.ttf");
         francoisOneRegularFont = Typeface.createFromAsset(context.getAssets(),  "fonts/FrancoisOneRegular.ttf");
@@ -92,6 +98,8 @@ public class Day1EventsDetailRecyclerAdapter extends RecyclerView.Adapter<EventV
     public void onBindViewHolder(final EventViewHolder holder, final int position) {
         EventDetailsPOJO event=eventList.get(position);
         String status="";
+        Log.d("bind",position+"");
+
         if(event.getEliminationType()!=null) {
             {
                 if (event.getEliminationType().equalsIgnoreCase("single")||
@@ -116,6 +124,9 @@ public class Day1EventsDetailRecyclerAdapter extends RecyclerView.Adapter<EventV
                             holder.undecided_match1.setText("L"+event.getDept1().trim().split(" ")[2]);
                             holder.undecided_match1.setTextColor(Color.RED);
                         }
+                    }else{
+                        holder.dept_icon1.setVisibility(View.VISIBLE);
+                        holder.undecided_match1.setVisibility(View.GONE);
                     }
                     if(event.getDept2().contains("WINNER OF")||event.getDept2().contains("LOSER OF")){
                         holder.dept_icon2.setVisibility(View.GONE);
@@ -129,7 +140,11 @@ public class Day1EventsDetailRecyclerAdapter extends RecyclerView.Adapter<EventV
                             holder.undecided_match2.setText("L"+event.getDept2().trim().split(" ")[2]);
                             holder.undecided_match2.setTextColor(Color.RED);
                         }
+                    }else{
+                        holder.dept_icon2.setVisibility(View.VISIBLE);
+                        holder.undecided_match2.setVisibility(View.GONE);
                     }
+
                     setDeptIcon(holder.dept_icon1,event.getDept1().trim());
                     holder.team1Tv.setSelected(true);
                     holder.team1Tv.setSingleLine(true);
@@ -168,6 +183,7 @@ public class Day1EventsDetailRecyclerAdapter extends RecyclerView.Adapter<EventV
             if (eventList.get(position).getStatus().equals(FLAG_STATUS_UPCOMING)) {
                 holder.statusTv.setTextColor(Color.parseColor("#009688"));
                 status = "UPCOMING";
+                holder.statusTv.setAnimation(null);
                 holder.startTimeTv.setText(getCurrentTime(Long.valueOf(event.getStartTime())));
             } else if (eventList.get(position).getStatus().equals(FLAG_STATUS_LIVE)) {
                 holder.statusTv.setTextColor(Color.parseColor("#FF5722"));
@@ -175,6 +191,7 @@ public class Day1EventsDetailRecyclerAdapter extends RecyclerView.Adapter<EventV
                 holder.statusTv.startAnimation(blinkAnimation);
                 holder.startTimeTv.setText(getCurrentTime(Long.valueOf(event.getStartTime())));
             } else {
+                holder.statusTv.setAnimation(null);
                 holder.statusTv.setTextColor(Color.parseColor("#4CAF50"));
                 status = "COMPLETED";
                 holder.startTimeTv.setText("");
@@ -182,8 +199,13 @@ public class Day1EventsDetailRecyclerAdapter extends RecyclerView.Adapter<EventV
                 //setting color
                 if (event.getWinner().equalsIgnoreCase(event.getDept1())) {
                     holder.team1Tv.setTextColor(Color.parseColor("#fbc02d"));
+                    holder.team2Tv.setTextColor(Color.parseColor("#404f50"));
                 } else if (event.getWinner().equalsIgnoreCase(event.getDept2())) {
                     holder.team2Tv.setTextColor(Color.parseColor("#fbc02d"));
+                    holder.team1Tv.setTextColor(Color.parseColor("#404f50"));
+                }else{
+                    holder.team2Tv.setTextColor(Color.parseColor("#404f50"));
+                    holder.team1Tv.setTextColor(Color.parseColor("#404f50"));
                 }
                 holder.startTimeTv.setText(getCurrentTime(Long.valueOf(event.getStartTime())));
             }
@@ -200,21 +222,34 @@ public class Day1EventsDetailRecyclerAdapter extends RecyclerView.Adapter<EventV
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void setDeptIcon(CircleImageView imageView, String dept){
         switch(dept){
-            case "ARCHI":imageView.setImageResource((dept_icon[0]));break;
-            case "CHEM":imageView.setImageResource((dept_icon[1]));break;
-            case "CIVIL":imageView.setImageResource((dept_icon[2]));break;
+            case "ARCHI":imageView.setImageResource((dept_icon[0]));
+                imageView.setFillColor(Color.WHITE);break;
+            case "CHEM":imageView.setImageResource((dept_icon[1]));
+                imageView.setFillColor(Color.WHITE);break;
+            case "CIVIL":imageView.setImageResource((dept_icon[2]));
+                imageView.setFillColor(Color.WHITE);break;
             case "CSE":imageView.setImageResource((dept_icon[3]));
                 imageView.setFillColor(Color.parseColor("#16282a"));break;
-            case "DOMS":imageView.setImageResource((dept_icon[4]));break;
-            case "ECE":imageView.setImageResource((dept_icon[5]));break;
-            case "EEE":imageView.setImageResource((dept_icon[6]));break;
-            case "ICE":imageView.setImageResource((dept_icon[7]));break;
-            case "MCA":imageView.setImageResource((dept_icon[8]));break;
-            case "MECH":imageView.setImageResource((dept_icon[9]));break;
-            case "META":imageView.setImageResource((dept_icon[10]));break;
-            case "M.TECH":imageView.setImageResource((dept_icon[11]));break;
-            case "Phd/MSc/MS":imageView.setImageResource((dept_icon[12]));break;
-            case "PROD":imageView.setImageResource((dept_icon[13]));break;
+            case "DOMS":imageView.setImageResource((dept_icon[4]));
+                imageView.setFillColor(Color.WHITE);break;
+            case "ECE":imageView.setImageResource((dept_icon[5]));
+                imageView.setFillColor(Color.WHITE);break;
+            case "EEE":imageView.setImageResource((dept_icon[6]));
+                imageView.setFillColor(Color.WHITE);break;
+            case "ICE":imageView.setImageResource((dept_icon[7]));
+                imageView.setFillColor(Color.WHITE);break;
+            case "MCA":imageView.setImageResource((dept_icon[8]));
+                imageView.setFillColor(Color.WHITE);break;
+            case "MECH":imageView.setImageResource((dept_icon[9]));
+                imageView.setFillColor(Color.WHITE);break;
+            case "META":imageView.setImageResource((dept_icon[10]));
+                imageView.setFillColor(Color.WHITE);break;
+            case "M.TECH":imageView.setImageResource((dept_icon[11]));
+                imageView.setFillColor(Color.WHITE);break;
+            case "Phd/MSc/MS":imageView.setImageResource((dept_icon[12]));
+                imageView.setFillColor(Color.WHITE);break;
+            case "PROD":imageView.setImageResource((dept_icon[13]));
+                imageView.setFillColor(Color.WHITE);break;
         }
     }
 
@@ -253,6 +288,48 @@ public class Day1EventsDetailRecyclerAdapter extends RecyclerView.Adapter<EventV
     private String getCurrentTime(Long time) {
         String delegate = "hh:mm aaa";
         return (String) DateFormat.format(delegate, new Date(time*1000L));
+    }
+
+    @Override
+    public Filter getFilter() {
+        if(customFilter == null) customFilter = new CustomFilter();
+        return customFilter;
+    }
+
+
+    public class CustomFilter extends Filter {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            FilterResults results = new FilterResults();
+            if (constraint != null && constraint.length() > 0) {
+                final String filterPattern = constraint.toString().toUpperCase().trim();
+                List<EventDetailsPOJO> filter_result = new ArrayList<>();
+
+                if (filterPattern.equalsIgnoreCase("ALL")) {
+                    Log.d("ALL","filter---------------");
+                    results.count = filterList.size();
+                    results.values = filterList;
+                } else {
+                    for (EventDetailsPOJO temp : filterList) {
+                        if (temp.getDept1().equalsIgnoreCase(filterPattern) ||
+                                temp.getDept2().equalsIgnoreCase(filterPattern)) {
+                            filter_result.add(temp);
+                        }
+                    }
+                    results.count = filter_result.size();
+                    results.values = filter_result;
+                }
+            }else{
+                    results.count = filterList.size();
+                    results.values = filterList;
+                }
+            return results;
+        }
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            eventList = (List<EventDetailsPOJO>) results.values;
+            notifyDataSetChanged();
+        }
     }
 
 }

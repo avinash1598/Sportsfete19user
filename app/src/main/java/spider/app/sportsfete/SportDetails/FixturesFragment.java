@@ -21,6 +21,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.ScaleAnimation;
 import android.widget.HorizontalScrollView;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -61,10 +62,11 @@ public class FixturesFragment extends Fragment {
     String selectedSport,selectedSportName, selectedLayout = "";
     ArrayList<FixturePOJO> fixtureArrayList;
 
-    public final String fixtureType = "two";
+    public int fixtureType = 0;
     String[] sportNames;
 
     Integer[] fixture_type = {
+            R.layout.fixture_layout_zero,
             R.layout.fixture_layout_one,
             R.layout.fixture_layout_two,
             R.layout.fixture_layout_three,
@@ -141,7 +143,7 @@ public class FixturesFragment extends Fragment {
     TextView[] match;
     TextView[] matchTeams;
 
-    private LinearLayout linearLayout;
+    private LinearLayout linearLayout, post_final_match;
     private HorizontalScrollView horizontalScrollView;
     private float mScale = 1f;
     private float prevScale;
@@ -151,12 +153,13 @@ public class FixturesFragment extends Fragment {
     private TextView match1teams, match2teams, match3teams, match4teams, match5teams, match6teams, match7teams, match8teams,
             match9teams,match10teams,match11teams,match12teams,match13teams,match14teams;
     private TextView match1,match2,match3,match4,match5,match6,match7,match8,match9,match10,match11,match12,match13,match14;
-    private TextView knockout, quarterfinals, semifinals, bronze, finals, standings;
+    private TextView knockout, quarterfinals, semifinals, bronze, finals, finalsII, standings;
     private TextView position1, position2, position3;
     private TextView grpAteam1,grpAteam2,grpAteam3,grpAteam4;
     private TextView grpBteam1,grpBteam2,grpBteam3,grpBteam4;
     private TextView grpCteam1,grpCteam2,grpCteam3,grpCteam4;
     private TextView grpDteam1,grpDteam2,grpDteam3,grpDteam4;
+    private ImageView arrow_next_match;
 
     public FixturesFragment() {
     }
@@ -170,12 +173,14 @@ public class FixturesFragment extends Fragment {
         int selectedSportInt = Integer.parseInt(selectedSport);
                 selectedSportName=sportNames[selectedSportInt];
 
+                fixtureType = getActivity().getIntent().getIntExtra("FIXTURE_TYPE",0);
+
                 Log.d("FIXTURE TYPE",getActivity().getIntent().getIntExtra("FIXTURE_TYPE",0)+"");
-        if((getActivity().getIntent().getIntExtra("FIXTURE_TYPE",0) - 1)<0){
+        if((getActivity().getIntent().getIntExtra("FIXTURE_TYPE",0))==0){
             return inflater.inflate(R.layout.fixture_layout_zero, container, false);
         }
 
-        return inflater.inflate(fixture_type[getActivity().getIntent().getIntExtra("FIXTURE_TYPE",0)-1],
+        return inflater.inflate(fixture_type[getActivity().getIntent().getIntExtra("FIXTURE_TYPE",0)],
                 container, false);
     }
 
@@ -283,6 +288,14 @@ public class FixturesFragment extends Fragment {
             matchTeams[i] = (TextView)getActivity().findViewById(matchTeamsId[i]);
             if(matchTeams[i]!=null)
                 matchTeams[i].setTypeface(Typeface.createFromAsset(getActivity().getAssets(),  "fonts/HammersmithOneRegular.ttf"));
+        }
+
+        //for carrom
+
+        if(selectedSport.equalsIgnoreCase("CARROM")){
+            arrow_next_match = (ImageView) getActivity().findViewById(R.id.hide_next_arrow);
+            finalsII = (TextView) getActivity().findViewById(R.id.postfinals);
+            post_final_match = (LinearLayout) getActivity().findViewById(R.id.postfinal_match);
         }
 
         horizontalScrollView = (HorizontalScrollView)getActivity().findViewById(R.id.parent_view);
@@ -408,7 +421,20 @@ public class FixturesFragment extends Fragment {
                             //horizontalScrollView.setVisibility(View.INVISIBLE);
                         }
                     }
-                    setElements();
+
+                    if(fixtureType!=0){
+                        if(fixtureType==4){
+                            setTypeFOURGroupElements();
+                        }else if(fixtureType == 6){
+                            setTypeSIXGroupElements();
+                        }else if(fixtureType == 7){
+                            setTypeSEVENGroupElements();
+                        }else if(fixtureType==8){
+                            setTypeEIGHTGroupElements();
+                        }else{
+                            setElements();
+                        }
+                    }
                 }
             }
 
@@ -419,26 +445,23 @@ public class FixturesFragment extends Fragment {
         });
     }
 
+    //four->football(boys)3,4,5,6
+    //six->hockey(boys)6,7
+    //seven->kho kho(boys)1,2,3,4
+    //eight->kho kho(girls)1,2,3,4
+
     public void setElements(){
         for(FixturePOJO fixtureElement: fixtureArrayList){
             Log.d("index",fixtureElement.getFixtureIndex()+"");
 
             String text = "";
-            match[fixtureElement.getFixtureIndex()].setText("MATCH"+fixtureElement.getFixture());
+            match[fixtureElement.getFixtureIndex()].setText("MATCH "+fixtureElement.getFixture());
 
             if(fixtureElement.getDept1().contains("WINNER OF")){
                 text = text + "W" + fixtureElement.getDept1().trim().split(" ")[2]+" Vs ";
-                /*matchTeams[fixtureElement.getFixtureIndex()].setText(
-                        "W"+fixtureElement.getDept1().trim().split(" ")[2]+" Vs "+"" +
-                                "W"+fixtureElement.getDept2().trim().split(" ")[2]);
-*/
             }
             else if(fixtureElement.getDept1().contains("LOSER OF")){
                 text = text + "L" + fixtureElement.getDept1().trim().split(" ")[2]+" Vs ";
-                /*matchTeams[fixtureElement.getFixtureIndex()].setText(
-                        "W"+fixtureElement.getDept1().trim().split(" ")[2]+" Vs "+"" +
-                                "L"+fixtureElement.getDept2().trim().split(" ")[2]);
- */
             }
             else{
                 text = text +  fixtureElement.getDept1().trim()+" Vs ";
@@ -446,24 +469,232 @@ public class FixturesFragment extends Fragment {
 
             if(fixtureElement.getDept2().contains("WINNER OF")){
                 text = text +  "W"+ fixtureElement.getDept2().trim().split(" ")[2];
-                /*matchTeams[fixtureElement.getFixtureIndex()].setText(
-                        "L"+fixtureElement.getDept1().trim().split(" ")[2]+" Vs "+"" +
-                                "W"+fixtureElement.getDept2().trim().split(" ")[2]);
- */
             }
 
             else if(fixtureElement.getDept2().contains("LOSER OF")){
                 text = text +  "L"+ fixtureElement.getDept2().trim().split(" ")[2];
-               /* matchTeams[fixtureElement.getFixtureIndex()].setText(
-                        "L"+fixtureElement.getDept1().trim().split(" ")[2]+" Vs "+"" +
-                                "L"+fixtureElement.getDept2().trim().split(" ")[2]);
-*/
             }else{
                 text = text +  fixtureElement.getDept2().trim();
             }
 
             matchTeams[fixtureElement.getFixtureIndex()].setText(text);
+
+            if(fixtureElement.getWinner().trim().equalsIgnoreCase(fixtureElement.getDept1().trim())){
+                SpannableStringBuilder sb = new SpannableStringBuilder(text);
+                StyleSpan b = new StyleSpan(Color.parseColor("#4ab556"));
+                sb.setSpan(b, 0, text.split(" ")[0].length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+                matchTeams[fixtureElement.getFixtureIndex()].setText(sb);
+            }
+            else if(fixtureElement.getWinner().equalsIgnoreCase(fixtureElement.getDept2().trim())){
+                SpannableStringBuilder sb = new SpannableStringBuilder(text);
+                StyleSpan b = new StyleSpan(Color.parseColor("#4ab556"));
+                sb.setSpan(b, text.split(" ")[0].length()+text.split(" ")[1].length()+2, text.split(" ")[2].length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+                matchTeams[fixtureElement.getFixtureIndex()].setText(sb);
+            }
         }
     }
+
+    public void setTypeFOURGroupElements() {
+
+        for (FixturePOJO fixtureElement : fixtureArrayList) {
+
+            Log.d("index", fixtureElement.getFixtureIndex() + "");
+
+            if(selectedSport.equalsIgnoreCase("CARROM")){
+                if(fixtureElement.getFixtureIndex()==21){
+                    finalsII.setVisibility(View.VISIBLE);
+                    arrow_next_match.setVisibility(View.VISIBLE);
+                    post_final_match.setVisibility(View.VISIBLE);
+                }
+            }
+            
+            String text = "";
+            if (fixtureElement.getFixtureIndex() != 3 && fixtureElement.getFixtureIndex() != 4 &&
+                    fixtureElement.getFixtureIndex() != 5 && fixtureElement.getFixtureIndex() != 6) {
+                match[fixtureElement.getFixtureIndex()].setText("MATCH " + fixtureElement.getFixture());
+
+                if (fixtureElement.getDept1().contains("WINNER OF")) {
+                    text = text + "W" + fixtureElement.getDept1().trim().split(" ")[2] + " Vs ";
+                } else if (fixtureElement.getDept1().contains("LOSER OF")) {
+                    text = text + "L" + fixtureElement.getDept1().trim().split(" ")[2] + " Vs ";
+                } else {
+                    text = text + fixtureElement.getDept1().trim() + " Vs ";
+                }
+
+                if (fixtureElement.getDept2().contains("WINNER OF")) {
+                    text = text + "W" + fixtureElement.getDept2().trim().split(" ")[2];
+                } else if (fixtureElement.getDept2().contains("LOSER OF")) {
+                    text = text + "L" + fixtureElement.getDept2().trim().split(" ")[2];
+                } else {
+                    text = text + fixtureElement.getDept2().trim();
+                }
+
+                matchTeams[fixtureElement.getFixtureIndex()].setText(text);
+
+                if (fixtureElement.getWinner().trim().equalsIgnoreCase(fixtureElement.getDept1().trim())) {
+                    SpannableStringBuilder sb = new SpannableStringBuilder(text);
+                    StyleSpan b = new StyleSpan(Color.parseColor("#4ab556"));
+                    sb.setSpan(b, 0, text.split(" ")[0].length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+                    matchTeams[fixtureElement.getFixtureIndex()].setText(sb);
+                } else if (fixtureElement.getWinner().equalsIgnoreCase(fixtureElement.getDept2().trim())) {
+                    SpannableStringBuilder sb = new SpannableStringBuilder(text);
+                    StyleSpan b = new StyleSpan(Color.parseColor("#4ab556"));
+                    sb.setSpan(b, text.split(" ")[0].length() + text.split(" ")[1].length() + 2, text.split(" ")[2].length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+                    matchTeams[fixtureElement.getFixtureIndex()].setText(sb);
+                }
+
+            } else {
+
+            }
+        }
+    }
+
+    public void setTypeSIXGroupElements(){
+
+        for(FixturePOJO fixtureElement: fixtureArrayList){
+
+            Log.d("index",fixtureElement.getFixtureIndex()+"");
+
+            String text = "";
+            if (fixtureElement.getFixtureIndex()!=6 && fixtureElement.getFixtureIndex()!=7) {
+                match[fixtureElement.getFixtureIndex()].setText("MATCH " + fixtureElement.getFixture());
+
+                if(fixtureElement.getDept1().contains("WINNER OF")){
+                    text = text + "W" + fixtureElement.getDept1().trim().split(" ")[2]+" Vs ";
+                }
+                else if(fixtureElement.getDept1().contains("LOSER OF")){
+                    text = text + "L" + fixtureElement.getDept1().trim().split(" ")[2]+" Vs ";
+                }
+                else{
+                    text = text +  fixtureElement.getDept1().trim()+" Vs ";
+                }
+
+                if(fixtureElement.getDept2().contains("WINNER OF")){
+                    text = text +  "W"+ fixtureElement.getDept2().trim().split(" ")[2];
+                }
+
+                else if(fixtureElement.getDept2().contains("LOSER OF")){
+                    text = text +  "L"+ fixtureElement.getDept2().trim().split(" ")[2];
+                }else{
+                    text = text +  fixtureElement.getDept2().trim();
+                }
+
+                matchTeams[fixtureElement.getFixtureIndex()].setText(text);
+
+                if(fixtureElement.getWinner().trim().equalsIgnoreCase(fixtureElement.getDept1().trim())){
+                    SpannableStringBuilder sb = new SpannableStringBuilder(text);
+                    StyleSpan b = new StyleSpan(Color.parseColor("#4ab556"));
+                    sb.setSpan(b, 0, text.split(" ")[0].length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+                    matchTeams[fixtureElement.getFixtureIndex()].setText(sb);
+                }
+                else if(fixtureElement.getWinner().equalsIgnoreCase(fixtureElement.getDept2().trim())){
+                    SpannableStringBuilder sb = new SpannableStringBuilder(text);
+                    StyleSpan b = new StyleSpan(Color.parseColor("#4ab556"));
+                    sb.setSpan(b, text.split(" ")[0].length()+text.split(" ")[1].length()+2, text.split(" ")[2].length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+                    matchTeams[fixtureElement.getFixtureIndex()].setText(sb);
+                }
+
+            }else{
+
+            }
+        }
+
+
+    }
+
+    public void setTypeSEVENGroupElements() {
+
+        for (FixturePOJO fixtureElement : fixtureArrayList) {
+
+            Log.d("index", fixtureElement.getFixtureIndex() + "");
+
+            String text = "";
+            if (fixtureElement.getFixtureIndex() != 1 && fixtureElement.getFixtureIndex() != 2 &&
+                    fixtureElement.getFixtureIndex() != 3 && fixtureElement.getFixtureIndex() != 4) {
+                match[fixtureElement.getFixtureIndex()].setText("MATCH " + fixtureElement.getFixture());
+
+                if (fixtureElement.getDept1().contains("WINNER OF")) {
+                    text = text + "W" + fixtureElement.getDept1().trim().split(" ")[2] + " Vs ";
+                } else if (fixtureElement.getDept1().contains("LOSER OF")) {
+                    text = text + "L" + fixtureElement.getDept1().trim().split(" ")[2] + " Vs ";
+                } else {
+                    text = text + fixtureElement.getDept1().trim() + " Vs ";
+                }
+
+                if (fixtureElement.getDept2().contains("WINNER OF")) {
+                    text = text + "W" + fixtureElement.getDept2().trim().split(" ")[2];
+                } else if (fixtureElement.getDept2().contains("LOSER OF")) {
+                    text = text + "L" + fixtureElement.getDept2().trim().split(" ")[2];
+                } else {
+                    text = text + fixtureElement.getDept2().trim();
+                }
+
+                matchTeams[fixtureElement.getFixtureIndex()].setText(text);
+
+                if (fixtureElement.getWinner().trim().equalsIgnoreCase(fixtureElement.getDept1().trim())) {
+                    SpannableStringBuilder sb = new SpannableStringBuilder(text);
+                    StyleSpan b = new StyleSpan(Color.parseColor("#4ab556"));
+                    sb.setSpan(b, 0, text.split(" ")[0].length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+                    matchTeams[fixtureElement.getFixtureIndex()].setText(sb);
+                } else if (fixtureElement.getWinner().equalsIgnoreCase(fixtureElement.getDept2().trim())) {
+                    SpannableStringBuilder sb = new SpannableStringBuilder(text);
+                    StyleSpan b = new StyleSpan(Color.parseColor("#4ab556"));
+                    sb.setSpan(b, text.split(" ")[0].length() + text.split(" ")[1].length() + 2, text.split(" ")[2].length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+                    matchTeams[fixtureElement.getFixtureIndex()].setText(sb);
+                }
+
+            } else {
+
+            }
+        }
+    }
+
+    public void setTypeEIGHTGroupElements() {
+
+        for (FixturePOJO fixtureElement : fixtureArrayList) {
+
+            Log.d("index", fixtureElement.getFixtureIndex() + "");
+
+            String text = "";
+            if (fixtureElement.getFixtureIndex() != 1 && fixtureElement.getFixtureIndex() != 2 &&
+                    fixtureElement.getFixtureIndex() != 3 && fixtureElement.getFixtureIndex() != 4) {
+                match[fixtureElement.getFixtureIndex()].setText("MATCH " + fixtureElement.getFixture());
+
+                if (fixtureElement.getDept1().contains("WINNER OF")) {
+                    text = text + "W" + fixtureElement.getDept1().trim().split(" ")[2] + " Vs ";
+                } else if (fixtureElement.getDept1().contains("LOSER OF")) {
+                    text = text + "L" + fixtureElement.getDept1().trim().split(" ")[2] + " Vs ";
+                } else {
+                    text = text + fixtureElement.getDept1().trim() + " Vs ";
+                }
+
+                if (fixtureElement.getDept2().contains("WINNER OF")) {
+                    text = text + "W" + fixtureElement.getDept2().trim().split(" ")[2];
+                } else if (fixtureElement.getDept2().contains("LOSER OF")) {
+                    text = text + "L" + fixtureElement.getDept2().trim().split(" ")[2];
+                } else {
+                    text = text + fixtureElement.getDept2().trim();
+                }
+
+                matchTeams[fixtureElement.getFixtureIndex()].setText(text);
+
+                if (fixtureElement.getWinner().trim().equalsIgnoreCase(fixtureElement.getDept1().trim())) {
+                    SpannableStringBuilder sb = new SpannableStringBuilder(text);
+                    StyleSpan b = new StyleSpan(Color.parseColor("#4ab556"));
+                    sb.setSpan(b, 0, text.split(" ")[0].length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+                    matchTeams[fixtureElement.getFixtureIndex()].setText(sb);
+                } else if (fixtureElement.getWinner().equalsIgnoreCase(fixtureElement.getDept2().trim())) {
+                    SpannableStringBuilder sb = new SpannableStringBuilder(text);
+                    StyleSpan b = new StyleSpan(Color.parseColor("#4ab556"));
+                    sb.setSpan(b, text.split(" ")[0].length() + text.split(" ")[1].length() + 2, text.split(" ")[2].length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+                    matchTeams[fixtureElement.getFixtureIndex()].setText(sb);
+                }
+
+            } else {
+
+            }
+        }
+    }
+
 
 }

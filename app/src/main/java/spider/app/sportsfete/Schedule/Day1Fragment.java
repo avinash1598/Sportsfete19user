@@ -93,8 +93,9 @@ public class Day1Fragment extends Fragment implements Callback<List<EventDetails
         @Override
         public void onReceive(Context contextBroadcast, Intent intent) {
             getSelectedDept();
-            //updateAdapter();
-            departmentUpdateCallback.updateScheduleFragment();
+            updateAdapter();
+            Log.d("selected department",selectedDept+"");
+            //departmentUpdateCallback.updateScheduleFragment();
         }
     };
 
@@ -134,7 +135,7 @@ public class Day1Fragment extends Fragment implements Callback<List<EventDetails
 
         jazzyRecyclerViewScrollListener = new JazzyRecyclerViewScrollListener();
         jazzyRecyclerViewScrollListener.setTransitionEffect(currentTransitionEffect);
-        recyclerView.setOnScrollListener(jazzyRecyclerViewScrollListener);
+       // recyclerView.setOnScrollListener(jazzyRecyclerViewScrollListener);
 
         loadingView = (LoadingView)getActivity(). findViewById(R.id.day_1_loading_view);
         loadingView.addAnimation(Color.WHITE,R.drawable.basketball, LoadingView.FROM_LEFT);
@@ -172,6 +173,7 @@ public class Day1Fragment extends Fragment implements Callback<List<EventDetails
 
         updateAdapter();
 
+        /*
         if(ScheduleFragment.refresh_check) {
             if (bundle == null) {
                 swipeRefreshLayout.setRefreshing(true);
@@ -180,10 +182,16 @@ public class Day1Fragment extends Fragment implements Callback<List<EventDetails
         }else {
 
         }
+*/
+        if (bundle == null) {
+            swipeRefreshLayout.setRefreshing(true);
+            onRefresh();
+        }
 
         IntentFilter filter = new IntentFilter();
         filter.addAction("update_department");
-        getActivity().registerReceiver(receiver, filter);
+        if(getActivity()!=null)
+            getActivity().registerReceiver(receiver, filter);
 
         setClickListener();
 
@@ -245,8 +253,8 @@ public class Day1Fragment extends Fragment implements Callback<List<EventDetails
                                 putEventsLastUpdate();
                                 loadingView.setVisibility(View.INVISIBLE);
                                 swipeRefreshLayout.setRefreshing(false);
-                                //updateAdapter();
-                                departmentUpdateCallback.updateScheduleFragment();
+                                updateAdapter();
+                                //departmentUpdateCallback.updateScheduleFragment();
                             }
                         });
                     }
@@ -290,6 +298,7 @@ public class Day1Fragment extends Fragment implements Callback<List<EventDetails
     }
 
     public void updateAdapter(){
+
         Log.d("selected department",selectedDept+"");
         List<EventDetailsPOJO>dbList,newDbList=new ArrayList<>();
         try {
@@ -299,8 +308,10 @@ public class Day1Fragment extends Fragment implements Callback<List<EventDetails
             queryBuilder.where().eq("day",selectedDay);
             dbList=queryBuilder.query();
             Log.d("db size","-----------"+dbList.size());
+
             if(selectedDept.equals("ALL")){
                 eventList.clear();
+                eventRecyclerAdapter.notifyDataSetChanged();
                 eventList.addAll(dbList);
                 eventRecyclerAdapter.notifyDataSetChanged();
             }else {
@@ -309,12 +320,15 @@ public class Day1Fragment extends Fragment implements Callback<List<EventDetails
                             eventDetails.getDept2().equalsIgnoreCase(selectedDept)){
                         newDbList.add(eventDetails);
                     }
+
                 }
+
                 eventList.clear();
                 eventRecyclerAdapter.notifyDataSetChanged();
                 eventList.addAll(newDbList);
                 eventRecyclerAdapter.notifyDataSetChanged();
             }
+
         } catch (SQLException e) {
             e.printStackTrace();
         }

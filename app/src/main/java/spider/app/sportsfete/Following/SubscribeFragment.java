@@ -102,13 +102,17 @@ public class SubscribeFragment extends Fragment {
                 LinearLayout tabLay = (LinearLayout)((ViewGroup) tabLayout.getChildAt(0)).getChildAt(tab.getPosition());
                 TextView tabTextView = (TextView) tabLay.getChildAt(1);
                 tabTextView.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+                Typeface hammersmithOnefont = Typeface.createFromAsset(getActivity().getAssets(),  "fonts/HammersmithOneRegular.ttf");
+                tabTextView.setTypeface(hammersmithOnefont);
+
             }
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
                 LinearLayout tabLay = (LinearLayout)((ViewGroup) tabLayout.getChildAt(0)).getChildAt(tab.getPosition());
                 TextView tabTextView = (TextView) tabLay.getChildAt(1);
-                tabTextView.setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL));
+                Typeface hammersmithOnefont = Typeface.createFromAsset(getActivity().getAssets(),  "fonts/HammersmithOneRegular.ttf");
+                tabTextView.setTypeface(hammersmithOnefont);
             }
 
             @Override
@@ -120,6 +124,11 @@ public class SubscribeFragment extends Fragment {
         LinearLayout tabLay = (LinearLayout)((ViewGroup) tabLayout.getChildAt(0)).getChildAt(0);
         TextView tabTextView = (TextView) tabLay.getChildAt(1);
         tabTextView.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+        Typeface hammersmithOnefont = Typeface.createFromAsset(getActivity().getAssets(),  "fonts/HammersmithOneRegular.ttf");
+        tabTextView.setTypeface(hammersmithOnefont);
+        tabLay = (LinearLayout)((ViewGroup) tabLayout.getChildAt(0)).getChildAt(1);
+        tabTextView = (TextView) tabLay.getChildAt(1);
+        tabTextView.setTypeface(hammersmithOnefont);
 
         ((MainActivity)getActivity()).view.setVisibility(View.GONE);
 

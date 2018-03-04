@@ -81,8 +81,8 @@ public class Day4Fragment extends Fragment implements Callback<List<EventDetails
         @Override
         public void onReceive(Context contextBroadcast, Intent intent) {
             getSelectedDept();
-            //updateAdapter();
-            departmentUpdateCallback.updateScheduleFragment();
+            updateAdapter();
+            //departmentUpdateCallback.updateScheduleFragment();
         }
     };
 
@@ -144,7 +144,7 @@ public class Day4Fragment extends Fragment implements Callback<List<EventDetails
         swipeRefreshLayout.setOnRefreshListener(this);
 
         updateAdapter();
-
+/*
         if(ScheduleFragment.refresh_check) {
             if (bundle == null) {
                 swipeRefreshLayout.setRefreshing(true);
@@ -153,11 +153,18 @@ public class Day4Fragment extends Fragment implements Callback<List<EventDetails
         }else {
 
         }
+*/
+        if (bundle == null) {
+            swipeRefreshLayout.setRefreshing(true);
+            onRefresh();
+        }
+
         setClickListener();
 
         IntentFilter filter = new IntentFilter();
         filter.addAction("update_department");
-        getActivity().registerReceiver(receiver, filter);
+        if(getActivity()!=null)
+            getActivity().registerReceiver(receiver, filter);
 
     }
 
@@ -208,8 +215,8 @@ public class Day4Fragment extends Fragment implements Callback<List<EventDetails
                                 putEventsLastUpdate();
                                 loadingView.setVisibility(View.INVISIBLE);
                                 swipeRefreshLayout.setRefreshing(false);
-                                //updateAdapter();
-                                departmentUpdateCallback.updateScheduleFragment();
+                                updateAdapter();
+                                //departmentUpdateCallback.updateScheduleFragment();
                             }
                         });
                     }

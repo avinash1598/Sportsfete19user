@@ -9,6 +9,8 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -54,7 +56,7 @@ public class SportDetailsActivity extends AppCompatActivity {
 
         ViewPager viewPager = (ViewPager) findViewById(R.id.sport_specific_view_pager);
         viewPager.setAdapter(new SportDetailsViewPagerAdapter(getSupportFragmentManager(), selectedSportName));
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.sport_specific_tab_layout);
+        final TabLayout tabLayout = (TabLayout) findViewById(R.id.sport_specific_tab_layout);
         tabLayout.setupWithViewPager(viewPager);
         TabLayout.Tab currentTab = tabLayout.getTabAt(0);
         if (currentTab != null) {
@@ -66,6 +68,42 @@ public class SportDetailsActivity extends AppCompatActivity {
             viewPager.setCurrentItem(0);
 
         }
+
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                LinearLayout tabLay = (LinearLayout)((ViewGroup) tabLayout.getChildAt(0)).getChildAt(tab.getPosition());
+                TextView tabTextView = (TextView) tabLay.getChildAt(1);
+                tabTextView.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+                Typeface hammersmithOnefont = Typeface.createFromAsset(getAssets(),  "fonts/HammersmithOneRegular.ttf");
+                tabTextView.setTypeface(hammersmithOnefont);
+
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+                LinearLayout tabLay = (LinearLayout)((ViewGroup) tabLayout.getChildAt(0)).getChildAt(tab.getPosition());
+                TextView tabTextView = (TextView) tabLay.getChildAt(1);
+                tabTextView.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+                Typeface hammersmithOnefont = Typeface.createFromAsset(getAssets(),  "fonts/HammersmithOneRegular.ttf");
+                tabTextView.setTypeface(hammersmithOnefont);
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+
+        LinearLayout tabLay = (LinearLayout)((ViewGroup) tabLayout.getChildAt(0)).getChildAt(0);
+        TextView tabTextView = (TextView) tabLay.getChildAt(1);
+        tabTextView.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+        Typeface hammersmithOnefont = Typeface.createFromAsset(getAssets(),  "fonts/HammersmithOneRegular.ttf");
+        tabTextView.setTypeface(hammersmithOnefont);
+        tabLay = (LinearLayout)((ViewGroup) tabLayout.getChildAt(0)).getChildAt(1);
+        tabTextView = (TextView) tabLay.getChildAt(1);
+        tabTextView.setTypeface(hammersmithOnefont);
     }
 
     private ArrayList<MyOnTouchListener> onTouchListeners = new ArrayList<MyOnTouchListener>(

@@ -544,18 +544,18 @@
                                                                     android:layout_marginBottom="10dp"
                                                                     android:layout_marginLeft="2dp"
                                                                     android:layout_marginRight="2dp"
+                                                                    android:ellipsize="marquee"
                                                                     android:fadingEdge="horizontal"
                                                                     android:gravity="center"
-                                                                    android:scrollHorizontally="true"
-                                                                    android:ellipsize="marquee"
                                                                     android:marqueeRepeatLimit="marquee_forever"
+                                                                    android:scrollHorizontally="true"
                                                                     android:singleLine="true"
-                                                                    android:text="ECE Vs EEE"
+                                                                    android:text=""
                                                                     android:textAlignment="center"
                                                                     android:textAllCaps="false"
                                                                     android:textColor="@color/colorTabtext"
                                                                     android:textSize="15sp"
-                                                                    android:textStyle="bold"  />
+                                                                    android:textStyle="bold" />
 
                                                             </LinearLayout>
 
@@ -604,18 +604,18 @@
                                                                     android:layout_marginBottom="10dp"
                                                                     android:layout_marginLeft="2dp"
                                                                     android:layout_marginRight="2dp"
+                                                                    android:ellipsize="marquee"
                                                                     android:fadingEdge="horizontal"
                                                                     android:gravity="center"
-                                                                    android:scrollHorizontally="true"
-                                                                    android:ellipsize="marquee"
                                                                     android:marqueeRepeatLimit="marquee_forever"
+                                                                    android:scrollHorizontally="true"
                                                                     android:singleLine="true"
-                                                                    android:text="ECE Vs EEE"
+                                                                    android:text=""
                                                                     android:textAlignment="center"
                                                                     android:textAllCaps="false"
                                                                     android:textColor="@color/colorTabtext"
                                                                     android:textSize="15sp"
-                                                                    android:textStyle="bold"  />
+                                                                    android:textStyle="bold" />
 
                                                             </LinearLayout>
 
@@ -695,18 +695,18 @@
                                                                     android:layout_marginBottom="10dp"
                                                                     android:layout_marginLeft="2dp"
                                                                     android:layout_marginRight="2dp"
+                                                                    android:ellipsize="marquee"
                                                                     android:fadingEdge="horizontal"
                                                                     android:gravity="center"
-                                                                    android:scrollHorizontally="true"
-                                                                    android:ellipsize="marquee"
                                                                     android:marqueeRepeatLimit="marquee_forever"
+                                                                    android:scrollHorizontally="true"
                                                                     android:singleLine="true"
-                                                                    android:text="ECE Vs EEE"
+                                                                    android:text=""
                                                                     android:textAlignment="center"
                                                                     android:textAllCaps="false"
                                                                     android:textColor="@color/colorTabtext"
                                                                     android:textSize="15sp"
-                                                                    android:textStyle="bold"  />
+                                                                    android:textStyle="bold" />
 
                                                             </LinearLayout>
 
@@ -754,18 +754,18 @@
                                                                     android:layout_marginBottom="10dp"
                                                                     android:layout_marginLeft="2dp"
                                                                     android:layout_marginRight="2dp"
+                                                                    android:ellipsize="marquee"
                                                                     android:fadingEdge="horizontal"
                                                                     android:gravity="center"
-                                                                    android:scrollHorizontally="true"
-                                                                    android:ellipsize="marquee"
                                                                     android:marqueeRepeatLimit="marquee_forever"
+                                                                    android:scrollHorizontally="true"
                                                                     android:singleLine="true"
-                                                                    android:text="ECE Vs EEE"
+                                                                    android:text=""
                                                                     android:textAlignment="center"
                                                                     android:textAllCaps="false"
                                                                     android:textColor="@color/colorTabtext"
                                                                     android:textSize="15sp"
-                                                                    android:textStyle="bold"  />
+                                                                    android:textStyle="bold" />
 
                                                             </LinearLayout>
 
@@ -832,18 +832,18 @@
                                                     android:layout_marginBottom="10dp"
                                                     android:layout_marginLeft="2dp"
                                                     android:layout_marginRight="2dp"
+                                                    android:ellipsize="marquee"
                                                     android:fadingEdge="horizontal"
                                                     android:gravity="center"
-                                                    android:scrollHorizontally="true"
-                                                    android:ellipsize="marquee"
                                                     android:marqueeRepeatLimit="marquee_forever"
+                                                    android:scrollHorizontally="true"
                                                     android:singleLine="true"
-                                                    android:text="ECE Vs EEE"
+                                                    android:text=""
                                                     android:textAlignment="center"
                                                     android:textAllCaps="false"
                                                     android:textColor="@color/colorTabtext"
                                                     android:textSize="15sp"
-                                                    android:textStyle="bold"  />
+                                                    android:textStyle="bold" />
 
                                             </LinearLayout>
 
@@ -877,18 +877,18 @@
                                                     android:layout_marginBottom="10dp"
                                                     android:layout_marginLeft="2dp"
                                                     android:layout_marginRight="2dp"
+                                                    android:ellipsize="marquee"
                                                     android:fadingEdge="horizontal"
                                                     android:gravity="center"
-                                                    android:scrollHorizontally="true"
-                                                    android:ellipsize="marquee"
                                                     android:marqueeRepeatLimit="marquee_forever"
+                                                    android:scrollHorizontally="true"
                                                     android:singleLine="true"
-                                                    android:text="ECE Vs EEE"
+                                                    android:text=""
                                                     android:textAlignment="center"
                                                     android:textAllCaps="false"
                                                     android:textColor="@color/colorTabtext"
                                                     android:textSize="15sp"
-                                                    android:textStyle="bold"  />
+                                                    android:textStyle="bold" />
 
                                             </LinearLayout>
 
@@ -963,18 +963,18 @@
                                         android:layout_marginBottom="10dp"
                                         android:layout_marginLeft="2dp"
                                         android:layout_marginRight="2dp"
+                                        android:ellipsize="marquee"
                                         android:fadingEdge="horizontal"
                                         android:gravity="center"
-                                        android:scrollHorizontally="true"
-                                        android:ellipsize="marquee"
                                         android:marqueeRepeatLimit="marquee_forever"
+                                        android:scrollHorizontally="true"
                                         android:singleLine="true"
-                                        android:text="ECE Vs EEE"
+                                        android:text=""
                                         android:textAlignment="center"
                                         android:textAllCaps="false"
                                         android:textColor="@color/colorTabtext"
                                         android:textSize="15sp"
-                                        android:textStyle="bold"  />
+                                        android:textStyle="bold" />
 
                                 </LinearLayout>
 
@@ -1032,18 +1032,18 @@
                                         android:layout_marginBottom="10dp"
                                         android:layout_marginLeft="2dp"
                                         android:layout_marginRight="2dp"
+                                        android:ellipsize="marquee"
                                         android:fadingEdge="horizontal"
                                         android:gravity="center"
-                                        android:scrollHorizontally="true"
-                                        android:ellipsize="marquee"
                                         android:marqueeRepeatLimit="marquee_forever"
+                                        android:scrollHorizontally="true"
                                         android:singleLine="true"
-                                        android:text="ECE Vs EEE"
+                                        android:text=""
                                         android:textAlignment="center"
                                         android:textAllCaps="false"
                                         android:textColor="@color/colorTabtext"
                                         android:textSize="15sp"
-                                        android:textStyle="bold"  />
+                                        android:textStyle="bold" />
 
                                 </LinearLayout>
 
@@ -1098,17 +1098,17 @@
 
                             <TextView
                                 android:id="@+id/position1"
-                                android:layout_width="wrap_content"
+                                android:layout_width="130dp"
                                 android:layout_height="match_parent"
-                                android:layout_margin="10dp"
+                                android:layout_marginBottom="10dp"
                                 android:layout_marginLeft="5dp"
                                 android:layout_marginRight="5dp"
+                                android:layout_marginTop="10dp"
                                 android:drawableLeft="@drawable/goldpos"
                                 android:drawablePadding="10dp"
                                 android:gravity="center_vertical"
-                                android:text="ECE"
                                 android:textAllCaps="false"
-                                android:textColor="@android:color/black"
+                                android:textColor="#DAA520"
                                 android:textSize="15sp"
                                 android:textStyle="bold" />
 
@@ -1127,17 +1127,17 @@
 
                             <TextView
                                 android:id="@+id/position2"
-                                android:layout_width="wrap_content"
+                                android:layout_width="130dp"
                                 android:layout_height="match_parent"
-                                android:layout_margin="10dp"
+                                android:layout_marginBottom="10dp"
                                 android:layout_marginLeft="5dp"
                                 android:layout_marginRight="5dp"
+                                android:layout_marginTop="10dp"
                                 android:drawableLeft="@drawable/silverpos"
                                 android:drawablePadding="10dp"
                                 android:gravity="center_vertical"
-                                android:text="EEE"
                                 android:textAllCaps="false"
-                                android:textColor="@android:color/black"
+                                android:textColor="#808080"
                                 android:textSize="15sp"
                                 android:textStyle="bold" />
 
@@ -1156,17 +1156,17 @@
 
                             <TextView
                                 android:id="@+id/position3"
-                                android:layout_width="wrap_content"
+                                android:layout_width="130dp"
                                 android:layout_height="match_parent"
-                                android:layout_margin="10dp"
+                                android:layout_marginBottom="10dp"
                                 android:layout_marginLeft="5dp"
                                 android:layout_marginRight="5dp"
+                                android:layout_marginTop="10dp"
                                 android:drawableLeft="@drawable/bronzepos"
                                 android:drawablePadding="10dp"
                                 android:gravity="center_vertical"
-                                android:text="EEE"
                                 android:textAllCaps="false"
-                                android:textColor="@android:color/black"
+                                android:textColor="#6C541E"
                                 android:textSize="15sp"
                                 android:textStyle="bold" />
 
