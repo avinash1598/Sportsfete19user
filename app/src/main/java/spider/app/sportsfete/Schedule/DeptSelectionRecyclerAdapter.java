@@ -63,12 +63,12 @@ public class DeptSelectionRecyclerAdapter extends RecyclerView.Adapter<DeptSelec
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
 
-        Log.d("position",""+position);
+        //Log.d("position",""+position);
         holder.departmentTV.setTypeface(inconsolataBoldFont);
         holder.departmentTV.setText(points.get(position));
 
         if(selectedDepartment!=null) {
-            Log.d("selected dept",""+selectedDepartment);
+            //Log.d("selected dept",""+selectedDepartment);
             if (points.get(position).equalsIgnoreCase(selectedDepartment)) {
                 Log.d("selected dept2",""+selectedDepartment);
                 holder.departmentTV.setTextColor(context.getResources().getColor(android.R.color.white));

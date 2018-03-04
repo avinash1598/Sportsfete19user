@@ -58,6 +58,8 @@ public class ScheduleFragment extends Fragment{
     List<String> deptlist;
     DeptSelectionRecyclerAdapter recyclerAdapter;
 
+    public static boolean refresh_check = true;
+
     public ScheduleFragment() {
     }
 
@@ -80,6 +82,12 @@ public class ScheduleFragment extends Fragment{
         super.onViewCreated(view, savedInstanceState);
         context=getContext();
 
+
+        Bundle arguments = getArguments();
+        refresh_check = arguments.getBoolean("refresh");
+            if(!arguments.getBoolean("refresh",true)) {
+                Log.d("boolean------------",false+"");
+            }
 
         deptArraySharedPreference=getResources().getStringArray(R.array.department_array);
         deptlist = new ArrayList<>();

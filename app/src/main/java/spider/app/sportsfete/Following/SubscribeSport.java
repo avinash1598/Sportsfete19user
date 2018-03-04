@@ -133,13 +133,15 @@ public class SubscribeSport extends Fragment {
                     checked[selected]=true;
                     Toast.makeText(getContext(), "Subscribed to "+sportsArraySharedPreference[selected], Toast.LENGTH_SHORT).show();
                     FirebaseMessaging.getInstance().subscribeToTopic(
-                            sportsArraySharedPreference[selected].replaceAll("()","_"));
+                            sportsArraySharedPreference[selected].replace("(","_")
+                                    .replace(")","_"));
                     prefs.edit().putBoolean(sportsArraySharedPreference[selected]+"Checked", true).apply();
                 }else {
                     checked[selected]=false;
                     Toast.makeText(getContext(), "Unsubscribed to "+sportsArraySharedPreference[selected], Toast.LENGTH_SHORT).show();
                     FirebaseMessaging.getInstance().unsubscribeFromTopic(
-                            sportsArraySharedPreference[selected].replaceAll("()","_"));
+                            sportsArraySharedPreference[selected].replace("(","_")
+                                    .replace(")","_"));
                     prefs.edit().putBoolean(sportsArraySharedPreference[selected]+"Checked", false).apply();
                 }
             }

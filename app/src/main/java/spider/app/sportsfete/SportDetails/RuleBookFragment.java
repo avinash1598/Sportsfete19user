@@ -110,87 +110,100 @@ public class RuleBookFragment extends Fragment {
         {
             alertbox_title.setText("Handball");
             TextView alertbox_content = (TextView) view.findViewById(R.id.content);
-            alertbox_content.setText(Html.fromHtml(getString(R.string.Handball), null, new MyTagHandler()));
+            alertbox_content.setText(Html.fromHtml(getString(R.string.Handball_Boys), null, new MyTagHandler()));
         }
         if(selectedSport.equals("11"))
+        {
+            alertbox_title.setText("Handball");
+            TextView alertbox_content = (TextView) view.findViewById(R.id.content);
+            alertbox_content.setText(Html.fromHtml(getString(R.string.Handball_Girls), null, new MyTagHandler()));
+        }
+        if(selectedSport.equals("12"))
         {
             alertbox_title.setText("Hockey");
             TextView alertbox_content = (TextView) view.findViewById(R.id.content);
             alertbox_content.setText(Html.fromHtml(getString(R.string.Hockey), null, new MyTagHandler()));
         }
-        if(selectedSport.equals("12"))
+        if(selectedSport.equals("13"))
         {
             alertbox_title.setText("Kabaddi");
             TextView alertbox_content = (TextView) view.findViewById(R.id.content);
             alertbox_content.setText(Html.fromHtml(getString(R.string.Kabaddi), null, new MyTagHandler()));
         }
-        if(selectedSport.equals("13"))
+        if(selectedSport.equals("14"))
         {
             alertbox_title.setText("Kho Kho");
             TextView alertbox_content = (TextView) view.findViewById(R.id.content);
             alertbox_content.setText(Html.fromHtml(getString(R.string.KhoKho), null, new MyTagHandler()));
         }
-        if(selectedSport.equals("14"))
+        if(selectedSport.equals("15"))
         {
             alertbox_title.setText("Kho Kho");
             TextView alertbox_content = (TextView) view.findViewById(R.id.content);
             alertbox_content.setText(Html.fromHtml(getString(R.string.KhoKho_Girls), null, new MyTagHandler()));
         }
-        if(selectedSport.equals("15"))
+        if(selectedSport.equals("16"))
         {
             alertbox_title.setText("Marathon");
             TextView alertbox_content = (TextView) view.findViewById(R.id.content);
             alertbox_content.setText(Html.fromHtml(getString(R.string.Marathon), null, new MyTagHandler()));
         }
-        if(selectedSport.equals("16"))
+        if(selectedSport.equals("17"))
         {
             alertbox_title.setText("Power Lifting");
             TextView alertbox_content = (TextView) view.findViewById(R.id.content);
             alertbox_content.setText(Html.fromHtml(getString(R.string.PowerLifting), null, new MyTagHandler()));
         }
-        if(selectedSport.equals("17"))
+        if(selectedSport.equals("18"))
         {
             alertbox_title.setText("Swimming");
             TextView alertbox_content = (TextView) view.findViewById(R.id.content);
             alertbox_content.setText(Html.fromHtml(getString(R.string.Swimming), null, new MyTagHandler()));
         }
-        if(selectedSport.equals("18"))
+        if(selectedSport.equals("19"))
         {
             alertbox_title.setText("Table Tennis");
             TextView alertbox_content = (TextView) view.findViewById(R.id.content);
             alertbox_content.setText(Html.fromHtml(getString(R.string.TableTennis), null, new MyTagHandler()));
         }
-        if(selectedSport.equals("19"))
+        if(selectedSport.equals("20"))
+        {
+            alertbox_title.setText("Table Tennis");
+            TextView alertbox_content = (TextView) view.findViewById(R.id.content);
+            alertbox_content.setText(Html.fromHtml(getString(R.string.TableTennis), null, new MyTagHandler()));
+        }
+
+        if(selectedSport.equals("21"))
         {
             alertbox_title.setText("Tennis");
             TextView alertbox_content = (TextView) view.findViewById(R.id.content);
             alertbox_content.setText(Html.fromHtml(getString(R.string.Tennis), null, new MyTagHandler()));
         }
-        if(selectedSport.equals("20"))
+        if(selectedSport.equals("22"))
         {
             alertbox_title.setText("Tennis");
             TextView alertbox_content = (TextView) view.findViewById(R.id.content);
             alertbox_content.setText(Html.fromHtml(getString(R.string.Tennis_Girls), null, new MyTagHandler()));
         }
-        if(selectedSport.equals("21"))
+        if(selectedSport.equals("23"))
         {
             alertbox_title.setText("Throwball");
             TextView alertbox_content = (TextView) view.findViewById(R.id.content);
             alertbox_content.setText(Html.fromHtml(getString(R.string.Throwball), null, new MyTagHandler()));
         }
-        if(selectedSport.equals("22"))
+        if(selectedSport.equals("24"))
         {
             alertbox_title.setText("Volley Ball");
             TextView alertbox_content = (TextView) view.findViewById(R.id.content);
             alertbox_content.setText(Html.fromHtml(getString(R.string.Volleyball), null, new MyTagHandler()));
         }
-        if(selectedSport.equals("23"))
+        if(selectedSport.equals("25"))
         {
             alertbox_title.setText("Volley Ball");
             TextView alertbox_content = (TextView) view.findViewById(R.id.content);
             alertbox_content.setText(Html.fromHtml(getString(R.string.Volleyball_Girls), null, new MyTagHandler()));
         }
-        if(selectedSport.equals("24"))
+        if(selectedSport.equals("26"))
         {
             alertbox_title.setText("Water Polo");
             TextView alertbox_content = (TextView) view.findViewById(R.id.content);

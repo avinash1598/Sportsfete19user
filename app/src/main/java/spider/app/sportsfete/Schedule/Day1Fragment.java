@@ -93,7 +93,8 @@ public class Day1Fragment extends Fragment implements Callback<List<EventDetails
         @Override
         public void onReceive(Context contextBroadcast, Intent intent) {
             getSelectedDept();
-            updateAdapter();
+            //updateAdapter();
+            departmentUpdateCallback.updateScheduleFragment();
         }
     };
 
@@ -152,7 +153,6 @@ public class Day1Fragment extends Fragment implements Callback<List<EventDetails
         eventRecyclerAdapter=new Day1EventsDetailRecyclerAdapter(eventList, getActivity(), new Day1EventsDetailRecyclerAdapter.MyAdapterListener() {
             @Override
             public void onItemSelected(int position, View view) {
-                Log.d("cbdhcb","day1 click");
                 EventDetailsPOJO selectedEvent=eventList.get(position);
                 Intent intent = new Intent(context, EventInfoActivity.class);
                 ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
@@ -172,9 +172,13 @@ public class Day1Fragment extends Fragment implements Callback<List<EventDetails
 
         updateAdapter();
 
-        if(bundle==null){
-            swipeRefreshLayout.setRefreshing(true);
-            onRefresh();
+        if(ScheduleFragment.refresh_check) {
+            if (bundle == null) {
+                swipeRefreshLayout.setRefreshing(true);
+                onRefresh();
+            }
+        }else {
+
         }
 
         IntentFilter filter = new IntentFilter();
@@ -227,7 +231,7 @@ public class Day1Fragment extends Fragment implements Callback<List<EventDetails
                         try {
                             //TableUtils.clearTable(helper.getConnectionSource(), EventDetailsPOJO.class);
                             DeleteBuilder<EventDetailsPOJO, Long> deleteBuilder = dao.deleteBuilder();
-                            deleteBuilder.where().eq("day",1);
+                            deleteBuilder.where().eq("day",0);
                             deleteBuilder.delete();
                             for (int i = 0; i <responseList.size() ; i++) {
                                 dao.create(responseList.get(i));
@@ -241,8 +245,8 @@ public class Day1Fragment extends Fragment implements Callback<List<EventDetails
                                 putEventsLastUpdate();
                                 loadingView.setVisibility(View.INVISIBLE);
                                 swipeRefreshLayout.setRefreshing(false);
-                                updateAdapter();
-                                //departmentUpdateCallback.updateScheduleFragment();
+                                //updateAdapter();
+                                departmentUpdateCallback.updateScheduleFragment();
                             }
                         });
                     }
@@ -286,6 +290,7 @@ public class Day1Fragment extends Fragment implements Callback<List<EventDetails
     }
 
     public void updateAdapter(){
+        Log.d("selected department",selectedDept+"");
         List<EventDetailsPOJO>dbList,newDbList=new ArrayList<>();
         try {
             QueryBuilder<EventDetailsPOJO,Long> queryBuilder= null;
@@ -306,6 +311,7 @@ public class Day1Fragment extends Fragment implements Callback<List<EventDetails
                     }
                 }
                 eventList.clear();
+                eventRecyclerAdapter.notifyDataSetChanged();
                 eventList.addAll(newDbList);
                 eventRecyclerAdapter.notifyDataSetChanged();
             }

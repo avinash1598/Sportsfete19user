@@ -176,7 +176,7 @@
                                 android:textStyle="bold" />
 
                             <TextView
-                                android:id="@+id/grpBteam2"
+                                android:id="@+id/grpBteam3"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="10dp"

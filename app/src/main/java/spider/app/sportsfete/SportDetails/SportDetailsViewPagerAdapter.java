@@ -46,7 +46,7 @@ public class SportDetailsViewPagerAdapter extends FragmentStatePagerAdapter {
     @Override
     public int getCount() {
         if(selectedSport.equals("11")){
-            count = 1;
+            count = 2;
         }else{
             count = 2;
         }

@@ -260,7 +260,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }else if(id==R.id.nav_schedule){
             navigationTabBar.setVisibility(View.GONE);
             lastViewFragment=2;
+            Bundle arguments = new Bundle();
+            arguments.putBoolean("refresh", true);
             ScheduleFragment scheduleFragment=new ScheduleFragment();
+            scheduleFragment.setArguments(arguments);
             FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.fragment_container,scheduleFragment);
             fragmentTransaction.commit();
@@ -329,12 +332,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public void updateScheduleFragment() {
-        /*
+
+        Bundle arguments = new Bundle();
+        arguments.putBoolean("refresh", false);
         ScheduleFragment scheduleFragment=new ScheduleFragment();
+        scheduleFragment.setArguments(arguments);
         FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.fragment_container,scheduleFragment);
         fragmentTransaction.commit();
         getSupportActionBar().setTitle("Schedule");
-        */
+
     }
 }

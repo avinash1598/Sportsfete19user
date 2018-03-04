@@ -81,7 +81,8 @@ public class Day4Fragment extends Fragment implements Callback<List<EventDetails
         @Override
         public void onReceive(Context contextBroadcast, Intent intent) {
             getSelectedDept();
-            updateAdapter();
+            //updateAdapter();
+            departmentUpdateCallback.updateScheduleFragment();
         }
     };
 
@@ -144,11 +145,14 @@ public class Day4Fragment extends Fragment implements Callback<List<EventDetails
 
         updateAdapter();
 
-        if(bundle==null){
-            swipeRefreshLayout.setRefreshing(true);
-            onRefresh();
-        }
+        if(ScheduleFragment.refresh_check) {
+            if (bundle == null) {
+                swipeRefreshLayout.setRefreshing(true);
+                onRefresh();
+            }
+        }else {
 
+        }
         setClickListener();
 
         IntentFilter filter = new IntentFilter();
@@ -190,7 +194,7 @@ public class Day4Fragment extends Fragment implements Callback<List<EventDetails
                         try {
                             //TableUtils.clearTable(helper.getConnectionSource(), EventDetailsPOJO.class);
                             DeleteBuilder<EventDetailsPOJO, Long> deleteBuilder = dao.deleteBuilder();
-                            deleteBuilder.where().eq("day",4);
+                            deleteBuilder.where().eq("day",3);
                             deleteBuilder.delete();
                             for (int i = 0; i <responseList.size() ; i++) {
                                 dao.create(responseList.get(i));
@@ -204,8 +208,8 @@ public class Day4Fragment extends Fragment implements Callback<List<EventDetails
                                 putEventsLastUpdate();
                                 loadingView.setVisibility(View.INVISIBLE);
                                 swipeRefreshLayout.setRefreshing(false);
-                                updateAdapter();
-                                //departmentUpdateCallback.updateScheduleFragment();
+                                //updateAdapter();
+                                departmentUpdateCallback.updateScheduleFragment();
                             }
                         });
                     }

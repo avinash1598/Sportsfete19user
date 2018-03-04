@@ -91,7 +91,6 @@ public class Day1EventsDetailRecyclerAdapter extends RecyclerView.Adapter<EventV
     @Override
     public void onBindViewHolder(final EventViewHolder holder, final int position) {
         EventDetailsPOJO event=eventList.get(position);
-
         String status="";
         if(event.getEliminationType()!=null) {
             {

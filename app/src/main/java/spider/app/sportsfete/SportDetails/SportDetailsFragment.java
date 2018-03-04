@@ -88,7 +88,7 @@ public class SportDetailsFragment extends Fragment {
 
     public void setMap(){
         game_fixture.put("Athletics",0);
-        game_fixture.put("Badminton",1);
+        game_fixture.put("Badminton(Mixed)",1);
         game_fixture.put("Basketball(Boys)",1);
         game_fixture.put("Basketball(Girls)",2);
         game_fixture.put("Carrom",3);

@@ -507,7 +507,43 @@
    ]]>
     </string>
 
-    <string name="Handball">
+    <string name="Handball_Boys">
+            <![CDATA[
+ <p>
+                <b>POINTS:-
+                <br>&emsp;&emsp;&emsp;1st place - 20 points
+                <br>&emsp;&emsp;&emsp;2nd place - 12 points
+                <br>&emsp;&emsp;&emsp;3rd place - 8 points</b>
+            </p>
+
+            <p>Rules:
+            <ul class="rules">
+                <li>Tournament is conducted on a knock out basis.</li>
+                <li>Number of players = 6+1 (+5 subs)</li>
+                <li>Two halves with each half 20 mins (though final timing decision is in the hands of referee)</li>
+                <li>IHF rules/fouls of double dribble, carry, 3 second hold, walk, line cut applies along with passive play and aggression.</li>
+                <li>Decisions of free throw, 7-meter penalty, corner in and throw in rests on referee.</li>
+                <li>The final decision is made by the field referee which must strictly be adhered to.</li>
+                <li>All the players should wear sports shoes. Being barefoot and wearing boots and spikes are not allowed.</li>
+                <li>All the players should wear shorts. Track pants and jeans are not allowed.</li>
+                <li>The Goal Keeper can wear track pants.</li>
+                <li>If the match ends in a tie, 5 minutes’ extra time (maximum twice). If it’s still a tie, the outcome of the match will be decided by penalty shoot-out.</li>
+
+
+
+            </ul>
+
+            </p>
+            <p>CONTACT :
+                   <p>C Hitvinson:7402374522</p>
+
+
+            </p>
+
+   ]]>
+    </string>
+
+    <string name="Handball_Girls">
             <![CDATA[
  <p>
                 <b>POINTS:-

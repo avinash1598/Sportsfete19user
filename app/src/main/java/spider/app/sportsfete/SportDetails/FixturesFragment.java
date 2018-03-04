@@ -170,6 +170,7 @@ public class FixturesFragment extends Fragment {
         int selectedSportInt = Integer.parseInt(selectedSport);
                 selectedSportName=sportNames[selectedSportInt];
 
+                Log.d("FIXTURE TYPE",getActivity().getIntent().getIntExtra("FIXTURE_TYPE",0)+"");
         if((getActivity().getIntent().getIntExtra("FIXTURE_TYPE",0) - 1)<0){
             return inflater.inflate(R.layout.fixture_layout_zero, container, false);
         }
@@ -254,22 +255,24 @@ public class FixturesFragment extends Fragment {
             grpCteam3 = (TextView) getActivity().findViewById(R.id.grpCteam3);
             grpCteam4 = (TextView) getActivity().findViewById(R.id.grpCteam4);
 
-            grpCteam1.setTypeface(Typeface.createFromAsset(getActivity().getAssets(), "fonts/HammersmithOneRegular.ttf"));
-            grpCteam2.setTypeface(Typeface.createFromAsset(getActivity().getAssets(), "fonts/HammersmithOneRegular.ttf"));
-            grpCteam3.setTypeface(Typeface.createFromAsset(getActivity().getAssets(), "fonts/HammersmithOneRegular.ttf"));
+            if(grpCteam1!=null) {
 
-            if(grpCteam4!=null){
-                grpCteam4.setTypeface(Typeface.createFromAsset(getActivity().getAssets(), "fonts/HammersmithOneRegular.ttf"));
+                grpCteam1.setTypeface(Typeface.createFromAsset(getActivity().getAssets(), "fonts/HammersmithOneRegular.ttf"));
+                grpCteam2.setTypeface(Typeface.createFromAsset(getActivity().getAssets(), "fonts/HammersmithOneRegular.ttf"));
+                grpCteam3.setTypeface(Typeface.createFromAsset(getActivity().getAssets(), "fonts/HammersmithOneRegular.ttf"));
+
+                if (grpCteam4 != null) {
+                    grpCteam4.setTypeface(Typeface.createFromAsset(getActivity().getAssets(), "fonts/HammersmithOneRegular.ttf"));
+                }
+
+                grpDteam1 = (TextView) getActivity().findViewById(R.id.grpDteam1);
+                grpDteam2 = (TextView) getActivity().findViewById(R.id.grpDteam2);
+                grpDteam3 = (TextView) getActivity().findViewById(R.id.grpDteam3);
+
+                grpDteam1.setTypeface(Typeface.createFromAsset(getActivity().getAssets(), "fonts/HammersmithOneRegular.ttf"));
+                grpDteam2.setTypeface(Typeface.createFromAsset(getActivity().getAssets(), "fonts/HammersmithOneRegular.ttf"));
+                grpDteam3.setTypeface(Typeface.createFromAsset(getActivity().getAssets(), "fonts/HammersmithOneRegular.ttf"));
             }
-
-            grpDteam1 = (TextView) getActivity().findViewById(R.id.grpDteam1);
-            grpDteam2 = (TextView) getActivity().findViewById(R.id.grpDteam2);
-            grpDteam3 = (TextView) getActivity().findViewById(R.id.grpDteam3);
-
-            grpDteam1.setTypeface(Typeface.createFromAsset(getActivity().getAssets(), "fonts/HammersmithOneRegular.ttf"));
-            grpDteam2.setTypeface(Typeface.createFromAsset(getActivity().getAssets(), "fonts/HammersmithOneRegular.ttf"));
-            grpDteam3.setTypeface(Typeface.createFromAsset(getActivity().getAssets(), "fonts/HammersmithOneRegular.ttf"));
-
         }
 
         for(int i = 0; i<matchId.length; i++){
@@ -346,7 +349,7 @@ public class FixturesFragment extends Fragment {
             public void run() {
                 getFixtureForGame(selectedSportName.toUpperCase().replace("("," ("));
             }
-        },300);
+        },150);
 
 /*
         recyclerView = (RecyclerView) view.findViewById(R.id.fixtures_recycler_view);
@@ -400,6 +403,11 @@ public class FixturesFragment extends Fragment {
                     Log.d("response","successful"+" : "+response.body().size());
                     fixtureArrayList.clear();
                     fixtureArrayList.addAll(response.body());
+                    if(fixtureArrayList.size()==0) {
+                        if (horizontalScrollView != null) {
+                            //horizontalScrollView.setVisibility(View.INVISIBLE);
+                        }
+                    }
                     setElements();
                 }
             }

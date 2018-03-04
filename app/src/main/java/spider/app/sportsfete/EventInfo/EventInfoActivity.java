@@ -217,6 +217,7 @@ public class EventInfoActivity extends AppCompatActivity{
         roundTv.setText(eventInfo.getRound());
         score1Tv.setTypeface(hammersmithOnefont);
         score2Tv.setTypeface(hammersmithOnefont);
+        eventHintTv.setTypeface(hammersmithOnefont);
 
 
         if (eventInfo.getEliminationType().equalsIgnoreCase("single")||
@@ -507,17 +508,18 @@ public class EventInfoActivity extends AppCompatActivity{
             @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                EventDetailsPOJO score = dataSnapshot.getValue(EventDetailsPOJO.class);
+                Score score = dataSnapshot.getValue(Score.class);
+                Log.d("score",score.getDept1_score()+""+score.getDept2_score());
                 if(score!=null) {
                     try {
-                        score1Tv.setText(score.getDept1Score());
-                        score2Tv.setText(score.getDept2Score());
+                        score1Tv.setText(score.getDept1_score());
+                        score2Tv.setText(score.getDept2_score());
                         //setScoreColours(score1Tv, score2Tv);
                     }
                     catch(NumberFormatException e){
                         e.printStackTrace();
-                        score1Tv.setText(score.getDept1Score());
-                        score2Tv.setText(score.getDept2Score());
+                        score1Tv.setText(score.getDept1_score());
+                        score2Tv.setText(score.getDept2_score());
                     }
                     if(score.getHint()!=null||score.getHint().length()!=0)
                         scoreHint = score.getHint();
