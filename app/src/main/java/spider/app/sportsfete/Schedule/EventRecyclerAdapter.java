@@ -58,7 +58,7 @@ public class EventRecyclerAdapter extends RecyclerView.Adapter<EventViewHolder> 
 
     @Override
     public EventViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new EventViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.single_event_item, parent, false));
+        return new EventViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.event_recycler_item, parent, false));
     }
 
     @Override

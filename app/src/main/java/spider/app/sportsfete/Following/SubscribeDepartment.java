@@ -120,8 +120,24 @@ public class SubscribeDepartment extends Fragment {
         jazzyRecyclerViewScrollListener.setTransitionEffect(currentTransitionEffect);
         recyclerView.setOnScrollListener(jazzyRecyclerViewScrollListener);
 
-        adapter=new SubscribeRecyclerAdapter(deptList,context,checked,
-                Typeface.createFromAsset(getActivity().getAssets(),  "fonts/InconsolataBold.ttf"));
+        adapter=new SubscribeRecyclerAdapter(deptList, context, checked,
+                Typeface.createFromAsset(getActivity().getAssets(), "fonts/InconsolataBold.ttf"), new SubscribeRecyclerAdapter.MyAdapterListener() {
+            @Override
+            public void buttonPressed(int position) {
+                int selected=position;
+                if (!checked[selected]){
+                    checked[selected]=true;
+                    Toast.makeText(getContext(), "Subscribed to "+deptArraySharedPreference[selected], Toast.LENGTH_SHORT).show();
+                    FirebaseMessaging.getInstance().subscribeToTopic(deptArraySharedPreference[selected]);
+                    prefs.edit().putBoolean(deptArraySharedPreference[selected]+"Checked", true).apply();
+                }else {
+                    checked[selected]=false;
+                    Toast.makeText(getContext(), "Unsubscribed to "+deptArraySharedPreference[selected], Toast.LENGTH_SHORT).show();
+                    FirebaseMessaging.getInstance().unsubscribeFromTopic(deptArraySharedPreference[selected]);
+                    prefs.edit().putBoolean(deptArraySharedPreference[selected]+"Checked", false).apply();
+                }
+            }
+        });
         recyclerView.setAdapter(adapter);
 
         setClickListener();

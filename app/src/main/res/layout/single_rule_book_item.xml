@@ -27,17 +27,6 @@
                 android:orientation="horizontal"
                 android:padding="5dp">
 
-                <TextView
-                    android:id="@+id/department_rank"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:text="01"
-                    android:textColor="@color/colorTabtext"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:visibility="invisible" />
-
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -53,6 +42,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginTop="10dp"
                         android:layout_weight="1"
                         android:text="DEPT"
                         android:textAlignment="center"
@@ -61,51 +54,9 @@
                         android:textSize="25sp"
                         android:textStyle="bold" />
 
-                    <ImageView
-                        android:id="@+id/medal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:src="@mipmap/ic_launcher"
-                        android:visibility="gone" />
-
-                    <TextView
-                        android:id="@+id/score"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="40"
-                        android:textColor="@color/colorTabtext"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        android:visibility="gone" />
-
                 </LinearLayout>
 
-                <ImageView
-                    android:id="@+id/arrow_indicator"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:contentDescription="arrow indicator"
-                    android:src="@drawable/ic_action_down"
-                    android:visibility="invisible" />
-
             </LinearLayout>
-
-            <net.cachapa.expandablelayout.ExpandableLayout
-                android:id="@+id/expandableLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                app:el_duration="300"
-                app:el_expanded="false">
-
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/score_distribution"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                </android.support.v7.widget.RecyclerView>
-
-            </net.cachapa.expandablelayout.ExpandableLayout>
 
 
         </LinearLayout>

@@ -46,7 +46,7 @@ public class SubscribeSport extends Fragment {
     private String mParam2;
 
     private static final String TAG="SubscribeFragment";
-    boolean[] checked=new boolean[25];
+    boolean[] checked=new boolean[30];
     List<String> deptList;
     String[] sportsArraySharedPreference=new String[25];
     RecyclerView recyclerView;
@@ -124,8 +124,26 @@ public class SubscribeSport extends Fragment {
         jazzyRecyclerViewScrollListener.setTransitionEffect(currentTransitionEffect);
         recyclerView.setOnScrollListener(jazzyRecyclerViewScrollListener);
 
-        adapter=new SubscribeRecyclerAdapter(deptList,getActivity(),checked,
-                Typeface.createFromAsset(getActivity().getAssets(),  "fonts/InconsolataBold.ttf"));
+        adapter=new SubscribeRecyclerAdapter(deptList, getActivity(), checked,
+                Typeface.createFromAsset(getActivity().getAssets(), "fonts/InconsolataBold.ttf"), new SubscribeRecyclerAdapter.MyAdapterListener() {
+            @Override
+            public void buttonPressed(int position) {
+                int selected=position;
+                if (!checked[selected]){
+                    checked[selected]=true;
+                    Toast.makeText(getContext(), "Subscribed to "+sportsArraySharedPreference[selected], Toast.LENGTH_SHORT).show();
+                    FirebaseMessaging.getInstance().subscribeToTopic(
+                            sportsArraySharedPreference[selected].replaceAll("()","_"));
+                    prefs.edit().putBoolean(sportsArraySharedPreference[selected]+"Checked", true).apply();
+                }else {
+                    checked[selected]=false;
+                    Toast.makeText(getContext(), "Unsubscribed to "+sportsArraySharedPreference[selected], Toast.LENGTH_SHORT).show();
+                    FirebaseMessaging.getInstance().unsubscribeFromTopic(
+                            sportsArraySharedPreference[selected].replaceAll("()","_"));
+                    prefs.edit().putBoolean(sportsArraySharedPreference[selected]+"Checked", false).apply();
+                }
+            }
+        });
         recyclerView.setAdapter(adapter);
 
         setClickListener();

@@ -28,7 +28,7 @@
 
     <string-array name="sport_array">
         <item>Athletics</item>
-        <item>Badminton</item>
+        <item>Badminton(Mixed)</item>
         <item>Basketball(Boys)</item>
         <item>Basketball(Girls)</item>
         <item>Carrom</item>
@@ -37,15 +37,17 @@
         <item>Cricket(Girls)</item>
         <item>Football(Boys)</item>
         <item>Football(Girls)</item>
-        <item>Handball</item>
-        <item>Hockey</item>
+        <item>Handball(Boys)</item>
+        <item>Handball(Girls)</item>
+        <item>Hockey(Boys)</item>
         <item>Kabaddi</item>
         <item>Kho Kho(Boys)</item>
         <item>Kho Kho(Girls)</item>
         <item>Marathon</item>
         <item>Power Lifting</item>
         <item>Swimming</item>
-        <item>Table Tennis</item>
+        <item>Table Tennis(Boys)</item>
+        <item>Table Tennis(Girls)</item>
         <item>Tennis(Boys)</item>
         <item>Tennis(Girls)</item>
         <item>Throwball</item>

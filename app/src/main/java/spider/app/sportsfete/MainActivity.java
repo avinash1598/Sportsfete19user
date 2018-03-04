@@ -25,6 +25,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -45,6 +46,8 @@ import spider.app.sportsfete.Schedule.ScheduleViewPagerAdapter;
 import spider.app.sportsfete.SportDetails.SportDetailsFragment;
 import spider.app.sportsfete.Schedule.ScheduleFragment;
 
+import static java.lang.Integer.TYPE;
+
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,DepartmentUpdateCallback {
 
     public static MenuItem prevItem = null;
@@ -59,6 +62,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public Toolbar toolbar;
     public View view;
     NavigationTabBar navigationTabBar;
+    NavigationView navigationView;
 
     private static final String TAG="MainActivity";
 
@@ -73,13 +77,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toolbar.setTitleTextColor(getResources().getColor(android.R.color.white));
         getSupportActionBar().setTitle("");
 
-        for(int i = 1; i <= toolbar.getChildCount(); i++)
+        for(int i = 0; i < toolbar.getChildCount(); i++)
         { View view = toolbar.getChildAt(i);
             Log.d("font set","true"+"");
             if(view instanceof TextView) {
                 TextView textView = (TextView) view;
 
-                textView.setTypeface(Typeface.createFromAsset(getAssets(),  "fonts/InconsolataBold.ttf"));
+                textView.setTypeface(Typeface.createFromAsset(getAssets(),  "fonts/HammersmithOneRegular.ttf"));
                 Log.d("font set","true"+"");
             }
         }
@@ -138,6 +142,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                             transaction.replace(R.id.fragment_container, homeFragment,"LIVE");
                             transaction.commit();
                             invalidateOptionsMenu();
+                            getSupportActionBar().setTitle("Live");
                             break;
 
                     case 1: Bundle arguments2 = new Bundle();
@@ -145,9 +150,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                             HomeFragment homeFragment2 = new HomeFragment();
                             homeFragment2.setArguments(arguments2);
                             FragmentTransaction transaction2 = getSupportFragmentManager().beginTransaction();
-                            transaction2.replace(R.id.fragment_container, homeFragment2,"LIVE");
+                            transaction2.replace(R.id.fragment_container, homeFragment2,"UPCOMING");
                             transaction2.commit();
                             invalidateOptionsMenu();
+                            getSupportActionBar().setTitle("Upcoming");
                             break;
 
                     case 2: Bundle arguments3 = new Bundle();
@@ -155,9 +161,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                             HomeFragment homeFragment3 = new HomeFragment();
                             homeFragment3.setArguments(arguments3);
                             FragmentTransaction transaction3 = getSupportFragmentManager().beginTransaction();
-                            transaction3.replace(R.id.fragment_container, homeFragment3,"LIVE");
+                            transaction3.replace(R.id.fragment_container, homeFragment3,"COMPLETED");
                             transaction3.commit();
                             invalidateOptionsMenu();
+                            getSupportActionBar().setTitle("Completed");
                             break;
                 }
             }
@@ -168,12 +175,27 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         //BlurSupport.addTo(flowingDrawer);
 
         scalingll = (LinearLayout) findViewById(R.id.scaling_layout);
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setItemIconTintList(null);
         navigationView.setNavigationItemSelectedListener(this);
         menu=navigationView.getMenu();
         navigationView.getMenu().getItem(0).setChecked(true);
         onNavigationItemSelected(navigationView.getMenu().getItem(0));
+
+        navigationView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                ArrayList<View> menuItems = new ArrayList<>(); // save Views in this array
+                navigationView.getViewTreeObserver().removeOnGlobalLayoutListener(this); // remove the global layout listener
+                for (int i = 0; i < menu.size(); i++) {// loops over menu items  to get the text view from each menu item
+                    final MenuItem item = menu.getItem(i);
+                    navigationView.findViewsWithText(menuItems, item.getTitle(), View.FIND_VIEWS_WITH_TEXT);
+                }
+                for (final View menuItem : menuItems) {// loops over the saved views and sets the font
+                    ((TextView) menuItem).setTypeface(Typeface.createFromAsset(getAssets(),  "fonts/HammersmithOneRegular.ttf"), Typeface.BOLD);
+                }
+            }
+        });
 
         flowingDrawer.addDrawerListener(new DrawerLayout.DrawerListener() {
             @Override
@@ -206,7 +228,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
+    public boolean onNavigationItemSelected(final MenuItem item) {
         final int id = item.getItemId();
 
         new Handler().postDelayed(new Runnable() {
@@ -272,6 +294,30 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             fragmentTransaction.commit();
             getSupportActionBar().setTitle("Marathon Registration");
         }
+
+                navigationView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+                    @Override
+                    public void onGlobalLayout() {
+                        ArrayList<View> menuItems = new ArrayList<>(); // save Views in this array
+                        navigationView.getViewTreeObserver().removeOnGlobalLayoutListener(this); // remove the global layout listener
+                        for (int i = 0; i < menu.size(); i++) {// loops over menu items  to get the text view from each menu item
+                            final MenuItem item = menu.getItem(i);
+                            navigationView.findViewsWithText(menuItems, item.getTitle(), View.FIND_VIEWS_WITH_TEXT);
+                        }
+                        for (final View menuItem : menuItems) {// loops over the saved views and sets the font
+                            ((TextView) menuItem).setTypeface(Typeface.createFromAsset(getAssets(),  "fonts/HammersmithOneRegular.ttf"), Typeface.BOLD);
+                        }
+                    }
+                });
+
+                for(int i = 0; i < toolbar.getChildCount(); i++)
+                { View view = toolbar.getChildAt(i);
+                    if(view instanceof TextView) {
+                        TextView textView = (TextView) view;
+
+                        textView.setTypeface(Typeface.createFromAsset(getAssets(),  "fonts/HammersmithOneRegular.ttf"));
+                    }
+                }
 
             }
         },320);

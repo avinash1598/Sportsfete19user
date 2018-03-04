@@ -4,7 +4,7 @@
     android:id="@+id/root_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#fff"
+    android:background="#ffffff"
     android:gravity="center_vertical"
     android:orientation="vertical">
 
@@ -12,15 +12,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="30dp"
+        android:background="#ffffff"
         app:cardCornerRadius="0dp"
-        android:background="#fff"
         app:cardElevation="0dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="#ffffff"
             android:focusableInTouchMode="true"
-            android:background="#fff"
             android:gravity="center_horizontal|center_vertical"
             android:orientation="vertical">
 
@@ -121,7 +121,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
-                android:background="@drawable/circular_end_border">
+                android:background="@drawable/circular_end_border"
+                android:padding="2dp">
 
                 <Spinner
                     android:id="@+id/department"
@@ -146,7 +147,7 @@
                 android:gravity="center"
                 android:singleLine="true"
                 android:text="Register"
-                android:textColor="@color/green_text"
+                android:textColor="@android:color/background_light"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:typeface="monospace" />

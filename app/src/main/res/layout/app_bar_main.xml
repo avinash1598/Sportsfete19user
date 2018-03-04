@@ -1,40 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/parent_coordinator"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
     android:background="#f1efef"
+    android:fitsSystemWindows="true"
     tools:context="spider.app.sportsfete.MainActivity">
 
     <LinearLayout
         android:id="@+id/scaling_layout"
         android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:elevation="0dp"
-            android:theme="@style/AppTheme.AppBarOverlay">
+            android:theme="@style/AppTheme.AppBarOverlay"
+            app:elevation="0dp">
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?android:attr/actionBarSize"
                 android:layout_gravity="top"
-                android:theme="@style/MyCustomToolbarStyle"
                 android:background="@color/colorPrimary"
+                android:theme="@style/MyCustomToolbarStyle"
                 app:contentInsetEnd="16dp"
                 app:contentInsetLeft="16dp"
                 app:contentInsetStart="16dp"
                 app:title=""
-                app:titleTextColor="#4d4b4b" >
-
-            </android.support.v7.widget.Toolbar>
+                app:titleTextColor="#4d4b4b"/>
 
         </android.support.design.widget.AppBarLayout>
 

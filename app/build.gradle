@@ -57,10 +57,8 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.google.firebase:firebase-crash:11.8.0'
     compile 'net.cachapa.expandablelayout:expandablelayout:2.9.2'
-
     compile 'de.hdodenhof:circleimageview:2.1.0'
-    compile 'com.yarolegovich:discrete-scrollview:1.4.4'
+    compile 'com.sothree.slidinguppanel:library:3.3.0'
 }
-
 
 apply plugin: 'com.google.gms.google-services'

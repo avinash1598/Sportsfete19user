@@ -5,6 +5,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
@@ -31,7 +32,15 @@ import com.j256.ormlite.stmt.QueryBuilder;
 import java.util.ArrayList;
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+import spider.app.sportsfete.API.ApiInterface;
 import spider.app.sportsfete.API.Event;
+import spider.app.sportsfete.API.FixturePOJO;
+import spider.app.sportsfete.API.StatusEventDetailsPOJO;
 import spider.app.sportsfete.DatabaseHelper;
 import spider.app.sportsfete.R;
 
@@ -50,54 +59,10 @@ public class FixturesFragment extends Fragment {
     Context context;
     View view;
     String selectedSport,selectedSportName, selectedLayout = "";
+    ArrayList<FixturePOJO> fixtureArrayList;
 
     public final String fixtureType = "two";
-    String[] sportNames = {
-            "athletics",
-            "badminton(Mixed)",
-            "basketball(Boys)",
-            "basketball(Girls)",
-            "carrom(Mixed)",
-            "chess(Mixed)",
-            "cricket(Boys)",
-            "cricket(Girls)",
-            "football(Boys)",
-            "football(Girls)",
-            "handball",
-            "hockey",
-            "kabaddi",
-            "kho-kho(Boys)",
-            "kho-kho(Girls)",
-            "marathon",
-            "powerlifting",
-            "swimming",
-            "table tennis(Mixed)",
-            "tennis(Boys)",
-            "tennis(Girls)",
-            "throwball",
-            "volleyball(Boys)",
-            "volleyball(Girls)",
-            "water polo"
-    };
-
-    String[] fixture_layout_one = {
-            "badminton(Mixed)",
-            "basketball(Boys)",
-            "basketball(Girls)",
-            "cricket(Boys)",
-            "cricket(Girls)",
-            "handball",
-            "kabaddi",
-            "volleyball(Boys)"
-    };
-
-    String[] fixture_layout_two = {
-            "football(Girls)",
-            "table tennis(Mixed)",
-            "throwball",
-            "volleyball(Girls)",
-            "water polo"
-    };
+    String[] sportNames;
 
     Integer[] fixture_type = {
             R.layout.fixture_layout_one,
@@ -110,11 +75,11 @@ public class FixturesFragment extends Fragment {
             R.layout.fixture_layout_eight,
             R.layout.fixture_layout_nine,
             R.layout.fixture_layout_ten,
-            R.layout.fixture_layout_ten,
             R.layout.fixture_layout_eleven
     };
 
     Integer[] matchId = {
+            0,
             R.id.match1,
             R.id.match2,
             R.id.match3,
@@ -144,6 +109,7 @@ public class FixturesFragment extends Fragment {
     };
 
     Integer[] matchTeamsId = {
+            0,
             R.id.match1teams,
             R.id.match2teams,
             R.id.match3teams,
@@ -187,6 +153,10 @@ public class FixturesFragment extends Fragment {
     private TextView match1,match2,match3,match4,match5,match6,match7,match8,match9,match10,match11,match12,match13,match14;
     private TextView knockout, quarterfinals, semifinals, bronze, finals, standings;
     private TextView position1, position2, position3;
+    private TextView grpAteam1,grpAteam2,grpAteam3,grpAteam4;
+    private TextView grpBteam1,grpBteam2,grpBteam3,grpBteam4;
+    private TextView grpCteam1,grpCteam2,grpCteam3,grpCteam4;
+    private TextView grpDteam1,grpDteam2,grpDteam3,grpDteam4;
 
     public FixturesFragment() {
     }
@@ -195,11 +165,17 @@ public class FixturesFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
+        sportNames = getActivity().getResources().getStringArray(R.array.sport_array);
         selectedSport= getActivity().getIntent().getStringExtra("SELECTED_SPORT");
         int selectedSportInt = Integer.parseInt(selectedSport);
                 selectedSportName=sportNames[selectedSportInt];
 
-        return inflater.inflate(fixture_type[5], container, false);
+        if((getActivity().getIntent().getIntExtra("FIXTURE_TYPE",0) - 1)<0){
+            return inflater.inflate(R.layout.fixture_layout_zero, container, false);
+        }
+
+        return inflater.inflate(fixture_type[getActivity().getIntent().getIntExtra("FIXTURE_TYPE",0)-1],
+                container, false);
     }
 
 
@@ -208,6 +184,8 @@ public class FixturesFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         this.view = view;
         context = getContext();
+
+        fixtureArrayList = new ArrayList<>();
 
         try {
             helper = OpenHelperManager.getHelper(context, DatabaseHelper.class);
@@ -242,15 +220,60 @@ public class FixturesFragment extends Fragment {
         finals = (TextView)getActivity().findViewById(R.id.finals);
         standings = (TextView)getActivity().findViewById(R.id.Standings);
 
-        knockout.setTypeface(Typeface.createFromAsset(getActivity().getAssets(),  "fonts/HammersmithOneRegular.ttf"));
-        quarterfinals.setTypeface(Typeface.createFromAsset(getActivity().getAssets(),  "fonts/HammersmithOneRegular.ttf"));
-        semifinals.setTypeface(Typeface.createFromAsset(getActivity().getAssets(),  "fonts/HammersmithOneRegular.ttf"));
-        bronze.setTypeface(Typeface.createFromAsset(getActivity().getAssets(),  "fonts/HammersmithOneRegular.ttf"));
-        finals.setTypeface(Typeface.createFromAsset(getActivity().getAssets(),  "fonts/HammersmithOneRegular.ttf"));
-        standings.setTypeface(Typeface.createFromAsset(getActivity().getAssets(),  "fonts/HammersmithOneRegular.ttf"));
+        if(knockout!=null) {
+
+            knockout.setTypeface(Typeface.createFromAsset(getActivity().getAssets(), "fonts/HammersmithOneRegular.ttf"));
+            quarterfinals.setTypeface(Typeface.createFromAsset(getActivity().getAssets(), "fonts/HammersmithOneRegular.ttf"));
+            semifinals.setTypeface(Typeface.createFromAsset(getActivity().getAssets(), "fonts/HammersmithOneRegular.ttf"));
+            bronze.setTypeface(Typeface.createFromAsset(getActivity().getAssets(), "fonts/HammersmithOneRegular.ttf"));
+            finals.setTypeface(Typeface.createFromAsset(getActivity().getAssets(), "fonts/HammersmithOneRegular.ttf"));
+            standings.setTypeface(Typeface.createFromAsset(getActivity().getAssets(), "fonts/HammersmithOneRegular.ttf"));
+
+        }
+
+        if(getActivity().findViewById(R.id.grpAteam1)!=null) {
+
+            grpAteam1 = (TextView) getActivity().findViewById(R.id.grpAteam1);
+            grpAteam2 = (TextView) getActivity().findViewById(R.id.grpAteam2);
+            grpAteam3 = (TextView) getActivity().findViewById(R.id.grpAteam3);
+
+            grpAteam1.setTypeface(Typeface.createFromAsset(getActivity().getAssets(), "fonts/HammersmithOneRegular.ttf"));
+            grpAteam2.setTypeface(Typeface.createFromAsset(getActivity().getAssets(), "fonts/HammersmithOneRegular.ttf"));
+            grpAteam3.setTypeface(Typeface.createFromAsset(getActivity().getAssets(), "fonts/HammersmithOneRegular.ttf"));
+
+            grpBteam1 = (TextView) getActivity().findViewById(R.id.grpBteam1);
+            grpBteam2 = (TextView) getActivity().findViewById(R.id.grpBteam2);
+            grpBteam3 = (TextView) getActivity().findViewById(R.id.grpBteam3);
+
+            grpBteam1.setTypeface(Typeface.createFromAsset(getActivity().getAssets(), "fonts/HammersmithOneRegular.ttf"));
+            grpBteam2.setTypeface(Typeface.createFromAsset(getActivity().getAssets(), "fonts/HammersmithOneRegular.ttf"));
+            grpBteam3.setTypeface(Typeface.createFromAsset(getActivity().getAssets(), "fonts/HammersmithOneRegular.ttf"));
+
+            grpCteam1 = (TextView) getActivity().findViewById(R.id.grpCteam1);
+            grpCteam2 = (TextView) getActivity().findViewById(R.id.grpCteam2);
+            grpCteam3 = (TextView) getActivity().findViewById(R.id.grpCteam3);
+            grpCteam4 = (TextView) getActivity().findViewById(R.id.grpCteam4);
+
+            grpCteam1.setTypeface(Typeface.createFromAsset(getActivity().getAssets(), "fonts/HammersmithOneRegular.ttf"));
+            grpCteam2.setTypeface(Typeface.createFromAsset(getActivity().getAssets(), "fonts/HammersmithOneRegular.ttf"));
+            grpCteam3.setTypeface(Typeface.createFromAsset(getActivity().getAssets(), "fonts/HammersmithOneRegular.ttf"));
+
+            if(grpCteam4!=null){
+                grpCteam4.setTypeface(Typeface.createFromAsset(getActivity().getAssets(), "fonts/HammersmithOneRegular.ttf"));
+            }
+
+            grpDteam1 = (TextView) getActivity().findViewById(R.id.grpDteam1);
+            grpDteam2 = (TextView) getActivity().findViewById(R.id.grpDteam2);
+            grpDteam3 = (TextView) getActivity().findViewById(R.id.grpDteam3);
+
+            grpDteam1.setTypeface(Typeface.createFromAsset(getActivity().getAssets(), "fonts/HammersmithOneRegular.ttf"));
+            grpDteam2.setTypeface(Typeface.createFromAsset(getActivity().getAssets(), "fonts/HammersmithOneRegular.ttf"));
+            grpDteam3.setTypeface(Typeface.createFromAsset(getActivity().getAssets(), "fonts/HammersmithOneRegular.ttf"));
+
+        }
 
         for(int i = 0; i<matchId.length; i++){
-            Log.d("position",""+i);
+            //Log.d("position",""+i);
             match[i] = (TextView)getActivity().findViewById(matchId[i]);
             if(match[i]!=null)
                 match[i].setTypeface(Typeface.createFromAsset(getActivity().getAssets(),  "fonts/HammersmithOneRegular.ttf"));
@@ -317,6 +340,14 @@ public class FixturesFragment extends Fragment {
             }
         });
 
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                getFixtureForGame(selectedSportName.toUpperCase().replace("("," ("));
+            }
+        },300);
+
 /*
         recyclerView = (RecyclerView) view.findViewById(R.id.fixtures_recycler_view);
         recyclerView.setHasFixedSize(true);
@@ -355,5 +386,76 @@ public class FixturesFragment extends Fragment {
         textView.setText(sb);
     }
 
+    public void getFixtureForGame(String sports_name){
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://us-central1-sportsfete-732bf.cloudfunctions.net")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        final ApiInterface apiInterface = retrofit.create(ApiInterface.class);
+
+        apiInterface.getfixture(sports_name).enqueue(new Callback<List<FixturePOJO>>() {
+            @Override
+            public void onResponse(Call<List<FixturePOJO>> call, Response<List<FixturePOJO>> response) {
+                if(response.isSuccessful()){
+                    Log.d("response","successful"+" : "+response.body().size());
+                    fixtureArrayList.clear();
+                    fixtureArrayList.addAll(response.body());
+                    setElements();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<FixturePOJO>> call, Throwable t) {
+                t.printStackTrace();
+            }
+        });
+    }
+
+    public void setElements(){
+        for(FixturePOJO fixtureElement: fixtureArrayList){
+            Log.d("index",fixtureElement.getFixtureIndex()+"");
+
+            String text = "";
+            match[fixtureElement.getFixtureIndex()].setText("MATCH"+fixtureElement.getFixture());
+
+            if(fixtureElement.getDept1().contains("WINNER OF")){
+                text = text + "W" + fixtureElement.getDept1().trim().split(" ")[2]+" Vs ";
+                /*matchTeams[fixtureElement.getFixtureIndex()].setText(
+                        "W"+fixtureElement.getDept1().trim().split(" ")[2]+" Vs "+"" +
+                                "W"+fixtureElement.getDept2().trim().split(" ")[2]);
+*/
+            }
+            else if(fixtureElement.getDept1().contains("LOSER OF")){
+                text = text + "L" + fixtureElement.getDept1().trim().split(" ")[2]+" Vs ";
+                /*matchTeams[fixtureElement.getFixtureIndex()].setText(
+                        "W"+fixtureElement.getDept1().trim().split(" ")[2]+" Vs "+"" +
+                                "L"+fixtureElement.getDept2().trim().split(" ")[2]);
+ */
+            }
+            else{
+                text = text +  fixtureElement.getDept1().trim()+" Vs ";
+            }
+
+            if(fixtureElement.getDept2().contains("WINNER OF")){
+                text = text +  "W"+ fixtureElement.getDept2().trim().split(" ")[2];
+                /*matchTeams[fixtureElement.getFixtureIndex()].setText(
+                        "L"+fixtureElement.getDept1().trim().split(" ")[2]+" Vs "+"" +
+                                "W"+fixtureElement.getDept2().trim().split(" ")[2]);
+ */
+            }
+
+            else if(fixtureElement.getDept2().contains("LOSER OF")){
+                text = text +  "L"+ fixtureElement.getDept2().trim().split(" ")[2];
+               /* matchTeams[fixtureElement.getFixtureIndex()].setText(
+                        "L"+fixtureElement.getDept1().trim().split(" ")[2]+" Vs "+"" +
+                                "L"+fixtureElement.getDept2().trim().split(" ")[2]);
+*/
+            }else{
+                text = text +  fixtureElement.getDept2().trim();
+            }
+
+            matchTeams[fixtureElement.getFixtureIndex()].setText(text);
+        }
+    }
 
 }

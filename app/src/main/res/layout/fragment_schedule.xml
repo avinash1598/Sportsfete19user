@@ -11,7 +11,7 @@
         app:tabTextColor="#FFFFFF"
         app:tabIndicatorHeight="3dp"
         app:tabTextAppearance="@style/NavigationTheme"
-        app:tabSelectedTextColor="@color/green_text"
+        app:tabSelectedTextColor="@android:color/white"
         android:background="@color/colorPrimary"
         app:tabIndicatorColor="@color/green_text"/>
 

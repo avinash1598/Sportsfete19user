@@ -14,7 +14,7 @@ import spider.app.sportsfete.R;
 
 public class EventViewHolder extends RecyclerView.ViewHolder {
 
-    TextView nameTV,participantsTV,venueTV,team1Tv,team2Tv,statusTv, startTimeTv, roundTv, vsTv;
+    TextView nameTV,participantsTV,venueTV,team1Tv,team2Tv,statusTv, startTimeTv, roundTv, vsTv, undecided_match1, undecided_match2;
     LinearLayout versusEventLl,nonVersusEventLl, scene_ll;
     CircleImageView dept_icon1, dept_icon2;
 
@@ -34,5 +34,7 @@ public class EventViewHolder extends RecyclerView.ViewHolder {
         scene_ll = (LinearLayout) itemView.findViewById(R.id.scene_transition);
         dept_icon1 = (CircleImageView) itemView.findViewById(R.id.department1_icon);
         dept_icon2 = (CircleImageView) itemView.findViewById(R.id.department2_icon);
+        undecided_match1 = (TextView) itemView.findViewById(R.id.undecided_match1);
+        undecided_match2 = (TextView) itemView.findViewById(R.id.undecided_match2);
     }
 }

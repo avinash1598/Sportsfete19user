@@ -5,14 +5,19 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.util.Pair;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.transition.Slide;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -138,7 +143,28 @@ public class HomeFragment extends Fragment implements Callback<List<StatusEventD
         loadingView.setVisibility(View.GONE);
 
 
-        eventRecyclerAdapter=new StatusEventsDetailRecyclerAdapter(eventList,context);
+        eventRecyclerAdapter=new StatusEventsDetailRecyclerAdapter(eventList, context, new StatusEventsDetailRecyclerAdapter.MyAdapterListener() {
+            @Override
+            public void onItemSelected(int position, View view1, View view2, View view3, View view4) {
+
+                //setupWindowAnimations();
+
+                StatusEventDetailsPOJO selectedEvent=eventList.get(position);
+                Intent intent = new Intent(context, EventInfoActivity.class);
+
+                Log.d("transition","yooo");
+
+                intent.putExtra("SELECTED_EVENT", new Gson().toJson(selectedEvent));
+                Pair<View,String> pair1 = Pair.create(view1,"event_name");
+                Pair<View,String> pair2 = Pair.create(view2,"event_round");
+                Pair<View,String> pair3 = Pair.create(view3,"versus_event");
+                Pair<View,String> pair4 = Pair.create(view4,"non_versus_event");
+                //ActivityCompat.startActivity(getActivity(), intent, options.toBundle());
+                ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                        getActivity(), pair1,pair2,pair3,pair4);
+                startActivity(intent);
+            }
+        });
         recyclerView.setAdapter(eventRecyclerAdapter);
 
         swipeRefreshLayout= (SwipeRefreshLayout) view.findViewById(R.id.home_swipe_to_refresh);
@@ -150,6 +176,13 @@ public class HomeFragment extends Fragment implements Callback<List<StatusEventD
         setClickListener();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    private void setupWindowAnimations() {
+        Slide slide = new Slide();
+        slide.setDuration(1000);
+        getActivity().getWindow().setExitTransition(slide);
+    }
+
     void setClickListener(){
         rx.Observable<String> observable= eventRecyclerAdapter.getPositionClicks();
         observable.subscribe(new Action1<String>() {
@@ -157,7 +190,13 @@ public class HomeFragment extends Fragment implements Callback<List<StatusEventD
             public void call(String s) {
                 StatusEventDetailsPOJO selectedEvent=eventList.get(Integer.parseInt(s));
                 Intent intent = new Intent(context, EventInfoActivity.class);
+                ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                        getActivity(),
+                        view,
+                        "scene_transition");
                 intent.putExtra("SELECTED_EVENT", new Gson().toJson(selectedEvent));
+                //Pair<View,String> pair = Pair.create();
+                //ActivityCompat.startActivity(getActivity(), intent, options.toBundle());
                 startActivity(intent);
             }
         });
@@ -200,7 +239,7 @@ public class HomeFragment extends Fragment implements Callback<List<StatusEventD
                 }
             }
             if(eventList.size()==0 && viewGroup.getContext()!=null){
-                Snackbar.make(viewGroup,"There are currently no live events!", Snackbar.LENGTH_LONG).show();
+                Snackbar.make(viewGroup,"There are currently no events!", Snackbar.LENGTH_LONG).show();
             }
         }
         eventRecyclerAdapter.notifyDataSetChanged();
@@ -240,7 +279,23 @@ public class HomeFragment extends Fragment implements Callback<List<StatusEventD
             queryBuilder = helper.getStatusEventsDetailDao().queryBuilder();
             queryBuilder.where().eq("status","l");
             eventList=queryBuilder.query();
-            eventRecyclerAdapter=new StatusEventsDetailRecyclerAdapter(eventList,context);
+            eventRecyclerAdapter=new StatusEventsDetailRecyclerAdapter(eventList, context, new StatusEventsDetailRecyclerAdapter.MyAdapterListener() {
+                @Override
+                public void onItemSelected(int position, View view1, View view2, View view3, View view4) {
+                    StatusEventDetailsPOJO selectedEvent=eventList.get(position);
+                    Intent intent = new Intent(context, EventInfoActivity.class);
+
+                    intent.putExtra("SELECTED_EVENT", new Gson().toJson(selectedEvent));
+                    Pair<View,String> pair1 = Pair.create(view1,"event_name");
+                    Pair<View,String> pair2 = Pair.create(view2,"event_round");
+                    Pair<View,String> pair3 = Pair.create(view3,"versus_event");
+                    Pair<View,String> pair4 = Pair.create(view4,"non_versus_event");
+                    //ActivityCompat.startActivity(getActivity(), intent, options.toBundle());
+                    ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                            getActivity(), pair1,pair2,pair3,pair4);
+                    startActivity(intent);
+                }
+            });
             recyclerView.setAdapter(eventRecyclerAdapter);
         } catch (SQLException e) {
             e.printStackTrace();

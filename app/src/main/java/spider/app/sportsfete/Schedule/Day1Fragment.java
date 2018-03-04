@@ -220,7 +220,7 @@ public class Day1Fragment extends Fragment implements Callback<List<EventDetails
             Log.d("response list size","----------"+responseList.size());
             if(responseList.size()>0) {
                 Log.d(TAG, "onResponse:response received ");
-                /*
+
                 Thread thread=new Thread(new Runnable() {
                     @Override
                     public void run() {
@@ -248,7 +248,7 @@ public class Day1Fragment extends Fragment implements Callback<List<EventDetails
                     }
                 });
                 thread.start();
-                */
+
             }
         }
         Log.d(TAG, "onResponse: ");

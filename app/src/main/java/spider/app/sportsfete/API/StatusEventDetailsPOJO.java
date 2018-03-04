@@ -16,6 +16,10 @@ public class StatusEventDetailsPOJO {
     @DatabaseField(generatedId = true)
     long localId;
     @DatabaseField
+    @SerializedName("id")
+    @Expose
+    private String id;
+    @DatabaseField
     @SerializedName("day")
     @Expose
     private Integer day;
@@ -52,6 +56,10 @@ public class StatusEventDetailsPOJO {
     @Expose
     private Integer fixtureType;
     @DatabaseField
+    @SerializedName("group")
+    @Expose
+    private String group;
+    @DatabaseField
     @SerializedName("hint")
     @Expose
     private String hint;
@@ -78,7 +86,7 @@ public class StatusEventDetailsPOJO {
     @DatabaseField
     @SerializedName("start_time")
     @Expose
-    private Integer startTime;
+    private Long startTime;
     @DatabaseField
     @SerializedName("status")
     @Expose
@@ -94,11 +102,15 @@ public class StatusEventDetailsPOJO {
     @DatabaseField
     @SerializedName("winner_dept_next")
     @Expose
-    private Integer winnerDeptNext;
+    private String winnerDeptNext;
     @DatabaseField
     @SerializedName("winner_next_match")
     @Expose
-    private Integer winnerNextMatch;
+    private String winnerNextMatch;
+
+    public String getId(){ return id; }
+
+    public void setId(String id){  this.id = id; }
 
     public Integer getDay() {
         return day;
@@ -172,6 +184,14 @@ public class StatusEventDetailsPOJO {
         this.fixtureType = fixtureType;
     }
 
+    public String getGroup() {
+        return group;
+    }
+
+    public void setGroup(String group) {
+        this.group = group;
+    }
+
     public String getHint() {
         return hint;
     }
@@ -220,11 +240,11 @@ public class StatusEventDetailsPOJO {
         this.round = round;
     }
 
-    public Integer getStartTime() {
+    public Long getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(Integer startTime) {
+    public void setStartTime(Long startTime) {
         this.startTime = startTime;
     }
 
@@ -252,19 +272,19 @@ public class StatusEventDetailsPOJO {
         this.winner = winner;
     }
 
-    public Integer getWinnerDeptNext() {
+    public String getWinnerDeptNext() {
         return winnerDeptNext;
     }
 
-    public void setWinnerDeptNext(Integer winnerDeptNext) {
+    public void setWinnerDeptNext(String winnerDeptNext) {
         this.winnerDeptNext = winnerDeptNext;
     }
 
-    public Integer getWinnerNextMatch() {
+    public String getWinnerNextMatch() {
         return winnerNextMatch;
     }
 
-    public void setWinnerNextMatch(Integer winnerNextMatch) {
+    public void setWinnerNextMatch(String winnerNextMatch) {
         this.winnerNextMatch = winnerNextMatch;
     }
 }

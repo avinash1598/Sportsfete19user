@@ -32,6 +32,11 @@ public class SubscribeRecyclerAdapter extends RecyclerView.Adapter<SubscribeView
     private final PublishSubject<String> onClickSubject = PublishSubject.create();
     Typeface customFont;
     Context context;
+    MyAdapterListener onClickListener;
+
+    public interface MyAdapterListener{
+        public void buttonPressed(int position);
+    }
 
     int[] dept_icon = {
             R.drawable.arch1,
@@ -51,13 +56,14 @@ public class SubscribeRecyclerAdapter extends RecyclerView.Adapter<SubscribeView
     };
 
 
-    public SubscribeRecyclerAdapter(List<String> departmentList,Context context, boolean[] checked, Typeface typeface){
+    public SubscribeRecyclerAdapter(List<String> departmentList,Context context, boolean[] checked, Typeface typeface, MyAdapterListener myAdapterListener){
         this.departmentList=departmentList;
         setHasStableIds(true);
         this.departmentList=departmentList;
         this.checked=checked;
         this.context=context;
         customFont = typeface;
+        onClickListener = myAdapterListener;
     }
 
     @Override
@@ -75,10 +81,12 @@ public class SubscribeRecyclerAdapter extends RecyclerView.Adapter<SubscribeView
     public void onBindViewHolder(SubscribeViewHolder holder, final int position) {
         holder.departmentNameTv.setTypeface(customFont);
         holder.departmentNameTv.setText(departmentList.get(position));
-        holder.sparkButton.setChecked(checked[position]);holder.sparkButton.setEventListener(new SparkEventListener() {
+        holder.sparkButton.setChecked(checked[position]);
+        holder.sparkButton.setEventListener(new SparkEventListener() {
             @Override
             public void onEvent(ImageView button, boolean buttonState) {
-                onClickSubject.onNext(String.valueOf(position));
+                //onClickSubject.onNext(String.valueOf(position));
+                onClickListener.buttonPressed(position);
             }
         });
 

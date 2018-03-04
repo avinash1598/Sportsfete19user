@@ -56,14 +56,6 @@
 
         </LinearLayout>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_below="@+id/linearLayout"
-            android:layout_marginLeft="40dp"
-            android:layout_marginRight="40dp"
-            android:background="#e1dfdf" />
-
     </RelativeLayout>
 
 </LinearLayout>

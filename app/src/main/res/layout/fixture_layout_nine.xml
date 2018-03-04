@@ -17,334 +17,10 @@
             android:layout_height="match_parent"
             android:orientation="horizontal">
 
-            <!--Pool-->
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginRight="20dp"
-                android:gravity="center_horizontal"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/knockout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginTop="10dp"
-                    android:text="KNOCKOUT"
-                    android:textColor="@color/cardview_dark_background"
-                    android:textStyle="bold|italic" />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <LinearLayout
-                            android:layout_width="150dp"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="10dp"
-                            android:background="@android:color/white"
-                            android:elevation="2dp"
-                            android:gravity="center_vertical|center_horizontal"
-                            android:orientation="vertical"
-                            android:paddingLeft="20dp"
-                            android:paddingRight="20dp">
-
-                            <TextView
-                                android:id="@+id/GROUP-A"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginBottom="5dp"
-                                android:layout_marginLeft="5dp"
-                                android:layout_marginRight="5dp"
-                                android:layout_marginTop="10dp"
-                                android:text="GROUP-A"
-                                android:textAllCaps="true"
-                                android:textSize="12sp" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginBottom="10dp"
-                                android:layout_marginLeft="5dp"
-                                android:layout_marginRight="5dp"
-                                android:text="ICE"
-                                android:textAllCaps="false"
-                                android:textColor="@android:color/black"
-                                android:textSize="15sp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginBottom="10dp"
-                                android:layout_marginLeft="5dp"
-                                android:layout_marginRight="5dp"
-                                android:text="PROD"
-                                android:textAllCaps="false"
-                                android:textColor="@android:color/black"
-                                android:textSize="15sp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginBottom="10dp"
-                                android:layout_marginLeft="5dp"
-                                android:layout_marginRight="5dp"
-                                android:text="CHEM"
-                                android:textAllCaps="false"
-                                android:textColor="@android:color/black"
-                                android:textSize="15sp"
-                                android:textStyle="bold" />
-
-                        </LinearLayout>
-
-
-                    </LinearLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <LinearLayout
-                            android:layout_width="150dp"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="10dp"
-                            android:background="@android:color/white"
-                            android:elevation="2dp"
-                            android:gravity="center_vertical|center_horizontal"
-                            android:orientation="vertical"
-                            android:paddingLeft="20dp"
-                            android:paddingRight="20dp">
-
-                            <TextView
-                                android:id="@+id/GROUP-B"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginBottom="5dp"
-                                android:layout_marginLeft="5dp"
-                                android:layout_marginRight="5dp"
-                                android:layout_marginTop="10dp"
-                                android:text="GROUP-B"
-                                android:textAllCaps="true"
-                                android:textSize="12sp" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginBottom="10dp"
-                                android:layout_marginLeft="5dp"
-                                android:layout_marginRight="5dp"
-                                android:text="EEE"
-                                android:textAllCaps="false"
-                                android:textColor="@android:color/black"
-                                android:textSize="15sp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginBottom="10dp"
-                                android:layout_marginLeft="5dp"
-                                android:layout_marginRight="5dp"
-                                android:text="CSE"
-                                android:textAllCaps="false"
-                                android:textColor="@android:color/black"
-                                android:textSize="15sp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginBottom="10dp"
-                                android:layout_marginLeft="5dp"
-                                android:layout_marginRight="5dp"
-                                android:text="PHD/MS/MSC"
-                                android:textAllCaps="false"
-                                android:textColor="@android:color/black"
-                                android:textSize="15sp"
-                                android:textStyle="bold" />
-
-                        </LinearLayout>
-
-
-                    </LinearLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <LinearLayout
-                            android:layout_width="150dp"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="10dp"
-                            android:background="@android:color/white"
-                            android:elevation="2dp"
-                            android:gravity="center_vertical|center_horizontal"
-                            android:orientation="vertical"
-                            android:paddingLeft="20dp"
-                            android:paddingRight="20dp">
-
-                            <TextView
-                                android:id="@+id/GROUP-A"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginBottom="5dp"
-                                android:layout_marginLeft="5dp"
-                                android:layout_marginRight="5dp"
-                                android:layout_marginTop="10dp"
-                                android:text="GROUP-C"
-                                android:textAllCaps="true"
-                                android:textSize="12sp" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginBottom="10dp"
-                                android:layout_marginLeft="5dp"
-                                android:layout_marginRight="5dp"
-                                android:text="M. TECH"
-                                android:textAllCaps="false"
-                                android:textColor="@android:color/black"
-                                android:textSize="15sp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginBottom="10dp"
-                                android:layout_marginLeft="5dp"
-                                android:layout_marginRight="5dp"
-                                android:text="MCA"
-                                android:textAllCaps="false"
-                                android:textColor="@android:color/black"
-                                android:textSize="15sp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginBottom="10dp"
-                                android:layout_marginLeft="5dp"
-                                android:layout_marginRight="5dp"
-                                android:text="ECE"
-                                android:textAllCaps="false"
-                                android:textColor="@android:color/black"
-                                android:textSize="15sp"
-                                android:textStyle="bold" />
-
-                        </LinearLayout>
-
-
-                    </LinearLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <LinearLayout
-                            android:layout_width="150dp"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="10dp"
-                            android:background="@android:color/white"
-                            android:elevation="2dp"
-                            android:gravity="center_vertical|center_horizontal"
-                            android:orientation="vertical"
-                            android:paddingLeft="20dp"
-                            android:paddingRight="20dp">
-
-                            <TextView
-                                android:id="@+id/GROUP-D"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginBottom="5dp"
-                                android:layout_marginLeft="5dp"
-                                android:layout_marginRight="5dp"
-                                android:layout_marginTop="10dp"
-                                android:text="GROUP-D"
-                                android:textAllCaps="true"
-                                android:textSize="12sp" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginBottom="10dp"
-                                android:layout_marginLeft="5dp"
-                                android:layout_marginRight="5dp"
-                                android:text="META"
-                                android:textAllCaps="false"
-                                android:textColor="@android:color/black"
-                                android:textSize="15sp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginBottom="10dp"
-                                android:layout_marginLeft="5dp"
-                                android:layout_marginRight="5dp"
-                                android:text="ARCHI"
-                                android:textAllCaps="false"
-                                android:textColor="@android:color/black"
-                                android:textSize="15sp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginBottom="10dp"
-                                android:layout_marginLeft="5dp"
-                                android:layout_marginRight="5dp"
-                                android:text="CIVIL"
-                                android:textAllCaps="false"
-                                android:textColor="@android:color/black"
-                                android:textSize="15sp"
-                                android:textStyle="bold" />
-
-                        </LinearLayout>
-
-
-                    </LinearLayout>
-                </LinearLayout>
-
-            </LinearLayout>
-
             <!--Parent layout-->
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:background="#f1f1f1"
                 android:orientation="vertical">
 
@@ -359,7 +35,25 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="-20dp"
+                        android:layout_weight="3.5"
+                        android:gravity="center_horizontal"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/knockout"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginTop="10dp"
+                            android:text="KNOCKOUT"
+                            android:textColor="@color/cardview_dark_background"
+                            android:textStyle="bold|italic" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center_horizontal"
                         android:orientation="horizontal">
@@ -481,12 +175,198 @@
                                             <LinearLayout
                                                 android:layout_width="wrap_content"
                                                 android:layout_height="wrap_content"
+                                                android:orientation="vertical">
+
+                                                <LinearLayout
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:gravity="center_vertical"
+                                                    android:orientation="horizontal">
+
+                                                    <LinearLayout
+                                                        android:layout_width="wrap_content"
+                                                        android:layout_height="wrap_content"
+                                                        android:orientation="vertical">
+
+                                                        <LinearLayout
+                                                            android:layout_width="wrap_content"
+                                                            android:layout_height="wrap_content"
+                                                            android:layout_margin="10dp"
+                                                            android:background="@android:color/white"
+                                                            android:elevation="2dp"
+                                                            android:gravity="center_vertical|center_horizontal"
+                                                            android:orientation="vertical"
+                                                            android:paddingLeft="10dp"
+                                                            android:paddingRight="10dp">
+
+                                                            <TextView
+                                                                android:id="@+id/match1"
+                                                                android:layout_width="wrap_content"
+                                                                android:layout_height="wrap_content"
+                                                                android:layout_marginBottom="5dp"
+                                                                android:layout_marginLeft="5dp"
+                                                                android:layout_marginRight="5dp"
+                                                                android:layout_marginTop="10dp"
+                                                                android:text="MATCH1"
+                                                                android:textAllCaps="true"
+                                                                android:textSize="12sp" />
+
+                                                            <TextView
+                                                                android:id="@+id/match1teams"
+                                                                android:layout_width="120dp"
+                                                                android:layout_height="wrap_content"
+                                                                android:layout_marginBottom="10dp"
+                                                                android:layout_marginLeft="2dp"
+                                                                android:layout_marginRight="2dp"
+                                                                android:ellipsize="marquee"
+                                                                android:fadingEdge="horizontal"
+                                                                android:gravity="center"
+                                                                android:marqueeRepeatLimit="marquee_forever"
+                                                                android:scrollHorizontally="true"
+                                                                android:singleLine="true"
+                                                                android:text="ECE Vs EEE"
+                                                                android:textAlignment="center"
+                                                                android:textAllCaps="false"
+                                                                android:textColor="@color/colorTabtext"
+                                                                android:textSize="15sp"
+                                                                android:textStyle="bold" />
+
+                                                        </LinearLayout>
+
+                                                    </LinearLayout>
+
+                                                    <View
+                                                        android:layout_width="30dp"
+                                                        android:layout_height="10dp"
+                                                        android:layout_marginBottom="5dp"
+                                                        android:layout_marginTop="5dp"
+                                                        android:background="@drawable/next_match_arrow" />
+
+                                                </LinearLayout>
+
+                                                <LinearLayout
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:gravity="center_vertical"
+                                                    android:orientation="horizontal">
+
+                                                    <LinearLayout
+                                                        android:layout_width="wrap_content"
+                                                        android:layout_height="wrap_content"
+                                                        android:orientation="vertical">
+
+                                                        <LinearLayout
+                                                            android:layout_width="wrap_content"
+                                                            android:layout_height="wrap_content"
+                                                            android:layout_margin="10dp"
+                                                            android:background="@android:color/white"
+                                                            android:elevation="2dp"
+                                                            android:gravity="center_vertical|center_horizontal"
+                                                            android:orientation="vertical"
+                                                            android:paddingLeft="10dp"
+                                                            android:paddingRight="10dp">
+
+                                                            <TextView
+                                                                android:id="@+id/match2"
+                                                                android:layout_width="wrap_content"
+                                                                android:layout_height="wrap_content"
+                                                                android:layout_marginBottom="5dp"
+                                                                android:layout_marginLeft="5dp"
+                                                                android:layout_marginRight="5dp"
+                                                                android:layout_marginTop="10dp"
+                                                                android:text="MATCH2"
+                                                                android:textAllCaps="true"
+                                                                android:textSize="12sp" />
+
+                                                            <TextView
+                                                                android:id="@+id/match2teams"
+                                                                android:layout_width="120dp"
+                                                                android:layout_height="wrap_content"
+                                                                android:layout_marginBottom="10dp"
+                                                                android:layout_marginLeft="2dp"
+                                                                android:layout_marginRight="2dp"
+                                                                android:ellipsize="marquee"
+                                                                android:fadingEdge="horizontal"
+                                                                android:gravity="center"
+                                                                android:marqueeRepeatLimit="marquee_forever"
+                                                                android:scrollHorizontally="true"
+                                                                android:singleLine="true"
+                                                                android:text="ECE Vs EEE"
+                                                                android:textAlignment="center"
+                                                                android:textAllCaps="false"
+                                                                android:textColor="@color/colorTabtext"
+                                                                android:textSize="15sp"
+                                                                android:textStyle="bold" />
+
+                                                        </LinearLayout>
+
+                                                        <LinearLayout
+                                                            android:layout_width="wrap_content"
+                                                            android:layout_height="wrap_content"
+                                                            android:layout_margin="10dp"
+                                                            android:background="@android:color/white"
+                                                            android:elevation="2dp"
+                                                            android:gravity="center_vertical|center_horizontal"
+                                                            android:orientation="vertical"
+                                                            android:paddingLeft="10dp"
+                                                            android:paddingRight="10dp">
+
+                                                            <TextView
+                                                                android:id="@+id/match3"
+                                                                android:layout_width="wrap_content"
+                                                                android:layout_height="wrap_content"
+                                                                android:layout_marginBottom="5dp"
+                                                                android:layout_marginLeft="5dp"
+                                                                android:layout_marginRight="5dp"
+                                                                android:layout_marginTop="10dp"
+                                                                android:text="MATCH3"
+                                                                android:textAllCaps="true"
+                                                                android:textSize="12sp" />
+
+                                                            <TextView
+                                                                android:id="@+id/match3teams"
+                                                                android:layout_width="120dp"
+                                                                android:layout_height="wrap_content"
+                                                                android:layout_marginBottom="10dp"
+                                                                android:layout_marginLeft="2dp"
+                                                                android:layout_marginRight="2dp"
+                                                                android:ellipsize="marquee"
+                                                                android:fadingEdge="horizontal"
+                                                                android:gravity="center"
+                                                                android:marqueeRepeatLimit="marquee_forever"
+                                                                android:scrollHorizontally="true"
+                                                                android:singleLine="true"
+                                                                android:text="ECE Vs EEE"
+                                                                android:textAlignment="center"
+                                                                android:textAllCaps="false"
+                                                                android:textColor="@color/colorTabtext"
+                                                                android:textSize="15sp"
+                                                                android:textStyle="bold" />
+
+                                                        </LinearLayout>
+
+                                                    </LinearLayout>
+
+                                                    <View
+                                                        android:layout_width="wrap_content"
+                                                        android:layout_height="100dp"
+                                                        android:layout_marginBottom="5dp"
+                                                        android:layout_marginTop="5dp"
+                                                        android:background="@drawable/indicator_bracket" />
+
+                                                </LinearLayout>
+
+                                            </LinearLayout>
+
+                                            <LinearLayout
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="match_parent"
                                                 android:gravity="center_vertical"
                                                 android:orientation="horizontal">
 
                                                 <LinearLayout
                                                     android:layout_width="wrap_content"
-                                                    android:layout_height="wrap_content"
+                                                    android:layout_height="match_parent"
                                                     android:gravity="center_vertical"
                                                     android:orientation="vertical">
 
@@ -508,31 +388,38 @@
                                                                 android:elevation="2dp"
                                                                 android:gravity="center_vertical|center_horizontal"
                                                                 android:orientation="vertical"
-                                                                android:paddingLeft="20dp"
-                                                                android:paddingRight="20dp">
+                                                                android:paddingLeft="10dp"
+                                                                android:paddingRight="10dp">
 
                                                                 <TextView
-                                                                    android:id="@+id/match4"
+                                                                    android:id="@+id/match11"
                                                                     android:layout_width="wrap_content"
                                                                     android:layout_height="wrap_content"
                                                                     android:layout_marginBottom="5dp"
                                                                     android:layout_marginLeft="5dp"
                                                                     android:layout_marginRight="5dp"
                                                                     android:layout_marginTop="10dp"
-                                                                    android:text="MATCH4"
+                                                                    android:text="MATCH11"
                                                                     android:textAllCaps="true"
                                                                     android:textSize="12sp" />
 
                                                                 <TextView
-                                                                    android:id="@+id/match4teams"
-                                                                    android:layout_width="wrap_content"
+                                                                    android:id="@+id/match11teams"
+                                                                    android:layout_width="120dp"
                                                                     android:layout_height="wrap_content"
                                                                     android:layout_marginBottom="10dp"
-                                                                    android:layout_marginLeft="5dp"
-                                                                    android:layout_marginRight="5dp"
+                                                                    android:layout_marginLeft="2dp"
+                                                                    android:layout_marginRight="2dp"
+                                                                    android:ellipsize="marquee"
+                                                                    android:fadingEdge="horizontal"
+                                                                    android:gravity="center"
+                                                                    android:marqueeRepeatLimit="marquee_forever"
+                                                                    android:scrollHorizontally="true"
+                                                                    android:singleLine="true"
                                                                     android:text="ECE Vs EEE"
+                                                                    android:textAlignment="center"
                                                                     android:textAllCaps="false"
-                                                                    android:textColor="@android:color/black"
+                                                                    android:textColor="@color/colorTabtext"
                                                                     android:textSize="15sp"
                                                                     android:textStyle="bold" />
 
@@ -545,6 +432,7 @@
                                                     <LinearLayout
                                                         android:layout_width="wrap_content"
                                                         android:layout_height="wrap_content"
+                                                        android:layout_weight="1"
                                                         android:gravity="center_vertical"
                                                         android:orientation="horizontal">
 
@@ -561,31 +449,38 @@
                                                                 android:elevation="2dp"
                                                                 android:gravity="bottom|center_horizontal"
                                                                 android:orientation="vertical"
-                                                                android:paddingLeft="20dp"
-                                                                android:paddingRight="20dp">
+                                                                android:paddingLeft="10dp"
+                                                                android:paddingRight="10dp">
 
                                                                 <TextView
-                                                                    android:id="@+id/match5"
+                                                                    android:id="@+id/match12"
                                                                     android:layout_width="wrap_content"
                                                                     android:layout_height="wrap_content"
                                                                     android:layout_marginBottom="5dp"
                                                                     android:layout_marginLeft="5dp"
                                                                     android:layout_marginRight="5dp"
                                                                     android:layout_marginTop="10dp"
-                                                                    android:text="MATCH5"
+                                                                    android:text="MATCH12"
                                                                     android:textAllCaps="true"
                                                                     android:textSize="12sp" />
 
                                                                 <TextView
-                                                                    android:id="@+id/match5teams"
-                                                                    android:layout_width="wrap_content"
+                                                                    android:id="@+id/match12teams"
+                                                                    android:layout_width="120dp"
                                                                     android:layout_height="wrap_content"
                                                                     android:layout_marginBottom="10dp"
-                                                                    android:layout_marginLeft="5dp"
-                                                                    android:layout_marginRight="5dp"
+                                                                    android:layout_marginLeft="2dp"
+                                                                    android:layout_marginRight="2dp"
+                                                                    android:ellipsize="marquee"
+                                                                    android:fadingEdge="horizontal"
+                                                                    android:gravity="center"
+                                                                    android:marqueeRepeatLimit="marquee_forever"
+                                                                    android:scrollHorizontally="true"
+                                                                    android:singleLine="true"
                                                                     android:text="ECE Vs EEE"
+                                                                    android:textAlignment="center"
                                                                     android:textAllCaps="false"
-                                                                    android:textColor="@android:color/black"
+                                                                    android:textColor="@color/colorTabtext"
                                                                     android:textSize="15sp"
                                                                     android:textStyle="bold" />
 
@@ -598,8 +493,9 @@
                                                 </LinearLayout>
 
                                                 <View
-                                                    android:layout_width="20dp"
-                                                    android:layout_height="100dp"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="120dp"
+                                                    android:layout_marginBottom="20dp"
                                                     android:background="@drawable/large_indicator_bracket"
                                                     android:visibility="visible" />
 
@@ -618,6 +514,222 @@
                                             <LinearLayout
                                                 android:layout_width="wrap_content"
                                                 android:layout_height="wrap_content"
+                                                android:orientation="vertical">
+
+                                                <LinearLayout
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:gravity="center_vertical"
+                                                    android:orientation="horizontal">
+
+                                                    <LinearLayout
+                                                        android:layout_width="wrap_content"
+                                                        android:layout_height="wrap_content"
+                                                        android:orientation="vertical">
+
+                                                        <LinearLayout
+                                                            android:layout_width="wrap_content"
+                                                            android:layout_height="wrap_content"
+                                                            android:layout_margin="10dp"
+                                                            android:background="@android:color/white"
+                                                            android:elevation="2dp"
+                                                            android:gravity="center_vertical|center_horizontal"
+                                                            android:orientation="vertical"
+                                                            android:paddingLeft="10dp"
+                                                            android:paddingRight="10dp">
+
+                                                            <TextView
+                                                                android:id="@+id/match4"
+                                                                android:layout_width="wrap_content"
+                                                                android:layout_height="wrap_content"
+                                                                android:layout_marginBottom="5dp"
+                                                                android:layout_marginLeft="5dp"
+                                                                android:layout_marginRight="5dp"
+                                                                android:layout_marginTop="10dp"
+                                                                android:text="MATCH4"
+                                                                android:textAllCaps="true"
+                                                                android:textSize="12sp" />
+
+                                                            <TextView
+                                                                android:id="@+id/match4teams"
+                                                                android:layout_width="120dp"
+                                                                android:layout_height="wrap_content"
+                                                                android:layout_marginBottom="10dp"
+                                                                android:layout_marginLeft="2dp"
+                                                                android:layout_marginRight="2dp"
+                                                                android:ellipsize="marquee"
+                                                                android:fadingEdge="horizontal"
+                                                                android:gravity="center"
+                                                                android:marqueeRepeatLimit="marquee_forever"
+                                                                android:scrollHorizontally="true"
+                                                                android:singleLine="true"
+                                                                android:text="ECE Vs EEE"
+                                                                android:textAlignment="center"
+                                                                android:textAllCaps="false"
+                                                                android:textColor="@color/colorTabtext"
+                                                                android:textSize="15sp"
+                                                                android:textStyle="bold" />
+
+                                                        </LinearLayout>
+
+                                                        <LinearLayout
+                                                            android:layout_width="wrap_content"
+                                                            android:layout_height="wrap_content"
+                                                            android:layout_margin="10dp"
+                                                            android:background="@android:color/white"
+                                                            android:elevation="2dp"
+                                                            android:gravity="center_vertical|center_horizontal"
+                                                            android:orientation="vertical"
+                                                            android:paddingLeft="10dp"
+                                                            android:paddingRight="10dp">
+
+                                                            <TextView
+                                                                android:id="@+id/match5"
+                                                                android:layout_width="wrap_content"
+                                                                android:layout_height="wrap_content"
+                                                                android:layout_marginBottom="5dp"
+                                                                android:layout_marginLeft="5dp"
+                                                                android:layout_marginRight="5dp"
+                                                                android:layout_marginTop="10dp"
+                                                                android:text="MATCH5"
+                                                                android:textAllCaps="true"
+                                                                android:textSize="12sp" />
+
+                                                            <TextView
+                                                                android:id="@+id/match5teams"
+                                                                android:layout_width="120dp"
+                                                                android:layout_height="wrap_content"
+                                                                android:layout_marginBottom="10dp"
+                                                                android:layout_marginLeft="2dp"
+                                                                android:layout_marginRight="2dp"
+                                                                android:ellipsize="marquee"
+                                                                android:fadingEdge="horizontal"
+                                                                android:gravity="center"
+                                                                android:marqueeRepeatLimit="marquee_forever"
+                                                                android:scrollHorizontally="true"
+                                                                android:singleLine="true"
+                                                                android:text="ECE Vs EEE"
+                                                                android:textAlignment="center"
+                                                                android:textAllCaps="false"
+                                                                android:textColor="@color/colorTabtext"
+                                                                android:textSize="15sp"
+                                                                android:textStyle="bold" />
+
+                                                        </LinearLayout>
+
+                                                    </LinearLayout>
+
+                                                    <View
+                                                        android:layout_width="wrap_content"
+                                                        android:layout_height="100dp"
+                                                        android:layout_marginBottom="5dp"
+                                                        android:layout_marginTop="5dp"
+                                                        android:background="@drawable/indicator_bracket" />
+
+                                                </LinearLayout>
+
+                                                <LinearLayout
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:gravity="center_vertical"
+                                                    android:orientation="horizontal"
+                                                    android:visibility="invisible">
+
+                                                    <LinearLayout
+                                                        android:layout_width="wrap_content"
+                                                        android:layout_height="wrap_content"
+                                                        android:orientation="vertical">
+
+                                                        <LinearLayout
+                                                            android:layout_width="wrap_content"
+                                                            android:layout_height="wrap_content"
+                                                            android:layout_margin="10dp"
+                                                            android:background="@android:color/white"
+                                                            android:elevation="2dp"
+                                                            android:gravity="center_vertical|center_horizontal"
+                                                            android:orientation="vertical"
+                                                            android:paddingLeft="20dp"
+                                                            android:paddingRight="20dp">
+
+                                                            <TextView
+                                                                android:layout_width="wrap_content"
+                                                                android:layout_height="wrap_content"
+                                                                android:layout_marginBottom="5dp"
+                                                                android:layout_marginLeft="5dp"
+                                                                android:layout_marginRight="5dp"
+                                                                android:layout_marginTop="10dp"
+                                                                android:text="MATCH2"
+                                                                android:textAllCaps="true"
+                                                                android:textSize="12sp" />
+
+                                                            <TextView
+                                                                android:layout_width="wrap_content"
+                                                                android:layout_height="wrap_content"
+                                                                android:layout_marginBottom="10dp"
+                                                                android:layout_marginLeft="5dp"
+                                                                android:layout_marginRight="5dp"
+                                                                android:text="ECE Vs EEE"
+                                                                android:textAllCaps="false"
+                                                                android:textColor="@android:color/black"
+                                                                android:textSize="15sp"
+                                                                android:textStyle="bold" />
+
+                                                        </LinearLayout>
+
+                                                        <LinearLayout
+                                                            android:layout_width="wrap_content"
+                                                            android:layout_height="wrap_content"
+                                                            android:layout_margin="10dp"
+                                                            android:background="@android:color/white"
+                                                            android:elevation="2dp"
+                                                            android:gravity="center_vertical|center_horizontal"
+                                                            android:orientation="vertical"
+                                                            android:paddingLeft="20dp"
+                                                            android:paddingRight="20dp"
+                                                            android:visibility="gone">
+
+                                                            <TextView
+                                                                android:layout_width="wrap_content"
+                                                                android:layout_height="wrap_content"
+                                                                android:layout_marginBottom="5dp"
+                                                                android:layout_marginLeft="5dp"
+                                                                android:layout_marginRight="5dp"
+                                                                android:layout_marginTop="10dp"
+                                                                android:text="MATCH3"
+                                                                android:textAllCaps="true"
+                                                                android:textSize="12sp" />
+
+                                                            <TextView
+                                                                android:layout_width="wrap_content"
+                                                                android:layout_height="wrap_content"
+                                                                android:layout_marginBottom="10dp"
+                                                                android:layout_marginLeft="5dp"
+                                                                android:layout_marginRight="5dp"
+                                                                android:text="ECE Vs EEE"
+                                                                android:textAllCaps="false"
+                                                                android:textColor="@android:color/black"
+                                                                android:textSize="15sp"
+                                                                android:textStyle="bold" />
+
+                                                        </LinearLayout>
+
+                                                    </LinearLayout>
+
+                                                    <View
+                                                        android:layout_width="wrap_content"
+                                                        android:layout_height="100dp"
+                                                        android:layout_marginBottom="5dp"
+                                                        android:layout_marginTop="5dp"
+                                                        android:background="@drawable/indicator_bracket" />
+
+                                                </LinearLayout>
+
+                                            </LinearLayout>
+
+                                            <LinearLayout
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="4"
                                                 android:gravity="center_vertical"
                                                 android:orientation="horizontal">
 
@@ -629,6 +741,7 @@
                                                     <LinearLayout
                                                         android:layout_width="wrap_content"
                                                         android:layout_height="wrap_content"
+                                                        android:layout_marginBottom="30dp"
                                                         android:gravity="center_vertical"
                                                         android:orientation="horizontal">
 
@@ -645,31 +758,38 @@
                                                                 android:elevation="2dp"
                                                                 android:gravity="center_vertical|center_horizontal"
                                                                 android:orientation="vertical"
-                                                                android:paddingLeft="20dp"
-                                                                android:paddingRight="20dp">
+                                                                android:paddingLeft="10dp"
+                                                                android:paddingRight="10dp">
 
                                                                 <TextView
-                                                                    android:id="@+id/match6"
+                                                                    android:id="@+id/match13"
                                                                     android:layout_width="wrap_content"
                                                                     android:layout_height="wrap_content"
                                                                     android:layout_marginBottom="5dp"
                                                                     android:layout_marginLeft="5dp"
                                                                     android:layout_marginRight="5dp"
                                                                     android:layout_marginTop="10dp"
-                                                                    android:text="MATCH6"
+                                                                    android:text="MATCH13"
                                                                     android:textAllCaps="true"
                                                                     android:textSize="12sp" />
 
                                                                 <TextView
-                                                                    android:id="@+id/match6teams"
-                                                                    android:layout_width="wrap_content"
+                                                                    android:id="@+id/match13teams"
+                                                                    android:layout_width="120dp"
                                                                     android:layout_height="wrap_content"
                                                                     android:layout_marginBottom="10dp"
-                                                                    android:layout_marginLeft="5dp"
-                                                                    android:layout_marginRight="5dp"
+                                                                    android:layout_marginLeft="2dp"
+                                                                    android:layout_marginRight="2dp"
+                                                                    android:ellipsize="marquee"
+                                                                    android:fadingEdge="horizontal"
+                                                                    android:gravity="center"
+                                                                    android:marqueeRepeatLimit="marquee_forever"
+                                                                    android:scrollHorizontally="true"
+                                                                    android:singleLine="true"
                                                                     android:text="ECE Vs EEE"
+                                                                    android:textAlignment="center"
                                                                     android:textAllCaps="false"
-                                                                    android:textColor="@android:color/black"
+                                                                    android:textColor="@color/colorTabtext"
                                                                     android:textSize="15sp"
                                                                     android:textStyle="bold" />
 
@@ -697,31 +817,38 @@
                                                                 android:elevation="2dp"
                                                                 android:gravity="bottom|center_horizontal"
                                                                 android:orientation="vertical"
-                                                                android:paddingLeft="20dp"
-                                                                android:paddingRight="20dp">
+                                                                android:paddingLeft="10dp"
+                                                                android:paddingRight="10dp">
 
                                                                 <TextView
-                                                                    android:id="@+id/match7"
+                                                                    android:id="@+id/match14"
                                                                     android:layout_width="wrap_content"
                                                                     android:layout_height="wrap_content"
                                                                     android:layout_marginBottom="5dp"
                                                                     android:layout_marginLeft="5dp"
                                                                     android:layout_marginRight="5dp"
                                                                     android:layout_marginTop="10dp"
-                                                                    android:text="MATCH7"
+                                                                    android:text="MATCH14"
                                                                     android:textAllCaps="true"
                                                                     android:textSize="12sp" />
 
                                                                 <TextView
-                                                                    android:id="@+id/match7teams"
-                                                                    android:layout_width="wrap_content"
+                                                                    android:id="@+id/match14teams"
+                                                                    android:layout_width="120dp"
                                                                     android:layout_height="wrap_content"
                                                                     android:layout_marginBottom="10dp"
-                                                                    android:layout_marginLeft="5dp"
-                                                                    android:layout_marginRight="5dp"
+                                                                    android:layout_marginLeft="2dp"
+                                                                    android:layout_marginRight="2dp"
+                                                                    android:ellipsize="marquee"
+                                                                    android:fadingEdge="horizontal"
+                                                                    android:gravity="center"
+                                                                    android:marqueeRepeatLimit="marquee_forever"
+                                                                    android:scrollHorizontally="true"
+                                                                    android:singleLine="true"
                                                                     android:text="ECE Vs EEE"
+                                                                    android:textAlignment="center"
                                                                     android:textAllCaps="false"
-                                                                    android:textColor="@android:color/black"
+                                                                    android:textColor="@color/colorTabtext"
                                                                     android:textSize="15sp"
                                                                     android:textStyle="bold" />
 
@@ -734,8 +861,8 @@
                                                 </LinearLayout>
 
                                                 <View
-                                                    android:layout_width="20dp"
-                                                    android:layout_height="100dp"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="130dp"
                                                     android:background="@drawable/large_indicator_bracket"
                                                     android:visibility="visible" />
 
@@ -754,45 +881,52 @@
                                         <LinearLayout
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
-                                            android:layout_marginTop="5dp"
+                                            android:layout_marginTop="-10dp"
                                             android:gravity="center_vertical"
                                             android:orientation="vertical">
 
                                             <LinearLayout
                                                 android:layout_width="wrap_content"
                                                 android:layout_height="wrap_content"
-                                                android:layout_marginBottom="90dp"
+                                                android:layout_marginBottom="220dp"
                                                 android:layout_marginLeft="10dp"
                                                 android:layout_marginRight="10dp"
                                                 android:background="@android:color/white"
                                                 android:elevation="2dp"
                                                 android:gravity="center_vertical|center_horizontal"
                                                 android:orientation="vertical"
-                                                android:paddingLeft="20dp"
-                                                android:paddingRight="20dp">
+                                                android:paddingLeft="10dp"
+                                                android:paddingRight="10dp">
 
                                                 <TextView
-                                                    android:id="@+id/match12"
+                                                    android:id="@+id/match19"
                                                     android:layout_width="wrap_content"
                                                     android:layout_height="wrap_content"
                                                     android:layout_marginBottom="5dp"
                                                     android:layout_marginLeft="5dp"
                                                     android:layout_marginRight="5dp"
                                                     android:layout_marginTop="10dp"
-                                                    android:text="MATCH12"
+                                                    android:text="MATCH19"
                                                     android:textAllCaps="true"
                                                     android:textSize="12sp" />
 
                                                 <TextView
-                                                    android:id="@+id/match12teams"
-                                                    android:layout_width="wrap_content"
+                                                    android:id="@+id/match19teams"
+                                                    android:layout_width="120dp"
                                                     android:layout_height="wrap_content"
                                                     android:layout_marginBottom="10dp"
-                                                    android:layout_marginLeft="5dp"
-                                                    android:layout_marginRight="5dp"
+                                                    android:layout_marginLeft="2dp"
+                                                    android:layout_marginRight="2dp"
+                                                    android:ellipsize="marquee"
+                                                    android:fadingEdge="horizontal"
+                                                    android:gravity="center"
+                                                    android:marqueeRepeatLimit="marquee_forever"
+                                                    android:scrollHorizontally="true"
+                                                    android:singleLine="true"
                                                     android:text="ECE Vs EEE"
+                                                    android:textAlignment="center"
                                                     android:textAllCaps="false"
-                                                    android:textColor="@android:color/black"
+                                                    android:textColor="@color/colorTabtext"
                                                     android:textSize="15sp"
                                                     android:textStyle="bold" />
 
@@ -806,31 +940,38 @@
                                                 android:elevation="2dp"
                                                 android:gravity="center_vertical|center_horizontal"
                                                 android:orientation="vertical"
-                                                android:paddingLeft="20dp"
-                                                android:paddingRight="20dp">
+                                                android:paddingLeft="10dp"
+                                                android:paddingRight="10dp">
 
                                                 <TextView
-                                                    android:id="@+id/match13"
+                                                    android:id="@+id/match20"
                                                     android:layout_width="wrap_content"
                                                     android:layout_height="wrap_content"
                                                     android:layout_marginBottom="5dp"
                                                     android:layout_marginLeft="5dp"
                                                     android:layout_marginRight="5dp"
                                                     android:layout_marginTop="10dp"
-                                                    android:text="MATCH13"
+                                                    android:text="MATCH20"
                                                     android:textAllCaps="true"
                                                     android:textSize="12sp" />
 
                                                 <TextView
-                                                    android:id="@+id/match13teams"
-                                                    android:layout_width="wrap_content"
+                                                    android:id="@+id/match20teams"
+                                                    android:layout_width="120dp"
                                                     android:layout_height="wrap_content"
                                                     android:layout_marginBottom="10dp"
-                                                    android:layout_marginLeft="5dp"
-                                                    android:layout_marginRight="5dp"
+                                                    android:layout_marginLeft="2dp"
+                                                    android:layout_marginRight="2dp"
+                                                    android:ellipsize="marquee"
+                                                    android:fadingEdge="horizontal"
+                                                    android:gravity="center"
+                                                    android:marqueeRepeatLimit="marquee_forever"
+                                                    android:scrollHorizontally="true"
+                                                    android:singleLine="true"
                                                     android:text="ECE Vs EEE"
+                                                    android:textAlignment="center"
                                                     android:textAllCaps="false"
-                                                    android:textColor="@android:color/black"
+                                                    android:textColor="@color/colorTabtext"
                                                     android:textSize="15sp"
                                                     android:textStyle="bold" />
 
@@ -839,10 +980,10 @@
                                         </LinearLayout>
 
                                         <View
-                                            android:layout_width="25dp"
-                                            android:layout_height="150dp"
-                                            android:layout_marginBottom="10dp"
-                                            android:layout_marginTop="10dp"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="300dp"
+                                            android:layout_marginBottom="20dp"
+                                            android:layout_marginTop="5dp"
                                             android:background="@drawable/large_indicator_bracket" />
 
                                     </LinearLayout>
@@ -850,6 +991,766 @@
                                 </LinearLayout>
 
                                 <!--Box2-->
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <LinearLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical">
+                                        <!--Box3-->
+                                        <LinearLayout
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="horizontal">
+
+
+                                            <LinearLayout
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:orientation="vertical">
+
+                                                <LinearLayout
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:gravity="center_vertical"
+                                                    android:orientation="horizontal">
+
+                                                    <LinearLayout
+                                                        android:layout_width="wrap_content"
+                                                        android:layout_height="wrap_content"
+                                                        android:orientation="vertical">
+
+                                                        <LinearLayout
+                                                            android:layout_width="wrap_content"
+                                                            android:layout_height="wrap_content"
+                                                            android:layout_margin="10dp"
+                                                            android:background="@android:color/white"
+                                                            android:elevation="2dp"
+                                                            android:gravity="center_vertical|center_horizontal"
+                                                            android:orientation="vertical"
+                                                            android:paddingLeft="10dp"
+                                                            android:paddingRight="10dp">
+
+                                                            <TextView
+                                                                android:id="@+id/match6"
+                                                                android:layout_width="wrap_content"
+                                                                android:layout_height="wrap_content"
+                                                                android:layout_marginBottom="5dp"
+                                                                android:layout_marginLeft="5dp"
+                                                                android:layout_marginRight="5dp"
+                                                                android:layout_marginTop="10dp"
+                                                                android:text="MATCH6"
+                                                                android:textAllCaps="true"
+                                                                android:textSize="12sp" />
+
+                                                            <TextView
+                                                                android:id="@+id/match6teams"
+                                                                android:layout_width="120dp"
+                                                                android:layout_height="wrap_content"
+                                                                android:layout_marginBottom="10dp"
+                                                                android:layout_marginLeft="2dp"
+                                                                android:layout_marginRight="2dp"
+                                                                android:ellipsize="marquee"
+                                                                android:fadingEdge="horizontal"
+                                                                android:gravity="center"
+                                                                android:marqueeRepeatLimit="marquee_forever"
+                                                                android:scrollHorizontally="true"
+                                                                android:singleLine="true"
+                                                                android:text="ECE Vs EEE"
+                                                                android:textAlignment="center"
+                                                                android:textAllCaps="false"
+                                                                android:textColor="@color/colorTabtext"
+                                                                android:textSize="15sp"
+                                                                android:textStyle="bold" />
+
+                                                        </LinearLayout>
+
+                                                    </LinearLayout>
+
+                                                    <View
+                                                        android:layout_width="30dp"
+                                                        android:layout_height="10dp"
+                                                        android:layout_marginBottom="5dp"
+                                                        android:layout_marginTop="5dp"
+                                                        android:background="@drawable/next_match_arrow" />
+
+                                                </LinearLayout>
+
+                                                <LinearLayout
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:gravity="center_vertical"
+                                                    android:orientation="horizontal">
+
+                                                    <LinearLayout
+                                                        android:layout_width="wrap_content"
+                                                        android:layout_height="wrap_content"
+                                                        android:orientation="vertical">
+
+                                                        <LinearLayout
+                                                            android:layout_width="wrap_content"
+                                                            android:layout_height="wrap_content"
+                                                            android:layout_margin="10dp"
+                                                            android:background="@android:color/white"
+                                                            android:elevation="2dp"
+                                                            android:gravity="center_vertical|center_horizontal"
+                                                            android:orientation="vertical"
+                                                            android:paddingLeft="10dp"
+                                                            android:paddingRight="10dp">
+
+                                                            <TextView
+                                                                android:id="@+id/match7"
+                                                                android:layout_width="wrap_content"
+                                                                android:layout_height="wrap_content"
+                                                                android:layout_marginBottom="5dp"
+                                                                android:layout_marginLeft="5dp"
+                                                                android:layout_marginRight="5dp"
+                                                                android:layout_marginTop="10dp"
+                                                                android:text="MATCH7"
+                                                                android:textAllCaps="true"
+                                                                android:textSize="12sp" />
+
+                                                            <TextView
+                                                                android:id="@+id/match7teams"
+                                                                android:layout_width="120dp"
+                                                                android:layout_height="wrap_content"
+                                                                android:layout_marginBottom="10dp"
+                                                                android:layout_marginLeft="2dp"
+                                                                android:layout_marginRight="2dp"
+                                                                android:ellipsize="marquee"
+                                                                android:fadingEdge="horizontal"
+                                                                android:gravity="center"
+                                                                android:marqueeRepeatLimit="marquee_forever"
+                                                                android:scrollHorizontally="true"
+                                                                android:singleLine="true"
+                                                                android:text="ECE Vs EEE"
+                                                                android:textAlignment="center"
+                                                                android:textAllCaps="false"
+                                                                android:textColor="@color/colorTabtext"
+                                                                android:textSize="15sp"
+                                                                android:textStyle="bold" />
+
+                                                        </LinearLayout>
+
+                                                    </LinearLayout>
+
+                                                    <View
+                                                        android:layout_width="30dp"
+                                                        android:layout_height="10dp"
+                                                        android:layout_marginBottom="5dp"
+                                                        android:layout_marginTop="5dp"
+                                                        android:background="@drawable/next_match_arrow" />
+
+                                                </LinearLayout>
+
+                                            </LinearLayout>
+
+                                            <LinearLayout
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="match_parent"
+                                                android:gravity="center_vertical"
+                                                android:orientation="horizontal">
+
+                                                <LinearLayout
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="match_parent"
+                                                    android:gravity="center_vertical"
+                                                    android:orientation="vertical">
+
+                                                    <LinearLayout
+                                                        android:layout_width="wrap_content"
+                                                        android:layout_height="wrap_content"
+                                                        android:orientation="horizontal">
+
+                                                        <LinearLayout
+                                                            android:layout_width="wrap_content"
+                                                            android:layout_height="wrap_content"
+                                                            android:orientation="vertical">
+
+                                                            <LinearLayout
+                                                                android:layout_width="wrap_content"
+                                                                android:layout_height="wrap_content"
+                                                                android:layout_margin="10dp"
+                                                                android:background="@android:color/white"
+                                                                android:elevation="2dp"
+                                                                android:gravity="center_vertical|center_horizontal"
+                                                                android:orientation="vertical"
+                                                                android:paddingLeft="10dp"
+                                                                android:paddingRight="10dp">
+
+                                                                <TextView
+                                                                    android:id="@+id/match15"
+                                                                    android:layout_width="wrap_content"
+                                                                    android:layout_height="wrap_content"
+                                                                    android:layout_marginBottom="5dp"
+                                                                    android:layout_marginLeft="5dp"
+                                                                    android:layout_marginRight="5dp"
+                                                                    android:layout_marginTop="10dp"
+                                                                    android:text="MATCH15"
+                                                                    android:textAllCaps="true"
+                                                                    android:textSize="12sp" />
+
+                                                                <TextView
+                                                                    android:id="@+id/match15teams"
+                                                                    android:layout_width="120dp"
+                                                                    android:layout_height="wrap_content"
+                                                                    android:layout_marginBottom="10dp"
+                                                                    android:layout_marginLeft="2dp"
+                                                                    android:layout_marginRight="2dp"
+                                                                    android:ellipsize="marquee"
+                                                                    android:fadingEdge="horizontal"
+                                                                    android:gravity="center"
+                                                                    android:marqueeRepeatLimit="marquee_forever"
+                                                                    android:scrollHorizontally="true"
+                                                                    android:singleLine="true"
+                                                                    android:text="ECE Vs EEE"
+                                                                    android:textAlignment="center"
+                                                                    android:textAllCaps="false"
+                                                                    android:textColor="@color/colorTabtext"
+                                                                    android:textSize="15sp"
+                                                                    android:textStyle="bold" />
+
+                                                            </LinearLayout>
+
+
+                                                        </LinearLayout>
+                                                    </LinearLayout>
+
+                                                    <LinearLayout
+                                                        android:layout_width="wrap_content"
+                                                        android:layout_height="wrap_content"
+                                                        android:layout_weight="1"
+                                                        android:gravity="center_vertical"
+                                                        android:orientation="horizontal">
+
+                                                        <LinearLayout
+                                                            android:layout_width="wrap_content"
+                                                            android:layout_height="wrap_content"
+                                                            android:orientation="vertical">
+
+                                                            <LinearLayout
+                                                                android:layout_width="wrap_content"
+                                                                android:layout_height="wrap_content"
+                                                                android:layout_margin="10dp"
+                                                                android:background="@android:color/white"
+                                                                android:elevation="2dp"
+                                                                android:gravity="bottom|center_horizontal"
+                                                                android:orientation="vertical"
+                                                                android:paddingLeft="10dp"
+                                                                android:paddingRight="10dp">
+
+                                                                <TextView
+                                                                    android:id="@+id/match16"
+                                                                    android:layout_width="wrap_content"
+                                                                    android:layout_height="wrap_content"
+                                                                    android:layout_marginBottom="5dp"
+                                                                    android:layout_marginLeft="5dp"
+                                                                    android:layout_marginRight="5dp"
+                                                                    android:layout_marginTop="10dp"
+                                                                    android:text="MATCH16"
+                                                                    android:textAllCaps="true"
+                                                                    android:textSize="12sp" />
+
+                                                                <TextView
+                                                                    android:id="@+id/match16teams"
+                                                                    android:layout_width="120dp"
+                                                                    android:layout_height="wrap_content"
+                                                                    android:layout_marginBottom="10dp"
+                                                                    android:layout_marginLeft="2dp"
+                                                                    android:layout_marginRight="2dp"
+                                                                    android:ellipsize="marquee"
+                                                                    android:fadingEdge="horizontal"
+                                                                    android:gravity="center"
+                                                                    android:marqueeRepeatLimit="marquee_forever"
+                                                                    android:scrollHorizontally="true"
+                                                                    android:singleLine="true"
+                                                                    android:text="ECE Vs EEE"
+                                                                    android:textAlignment="center"
+                                                                    android:textAllCaps="false"
+                                                                    android:textColor="@color/colorTabtext"
+                                                                    android:textSize="15sp"
+                                                                    android:textStyle="bold" />
+
+                                                            </LinearLayout>
+
+
+                                                        </LinearLayout>
+                                                    </LinearLayout>
+
+                                                </LinearLayout>
+
+                                                <View
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="100dp"
+                                                    android:background="@drawable/large_indicator_bracket"
+                                                    android:visibility="visible" />
+
+                                            </LinearLayout>
+
+                                        </LinearLayout>
+
+                                        <!--Box4-->
+                                        <LinearLayout
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="horizontal">
+
+
+                                            <LinearLayout
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:orientation="vertical">
+
+                                                <LinearLayout
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:gravity="center_vertical"
+                                                    android:orientation="horizontal">
+
+                                                    <LinearLayout
+                                                        android:layout_width="wrap_content"
+                                                        android:layout_height="wrap_content"
+                                                        android:orientation="vertical">
+
+                                                        <LinearLayout
+                                                            android:layout_width="wrap_content"
+                                                            android:layout_height="wrap_content"
+                                                            android:layout_margin="10dp"
+                                                            android:background="@android:color/white"
+                                                            android:elevation="2dp"
+                                                            android:gravity="center_vertical|center_horizontal"
+                                                            android:orientation="vertical"
+                                                            android:paddingLeft="10dp"
+                                                            android:paddingRight="10dp">
+
+                                                            <TextView
+                                                                android:id="@+id/match8"
+                                                                android:layout_width="wrap_content"
+                                                                android:layout_height="wrap_content"
+                                                                android:layout_marginBottom="5dp"
+                                                                android:layout_marginLeft="5dp"
+                                                                android:layout_marginRight="5dp"
+                                                                android:layout_marginTop="10dp"
+                                                                android:text="MATCH8"
+                                                                android:textAllCaps="true"
+                                                                android:textSize="12sp" />
+
+                                                            <TextView
+                                                                android:id="@+id/match8teams"
+                                                                android:layout_width="120dp"
+                                                                android:layout_height="wrap_content"
+                                                                android:layout_marginBottom="10dp"
+                                                                android:layout_marginLeft="2dp"
+                                                                android:layout_marginRight="2dp"
+                                                                android:ellipsize="marquee"
+                                                                android:fadingEdge="horizontal"
+                                                                android:gravity="center"
+                                                                android:marqueeRepeatLimit="marquee_forever"
+                                                                android:scrollHorizontally="true"
+                                                                android:singleLine="true"
+                                                                android:text="ECE Vs EEE"
+                                                                android:textAlignment="center"
+                                                                android:textAllCaps="false"
+                                                                android:textColor="@color/colorTabtext"
+                                                                android:textSize="15sp"
+                                                                android:textStyle="bold" />
+
+                                                        </LinearLayout>
+
+                                                        <LinearLayout
+                                                            android:layout_width="wrap_content"
+                                                            android:layout_height="wrap_content"
+                                                            android:layout_margin="10dp"
+                                                            android:background="@android:color/white"
+                                                            android:elevation="2dp"
+                                                            android:gravity="center_vertical|center_horizontal"
+                                                            android:orientation="vertical"
+                                                            android:paddingLeft="10dp"
+                                                            android:paddingRight="10dp">
+
+                                                            <TextView
+                                                                android:id="@+id/match9"
+                                                                android:layout_width="wrap_content"
+                                                                android:layout_height="wrap_content"
+                                                                android:layout_marginBottom="5dp"
+                                                                android:layout_marginLeft="5dp"
+                                                                android:layout_marginRight="5dp"
+                                                                android:layout_marginTop="10dp"
+                                                                android:text="MATCH9"
+                                                                android:textAllCaps="true"
+                                                                android:textSize="12sp" />
+
+                                                            <TextView
+                                                                android:id="@+id/match9teams"
+                                                                android:layout_width="120dp"
+                                                                android:layout_height="wrap_content"
+                                                                android:layout_marginBottom="10dp"
+                                                                android:layout_marginLeft="2dp"
+                                                                android:layout_marginRight="2dp"
+                                                                android:ellipsize="marquee"
+                                                                android:fadingEdge="horizontal"
+                                                                android:gravity="center"
+                                                                android:marqueeRepeatLimit="marquee_forever"
+                                                                android:scrollHorizontally="true"
+                                                                android:singleLine="true"
+                                                                android:text="ECE Vs EEE"
+                                                                android:textAlignment="center"
+                                                                android:textAllCaps="false"
+                                                                android:textColor="@color/colorTabtext"
+                                                                android:textSize="15sp"
+                                                                android:textStyle="bold" />
+
+                                                        </LinearLayout>
+
+                                                    </LinearLayout>
+
+                                                    <View
+                                                        android:layout_width="wrap_content"
+                                                        android:layout_height="100dp"
+                                                        android:layout_marginBottom="5dp"
+                                                        android:layout_marginTop="5dp"
+                                                        android:background="@drawable/indicator_bracket" />
+
+                                                </LinearLayout>
+
+                                                <LinearLayout
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:gravity="center_vertical"
+                                                    android:orientation="horizontal">
+
+                                                    <LinearLayout
+                                                        android:layout_width="wrap_content"
+                                                        android:layout_height="wrap_content"
+                                                        android:orientation="vertical">
+
+                                                        <LinearLayout
+                                                            android:layout_width="wrap_content"
+                                                            android:layout_height="wrap_content"
+                                                            android:layout_margin="10dp"
+                                                            android:background="@android:color/white"
+                                                            android:elevation="2dp"
+                                                            android:gravity="center_vertical|center_horizontal"
+                                                            android:orientation="vertical"
+                                                            android:paddingLeft="10dp"
+                                                            android:paddingRight="10dp">
+
+                                                            <TextView
+                                                                android:id="@+id/match10"
+                                                                android:layout_width="wrap_content"
+                                                                android:layout_height="wrap_content"
+                                                                android:layout_marginBottom="5dp"
+                                                                android:layout_marginLeft="5dp"
+                                                                android:layout_marginRight="5dp"
+                                                                android:layout_marginTop="10dp"
+                                                                android:text="MATCH10"
+                                                                android:textAllCaps="true"
+                                                                android:textSize="12sp" />
+
+                                                            <TextView
+                                                                android:id="@+id/match10teams"
+                                                                android:layout_width="120dp"
+                                                                android:layout_height="wrap_content"
+                                                                android:layout_marginBottom="10dp"
+                                                                android:layout_marginLeft="2dp"
+                                                                android:layout_marginRight="2dp"
+                                                                android:ellipsize="marquee"
+                                                                android:fadingEdge="horizontal"
+                                                                android:gravity="center"
+                                                                android:marqueeRepeatLimit="marquee_forever"
+                                                                android:scrollHorizontally="true"
+                                                                android:singleLine="true"
+                                                                android:text="ECE Vs EEE"
+                                                                android:textAlignment="center"
+                                                                android:textAllCaps="false"
+                                                                android:textColor="@color/colorTabtext"
+                                                                android:textSize="15sp"
+                                                                android:textStyle="bold" />
+
+                                                        </LinearLayout>
+
+                                                    </LinearLayout>
+
+                                                    <View
+                                                        android:layout_width="30dp"
+                                                        android:layout_height="10dp"
+                                                        android:layout_marginBottom="5dp"
+                                                        android:layout_marginTop="5dp"
+                                                        android:background="@drawable/next_match_arrow" />
+
+                                                </LinearLayout>
+
+                                            </LinearLayout>
+
+                                            <LinearLayout
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="match_parent"
+                                                android:gravity="center_vertical"
+                                                android:orientation="horizontal">
+
+                                                <LinearLayout
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="match_parent"
+                                                    android:gravity="center_vertical"
+                                                    android:orientation="vertical">
+
+                                                    <LinearLayout
+                                                        android:layout_width="wrap_content"
+                                                        android:layout_height="wrap_content"
+                                                        android:layout_weight="2"
+                                                        android:gravity="center_vertical"
+                                                        android:orientation="horizontal">
+
+                                                        <LinearLayout
+                                                            android:layout_width="wrap_content"
+                                                            android:layout_height="wrap_content"
+                                                            android:orientation="vertical">
+
+                                                            <LinearLayout
+                                                                android:layout_width="wrap_content"
+                                                                android:layout_height="wrap_content"
+                                                                android:layout_margin="10dp"
+                                                                android:background="@android:color/white"
+                                                                android:elevation="2dp"
+                                                                android:gravity="center_vertical|center_horizontal"
+                                                                android:orientation="vertical"
+                                                                android:paddingLeft="10dp"
+                                                                android:paddingRight="10dp">
+
+                                                                <TextView
+                                                                    android:id="@+id/match17"
+                                                                    android:layout_width="wrap_content"
+                                                                    android:layout_height="wrap_content"
+                                                                    android:layout_marginBottom="5dp"
+                                                                    android:layout_marginLeft="5dp"
+                                                                    android:layout_marginRight="5dp"
+                                                                    android:layout_marginTop="10dp"
+                                                                    android:text="MATCH17"
+                                                                    android:textAllCaps="true"
+                                                                    android:textSize="12sp" />
+
+                                                                <TextView
+                                                                    android:id="@+id/match17teams"
+                                                                    android:layout_width="120dp"
+                                                                    android:layout_height="wrap_content"
+                                                                    android:layout_marginBottom="10dp"
+                                                                    android:layout_marginLeft="2dp"
+                                                                    android:layout_marginRight="2dp"
+                                                                    android:ellipsize="marquee"
+                                                                    android:fadingEdge="horizontal"
+                                                                    android:gravity="center"
+                                                                    android:marqueeRepeatLimit="marquee_forever"
+                                                                    android:scrollHorizontally="true"
+                                                                    android:singleLine="true"
+                                                                    android:text="ECE Vs EEE"
+                                                                    android:textAlignment="center"
+                                                                    android:textAllCaps="false"
+                                                                    android:textColor="@color/colorTabtext"
+                                                                    android:textSize="15sp"
+                                                                    android:textStyle="bold" />
+
+                                                            </LinearLayout>
+
+
+                                                        </LinearLayout>
+                                                    </LinearLayout>
+
+                                                    <LinearLayout
+                                                        android:layout_width="wrap_content"
+                                                        android:layout_height="wrap_content"
+                                                        android:layout_weight="1"
+                                                        android:gravity="bottom"
+                                                        android:orientation="horizontal">
+
+                                                        <LinearLayout
+                                                            android:layout_width="wrap_content"
+                                                            android:layout_height="wrap_content"
+                                                            android:orientation="vertical">
+
+                                                            <LinearLayout
+                                                                android:layout_width="wrap_content"
+                                                                android:layout_height="wrap_content"
+                                                                android:layout_margin="10dp"
+                                                                android:background="@android:color/white"
+                                                                android:elevation="2dp"
+                                                                android:gravity="bottom|center_horizontal"
+                                                                android:orientation="vertical"
+                                                                android:paddingLeft="10dp"
+                                                                android:paddingRight="10dp">
+
+                                                                <TextView
+                                                                    android:id="@+id/match18"
+                                                                    android:layout_width="wrap_content"
+                                                                    android:layout_height="wrap_content"
+                                                                    android:layout_marginBottom="5dp"
+                                                                    android:layout_marginLeft="5dp"
+                                                                    android:layout_marginRight="5dp"
+                                                                    android:layout_marginTop="10dp"
+                                                                    android:text="MATCH18"
+                                                                    android:textAllCaps="true"
+                                                                    android:textSize="12sp" />
+
+                                                                <TextView
+                                                                    android:id="@+id/match18teams"
+                                                                    android:layout_width="120dp"
+                                                                    android:layout_height="wrap_content"
+                                                                    android:layout_marginBottom="10dp"
+                                                                    android:layout_marginLeft="2dp"
+                                                                    android:layout_marginRight="2dp"
+                                                                    android:ellipsize="marquee"
+                                                                    android:fadingEdge="horizontal"
+                                                                    android:gravity="center"
+                                                                    android:marqueeRepeatLimit="marquee_forever"
+                                                                    android:scrollHorizontally="true"
+                                                                    android:singleLine="true"
+                                                                    android:text="ECE Vs EEE"
+                                                                    android:textAlignment="center"
+                                                                    android:textAllCaps="false"
+                                                                    android:textColor="@color/colorTabtext"
+                                                                    android:textSize="15sp"
+                                                                    android:textStyle="bold" />
+
+                                                            </LinearLayout>
+
+
+                                                        </LinearLayout>
+                                                    </LinearLayout>
+
+                                                </LinearLayout>
+
+                                                <View
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="120dp"
+                                                    android:layout_marginTop="10dp"
+                                                    android:background="@drawable/large_indicator_bracket"
+                                                    android:visibility="visible" />
+
+                                            </LinearLayout>
+
+                                        </LinearLayout>
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="match_parent"
+                                        android:gravity="center_vertical"
+                                        android:orientation="horizontal">
+
+                                        <LinearLayout
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="-10dp"
+                                            android:gravity="center_vertical"
+                                            android:orientation="vertical">
+
+                                            <LinearLayout
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginBottom="140dp"
+                                                android:layout_marginLeft="10dp"
+                                                android:layout_marginRight="10dp"
+                                                android:background="@android:color/white"
+                                                android:elevation="2dp"
+                                                android:gravity="center_vertical|center_horizontal"
+                                                android:orientation="vertical"
+                                                android:paddingLeft="10dp"
+                                                android:paddingRight="10dp">
+
+                                                <TextView
+                                                    android:id="@+id/match21"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_marginBottom="5dp"
+                                                    android:layout_marginLeft="5dp"
+                                                    android:layout_marginRight="5dp"
+                                                    android:layout_marginTop="10dp"
+                                                    android:text="MATCH21"
+                                                    android:textAllCaps="true"
+                                                    android:textSize="12sp" />
+
+                                                <TextView
+                                                    android:id="@+id/match21teams"
+                                                    android:layout_width="120dp"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_marginBottom="10dp"
+                                                    android:layout_marginLeft="2dp"
+                                                    android:layout_marginRight="2dp"
+                                                    android:ellipsize="marquee"
+                                                    android:fadingEdge="horizontal"
+                                                    android:gravity="center"
+                                                    android:marqueeRepeatLimit="marquee_forever"
+                                                    android:scrollHorizontally="true"
+                                                    android:singleLine="true"
+                                                    android:text="ECE Vs EEE"
+                                                    android:textAlignment="center"
+                                                    android:textAllCaps="false"
+                                                    android:textColor="@color/colorTabtext"
+                                                    android:textSize="15sp"
+                                                    android:textStyle="bold" />
+
+                                            </LinearLayout>
+
+                                            <LinearLayout
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_margin="10dp"
+                                                android:background="@android:color/white"
+                                                android:elevation="2dp"
+                                                android:gravity="center_vertical|center_horizontal"
+                                                android:orientation="vertical"
+                                                android:paddingLeft="10dp"
+                                                android:paddingRight="10dp">
+
+                                                <TextView
+                                                    android:id="@+id/match22"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_marginBottom="5dp"
+                                                    android:layout_marginLeft="5dp"
+                                                    android:layout_marginRight="5dp"
+                                                    android:layout_marginTop="10dp"
+                                                    android:text="MATCH22"
+                                                    android:textAllCaps="true"
+                                                    android:textSize="12sp" />
+
+                                                <TextView
+                                                    android:id="@+id/match22teams"
+                                                    android:layout_width="120dp"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_marginBottom="10dp"
+                                                    android:layout_marginLeft="2dp"
+                                                    android:layout_marginRight="2dp"
+                                                    android:ellipsize="marquee"
+                                                    android:fadingEdge="horizontal"
+                                                    android:gravity="center"
+                                                    android:marqueeRepeatLimit="marquee_forever"
+                                                    android:scrollHorizontally="true"
+                                                    android:singleLine="true"
+                                                    android:text="ECE Vs EEE"
+                                                    android:textAlignment="center"
+                                                    android:textAllCaps="false"
+                                                    android:textColor="@color/colorTabtext"
+                                                    android:textSize="15sp"
+                                                    android:textStyle="bold" />
+
+                                            </LinearLayout>
+
+                                        </LinearLayout>
+
+                                        <View
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="200dp"
+                                            android:layout_marginBottom="20dp"
+                                            android:layout_marginTop="5dp"
+                                            android:background="@drawable/large_indicator_bracket" />
+
+                                    </LinearLayout>
+
+                                </LinearLayout>
 
                             </LinearLayout>
 
@@ -858,17 +1759,133 @@
                     </LinearLayout>
 
                     <!--semi-->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="390dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:background="@android:color/white"
+                                android:elevation="2dp"
+                                android:gravity="center_vertical|center_horizontal"
+                                android:orientation="vertical"
+                                android:paddingLeft="10dp"
+                                android:paddingRight="10dp">
+
+                                <TextView
+                                    android:id="@+id/match23"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="5dp"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_marginRight="5dp"
+                                    android:layout_marginTop="10dp"
+                                    android:text="MATCH23"
+                                    android:textAllCaps="true"
+                                    android:textSize="12sp" />
+
+                                <TextView
+                                    android:id="@+id/match23teams"
+                                    android:layout_width="120dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="10dp"
+                                    android:layout_marginLeft="2dp"
+                                    android:layout_marginRight="2dp"
+                                    android:ellipsize="marquee"
+                                    android:fadingEdge="horizontal"
+                                    android:gravity="center"
+                                    android:marqueeRepeatLimit="marquee_forever"
+                                    android:scrollHorizontally="true"
+                                    android:singleLine="true"
+                                    android:text="ECE Vs EEE"
+                                    android:textAlignment="center"
+                                    android:textAllCaps="false"
+                                    android:textColor="@color/colorTabtext"
+                                    android:textSize="15sp"
+                                    android:textStyle="bold" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="10dp"
+                                android:background="@android:color/white"
+                                android:elevation="2dp"
+                                android:gravity="center_vertical|center_horizontal"
+                                android:orientation="vertical"
+                                android:paddingLeft="10dp"
+                                android:paddingRight="10dp">
+
+                                <TextView
+                                    android:id="@+id/match24"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="5dp"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_marginRight="5dp"
+                                    android:layout_marginTop="10dp"
+                                    android:text="MATCH24"
+                                    android:textAllCaps="true"
+                                    android:textSize="12sp" />
+
+                                <TextView
+                                    android:id="@+id/match24teams"
+                                    android:layout_width="120dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="10dp"
+                                    android:layout_marginLeft="2dp"
+                                    android:layout_marginRight="2dp"
+                                    android:ellipsize="marquee"
+                                    android:fadingEdge="horizontal"
+                                    android:gravity="center"
+                                    android:marqueeRepeatLimit="marquee_forever"
+                                    android:scrollHorizontally="true"
+                                    android:singleLine="true"
+                                    android:text="ECE Vs EEE"
+                                    android:textAlignment="center"
+                                    android:textAllCaps="false"
+                                    android:textColor="@color/colorTabtext"
+                                    android:textSize="15sp"
+                                    android:textStyle="bold" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="wrap_content"
+                            android:layout_height="480dp"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginTop="20dp"
+                            android:background="@drawable/large_indicator_bracket" />
+
+                    </LinearLayout>
 
                     <!--bronze and final-->
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
                         android:orientation="horizontal">
 
                         <!--box1-->
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
                             android:gravity="center_vertical"
                             android:orientation="horizontal">
 
@@ -885,31 +1902,38 @@
                                     android:elevation="2dp"
                                     android:gravity="center_vertical|center_horizontal"
                                     android:orientation="vertical"
-                                    android:paddingLeft="20dp"
-                                    android:paddingRight="20dp">
+                                    android:paddingLeft="10dp"
+                                    android:paddingRight="10dp">
 
                                     <TextView
-                                        android:id="@+id/match18"
+                                        android:id="@+id/match25"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_marginBottom="5dp"
                                         android:layout_marginLeft="5dp"
                                         android:layout_marginRight="5dp"
                                         android:layout_marginTop="10dp"
-                                        android:text="MATCH18"
+                                        android:text="MATCH25"
                                         android:textAllCaps="true"
                                         android:textSize="12sp" />
 
                                     <TextView
-                                        android:id="@+id/match18teams"
-                                        android:layout_width="wrap_content"
+                                        android:id="@+id/match25teams"
+                                        android:layout_width="120dp"
                                         android:layout_height="wrap_content"
                                         android:layout_marginBottom="10dp"
-                                        android:layout_marginLeft="5dp"
-                                        android:layout_marginRight="5dp"
+                                        android:layout_marginLeft="2dp"
+                                        android:layout_marginRight="2dp"
+                                        android:ellipsize="marquee"
+                                        android:fadingEdge="horizontal"
+                                        android:gravity="center"
+                                        android:marqueeRepeatLimit="marquee_forever"
+                                        android:scrollHorizontally="true"
+                                        android:singleLine="true"
                                         android:text="ECE Vs EEE"
+                                        android:textAlignment="center"
                                         android:textAllCaps="false"
-                                        android:textColor="@android:color/black"
+                                        android:textColor="@color/colorTabtext"
                                         android:textSize="15sp"
                                         android:textStyle="bold" />
 
@@ -930,7 +1954,8 @@
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginRight="15dp"
+                            android:layout_marginRight="30dp"
+                            android:layout_marginTop="15dp"
                             android:gravity="center_vertical"
                             android:orientation="horizontal">
 
@@ -947,8 +1972,8 @@
                                     android:elevation="2dp"
                                     android:gravity="center_vertical|center_horizontal"
                                     android:orientation="vertical"
-                                    android:paddingLeft="20dp"
-                                    android:paddingRight="20dp">
+                                    android:paddingLeft="10dp"
+                                    android:paddingRight="10dp">
 
                                     <TextView
                                         android:id="@+id/match26"
@@ -964,14 +1989,21 @@
 
                                     <TextView
                                         android:id="@+id/match26teams"
-                                        android:layout_width="wrap_content"
+                                        android:layout_width="120dp"
                                         android:layout_height="wrap_content"
                                         android:layout_marginBottom="10dp"
-                                        android:layout_marginLeft="5dp"
-                                        android:layout_marginRight="5dp"
+                                        android:layout_marginLeft="2dp"
+                                        android:layout_marginRight="2dp"
+                                        android:ellipsize="marquee"
+                                        android:fadingEdge="horizontal"
+                                        android:gravity="center"
+                                        android:marqueeRepeatLimit="marquee_forever"
+                                        android:scrollHorizontally="true"
+                                        android:singleLine="true"
                                         android:text="ECE Vs EEE"
+                                        android:textAlignment="center"
                                         android:textAllCaps="false"
-                                        android:textColor="@android:color/black"
+                                        android:textColor="@color/colorTabtext"
                                         android:textSize="15sp"
                                         android:textStyle="bold" />
 

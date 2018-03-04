@@ -61,7 +61,13 @@ public class StatusEventsDetailRecyclerAdapter extends RecyclerView.Adapter<Even
             R.drawable.prod2
     };
 
-    public StatusEventsDetailRecyclerAdapter(List<StatusEventDetailsPOJO> eventList, Context context){
+    MyAdapterListener onClickListener;
+
+    public interface MyAdapterListener {
+        void onItemSelected(int position, View view1, View view2, View view3, View view4);
+    }
+
+    public StatusEventsDetailRecyclerAdapter(List<StatusEventDetailsPOJO> eventList, Context context, MyAdapterListener myAdapterListener){
         this.eventList=eventList;
         this.context=context;
         inconsolataBoldFont = Typeface.createFromAsset(context.getAssets(),  "fonts/InconsolataBold.ttf");
@@ -72,6 +78,7 @@ public class StatusEventsDetailRecyclerAdapter extends RecyclerView.Adapter<Even
         blinkAnimation.setStartOffset(20);
         blinkAnimation.setRepeatMode(Animation.REVERSE);
         blinkAnimation.setRepeatCount(Animation.INFINITE);
+        onClickListener = myAdapterListener;
 
         setHasStableIds(true);
 
@@ -85,7 +92,7 @@ public class StatusEventsDetailRecyclerAdapter extends RecyclerView.Adapter<Even
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
-    public void onBindViewHolder(EventViewHolder holder, final int position) {
+    public void onBindViewHolder(final EventViewHolder holder, final int position) {
         StatusEventDetailsPOJO event=eventList.get(position);
 
         String status="";
@@ -97,13 +104,37 @@ public class StatusEventsDetailRecyclerAdapter extends RecyclerView.Adapter<Even
                     holder.nonVersusEventLl.setVisibility(View.GONE);
                     holder.versusEventLl.setVisibility(View.VISIBLE);
                     holder.team1Tv.setTypeface(inconsolataBoldFont);
+                    holder.undecided_match1.setTypeface(hammersmithOnefont);
+                    holder.undecided_match2.setTypeface(hammersmithOnefont);
                     holder.team1Tv.setText(event.getDept1());
+
                     if(event.getDept1().contains("WINNER OF")||event.getDept1().contains("LOSER OF")){
                         holder.dept_icon1.setVisibility(View.GONE);
+                        holder.undecided_match1.setVisibility(View.VISIBLE);
+                        if(event.getDept1().contains("WINNER OF")){
+                            holder.undecided_match1.setBackgroundResource(R.drawable.circular_border_winner);
+                            holder.undecided_match1.setText("W"+event.getDept1().trim().split(" ")[2]);
+                            holder.undecided_match1.setTextColor(Color.parseColor("#4ab556"));
+                        }else if(event.getDept1().contains("LOSER OF")){
+                            holder.undecided_match1.setBackgroundResource(R.drawable.circular_border_loser);
+                            holder.undecided_match1.setText("L"+event.getDept1().trim().split(" ")[2]);
+                            holder.undecided_match1.setTextColor(Color.RED);
+                        }
                     }
-                    if(event.getDept1().contains("WINNER OF")||event.getDept1().contains("LOSER OF")){
+                    if(event.getDept2().contains("WINNER OF")||event.getDept2().contains("LOSER OF")){
                         holder.dept_icon2.setVisibility(View.GONE);
+                        holder.undecided_match2.setVisibility(View.VISIBLE);
+                        if(event.getDept2().contains("WINNER OF")){
+                            holder.undecided_match2.setBackgroundResource(R.drawable.circular_border_winner);
+                            holder.undecided_match2.setText("W"+event.getDept2().trim().split(" ")[2]);
+                            holder.undecided_match2.setTextColor(Color.parseColor("#4ab556"));
+                        }else if(event.getDept2().contains("LOSER OF")){
+                            holder.undecided_match2.setBackgroundResource(R.drawable.circular_border_loser);
+                            holder.undecided_match2.setText("L"+event.getDept2().trim().split(" ")[2]);
+                            holder.undecided_match2.setTextColor(Color.RED);
+                        }
                     }
+
                     setDeptIcon(holder.dept_icon1,event.getDept1().trim());
                     holder.team1Tv.setSelected(true);
                     holder.team1Tv.setSingleLine(true);
@@ -115,6 +146,10 @@ public class StatusEventsDetailRecyclerAdapter extends RecyclerView.Adapter<Even
                 } else {
                     holder.nonVersusEventLl.setVisibility(View.VISIBLE);
                     holder.versusEventLl.setVisibility(View.GONE);
+                    holder.participantsTV.setText("");
+                    for(String participants: event.getParticipatingTeams()){
+                        holder.participantsTV.setText(holder.participantsTV.getText()+"  "+participants+"  ");
+                    }
 
                 }
             }
@@ -162,7 +197,8 @@ public class StatusEventsDetailRecyclerAdapter extends RecyclerView.Adapter<Even
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    onClickSubject.onNext(String.valueOf(position));
+                    //onClickSubject.onNext(String.valueOf(position));
+                    onClickListener.onItemSelected(position,holder.nameTV,holder.roundTv,holder.versusEventLl,holder.nonVersusEventLl);
                 }
             });
         }

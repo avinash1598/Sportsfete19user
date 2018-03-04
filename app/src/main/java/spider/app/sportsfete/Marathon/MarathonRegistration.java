@@ -86,7 +86,7 @@ public class MarathonRegistration extends android.support.v4.app.Fragment {
                              Bundle savedInstanceState) {
         viewGroup = container;
 
-        final View view = inflater.inflate(R.layout.marathon_reg, null);
+        final View view = inflater.inflate(R.layout.marathon_reg, container, false);
         view.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
@@ -120,7 +120,7 @@ public class MarathonRegistration extends android.support.v4.app.Fragment {
         super.onActivityCreated(savedInstanceState);
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://pacific-fortress-57124.herokuapp.com")
+                .baseUrl("https://us-central1-sportsfete-732bf.cloudfunctions.net")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         final ApiInterface apiInterface = retrofit.create(ApiInterface.class);

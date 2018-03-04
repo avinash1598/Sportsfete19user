@@ -12,17 +12,17 @@
         android:layout_width="wrap_content">
 
         <LinearLayout
+            android:id="@+id/parent_linearLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#f1f1f1"
-            android:id="@+id/parent_linearLayout"
             android:orientation="vertical">
 
             <LinearLayout
-                android:layout_marginLeft="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="10dp"
+                android:layout_marginLeft="20dp"
                 android:orientation="horizontal">
 
                 <!--coloumn 1-->
@@ -62,8 +62,8 @@
                                 android:elevation="2dp"
                                 android:gravity="center_vertical|center_horizontal"
                                 android:orientation="vertical"
-                                android:paddingLeft="20dp"
-                                android:paddingRight="20dp">
+                                android:paddingLeft="10dp"
+                                android:paddingRight="10dp">
 
                                 <TextView
                                     android:id="@+id/match1"
@@ -79,16 +79,23 @@
 
                                 <TextView
                                     android:id="@+id/match1teams"
-                                    android:layout_width="wrap_content"
+                                    android:layout_width="120dp"
                                     android:layout_height="wrap_content"
                                     android:layout_marginBottom="10dp"
-                                    android:layout_marginLeft="5dp"
-                                    android:layout_marginRight="5dp"
+                                    android:layout_marginLeft="2dp"
+                                    android:layout_marginRight="2dp"
+                                    android:fadingEdge="horizontal"
+                                    android:gravity="center"
+                                    android:scrollHorizontally="true"
+                                    android:ellipsize="marquee"
+                                    android:marqueeRepeatLimit="marquee_forever"
+                                    android:singleLine="true"
                                     android:text="ECE Vs EEE"
+                                    android:textAlignment="center"
                                     android:textAllCaps="false"
-                                    android:textColor="@android:color/black"
+                                    android:textColor="@color/colorTabtext"
                                     android:textSize="15sp"
-                                    android:textStyle="bold" />
+                                    android:textStyle="bold"  />
 
                             </LinearLayout>
 
@@ -122,8 +129,8 @@
                                 android:elevation="2dp"
                                 android:gravity="center_vertical|center_horizontal"
                                 android:orientation="vertical"
-                                android:paddingLeft="20dp"
-                                android:paddingRight="20dp">
+                                android:paddingLeft="10dp"
+                                android:paddingRight="10dp">
 
                                 <TextView
                                     android:id="@+id/match2"
@@ -139,16 +146,23 @@
 
                                 <TextView
                                     android:id="@+id/match2teams"
-                                    android:layout_width="wrap_content"
+                                    android:layout_width="120dp"
                                     android:layout_height="wrap_content"
                                     android:layout_marginBottom="10dp"
-                                    android:layout_marginLeft="5dp"
-                                    android:layout_marginRight="5dp"
+                                    android:layout_marginLeft="2dp"
+                                    android:layout_marginRight="2dp"
+                                    android:fadingEdge="horizontal"
+                                    android:gravity="center"
+                                    android:scrollHorizontally="true"
+                                    android:ellipsize="marquee"
+                                    android:marqueeRepeatLimit="marquee_forever"
+                                    android:singleLine="true"
                                     android:text="ECE Vs EEE"
+                                    android:textAlignment="center"
                                     android:textAllCaps="false"
-                                    android:textColor="@android:color/black"
+                                    android:textColor="@color/colorTabtext"
                                     android:textSize="15sp"
-                                    android:textStyle="bold" />
+                                    android:textStyle="bold"  />
 
                             </LinearLayout>
 
@@ -160,8 +174,8 @@
                                 android:elevation="2dp"
                                 android:gravity="center_vertical|center_horizontal"
                                 android:orientation="vertical"
-                                android:paddingLeft="20dp"
-                                android:paddingRight="20dp">
+                                android:paddingLeft="10dp"
+                                android:paddingRight="10dp">
 
                                 <TextView
                                     android:id="@+id/match3"
@@ -177,16 +191,23 @@
 
                                 <TextView
                                     android:id="@+id/match3teams"
-                                    android:layout_width="wrap_content"
+                                    android:layout_width="120dp"
                                     android:layout_height="wrap_content"
                                     android:layout_marginBottom="10dp"
-                                    android:layout_marginLeft="5dp"
-                                    android:layout_marginRight="5dp"
+                                    android:layout_marginLeft="2dp"
+                                    android:layout_marginRight="2dp"
+                                    android:fadingEdge="horizontal"
+                                    android:gravity="center"
+                                    android:scrollHorizontally="true"
+                                    android:ellipsize="marquee"
+                                    android:marqueeRepeatLimit="marquee_forever"
+                                    android:singleLine="true"
                                     android:text="ECE Vs EEE"
+                                    android:textAlignment="center"
                                     android:textAllCaps="false"
-                                    android:textColor="@android:color/black"
+                                    android:textColor="@color/colorTabtext"
                                     android:textSize="15sp"
-                                    android:textStyle="bold" />
+                                    android:textStyle="bold"  />
 
                             </LinearLayout>
 
@@ -220,8 +241,8 @@
                                 android:elevation="2dp"
                                 android:gravity="center_vertical|center_horizontal"
                                 android:orientation="vertical"
-                                android:paddingLeft="20dp"
-                                android:paddingRight="20dp">
+                                android:paddingLeft="10dp"
+                                android:paddingRight="10dp">
 
                                 <TextView
                                     android:id="@+id/match4"
@@ -237,16 +258,23 @@
 
                                 <TextView
                                     android:id="@+id/match4teams"
-                                    android:layout_width="wrap_content"
+                                    android:layout_width="120dp"
                                     android:layout_height="wrap_content"
                                     android:layout_marginBottom="10dp"
-                                    android:layout_marginLeft="5dp"
-                                    android:layout_marginRight="5dp"
+                                    android:layout_marginLeft="2dp"
+                                    android:layout_marginRight="2dp"
+                                    android:fadingEdge="horizontal"
+                                    android:gravity="center"
+                                    android:scrollHorizontally="true"
+                                    android:ellipsize="marquee"
+                                    android:marqueeRepeatLimit="marquee_forever"
+                                    android:singleLine="true"
                                     android:text="ECE Vs EEE"
+                                    android:textAlignment="center"
                                     android:textAllCaps="false"
-                                    android:textColor="@android:color/black"
+                                    android:textColor="@color/colorTabtext"
                                     android:textSize="15sp"
-                                    android:textStyle="bold" />
+                                    android:textStyle="bold"  />
 
                             </LinearLayout>
 
@@ -258,8 +286,8 @@
                                 android:elevation="2dp"
                                 android:gravity="center_vertical|center_horizontal"
                                 android:orientation="vertical"
-                                android:paddingLeft="20dp"
-                                android:paddingRight="20dp">
+                                android:paddingLeft="10dp"
+                                android:paddingRight="10dp">
 
                                 <TextView
                                     android:id="@+id/match5"
@@ -275,16 +303,23 @@
 
                                 <TextView
                                     android:id="@+id/match5teams"
-                                    android:layout_width="wrap_content"
+                                    android:layout_width="120dp"
                                     android:layout_height="wrap_content"
                                     android:layout_marginBottom="10dp"
-                                    android:layout_marginLeft="5dp"
-                                    android:layout_marginRight="5dp"
+                                    android:layout_marginLeft="2dp"
+                                    android:layout_marginRight="2dp"
+                                    android:fadingEdge="horizontal"
+                                    android:gravity="center"
+                                    android:scrollHorizontally="true"
+                                    android:ellipsize="marquee"
+                                    android:marqueeRepeatLimit="marquee_forever"
+                                    android:singleLine="true"
                                     android:text="ECE Vs EEE"
+                                    android:textAlignment="center"
                                     android:textAllCaps="false"
-                                    android:textColor="@android:color/black"
+                                    android:textColor="@color/colorTabtext"
                                     android:textSize="15sp"
-                                    android:textStyle="bold" />
+                                    android:textStyle="bold"  />
 
                             </LinearLayout>
                         </LinearLayout>
@@ -317,8 +352,8 @@
                                 android:elevation="2dp"
                                 android:gravity="center_vertical|center_horizontal"
                                 android:orientation="vertical"
-                                android:paddingLeft="20dp"
-                                android:paddingRight="20dp">
+                                android:paddingLeft="10dp"
+                                android:paddingRight="10dp">
 
                                 <TextView
                                     android:id="@+id/match6"
@@ -334,16 +369,23 @@
 
                                 <TextView
                                     android:id="@+id/match6teams"
-                                    android:layout_width="wrap_content"
+                                    android:layout_width="120dp"
                                     android:layout_height="wrap_content"
                                     android:layout_marginBottom="10dp"
-                                    android:layout_marginLeft="5dp"
-                                    android:layout_marginRight="5dp"
+                                    android:layout_marginLeft="2dp"
+                                    android:layout_marginRight="2dp"
+                                    android:fadingEdge="horizontal"
+                                    android:gravity="center"
+                                    android:scrollHorizontally="true"
+                                    android:ellipsize="marquee"
+                                    android:marqueeRepeatLimit="marquee_forever"
+                                    android:singleLine="true"
                                     android:text="ECE Vs EEE"
+                                    android:textAlignment="center"
                                     android:textAllCaps="false"
-                                    android:textColor="@android:color/black"
+                                    android:textColor="@color/colorTabtext"
                                     android:textSize="15sp"
-                                    android:textStyle="bold" />
+                                    android:textStyle="bold"  />
 
                             </LinearLayout>
 
@@ -409,8 +451,8 @@
                                         android:elevation="2dp"
                                         android:gravity="center_vertical|center_horizontal"
                                         android:orientation="vertical"
-                                        android:paddingLeft="20dp"
-                                        android:paddingRight="20dp">
+                                        android:paddingLeft="10dp"
+                                        android:paddingRight="10dp">
 
                                         <TextView
                                             android:id="@+id/match7"
@@ -426,16 +468,23 @@
 
                                         <TextView
                                             android:id="@+id/match7teams"
-                                            android:layout_width="wrap_content"
+                                            android:layout_width="120dp"
                                             android:layout_height="wrap_content"
                                             android:layout_marginBottom="10dp"
-                                            android:layout_marginLeft="5dp"
-                                            android:layout_marginRight="5dp"
+                                            android:layout_marginLeft="2dp"
+                                            android:layout_marginRight="2dp"
+                                            android:fadingEdge="horizontal"
+                                            android:gravity="center"
+                                            android:scrollHorizontally="true"
+                                            android:ellipsize="marquee"
+                                            android:marqueeRepeatLimit="marquee_forever"
+                                            android:singleLine="true"
                                             android:text="ECE Vs EEE"
+                                            android:textAlignment="center"
                                             android:textAllCaps="false"
-                                            android:textColor="@android:color/black"
+                                            android:textColor="@color/colorTabtext"
                                             android:textSize="15sp"
-                                            android:textStyle="bold" />
+                                            android:textStyle="bold"  />
 
                                     </LinearLayout>
 
@@ -462,8 +511,8 @@
                                         android:elevation="2dp"
                                         android:gravity="bottom|center_horizontal"
                                         android:orientation="vertical"
-                                        android:paddingLeft="20dp"
-                                        android:paddingRight="20dp">
+                                        android:paddingLeft="10dp"
+                                        android:paddingRight="10dp">
 
                                         <TextView
                                             android:id="@+id/match8"
@@ -479,16 +528,23 @@
 
                                         <TextView
                                             android:id="@+id/match8teams"
-                                            android:layout_width="wrap_content"
+                                            android:layout_width="120dp"
                                             android:layout_height="wrap_content"
                                             android:layout_marginBottom="10dp"
-                                            android:layout_marginLeft="5dp"
-                                            android:layout_marginRight="5dp"
+                                            android:layout_marginLeft="2dp"
+                                            android:layout_marginRight="2dp"
+                                            android:fadingEdge="horizontal"
+                                            android:gravity="center"
+                                            android:scrollHorizontally="true"
+                                            android:ellipsize="marquee"
+                                            android:marqueeRepeatLimit="marquee_forever"
+                                            android:singleLine="true"
                                             android:text="ECE Vs EEE"
+                                            android:textAlignment="center"
                                             android:textAllCaps="false"
-                                            android:textColor="@android:color/black"
+                                            android:textColor="@color/colorTabtext"
                                             android:textSize="15sp"
-                                            android:textStyle="bold" />
+                                            android:textStyle="bold"    />
 
                                     </LinearLayout>
 
@@ -539,8 +595,8 @@
                                         android:elevation="2dp"
                                         android:gravity="center_vertical|center_horizontal"
                                         android:orientation="vertical"
-                                        android:paddingLeft="20dp"
-                                        android:paddingRight="20dp">
+                                        android:paddingLeft="10dp"
+                                        android:paddingRight="10dp">
 
                                         <TextView
                                             android:id="@+id/match9"
@@ -556,16 +612,23 @@
 
                                         <TextView
                                             android:id="@+id/match9teams"
-                                            android:layout_width="wrap_content"
+                                            android:layout_width="120dp"
                                             android:layout_height="wrap_content"
                                             android:layout_marginBottom="10dp"
-                                            android:layout_marginLeft="5dp"
-                                            android:layout_marginRight="5dp"
+                                            android:layout_marginLeft="2dp"
+                                            android:layout_marginRight="2dp"
+                                            android:fadingEdge="horizontal"
+                                            android:gravity="center"
+                                            android:scrollHorizontally="true"
+                                            android:ellipsize="marquee"
+                                            android:marqueeRepeatLimit="marquee_forever"
+                                            android:singleLine="true"
                                             android:text="ECE Vs EEE"
+                                            android:textAlignment="center"
                                             android:textAllCaps="false"
-                                            android:textColor="@android:color/black"
+                                            android:textColor="@color/colorTabtext"
                                             android:textSize="15sp"
-                                            android:textStyle="bold" />
+                                            android:textStyle="bold"  />
 
                                     </LinearLayout>
 
@@ -593,8 +656,8 @@
                                         android:elevation="2dp"
                                         android:gravity="bottom|center_horizontal"
                                         android:orientation="vertical"
-                                        android:paddingLeft="20dp"
-                                        android:paddingRight="20dp">
+                                        android:paddingLeft="10dp"
+                                        android:paddingRight="10dp">
 
                                         <TextView
                                             android:id="@+id/match10"
@@ -610,16 +673,23 @@
 
                                         <TextView
                                             android:id="@+id/match10teams"
-                                            android:layout_width="wrap_content"
+                                            android:layout_width="120dp"
                                             android:layout_height="wrap_content"
                                             android:layout_marginBottom="10dp"
-                                            android:layout_marginLeft="5dp"
-                                            android:layout_marginRight="5dp"
+                                            android:layout_marginLeft="2dp"
+                                            android:layout_marginRight="2dp"
+                                            android:fadingEdge="horizontal"
+                                            android:gravity="center"
+                                            android:scrollHorizontally="true"
+                                            android:ellipsize="marquee"
+                                            android:marqueeRepeatLimit="marquee_forever"
+                                            android:singleLine="true"
                                             android:text="ECE Vs EEE"
+                                            android:textAlignment="center"
                                             android:textAllCaps="false"
-                                            android:textColor="@android:color/black"
+                                            android:textColor="@color/colorTabtext"
                                             android:textSize="15sp"
-                                            android:textStyle="bold" />
+                                            android:textStyle="bold"  />
 
                                     </LinearLayout>
 
@@ -689,8 +759,8 @@
                                         android:elevation="2dp"
                                         android:gravity="center_vertical|center_horizontal"
                                         android:orientation="vertical"
-                                        android:paddingLeft="20dp"
-                                        android:paddingRight="20dp">
+                                        android:paddingLeft="10dp"
+                                        android:paddingRight="10dp">
 
                                         <TextView
                                             android:id="@+id/match11"
@@ -706,14 +776,21 @@
 
                                         <TextView
                                             android:id="@+id/match11teams"
-                                            android:layout_width="wrap_content"
+                                            android:layout_width="120dp"
                                             android:layout_height="wrap_content"
                                             android:layout_marginBottom="10dp"
-                                            android:layout_marginLeft="5dp"
-                                            android:layout_marginRight="5dp"
+                                            android:layout_marginLeft="2dp"
+                                            android:layout_marginRight="2dp"
+                                            android:fadingEdge="horizontal"
+                                            android:gravity="center"
+                                            android:scrollHorizontally="true"
+                                            android:ellipsize="marquee"
+                                            android:marqueeRepeatLimit="marquee_forever"
+                                            android:singleLine="true"
                                             android:text="ECE Vs EEE"
+                                            android:textAlignment="center"
                                             android:textAllCaps="false"
-                                            android:textColor="@android:color/black"
+                                            android:textColor="@color/colorTabtext"
                                             android:textSize="15sp"
                                             android:textStyle="bold" />
 
@@ -744,8 +821,8 @@
                                         android:elevation="2dp"
                                         android:gravity="bottom|center_horizontal"
                                         android:orientation="vertical"
-                                        android:paddingLeft="20dp"
-                                        android:paddingRight="20dp">
+                                        android:paddingLeft="10dp"
+                                        android:paddingRight="10dp">
 
                                         <TextView
                                             android:id="@+id/match12"
@@ -761,14 +838,21 @@
 
                                         <TextView
                                             android:id="@+id/match12teams"
-                                            android:layout_width="wrap_content"
+                                            android:layout_width="120dp"
                                             android:layout_height="wrap_content"
                                             android:layout_marginBottom="10dp"
-                                            android:layout_marginLeft="5dp"
-                                            android:layout_marginRight="5dp"
+                                            android:layout_marginLeft="2dp"
+                                            android:layout_marginRight="2dp"
+                                            android:fadingEdge="horizontal"
+                                            android:gravity="center"
+                                            android:scrollHorizontally="true"
+                                            android:ellipsize="marquee"
+                                            android:marqueeRepeatLimit="marquee_forever"
+                                            android:singleLine="true"
                                             android:text="ECE Vs EEE"
+                                            android:textAlignment="center"
                                             android:textAllCaps="false"
-                                            android:textColor="@android:color/black"
+                                            android:textColor="@color/colorTabtext"
                                             android:textSize="15sp"
                                             android:textStyle="bold" />
 
@@ -839,8 +923,8 @@
                                         android:elevation="2dp"
                                         android:gravity="center_vertical|center_horizontal"
                                         android:orientation="vertical"
-                                        android:paddingLeft="20dp"
-                                        android:paddingRight="20dp">
+                                        android:paddingLeft="10dp"
+                                        android:paddingRight="10dp">
 
                                         <TextView
                                             android:id="@+id/match13"
@@ -856,16 +940,23 @@
 
                                         <TextView
                                             android:id="@+id/match13teams"
-                                            android:layout_width="wrap_content"
+                                            android:layout_width="120dp"
                                             android:layout_height="wrap_content"
                                             android:layout_marginBottom="10dp"
-                                            android:layout_marginLeft="5dp"
-                                            android:layout_marginRight="5dp"
+                                            android:layout_marginLeft="2dp"
+                                            android:layout_marginRight="2dp"
+                                            android:fadingEdge="horizontal"
+                                            android:gravity="center"
+                                            android:scrollHorizontally="true"
+                                            android:ellipsize="marquee"
+                                            android:marqueeRepeatLimit="marquee_forever"
+                                            android:singleLine="true"
                                             android:text="ECE Vs EEE"
+                                            android:textAlignment="center"
                                             android:textAllCaps="false"
-                                            android:textColor="@android:color/black"
+                                            android:textColor="@color/colorTabtext"
                                             android:textSize="15sp"
-                                            android:textStyle="bold" />
+                                            android:textStyle="bold"  />
 
                                     </LinearLayout>
 
@@ -936,8 +1027,8 @@
                                         android:elevation="2dp"
                                         android:gravity="center_vertical|center_horizontal"
                                         android:orientation="vertical"
-                                        android:paddingLeft="20dp"
-                                        android:paddingRight="20dp">
+                                        android:paddingLeft="10dp"
+                                        android:paddingRight="10dp">
 
                                         <TextView
                                             android:id="@+id/match14"
@@ -953,16 +1044,23 @@
 
                                         <TextView
                                             android:id="@+id/match14teams"
-                                            android:layout_width="wrap_content"
+                                            android:layout_width="120dp"
                                             android:layout_height="wrap_content"
                                             android:layout_marginBottom="10dp"
-                                            android:layout_marginLeft="5dp"
-                                            android:layout_marginRight="5dp"
+                                            android:layout_marginLeft="2dp"
+                                            android:layout_marginRight="2dp"
+                                            android:fadingEdge="horizontal"
+                                            android:gravity="center"
+                                            android:scrollHorizontally="true"
+                                            android:ellipsize="marquee"
+                                            android:marqueeRepeatLimit="marquee_forever"
+                                            android:singleLine="true"
                                             android:text="ECE Vs EEE"
+                                            android:textAlignment="center"
                                             android:textAllCaps="false"
-                                            android:textColor="@android:color/black"
+                                            android:textColor="@color/colorTabtext"
                                             android:textSize="15sp"
-                                            android:textStyle="bold" />
+                                            android:textStyle="bold"  />
 
                                     </LinearLayout>
 
@@ -980,8 +1078,8 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:gravity="center_horizontal"
                     android:layout_marginRight="30dp"
+                    android:gravity="center_horizontal"
                     android:orientation="vertical">
 
                     <TextView

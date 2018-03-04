@@ -165,6 +165,7 @@ public class LeaderboardFragment extends Fragment implements Callback<List<Leade
     @Override
     public void onResponse(Call<List<Leaderboard>> call, Response<List<Leaderboard>> response) {
         final List<Leaderboard> responseList=response.body();
+        swipeRefreshLayout.setRefreshing(false);
         if(responseList!=null){
             standingList.clear();
             if(responseList.size()>0) {
@@ -185,6 +186,8 @@ public class LeaderboardFragment extends Fragment implements Callback<List<Leade
                 });
                 thread.start();
 */
+                swipeRefreshLayout.setRefreshing(false);
+
                 standingList.clear();
                 standingList.addAll(responseList);
                 leaderboardRecyclerAdapter.notifyDataSetChanged();
@@ -226,6 +229,7 @@ public class LeaderboardFragment extends Fragment implements Callback<List<Leade
         Toast.makeText(context, "Device Offline", Toast.LENGTH_SHORT).show();
         //updateAdapter();
         leaderboardRecyclerAdapter.notifyDataSetChanged();
+        swipeRefreshLayout.setRefreshing(false);
     }
 
     private void updateAdapter() {
@@ -248,8 +252,9 @@ public class LeaderboardFragment extends Fragment implements Callback<List<Leade
         swipeRefreshLayout.setRefreshing(false);
         call = apiInterface.getLeaderBoard();
         call.enqueue(this);
-        loadingView.startAnimation();
-        loadingView.setVisibility(View.VISIBLE);
+        //loadingView.startAnimation();
+        //loadingView.setVisibility(View.VISIBLE);
+        swipeRefreshLayout.setRefreshing(true);
         Bundle bundle = new Bundle();
         bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, "LeaderBoard Refresh");
         mFirebaseAnalytics.logEvent("LeaderBoard", bundle);
