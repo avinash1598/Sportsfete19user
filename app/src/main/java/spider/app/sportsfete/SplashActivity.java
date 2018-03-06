@@ -40,7 +40,7 @@ public class SplashActivity extends AppCompatActivity {
         relativeLayout6 = (RelativeLayout) findViewById(R.id.rel6);
         relativeLayout7 = (RelativeLayout) findViewById(R.id.rel7);
 
-
+/*
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -82,11 +82,11 @@ public class SplashActivity extends AppCompatActivity {
                         Animation.RELATIVE_TO_SELF, 0.5f); // Pivot point of Y scaling
                 anim.setFillAfter(true); // Needed to keep the result of the animation
                 anim.setDuration(5000);*/
-               Animation anim = new AlphaAnimation(1,0);
+  /*             Animation anim = new AlphaAnimation(1,0);
                 anim.setFillAfter(true); // Needed to keep the result of the animation
                 anim.setDuration(500);
                 relativeLayout3.startAnimation(anim);
-            }
+ /*           }
         },2500);
 
         new Handler().postDelayed(new Runnable() {
@@ -144,7 +144,7 @@ public class SplashActivity extends AppCompatActivity {
                 relativeLayout6.startAnimation(anim);
             }
         },3000);
-
+*/
 
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -153,7 +153,7 @@ public class SplashActivity extends AppCompatActivity {
                 startActivity(intent);
                 finish();
             }
-        },3600);
+        },1500);
 
     }
 }

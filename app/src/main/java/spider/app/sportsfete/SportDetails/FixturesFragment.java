@@ -484,6 +484,8 @@ public class FixturesFragment extends Fragment {
                 matchTeams[fixtureElement.getFixtureIndex()].setText(sb);
             }
             else if(fixtureElement.getWinner().equalsIgnoreCase(fixtureElement.getDept2().trim())){
+
+
                 SpannableStringBuilder sb = new SpannableStringBuilder(text);
                 ForegroundColorSpan fcs = new ForegroundColorSpan(Color.parseColor("#4ab556"));
                 StyleSpan b = new StyleSpan(android.graphics.Typeface.BOLD);
