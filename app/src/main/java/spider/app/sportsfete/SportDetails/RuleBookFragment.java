@@ -170,7 +170,7 @@ public class RuleBookFragment extends Fragment {
         {
             alertbox_title.setText("Table Tennis");
             TextView alertbox_content = (TextView) view.findViewById(R.id.content);
-            alertbox_content.setText(Html.fromHtml(getString(R.string.TableTennis), null, new MyTagHandler()));
+            alertbox_content.setText(Html.fromHtml(getString(R.string.TableTennis_girls), null, new MyTagHandler()));
         }
 
         if(selectedSport.equals("21"))

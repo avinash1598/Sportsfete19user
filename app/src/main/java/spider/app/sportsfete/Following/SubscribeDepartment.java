@@ -132,7 +132,7 @@ public class SubscribeDepartment extends Fragment {
                     prefs.edit().putBoolean(deptArraySharedPreference[selected]+"Checked", true).apply();
                 }else {
                     checked[selected]=false;
-                    Toast.makeText(getContext(), "Unsubscribed to "+deptArraySharedPreference[selected], Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Unsubscribed from "+deptArraySharedPreference[selected], Toast.LENGTH_SHORT).show();
                     FirebaseMessaging.getInstance().unsubscribeFromTopic(deptArraySharedPreference[selected]);
                     prefs.edit().putBoolean(deptArraySharedPreference[selected]+"Checked", false).apply();
                 }

@@ -12,12 +12,12 @@
 
                 <item
             android:id="@+id/nav_leaderboard"
-            android:icon="@drawable/podium"
+            android:icon="@drawable/leaderboard"
             android:title="LeaderBoard" />
 
                 <item
             android:id="@+id/nav_schedule"
-            android:icon="@drawable/calendar"
+            android:icon="@drawable/schedule"
             android:title="Schedule" />
 
                 <item
@@ -32,7 +32,7 @@
 
                 <item
             android:id="@+id/nav_registration"
-            android:icon="@drawable/user_registration"
+            android:icon="@drawable/marathonregistration"
             android:title="Marathon Registration" />
         </group>
 

@@ -149,6 +149,19 @@ public class StatusEventsDetailRecyclerAdapter extends RecyclerView.Adapter<Even
                     holder.team2Tv.setTypeface(inconsolataBoldFont);
                     holder.team2Tv.setSelected(true);
                     holder.team2Tv.setSingleLine(true);
+
+                    if(event.getDept1().equalsIgnoreCase("m_tech")){
+                        holder.team1Tv.setText("M.Tech");
+                    }else if(event.getDept1().equalsIgnoreCase("phd_msc_ms")){
+                        holder.team1Tv.setText("PhD/MsC/MS");
+                    }
+
+                    if(event.getDept2().equalsIgnoreCase("m_tech")){
+                        holder.team2Tv.setText("M.Tech");
+                    }else if(event.getDept2().equalsIgnoreCase("phd_msc_ms")){
+                        holder.team2Tv.setText("PhD/MsC/MS");
+                    }
+
                 } else {
                     holder.nonVersusEventLl.setVisibility(View.VISIBLE);
                     holder.versusEventLl.setVisibility(View.GONE);
@@ -170,22 +183,25 @@ public class StatusEventsDetailRecyclerAdapter extends RecyclerView.Adapter<Even
             holder.roundTv.setTypeface(hammersmithOnefont);
             String round = event.getRound();
             if (!round.equals(event.getFixture()))
-                round = round + " : " + event.getFixture();
+                round = round + " : " + event.getId();
             holder.roundTv.setText(round);
-            holder.venueTV.setTypeface(francoisOneRegularFont);
+            holder.venueTV.setTypeface(hammersmithOnefont);
             holder.venueTV.setText(event.getVenue());
             holder.statusTv.setAllCaps(true);
+            holder.venueTV.setText(event.getVenue());
 
             if (eventList.get(position).getStatus().equals(FLAG_STATUS_UPCOMING)) {
                 holder.statusTv.setTextColor(Color.parseColor("#009688"));
                 status = "UPCOMING";
                 holder.statusTv.setAnimation(null);
-                holder.startTimeTv.setText(getCurrentTime(Long.valueOf(event.getStartTime())));
+                holder.startTimeTv.setText(getCurrentTime(Long.valueOf(event.getStartTime()))
+                        +"\n"+getCurrentDate(Long.valueOf(event.getStartTime())));
             } else if (eventList.get(position).getStatus().equals(FLAG_STATUS_LIVE)) {
                 holder.statusTv.setTextColor(Color.parseColor("#FF5722"));
                 status = "LIVE";
                 holder.statusTv.startAnimation(blinkAnimation);
-                holder.startTimeTv.setText(getCurrentTime(Long.valueOf(event.getStartTime())));
+                holder.startTimeTv.setText(getCurrentTime(Long.valueOf(event.getStartTime()))
+                        +"\n"+getCurrentDate(Long.valueOf(event.getStartTime())));
             } else {
                 holder.statusTv.setAnimation(null);
                 holder.statusTv.setTextColor(Color.parseColor("#4CAF50"));
@@ -233,16 +249,16 @@ public class StatusEventsDetailRecyclerAdapter extends RecyclerView.Adapter<Even
             case "EEE":imageView.setImageResource((dept_icon[6]));
                 imageView.setFillColor(Color.WHITE);break;
             case "ICE":imageView.setImageResource((dept_icon[7]));
-                imageView.setFillColor(Color.WHITE);break;
+                imageView.setFillColor(Color.parseColor("#16282a"));break;
             case "MCA":imageView.setImageResource((dept_icon[8]));
                 imageView.setFillColor(Color.WHITE);break;
             case "MECH":imageView.setImageResource((dept_icon[9]));
                 imageView.setFillColor(Color.WHITE);break;
             case "META":imageView.setImageResource((dept_icon[10]));
                 imageView.setFillColor(Color.WHITE);break;
-            case "M.TECH":imageView.setImageResource((dept_icon[11]));
+            case "M_TECH":imageView.setImageResource((dept_icon[11]));
                 imageView.setFillColor(Color.WHITE);break;
-            case "Phd/MSc/MS":imageView.setImageResource((dept_icon[12]));
+            case "Phd_MSc_MS":imageView.setImageResource((dept_icon[12]));
                 imageView.setFillColor(Color.WHITE);break;
             case "PROD":imageView.setImageResource((dept_icon[13]));
                 imageView.setFillColor(Color.WHITE);break;
@@ -271,12 +287,12 @@ public class StatusEventsDetailRecyclerAdapter extends RecyclerView.Adapter<Even
 
     private String getCurrentTime(Long time) {
         String delegate = "hh:mm aaa";
-        return (String) DateFormat.format(delegate, new Date(time*1000L));
+        return (String) DateFormat.format(delegate, new Date(time));
     }
 
     private String getCurrentDate(Long time) {
-        String delegate = "dd/MM/yyyy";
-        return (String) DateFormat.format(delegate, new Date(time*1000L));
+        String delegate = "dd MMM";
+        return (String) DateFormat.format(delegate, new Date(time));
     }
 
 }

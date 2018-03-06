@@ -5,22 +5,18 @@ package spider.app.sportsfete.FireBaseServices;
  */
 public class Comment {
 
-    String eventId, comment, username, timestamp;
-    long commentId;
+    String comment, eventId, username;
+    Long timestamp;
 
     public String getEventId() {
         return eventId;
-    }
-
-    public long getCommentId() {
-        return commentId;
     }
 
     public String getUsername() {
         return username;
     }
 
-    public String getTimestamp() {
+    public Long getTimestamp() {
         return timestamp;
     }
 
@@ -28,7 +24,7 @@ public class Comment {
         return comment;
     }
 
-    public void setTimestamp(String timestamp) {
+    public void setTimestamp(Long timestamp) {
         this.timestamp = timestamp;
     }
 
@@ -44,7 +40,4 @@ public class Comment {
         this.username = username;
     }
 
-    public void setCommentId(long commentId) {
-        this.commentId = commentId;
     }
-}

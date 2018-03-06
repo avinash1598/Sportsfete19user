@@ -24,6 +24,9 @@ public class FixturePOJO {
     @SerializedName("fixture")
     @Expose
     private Integer fixture;
+    @SerializedName("status")
+    @Expose
+    private String status;
 
     public String getDept1() {
         return dept1;
@@ -64,5 +67,9 @@ public class FixturePOJO {
     public void setFixture(Integer fixture) {
         this.fixture = fixture;
     }
+
+    public String getStatus(){ return status;}
+
+    public void setStatus(String status){ this.status = status; }
 
 }

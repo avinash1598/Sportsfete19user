@@ -11,6 +11,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
+import android.text.style.ForegroundColorSpan;
 import android.text.style.StyleSpan;
 import android.util.Log;
 import android.view.GestureDetector;
@@ -360,47 +361,37 @@ public class FixturesFragment extends Fragment {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                getFixtureForGame(selectedSportName.toUpperCase().replace("("," ("));
+                getFixtureForGame(selectedSportName.toUpperCase());
+                getStandingsForGame(selectedSportName.toUpperCase());
             }
         },150);
 
-/*
-        recyclerView = (RecyclerView) view.findViewById(R.id.fixtures_recycler_view);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(context));
-
-        fixturesRecyclerAdapter=new FixturesRecyclerAdapter(eventList,context,selectedSport);
-        recyclerView.setAdapter(fixturesRecyclerAdapter);
-*/
     }
 
-    //green color for team won
-    public void styleMatchWonText(String team1, String team2, TextView textView){
-        SpannableStringBuilder sb = new SpannableStringBuilder(
-                team1 + " Vs " + team2);
-        StyleSpan b = new StyleSpan(Color.GREEN);
-        sb.setSpan(b, 0, team1.length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
-        textView.setText(sb);
+    public void getStandingsForGame(String sport_name){
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://us-central1-sportsfete-732bf.cloudfunctions.net")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        final ApiInterface apiInterface = retrofit.create(ApiInterface.class);
+
+        apiInterface.getStanding(sport_name).enqueue(new Callback<List<String>>() {
+            @Override
+            public void onResponse(Call<List<String>> call, Response<List<String>> response) {
+                if(response.isSuccessful()){
+                    position1.setText(response.body().get(0));
+                    position2.setText(response.body().get(1));
+                    position3.setText(response.body().get(2));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<String>> call, Throwable t) {
+
+            }
+        });
     }
 
-    //grey color for one undecided team
-    public void styleUndecidedText(String team1, TextView textView){
-        SpannableStringBuilder sb = new SpannableStringBuilder(
-                team1 + " Vs " + "TBD");
-        StyleSpan b = new StyleSpan(Color.DKGRAY);
-        sb.setSpan(b, team1.length()+4,team1.length()+7, Spannable.SPAN_INCLUSIVE_INCLUSIVE);
-        textView.setText(sb);
-    }
-
-    //grey color with both team undecided
-    public void styleUndecidedText2(TextView textView){
-        textView.setTextColor(Color.DKGRAY);
-        SpannableStringBuilder sb = new SpannableStringBuilder(
-                "TBD" + " Vs " + "TBD");
-        StyleSpan b = new StyleSpan(Color.BLACK);
-        sb.setSpan(b, 4,6, Spannable.SPAN_INCLUSIVE_INCLUSIVE);
-        textView.setText(sb);
-    }
 
     public void getFixtureForGame(String sports_name){
         Retrofit retrofit = new Retrofit.Builder()
@@ -458,37 +449,52 @@ public class FixturesFragment extends Fragment {
             match[fixtureElement.getFixtureIndex()].setText("MATCH "+fixtureElement.getFixture());
 
             if(fixtureElement.getDept1().contains("WINNER OF")){
-                text = text + "W" + fixtureElement.getDept1().trim().split(" ")[2]+" Vs ";
+                text = text + "WM" + fixtureElement.getDept1().trim().split(" ")[2].
+                        replaceAll("[^0-9]+", "")+" Vs ";
             }
             else if(fixtureElement.getDept1().contains("LOSER OF")){
-                text = text + "L" + fixtureElement.getDept1().trim().split(" ")[2]+" Vs ";
+                text = text + "LM" + fixtureElement.getDept1().trim().split(" ")[2]
+                        .replaceAll("[^0-9]+", "")+" Vs ";
             }
             else{
                 text = text +  fixtureElement.getDept1().trim()+" Vs ";
             }
 
             if(fixtureElement.getDept2().contains("WINNER OF")){
-                text = text +  "W"+ fixtureElement.getDept2().trim().split(" ")[2];
+                text = text +  "WM"+ fixtureElement.getDept2().trim().split(" ")[2]
+                        .replaceAll("[^0-9]+", "");
             }
 
             else if(fixtureElement.getDept2().contains("LOSER OF")){
-                text = text +  "L"+ fixtureElement.getDept2().trim().split(" ")[2];
+                text = text +  "LM"+ fixtureElement.getDept2().trim().split(" ")[2]
+                        .replaceAll("[^0-9]+", "");
             }else{
                 text = text +  fixtureElement.getDept2().trim();
             }
 
             matchTeams[fixtureElement.getFixtureIndex()].setText(text);
 
+            Log.d("text",""+text);
             if(fixtureElement.getWinner().trim().equalsIgnoreCase(fixtureElement.getDept1().trim())){
                 SpannableStringBuilder sb = new SpannableStringBuilder(text);
-                StyleSpan b = new StyleSpan(Color.parseColor("#4ab556"));
+                ForegroundColorSpan fcs = new ForegroundColorSpan(Color.parseColor("#4ab556"));
+                StyleSpan b = new StyleSpan(android.graphics.Typeface.BOLD);
+                sb.setSpan(fcs, 0, text.split(" ")[0].length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
                 sb.setSpan(b, 0, text.split(" ")[0].length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
                 matchTeams[fixtureElement.getFixtureIndex()].setText(sb);
             }
             else if(fixtureElement.getWinner().equalsIgnoreCase(fixtureElement.getDept2().trim())){
                 SpannableStringBuilder sb = new SpannableStringBuilder(text);
-                StyleSpan b = new StyleSpan(Color.parseColor("#4ab556"));
-                sb.setSpan(b, text.split(" ")[0].length()+text.split(" ")[1].length()+2, text.split(" ")[2].length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+                ForegroundColorSpan fcs = new ForegroundColorSpan(Color.parseColor("#4ab556"));
+                StyleSpan b = new StyleSpan(android.graphics.Typeface.BOLD);
+                sb.setSpan(fcs, text.split(" ")[0].length()+text.split(" ")[1].length()+2,
+                        text.split(" ")[0].length()+text.split(" ")[1].length()+2+
+                                text.split(" ")[2].length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+
+                sb.setSpan(b, text.split(" ")[0].length()+text.split(" ")[1].length()+2,
+                        text.split(" ")[0].length()+text.split(" ")[1].length()+2+
+                                text.split(" ")[2].length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+
                 matchTeams[fixtureElement.getFixtureIndex()].setText(sb);
             }
         }
@@ -514,32 +520,47 @@ public class FixturesFragment extends Fragment {
                 match[fixtureElement.getFixtureIndex()].setText("MATCH " + fixtureElement.getFixture());
 
                 if (fixtureElement.getDept1().contains("WINNER OF")) {
-                    text = text + "W" + fixtureElement.getDept1().trim().split(" ")[2] + " Vs ";
+                    text = text + "WM" + fixtureElement.getDept1().trim().split(" ")[2]
+                            .replaceAll("[^0-9]+", "")+ " Vs ";
                 } else if (fixtureElement.getDept1().contains("LOSER OF")) {
-                    text = text + "L" + fixtureElement.getDept1().trim().split(" ")[2] + " Vs ";
+                    text = text + "LM" + fixtureElement.getDept1().trim().split(" ")[2]
+                            .replaceAll("[^0-9]+", "")+ " Vs ";
                 } else {
                     text = text + fixtureElement.getDept1().trim() + " Vs ";
                 }
 
                 if (fixtureElement.getDept2().contains("WINNER OF")) {
-                    text = text + "W" + fixtureElement.getDept2().trim().split(" ")[2];
+                    text = text + "WM" + fixtureElement.getDept2().trim().split(" ")[2]
+                    .replaceAll("[^0-9]+", "");
                 } else if (fixtureElement.getDept2().contains("LOSER OF")) {
-                    text = text + "L" + fixtureElement.getDept2().trim().split(" ")[2];
+                    text = text + "LM" + fixtureElement.getDept2().trim().split(" ")[2]
+                    .replaceAll("[^0-9]+", "");
                 } else {
                     text = text + fixtureElement.getDept2().trim();
                 }
 
                 matchTeams[fixtureElement.getFixtureIndex()].setText(text);
 
-                if (fixtureElement.getWinner().trim().equalsIgnoreCase(fixtureElement.getDept1().trim())) {
+                if(fixtureElement.getWinner().trim().equalsIgnoreCase(fixtureElement.getDept1().trim())){
                     SpannableStringBuilder sb = new SpannableStringBuilder(text);
-                    StyleSpan b = new StyleSpan(Color.parseColor("#4ab556"));
+                    ForegroundColorSpan fcs = new ForegroundColorSpan(Color.parseColor("#4ab556"));
+                    StyleSpan b = new StyleSpan(android.graphics.Typeface.BOLD);
+                    sb.setSpan(fcs, 0, text.split(" ")[0].length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
                     sb.setSpan(b, 0, text.split(" ")[0].length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
                     matchTeams[fixtureElement.getFixtureIndex()].setText(sb);
-                } else if (fixtureElement.getWinner().equalsIgnoreCase(fixtureElement.getDept2().trim())) {
+                }
+                else if(fixtureElement.getWinner().equalsIgnoreCase(fixtureElement.getDept2().trim())){
                     SpannableStringBuilder sb = new SpannableStringBuilder(text);
-                    StyleSpan b = new StyleSpan(Color.parseColor("#4ab556"));
-                    sb.setSpan(b, text.split(" ")[0].length() + text.split(" ")[1].length() + 2, text.split(" ")[2].length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+                    ForegroundColorSpan fcs = new ForegroundColorSpan(Color.parseColor("#4ab556"));
+                    StyleSpan b = new StyleSpan(android.graphics.Typeface.BOLD);
+                    sb.setSpan(fcs, text.split(" ")[0].length()+text.split(" ")[1].length()+2,
+                            text.split(" ")[0].length()+text.split(" ")[1].length()+2+
+                                    text.split(" ")[2].length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+
+                    sb.setSpan(b, text.split(" ")[0].length()+text.split(" ")[1].length()+2,
+                            text.split(" ")[0].length()+text.split(" ")[1].length()+2+
+                                    text.split(" ")[2].length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+
                     matchTeams[fixtureElement.getFixtureIndex()].setText(sb);
                 }
 
@@ -560,21 +581,24 @@ public class FixturesFragment extends Fragment {
                 match[fixtureElement.getFixtureIndex()].setText("MATCH " + fixtureElement.getFixture());
 
                 if(fixtureElement.getDept1().contains("WINNER OF")){
-                    text = text + "W" + fixtureElement.getDept1().trim().split(" ")[2]+" Vs ";
+                    text = text + "WM" + fixtureElement.getDept1().trim().split(" ")[2]+" Vs ";
                 }
                 else if(fixtureElement.getDept1().contains("LOSER OF")){
-                    text = text + "L" + fixtureElement.getDept1().trim().split(" ")[2]+" Vs ";
+                    text = text + "LM" + fixtureElement.getDept1().trim().split(" ")[2]
+                            .replaceAll("[^0-9]+", "")+" Vs ";
                 }
                 else{
                     text = text +  fixtureElement.getDept1().trim()+" Vs ";
                 }
 
                 if(fixtureElement.getDept2().contains("WINNER OF")){
-                    text = text +  "W"+ fixtureElement.getDept2().trim().split(" ")[2];
+                    text = text +  "WM"+ fixtureElement.getDept2().trim().split(" ")[2]
+                            .replaceAll("[^0-9]+", "");
                 }
 
                 else if(fixtureElement.getDept2().contains("LOSER OF")){
-                    text = text +  "L"+ fixtureElement.getDept2().trim().split(" ")[2];
+                    text = text +  "LM"+ fixtureElement.getDept2().trim().split(" ")[2]
+                    .replaceAll("[^0-9]+", "");
                 }else{
                     text = text +  fixtureElement.getDept2().trim();
                 }
@@ -583,14 +607,24 @@ public class FixturesFragment extends Fragment {
 
                 if(fixtureElement.getWinner().trim().equalsIgnoreCase(fixtureElement.getDept1().trim())){
                     SpannableStringBuilder sb = new SpannableStringBuilder(text);
-                    StyleSpan b = new StyleSpan(Color.parseColor("#4ab556"));
+                    ForegroundColorSpan fcs = new ForegroundColorSpan(Color.parseColor("#4ab556"));
+                    StyleSpan b = new StyleSpan(android.graphics.Typeface.BOLD);
+                    sb.setSpan(fcs, 0, text.split(" ")[0].length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
                     sb.setSpan(b, 0, text.split(" ")[0].length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
                     matchTeams[fixtureElement.getFixtureIndex()].setText(sb);
                 }
                 else if(fixtureElement.getWinner().equalsIgnoreCase(fixtureElement.getDept2().trim())){
                     SpannableStringBuilder sb = new SpannableStringBuilder(text);
-                    StyleSpan b = new StyleSpan(Color.parseColor("#4ab556"));
-                    sb.setSpan(b, text.split(" ")[0].length()+text.split(" ")[1].length()+2, text.split(" ")[2].length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+                    ForegroundColorSpan fcs = new ForegroundColorSpan(Color.parseColor("#4ab556"));
+                    StyleSpan b = new StyleSpan(android.graphics.Typeface.BOLD);
+                    sb.setSpan(fcs, text.split(" ")[0].length()+text.split(" ")[1].length()+2,
+                            text.split(" ")[0].length()+text.split(" ")[1].length()+2+
+                                    text.split(" ")[2].length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+
+                    sb.setSpan(b, text.split(" ")[0].length()+text.split(" ")[1].length()+2,
+                            text.split(" ")[0].length()+text.split(" ")[1].length()+2+
+                                    text.split(" ")[2].length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+
                     matchTeams[fixtureElement.getFixtureIndex()].setText(sb);
                 }
 
@@ -614,32 +648,47 @@ public class FixturesFragment extends Fragment {
                 match[fixtureElement.getFixtureIndex()].setText("MATCH " + fixtureElement.getFixture());
 
                 if (fixtureElement.getDept1().contains("WINNER OF")) {
-                    text = text + "W" + fixtureElement.getDept1().trim().split(" ")[2] + " Vs ";
+                    text = text + "WM" + fixtureElement.getDept1().trim().split(" ")[2]
+                            .replaceAll("[^0-9]+", "")+ " Vs ";
                 } else if (fixtureElement.getDept1().contains("LOSER OF")) {
-                    text = text + "L" + fixtureElement.getDept1().trim().split(" ")[2] + " Vs ";
+                    text = text + "LM" + fixtureElement.getDept1().trim().split(" ")[2]
+                            .replaceAll("[^0-9]+", "")+ " Vs ";
                 } else {
                     text = text + fixtureElement.getDept1().trim() + " Vs ";
                 }
 
                 if (fixtureElement.getDept2().contains("WINNER OF")) {
-                    text = text + "W" + fixtureElement.getDept2().trim().split(" ")[2];
+                    text = text + "WM" + fixtureElement.getDept2().trim().split(" ")[2]
+                            .replaceAll("[^0-9]+", "");
                 } else if (fixtureElement.getDept2().contains("LOSER OF")) {
-                    text = text + "L" + fixtureElement.getDept2().trim().split(" ")[2];
+                    text = text + "LM" + fixtureElement.getDept2().trim().split(" ")[2]
+                            .replaceAll("[^0-9]+", "");
                 } else {
                     text = text + fixtureElement.getDept2().trim();
                 }
 
                 matchTeams[fixtureElement.getFixtureIndex()].setText(text);
 
-                if (fixtureElement.getWinner().trim().equalsIgnoreCase(fixtureElement.getDept1().trim())) {
+                if(fixtureElement.getWinner().trim().equalsIgnoreCase(fixtureElement.getDept1().trim())){
                     SpannableStringBuilder sb = new SpannableStringBuilder(text);
-                    StyleSpan b = new StyleSpan(Color.parseColor("#4ab556"));
+                    ForegroundColorSpan fcs = new ForegroundColorSpan(Color.parseColor("#4ab556"));
+                    StyleSpan b = new StyleSpan(android.graphics.Typeface.BOLD);
+                    sb.setSpan(fcs, 0, text.split(" ")[0].length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
                     sb.setSpan(b, 0, text.split(" ")[0].length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
                     matchTeams[fixtureElement.getFixtureIndex()].setText(sb);
-                } else if (fixtureElement.getWinner().equalsIgnoreCase(fixtureElement.getDept2().trim())) {
+                }
+                else if(fixtureElement.getWinner().equalsIgnoreCase(fixtureElement.getDept2().trim())){
                     SpannableStringBuilder sb = new SpannableStringBuilder(text);
-                    StyleSpan b = new StyleSpan(Color.parseColor("#4ab556"));
-                    sb.setSpan(b, text.split(" ")[0].length() + text.split(" ")[1].length() + 2, text.split(" ")[2].length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+                    ForegroundColorSpan fcs = new ForegroundColorSpan(Color.parseColor("#4ab556"));
+                    StyleSpan b = new StyleSpan(android.graphics.Typeface.BOLD);
+                    sb.setSpan(fcs, text.split(" ")[0].length()+text.split(" ")[1].length()+2,
+                            text.split(" ")[0].length()+text.split(" ")[1].length()+2+
+                                    text.split(" ")[2].length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+
+                    sb.setSpan(b, text.split(" ")[0].length()+text.split(" ")[1].length()+2,
+                            text.split(" ")[0].length()+text.split(" ")[1].length()+2+
+                                    text.split(" ")[2].length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+
                     matchTeams[fixtureElement.getFixtureIndex()].setText(sb);
                 }
 
@@ -661,32 +710,47 @@ public class FixturesFragment extends Fragment {
                 match[fixtureElement.getFixtureIndex()].setText("MATCH " + fixtureElement.getFixture());
 
                 if (fixtureElement.getDept1().contains("WINNER OF")) {
-                    text = text + "W" + fixtureElement.getDept1().trim().split(" ")[2] + " Vs ";
+                    text = text + "WM" + fixtureElement.getDept1().trim().split(" ")[2]
+                            .replaceAll("[^0-9]+", "")+ " Vs ";
                 } else if (fixtureElement.getDept1().contains("LOSER OF")) {
-                    text = text + "L" + fixtureElement.getDept1().trim().split(" ")[2] + " Vs ";
+                    text = text + "LM" + fixtureElement.getDept1().trim().split(" ")[2]
+                            .replaceAll("[^0-9]+", "")+ " Vs ";
                 } else {
                     text = text + fixtureElement.getDept1().trim() + " Vs ";
                 }
 
                 if (fixtureElement.getDept2().contains("WINNER OF")) {
-                    text = text + "W" + fixtureElement.getDept2().trim().split(" ")[2];
+                    text = text + "WM" + fixtureElement.getDept2().trim().split(" ")[2]
+                            .replaceAll("[^0-9]+", "");
                 } else if (fixtureElement.getDept2().contains("LOSER OF")) {
-                    text = text + "L" + fixtureElement.getDept2().trim().split(" ")[2];
+                    text = text + "LM" + fixtureElement.getDept2().trim().split(" ")[2]
+                            .replaceAll("[^0-9]+", "");
                 } else {
                     text = text + fixtureElement.getDept2().trim();
                 }
 
                 matchTeams[fixtureElement.getFixtureIndex()].setText(text);
 
-                if (fixtureElement.getWinner().trim().equalsIgnoreCase(fixtureElement.getDept1().trim())) {
+                if(fixtureElement.getWinner().trim().equalsIgnoreCase(fixtureElement.getDept1().trim())){
                     SpannableStringBuilder sb = new SpannableStringBuilder(text);
-                    StyleSpan b = new StyleSpan(Color.parseColor("#4ab556"));
+                    ForegroundColorSpan fcs = new ForegroundColorSpan(Color.parseColor("#4ab556"));
+                    StyleSpan b = new StyleSpan(android.graphics.Typeface.BOLD);
+                    sb.setSpan(fcs, 0, text.split(" ")[0].length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
                     sb.setSpan(b, 0, text.split(" ")[0].length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
                     matchTeams[fixtureElement.getFixtureIndex()].setText(sb);
-                } else if (fixtureElement.getWinner().equalsIgnoreCase(fixtureElement.getDept2().trim())) {
+                }
+                else if(fixtureElement.getWinner().equalsIgnoreCase(fixtureElement.getDept2().trim())){
                     SpannableStringBuilder sb = new SpannableStringBuilder(text);
-                    StyleSpan b = new StyleSpan(Color.parseColor("#4ab556"));
-                    sb.setSpan(b, text.split(" ")[0].length() + text.split(" ")[1].length() + 2, text.split(" ")[2].length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+                    ForegroundColorSpan fcs = new ForegroundColorSpan(Color.parseColor("#4ab556"));
+                    StyleSpan b = new StyleSpan(android.graphics.Typeface.BOLD);
+                    sb.setSpan(fcs, text.split(" ")[0].length()+text.split(" ")[1].length()+2,
+                            text.split(" ")[0].length()+text.split(" ")[1].length()+2+
+                                    text.split(" ")[2].length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+
+                    sb.setSpan(b, text.split(" ")[0].length()+text.split(" ")[1].length()+2,
+                            text.split(" ")[0].length()+text.split(" ")[1].length()+2+
+                                    text.split(" ")[2].length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+
                     matchTeams[fixtureElement.getFixtureIndex()].setText(sb);
                 }
 

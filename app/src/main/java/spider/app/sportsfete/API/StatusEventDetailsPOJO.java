@@ -63,7 +63,7 @@ public class StatusEventDetailsPOJO {
     @SerializedName("hint")
     @Expose
     private String hint;
-    @DatabaseField
+  /*  @DatabaseField
     @SerializedName("loser_dept_next")
     @Expose
     private String loserDeptNext;
@@ -71,7 +71,7 @@ public class StatusEventDetailsPOJO {
     @SerializedName("loser_next_match")
     @Expose
     private String loserNextMatch;
-    @DatabaseField
+  */  @DatabaseField
     @SerializedName("name")
     @Expose
     private String name;
@@ -99,7 +99,7 @@ public class StatusEventDetailsPOJO {
     @SerializedName("winner")
     @Expose
     private String winner;
-    @DatabaseField
+ /*   @DatabaseField
     @SerializedName("winner_dept_next")
     @Expose
     private String winnerDeptNext;
@@ -107,7 +107,7 @@ public class StatusEventDetailsPOJO {
     @SerializedName("winner_next_match")
     @Expose
     private String winnerNextMatch;
-
+*/
     public String getId(){ return id; }
 
     public void setId(String id){  this.id = id; }
@@ -199,7 +199,7 @@ public class StatusEventDetailsPOJO {
     public void setHint(String hint) {
         this.hint = hint;
     }
-
+/*
     public String getLoserDeptNext() {
         return loserDeptNext;
     }
@@ -215,7 +215,7 @@ public class StatusEventDetailsPOJO {
     public void setLoserNextMatch(String loserNextMatch) {
         this.loserNextMatch = loserNextMatch;
     }
-
+*/
     public String getName() {
         return name;
     }
@@ -271,7 +271,7 @@ public class StatusEventDetailsPOJO {
     public void setWinner(String winner) {
         this.winner = winner;
     }
-
+/*
     public String getWinnerDeptNext() {
         return winnerDeptNext;
     }
@@ -287,4 +287,4 @@ public class StatusEventDetailsPOJO {
     public void setWinnerNextMatch(String winnerNextMatch) {
         this.winnerNextMatch = winnerNextMatch;
     }
-}
+*/}

@@ -58,6 +58,7 @@ public class Score {
     @SerializedName("hint")
     @Expose
     private String hint;
+   /*
     @DatabaseField
     @SerializedName("loser_dept_next")
     @Expose
@@ -66,7 +67,7 @@ public class Score {
     @SerializedName("loser_next_match")
     @Expose
     private String loser_next_match;
-    @DatabaseField
+ */   @DatabaseField
     @SerializedName("name")
     @Expose
     private String name;
@@ -78,6 +79,10 @@ public class Score {
     @SerializedName("round")
     @Expose
     private String round;
+    @DatabaseField
+    @SerializedName("score_timestamp")
+    @Expose
+    private Long score_timestamp;
     @DatabaseField
     @SerializedName("start_time")
     @Expose
@@ -94,6 +99,7 @@ public class Score {
     @SerializedName("winner")
     @Expose
     private String winner;
+   /*
     @DatabaseField
     @SerializedName("winner_dept_next")
     @Expose
@@ -102,7 +108,7 @@ public class Score {
     @SerializedName("winner_next_match")
     @Expose
     private Integer winner_next_match;
-
+*/
 
     public Integer getDay() {
         return day;
@@ -125,7 +131,7 @@ public class Score {
     }
 
     public void setDept1_score(String dept1_score) {
-        this.dept2_score = dept1_score;
+        this.dept1_score = dept1_score;
     }
 
     public String getDept2() {
@@ -191,7 +197,7 @@ public class Score {
     public void setHint(String hint) {
         this.hint = hint;
     }
-
+/*
     public String getLoser_dept_next() {
         return loser_dept_next;
     }
@@ -207,7 +213,7 @@ public class Score {
     public void setLoser_next_match(String loserNextMatch) {
         this.loser_next_match = loserNextMatch;
     }
-
+*/
     public String getName() {
         return name;
     }
@@ -230,6 +236,12 @@ public class Score {
 
     public void setRound(String round) {
         this.round = round;
+    }
+
+    public Long getScore_timestamp(){ return score_timestamp; }
+
+    public void setScore_timestamp(Long score_timestamp){
+        this.score_timestamp = score_timestamp;
     }
 
     public Long getStart_time() {
@@ -263,7 +275,7 @@ public class Score {
     public void setWinner(String winner) {
         this.winner = winner;
     }
-
+/*
     public Integer getWinner_dept_next() {
         return winner_dept_next;
     }
@@ -279,4 +291,4 @@ public class Score {
     public void setWinner_next_match(Integer winnerNextMatch) {
         this.winner_next_match = winnerNextMatch;
     }
-}
+*/}

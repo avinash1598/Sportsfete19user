@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import net.cachapa.expandablelayout.ExpandableLayout;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import spider.app.sportsfete.R;
 
 /**
@@ -18,7 +19,8 @@ import spider.app.sportsfete.R;
 public class LeaderboardRecyclerViewHolder extends RecyclerView.ViewHolder {
 
     TextView departmentTV, scoreTV,rankTv;
-    ImageView medalIv, arrow_indicator, department_icon;
+    ImageView medalIv, arrow_indicator ;
+    CircleImageView department_icon;
     ExpandableLayout expandableLayout;
     RecyclerView  recyclerView;
 
@@ -31,6 +33,6 @@ public class LeaderboardRecyclerViewHolder extends RecyclerView.ViewHolder {
         expandableLayout = (ExpandableLayout) itemView.findViewById(R.id.expandableLayout);
         recyclerView = (RecyclerView) itemView.findViewById(R.id.score_distribution);
         arrow_indicator = (ImageView) itemView.findViewById(R.id.arrow_indicator);
-        department_icon = (ImageView) itemView.findViewById(R.id.department_icon);
+        department_icon = (CircleImageView) itemView.findViewById(R.id.department_icon);
     }
 }

@@ -53,7 +53,7 @@
                 android:layout_marginRight="30dp"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/circular_end_border"
-                android:hint="PASSWORD"
+                android:hint="WEBMAIL PASSWORD"
                 android:inputType="textPassword"
                 android:paddingBottom="12dp"
                 android:paddingLeft="10dp"
@@ -73,7 +73,7 @@
                 android:layout_marginRight="30dp"
                 android:layout_marginTop="15dp"
                 android:background="@drawable/circular_end_border"
-                android:hint="USERNAME"
+                android:hint="NAME"
                 android:inputType="text"
                 android:paddingBottom="12dp"
                 android:paddingLeft="10dp"
@@ -130,7 +130,6 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="1dp"
                     android:gravity="center"
-                    android:popupBackground="@drawable/triangle"
                     android:textColor="#000000" />
 
             </LinearLayout>
@@ -143,11 +142,11 @@
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/circular_end_button"
+                android:background="@drawable/button_selector"
                 android:gravity="center"
                 android:singleLine="true"
                 android:text="Register"
-                android:textColor="@color/green_text"
+                android:textColor="@drawable/text_selector"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:typeface="monospace" />

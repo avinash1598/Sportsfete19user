@@ -45,17 +45,19 @@ import com.twotoasters.jazzylistview.recyclerview.JazzyRecyclerViewScrollListene
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
 import java.util.TimeZone;
 
-import io.saeid.fabloading.LoadingView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import rx.functions.Action1;
 import spider.app.sportsfete.API.ApiInterface;
 import spider.app.sportsfete.API.EventDetailsPOJO;
+import spider.app.sportsfete.API.StatusEventDetailsPOJO;
 import spider.app.sportsfete.DatabaseHelper;
 import spider.app.sportsfete.DepartmentUpdateCallback;
 import spider.app.sportsfete.EventInfo.EventInfoActivity;
@@ -70,7 +72,6 @@ public class Day1Fragment extends Fragment implements Callback<List<EventDetails
     List<EventDetailsPOJO> eventList;
     Day1EventsDetailRecyclerAdapter eventRecyclerAdapter;
     RecyclerView recyclerView;
-    LoadingView loadingView;
     SwipeRefreshLayout swipeRefreshLayout;
     Call<List<EventDetailsPOJO>> call;
     ApiInterface apiInterface;
@@ -96,6 +97,13 @@ public class Day1Fragment extends Fragment implements Callback<List<EventDetails
             updateAdapter();
             Log.d("selected department",selectedDept+"");
             //departmentUpdateCallback.updateScheduleFragment();
+        }
+    };
+
+    BroadcastReceiver receiver2 = new BroadcastReceiver(){
+        @Override
+        public void onReceive(Context contextBroadcast, Intent intent) {
+            recyclerView.smoothScrollToPosition(0);
         }
     };
 
@@ -137,18 +145,6 @@ public class Day1Fragment extends Fragment implements Callback<List<EventDetails
         jazzyRecyclerViewScrollListener.setTransitionEffect(currentTransitionEffect);
        // recyclerView.setOnScrollListener(jazzyRecyclerViewScrollListener);
 
-        loadingView = (LoadingView)getActivity(). findViewById(R.id.day_1_loading_view);
-        loadingView.addAnimation(Color.WHITE,R.drawable.basketball, LoadingView.FROM_LEFT);
-        loadingView.addAnimation(Color.WHITE,R.drawable.cricket, LoadingView.FROM_TOP);
-        loadingView.addAnimation(Color.WHITE,R.drawable.badminton, LoadingView.FROM_RIGHT);
-        loadingView.addAnimation(Color.WHITE,R.drawable.tennisball, LoadingView.FROM_BOTTOM);
-        loadingView.addAnimation(Color.WHITE,R.drawable.chess, LoadingView.FROM_LEFT);
-        loadingView.addAnimation(Color.WHITE,R.drawable.pingpong, LoadingView.FROM_TOP);
-        loadingView.addAnimation(Color.WHITE,R.drawable.waterpolo, LoadingView.FROM_RIGHT);
-        loadingView.addAnimation(Color.WHITE,R.drawable.soccer, LoadingView.FROM_BOTTOM);
-        loadingView.setRepeat(100);
-        loadingView.setVisibility(View.GONE);
-
         Log.d(TAG, "onViewCreated: selectedDept"+selectedDept);
 
         eventRecyclerAdapter=new Day1EventsDetailRecyclerAdapter(eventList, getActivity(), new Day1EventsDetailRecyclerAdapter.MyAdapterListener() {
@@ -189,9 +185,13 @@ public class Day1Fragment extends Fragment implements Callback<List<EventDetails
         }
 
         IntentFilter filter = new IntentFilter();
+        IntentFilter filter2 = new IntentFilter();
+        filter2.addAction("scroll_to_top0");
         filter.addAction("update_department");
-        if(getActivity()!=null)
+        if(getActivity()!=null) {
             getActivity().registerReceiver(receiver, filter);
+            getActivity().registerReceiver(receiver2, filter2);
+        }
 
         setClickListener();
 
@@ -251,7 +251,6 @@ public class Day1Fragment extends Fragment implements Callback<List<EventDetails
                             @Override
                             public void run() {
                                 putEventsLastUpdate();
-                                loadingView.setVisibility(View.INVISIBLE);
                                 swipeRefreshLayout.setRefreshing(false);
                                 updateAdapter();
                                 //departmentUpdateCallback.updateScheduleFragment();
@@ -270,7 +269,6 @@ public class Day1Fragment extends Fragment implements Callback<List<EventDetails
     public void onFailure(Call<List<EventDetailsPOJO>> call, Throwable t) {
         //Log.d(TAG, "onFailure: "+t.toString());
         t.printStackTrace();
-        loadingView.setVisibility(View.INVISIBLE);
         swipeRefreshLayout.setRefreshing(false);
         Toast.makeText(context, "Device Offline", Toast.LENGTH_SHORT).show();
 
@@ -326,6 +324,14 @@ public class Day1Fragment extends Fragment implements Callback<List<EventDetails
                 eventList.clear();
                 eventRecyclerAdapter.notifyDataSetChanged();
                 eventList.addAll(newDbList);
+
+                Collections.sort(eventList, new Comparator<EventDetailsPOJO>(){
+                    @Override
+                    public int compare(EventDetailsPOJO o1, EventDetailsPOJO o2) {
+                        return (int) (o1.getStartTime() - o2.getStartTime());
+                    }
+                });
+
                 eventRecyclerAdapter.notifyDataSetChanged();
             }
 

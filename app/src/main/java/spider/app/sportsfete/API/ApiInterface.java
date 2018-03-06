@@ -31,15 +31,11 @@ public interface ApiInterface {
     @GET("/leaderboard")
     Call<List<Leaderboard>> getLeaderBoard();
 
-    @GET("/events_by_day")
+    @GET("/day_events")
     Call<List<EventDetailsPOJO>> getSchedule2(@Query("day") int day);
 
-    @GET("/events_by_status")
+    @GET("/status_events")
     Call<List<StatusEventDetailsPOJO>> getEventByStatus(@Query("status") String status);
-
-    @FormUrlEncoded
-    @POST("user/marathon/register")
-    Call<String> registerForMarathon(@Field("rollno") String rollNo, @Field("password") String password);
 
     @FormUrlEncoded
     @POST("/marathon")
@@ -47,5 +43,8 @@ public interface ApiInterface {
 
     @GET("/fixture")
     Call<List<FixturePOJO>> getfixture(@Query("sport") String sport);
+
+    @GET("/positions")
+    Call<List<String>> getStanding(@Query("sport") String sport);
 
 }

@@ -30,9 +30,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.firebase.messaging.FirebaseMessaging;
-import com.mxn.soul.flowingdrawer_core.ElasticDrawer;
-import com.mxn.soul.flowingdrawer_core.FlowingDrawer;
-
 import net.cachapa.expandablelayout.ExpandableLayout;
 
 import java.util.ArrayList;
@@ -369,4 +366,50 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         fragmentTransaction.replace(R.id.fragment_container, homeFragment);
         fragmentTransaction.commit();
     }
+
+    @Override
+    public void onBackPressed(){
+        if(lastViewFragment!=0){
+            navigationTabBar.setSelected(true);
+            navigationTabBar.setModelIndex(0);
+            navigationTabBar.setVisibility(View.VISIBLE);
+            lastViewFragment = 0;
+            Bundle arguments = new Bundle();
+            arguments.putString("target", "live");
+            HomeFragment homeFragment = new HomeFragment();
+            homeFragment.setArguments(arguments);
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.fragment_container, homeFragment);
+            fragmentTransaction.commit();
+            getSupportActionBar().setTitle("Live");
+            navigationView.setCheckedItem(R.id.nav_home);
+
+            navigationView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+                @Override
+                public void onGlobalLayout() {
+                    ArrayList<View> menuItems = new ArrayList<>(); // save Views in this array
+                    navigationView.getViewTreeObserver().removeOnGlobalLayoutListener(this); // remove the global layout listener
+                    for (int i = 0; i < menu.size(); i++) {// loops over menu items  to get the text view from each menu item
+                        final MenuItem item = menu.getItem(i);
+                        navigationView.findViewsWithText(menuItems, item.getTitle(), View.FIND_VIEWS_WITH_TEXT);
+                    }
+                    for (final View menuItem : menuItems) {// loops over the saved views and sets the font
+                        ((TextView) menuItem).setTypeface(Typeface.createFromAsset(getAssets(),  "fonts/HammersmithOneRegular.ttf"), Typeface.BOLD);
+                    }
+                }
+            });
+
+            for(int i = 0; i < toolbar.getChildCount(); i++)
+            { View view = toolbar.getChildAt(i);
+                if(view instanceof TextView) {
+                    TextView textView = (TextView) view;
+
+                    textView.setTypeface(Typeface.createFromAsset(getAssets(),  "fonts/HammersmithOneRegular.ttf"));
+                }
+            }
+
+        }else
+            super.onBackPressed();
+    }
+
 }

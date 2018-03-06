@@ -2,6 +2,7 @@ package spider.app.sportsfete.Marathon;
 
 import android.app.Fragment;
 import android.app.ProgressDialog;
+import android.graphics.Color;
 import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -64,20 +65,20 @@ public class MarathonRegistration extends android.support.v4.app.Fragment {
 
     String[] dept = {
             "Select Department",
-            "Cse",
-            "Ece",
+            "CSE",
+            "ECE",
             "Eee",
             "Mech",
             "Prod",
             "Ice",
-            "Chemical",
+            "Chem",
             "Civil",
-            "Metallurgy",
-            "Architecture",
-            "PhD+MSC+MS",
+            "Meta",
+            "Archi",
+            "PhD_MSC_MS",
             "DoMS",
             "MCA",
-            "Mtech"};
+            "M_tech"};
 
     ProgressDialog progressDialog;
 
@@ -120,7 +121,7 @@ public class MarathonRegistration extends android.support.v4.app.Fragment {
         super.onActivityCreated(savedInstanceState);
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://us-central1-sportsfete-732bf.cloudfunctions.net")
+                .baseUrl("https://sportsfete-732bf.firebaseapp.com")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         final ApiInterface apiInterface = retrofit.create(ApiInterface.class);
@@ -158,13 +159,13 @@ public class MarathonRegistration extends android.support.v4.app.Fragment {
                     HashMap<String, String> map = new HashMap<>();
                     map.put("roll",reg_user_rollno.getText().toString().trim());
                     map.put("name",reg_user_name.getText().toString().trim());
-                    map.put("dept",dept[selectedPosition]);
+                    map.put("dept",dept[selectedPosition].toUpperCase());
                     map.put("password",user_password.getText().toString().trim());
 
-                    if(radioGroup.getCheckedRadioButtonId()!=R.id.male_radio){
+                    if(radioGroup.getCheckedRadioButtonId()==R.id.male_radio){
                         map.put("gender","M");
                     }
-                    if(radioGroup.getCheckedRadioButtonId()!=R.id.female_radio){
+                    if(radioGroup.getCheckedRadioButtonId()==R.id.female_radio){
                         map.put("gender","F");
                     }
 

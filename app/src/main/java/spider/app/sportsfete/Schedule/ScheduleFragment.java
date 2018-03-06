@@ -160,7 +160,9 @@ public class ScheduleFragment extends Fragment{
 
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
-
+                Intent intent = new Intent();
+                intent.setAction("scroll_to_top"+tab.getPosition());
+                getActivity().sendBroadcast(intent);
             }
         });
 

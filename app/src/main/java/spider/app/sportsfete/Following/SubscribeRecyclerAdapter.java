@@ -38,6 +38,36 @@ public class SubscribeRecyclerAdapter extends RecyclerView.Adapter<SubscribeView
         public void buttonPressed(int position);
     }
 
+    int[] drawable = {
+            R.drawable.athletics,
+            R.drawable.badminton,
+            R.drawable.basketball,
+            R.drawable.basketball,
+            R.drawable.carrom,
+            R.drawable.chess,
+            R.drawable.cricket,
+            R.drawable.cricket,
+            R.drawable.football,
+            R.drawable.football,
+            R.drawable.handball,
+            R.drawable.handball,
+            R.drawable.hockey,
+            R.drawable.kabaddi,
+            R.drawable.khokho,
+            R.drawable.khokho,
+            R.drawable.marathon,
+            R.drawable.powerlifting,
+            R.drawable.swimming,
+            R.drawable.tabletennis,
+            R.drawable.tabletennis,
+            R.drawable.tennis,
+            R.drawable.tennis,
+            R.drawable.thrwoball,
+            R.drawable.volleyball,
+            R.drawable.volleyball,
+            R.drawable.waterpolo
+    };
+
     int[] dept_icon = {
             R.drawable.arch1,
             R.drawable.chem1,
@@ -68,10 +98,7 @@ public class SubscribeRecyclerAdapter extends RecyclerView.Adapter<SubscribeView
 
     @Override
     public SubscribeViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        if(departmentList.get(0).trim().equalsIgnoreCase("ATHLETICS")){
-            return new SubscribeViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.single_sport_subscribe_item,
-                    parent, false));
-        }else
+
             return new SubscribeViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.single_subscribe_item,
                     parent, false));
     }
@@ -90,33 +117,55 @@ public class SubscribeRecyclerAdapter extends RecyclerView.Adapter<SubscribeView
             }
         });
 
-        if(departmentList.get(0).trim().equalsIgnoreCase("ATHLETICS")){
+        if (departmentList.get(0).trim().equalsIgnoreCase("ATHLETICS")) {
+            holder.dept_icon.setImageResource(drawable[position]);
+            holder.dept_icon.setColorFilter(Color.parseColor("#16282a"));
+        } else {
 
-        }else
-            setDeptIcon(holder.dept_icon,departmentList.get(position).trim());
+            if(departmentList.get(position).equalsIgnoreCase("m_tech")){
+                holder.departmentNameTv.setText("M.Tech");
+            }else if(departmentList.get(position).equalsIgnoreCase("phd_msc_ms")) {
+                holder.departmentNameTv.setText("PhD/MsC/MS");
+            }
+
+            holder.dept_icon.setColorFilter(null);
+            setDeptIcon(holder.dept_icon, departmentList.get(position).trim());
+        }
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void setDeptIcon(CircleImageView imageView, String dept){
         switch(dept){
-            case "ARCH":imageView.setImageResource((dept_icon[0]));break;
-            case "CHEM":imageView.setImageResource((dept_icon[1]));break;
-            case "CIVIL":imageView.setImageResource((dept_icon[2]));break;
+            case "ARCHI":imageView.setImageResource((dept_icon[0]));
+                imageView.setFillColor(Color.WHITE);break;
+            case "CHEM":imageView.setImageResource((dept_icon[1]));
+                imageView.setFillColor(Color.WHITE);break;
+            case "CIVIL":imageView.setImageResource((dept_icon[2]));
+                imageView.setFillColor(Color.WHITE);break;
             case "CSE":imageView.setImageResource((dept_icon[3]));
-                       imageView.setFillColor(Color.parseColor("#16282a"));break;
-            case "DOMS":imageView.setImageResource((dept_icon[4]));break;
-            case "ECE":imageView.setImageResource((dept_icon[5]));break;
-            case "EEE":imageView.setImageResource((dept_icon[6]));break;
-            case "ICE":imageView.setImageResource((dept_icon[7]));break;
-            case "MCA":imageView.setImageResource((dept_icon[8]));break;
-            case "MECH":imageView.setImageResource((dept_icon[9]));break;
-            case "META":imageView.setImageResource((dept_icon[10]));break;
-            case "MTECH":imageView.setImageResource((dept_icon[11]));break;
-            case "PHD_MSC":imageView.setImageResource((dept_icon[12]));break;
-            case "PROD":imageView.setImageResource((dept_icon[13]));break;
+                imageView.setFillColor(Color.parseColor("#16282a"));break;
+            case "DOMS":imageView.setImageResource((dept_icon[4]));
+                imageView.setFillColor(Color.WHITE);break;
+            case "ECE":imageView.setImageResource((dept_icon[5]));
+                imageView.setFillColor(Color.WHITE);break;
+            case "EEE":imageView.setImageResource((dept_icon[6]));
+                imageView.setFillColor(Color.WHITE);break;
+            case "ICE":imageView.setImageResource((dept_icon[7]));
+                imageView.setFillColor(Color.parseColor("#16282a"));break;
+            case "MCA":imageView.setImageResource((dept_icon[8]));
+                imageView.setFillColor(Color.WHITE);break;
+            case "MECH":imageView.setImageResource((dept_icon[9]));
+                imageView.setFillColor(Color.WHITE);break;
+            case "META":imageView.setImageResource((dept_icon[10]));
+                imageView.setFillColor(Color.WHITE);break;
+            case "M_TECH":imageView.setImageResource((dept_icon[11]));
+                imageView.setFillColor(Color.WHITE);break;
+            case "PHD_MSC_MS":imageView.setImageResource((dept_icon[12]));
+                imageView.setFillColor(Color.WHITE);break;
+            case "PROD":imageView.setImageResource((dept_icon[13]));
+                imageView.setFillColor(Color.WHITE);break;
         }
     }
-
 
     @Override
     public int getItemCount() {

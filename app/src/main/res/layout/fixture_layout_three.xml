@@ -962,74 +962,80 @@
                                     android:gravity="center_vertical"
                                     android:orientation="horizontal">
 
-                                    <LinearLayout
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:orientation="vertical">
+                                    <View
+                                        android:layout_width="9dp"
+                                        android:layout_height="9dp"
+                                        android:layout_marginBottom="5dp"
+                                        android:layout_marginLeft="10dp"
+                                        android:layout_marginRight="5dp"
+                                        android:layout_marginTop="5dp"
+                                        android:background="@drawable/circular_solid" />
 
-                                        <LinearLayout
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_margin="10dp"
-                                            android:background="@android:color/white"
-                                            android:elevation="2dp"
-                                            android:gravity="center_vertical|center_horizontal"
-                                            android:orientation="vertical"
-                                            android:paddingLeft="10dp"
-                                            android:paddingRight="10dp">
+                                    <View
+                                        android:layout_width="9dp"
+                                        android:layout_height="9dp"
+                                        android:layout_margin="5dp"
+                                        android:layout_marginBottom="5dp"
+                                        android:layout_marginTop="5dp"
+                                        android:background="@drawable/circular_solid" />
 
-                                            <TextView
-                                                android:id="@+id/match15"
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:layout_marginBottom="5dp"
-                                                android:layout_marginLeft="5dp"
-                                                android:layout_marginRight="5dp"
-                                                android:layout_marginTop="10dp"
-                                                android:text="MATCH15"
-                                                android:textAllCaps="true"
-                                                android:textSize="12sp" />
+                                    <View
+                                        android:layout_width="9dp"
+                                        android:layout_height="9dp"
+                                        android:layout_margin="5dp"
+                                        android:layout_marginBottom="5dp"
+                                        android:layout_marginTop="5dp"
+                                        android:background="@drawable/circular_solid" />
 
-                                            <TextView
-                                                android:id="@+id/match15teams"
-                                                android:layout_width="120dp"
-                                                android:layout_height="wrap_content"
-                                                android:layout_marginBottom="10dp"
-                                                android:layout_marginLeft="2dp"
-                                                android:layout_marginRight="2dp"
-                                                android:ellipsize="marquee"
-                                                android:fadingEdge="horizontal"
-                                                android:gravity="center"
-                                                android:marqueeRepeatLimit="marquee_forever"
-                                                android:scrollHorizontally="true"
-                                                android:singleLine="true"
-                                                android:text=""
-                                                android:textAlignment="center"
-                                                android:textAllCaps="false"
-                                                android:textColor="@color/colorTabtext"
-                                                android:textSize="15sp"
-                                                android:textStyle="bold" />
+                                    <View
+                                        android:layout_width="9dp"
+                                        android:layout_height="9dp"
+                                        android:layout_margin="5dp"
+                                        android:layout_marginBottom="5dp"
+                                        android:layout_marginTop="5dp"
+                                        android:background="@drawable/circular_solid" />
 
-                                        </LinearLayout>
+                                    <View
+                                        android:layout_width="9dp"
+                                        android:layout_height="9dp"
+                                        android:layout_margin="5dp"
+                                        android:layout_marginBottom="5dp"
+                                        android:layout_marginTop="5dp"
+                                        android:background="@drawable/circular_solid" />
 
-                                    </LinearLayout>
+                                    <View
+                                        android:layout_width="9dp"
+                                        android:layout_height="9dp"
+                                        android:layout_margin="5dp"
+                                        android:layout_marginBottom="5dp"
+                                        android:layout_marginTop="5dp"
+                                        android:background="@drawable/circular_solid" />
+
+                                    <View
+                                        android:layout_width="9dp"
+                                        android:layout_height="9dp"
+                                        android:layout_margin="5dp"
+                                        android:layout_marginBottom="5dp"
+                                        android:layout_marginTop="5dp"
+                                        android:background="@drawable/circular_solid" />
+
+                                    <View
+                                        android:layout_width="9dp"
+                                        android:layout_height="9dp"
+                                        android:layout_margin="5dp"
+                                        android:layout_marginBottom="5dp"
+                                        android:layout_marginTop="5dp"
+                                        android:background="@drawable/circular_solid" />
+
 
                                     <View
                                         android:layout_width="30dp"
                                         android:layout_height="10dp"
                                         android:layout_marginBottom="5dp"
+                                        android:layout_marginLeft="5dp"
                                         android:layout_marginTop="5dp"
                                         android:background="@drawable/next_match_arrow" />
 
-                                </LinearLayout>
-
-                                <!--box2-->
-                                <LinearLayout
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginRight="15dp"
-                                    android:gravity="center_vertical"
-                                    android:orientation="horizontal">
 
                                     <LinearLayout
                                         android:layout_width="wrap_content"
@@ -1048,19 +1054,19 @@
                                             android:paddingRight="10dp">
 
                                             <TextView
-                                                android:id="@+id/match18"
+                                                android:id="@+id/match17"
                                                 android:layout_width="wrap_content"
                                                 android:layout_height="wrap_content"
                                                 android:layout_marginBottom="5dp"
                                                 android:layout_marginLeft="5dp"
                                                 android:layout_marginRight="5dp"
                                                 android:layout_marginTop="10dp"
-                                                android:text="MATCH18"
+                                                android:text="MATCH17"
                                                 android:textAllCaps="true"
                                                 android:textSize="12sp" />
 
                                             <TextView
-                                                android:id="@+id/match18teams"
+                                                android:id="@+id/match17teams"
                                                 android:layout_width="120dp"
                                                 android:layout_height="wrap_content"
                                                 android:layout_marginBottom="10dp"
@@ -1083,7 +1089,9 @@
 
                                     </LinearLayout>
 
+
                                 </LinearLayout>
+
 
                             </LinearLayout>
 
@@ -1103,148 +1111,12 @@
                                 android:orientation="horizontal"
                                 android:visibility="invisible">
 
-                                <LinearLayout
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:orientation="vertical">
-
-                                    <LinearLayout
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:gravity="center_vertical"
-                                        android:orientation="horizontal">
-
-                                        <LinearLayout
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:orientation="vertical">
-
-                                            <LinearLayout
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:layout_margin="10dp"
-                                                android:background="@android:color/white"
-                                                android:elevation="2dp"
-                                                android:gravity="center_vertical|center_horizontal"
-                                                android:orientation="vertical"
-                                                android:paddingLeft="10dp"
-                                                android:paddingRight="10dp">
-
-                                                <TextView
-                                                    android:layout_width="wrap_content"
-                                                    android:layout_height="wrap_content"
-                                                    android:layout_marginBottom="5dp"
-                                                    android:layout_marginLeft="5dp"
-                                                    android:layout_marginRight="5dp"
-                                                    android:layout_marginTop="10dp"
-                                                    android:text="MATCH19"
-                                                    android:textAllCaps="true"
-                                                    android:textSize="12sp" />
-
-                                                <TextView
-                                                    android:layout_width="120dp"
-                                                    android:layout_height="wrap_content"
-                                                    android:layout_marginBottom="10dp"
-                                                    android:layout_marginLeft="2dp"
-                                                    android:layout_marginRight="2dp"
-                                                    android:ellipsize="marquee"
-                                                    android:fadingEdge="horizontal"
-                                                    android:gravity="center"
-                                                    android:marqueeRepeatLimit="marquee_forever"
-                                                    android:scrollHorizontally="true"
-                                                    android:singleLine="true"
-                                                    android:text=""
-                                                    android:textAlignment="center"
-                                                    android:textAllCaps="false"
-                                                    android:textColor="@color/colorTabtext"
-                                                    android:textSize="15sp"
-                                                    android:textStyle="bold" />
-
-                                            </LinearLayout>
-
-                                        </LinearLayout>
-
-                                        <View
-                                            android:layout_width="30dp"
-                                            android:layout_height="10dp"
-                                            android:layout_marginBottom="5dp"
-                                            android:layout_marginTop="5dp"
-                                            android:background="@drawable/next_match_arrow" />
-
-                                    </LinearLayout>
-
-                                    <LinearLayout
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:gravity="center_vertical"
-                                        android:orientation="horizontal">
-
-                                        <LinearLayout
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:orientation="vertical">
-
-                                            <LinearLayout
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:layout_margin="10dp"
-                                                android:background="@android:color/white"
-                                                android:elevation="2dp"
-                                                android:gravity="center_vertical|center_horizontal"
-                                                android:orientation="vertical"
-                                                android:paddingLeft="20dp"
-                                                android:paddingRight="20dp">
-
-                                                <TextView
-                                                    android:layout_width="wrap_content"
-                                                    android:layout_height="wrap_content"
-                                                    android:layout_marginBottom="5dp"
-                                                    android:layout_marginLeft="5dp"
-                                                    android:layout_marginRight="5dp"
-                                                    android:layout_marginTop="10dp"
-                                                    android:text="MATCH20"
-                                                    android:textAllCaps="true"
-                                                    android:textSize="12sp" />
-
-                                                <TextView
-                                                    android:layout_width="120dp"
-                                                    android:layout_height="wrap_content"
-                                                    android:layout_marginBottom="10dp"
-                                                    android:layout_marginLeft="2dp"
-                                                    android:layout_marginRight="2dp"
-                                                    android:ellipsize="marquee"
-                                                    android:fadingEdge="horizontal"
-                                                    android:gravity="center"
-                                                    android:marqueeRepeatLimit="marquee_forever"
-                                                    android:scrollHorizontally="true"
-                                                    android:singleLine="true"
-                                                    android:text=""
-                                                    android:textAlignment="center"
-                                                    android:textAllCaps="false"
-                                                    android:textColor="@color/colorTabtext"
-                                                    android:textSize="15sp"
-                                                    android:textStyle="bold" />
-
-                                            </LinearLayout>
-
-                                        </LinearLayout>
-
-                                        <View
-                                            android:layout_width="30dp"
-                                            android:layout_height="10dp"
-                                            android:layout_marginBottom="5dp"
-                                            android:layout_marginTop="5dp"
-                                            android:background="@drawable/next_match_arrow" />
-
-                                    </LinearLayout>
-
-                                </LinearLayout>
-
                             </LinearLayout>
 
                             <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_marginLeft="20dp"
                                 android:orientation="horizontal">
 
                                 <LinearLayout
@@ -1424,14 +1296,14 @@
                                                     android:paddingRight="10dp">
 
                                                     <TextView
-                                                        android:id="@+id/match16"
+                                                        android:id="@+id/match15"
                                                         android:layout_width="wrap_content"
                                                         android:layout_height="wrap_content"
                                                         android:layout_marginBottom="5dp"
                                                         android:layout_marginLeft="5dp"
                                                         android:layout_marginRight="5dp"
                                                         android:layout_marginTop="10dp"
-                                                        android:text="MATCH16"
+                                                        android:text="MATCH15"
                                                         android:textAllCaps="true"
                                                         android:textSize="12sp" />
 
@@ -1485,19 +1357,19 @@
                                                     android:paddingRight="10dp">
 
                                                     <TextView
-                                                        android:id="@+id/match17"
+                                                        android:id="@+id/match16"
                                                         android:layout_width="wrap_content"
                                                         android:layout_height="wrap_content"
                                                         android:layout_marginBottom="5dp"
                                                         android:layout_marginLeft="5dp"
                                                         android:layout_marginRight="5dp"
                                                         android:layout_marginTop="10dp"
-                                                        android:text="MATCH17"
+                                                        android:text="MATCH16"
                                                         android:textAllCaps="true"
                                                         android:textSize="12sp" />
 
                                                     <TextView
-                                                        android:id="@+id/match17teams"
+                                                        android:id="@+id/match16teams"
                                                         android:layout_width="120dp"
                                                         android:layout_height="wrap_content"
                                                         android:layout_marginBottom="10dp"
@@ -1559,19 +1431,19 @@
                                         android:paddingRight="10dp">
 
                                         <TextView
-                                            android:id="@+id/match19"
+                                            android:id="@+id/match18"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_marginBottom="5dp"
                                             android:layout_marginLeft="5dp"
                                             android:layout_marginRight="5dp"
                                             android:layout_marginTop="10dp"
-                                            android:text="MATCH19"
+                                            android:text="MATCH18"
                                             android:textAllCaps="true"
                                             android:textSize="12sp" />
 
                                         <TextView
-                                            android:id="@+id/match19teams"
+                                            android:id="@+id/match18teams"
                                             android:layout_width="120dp"
                                             android:layout_height="wrap_content"
                                             android:layout_marginBottom="10dp"
@@ -1594,6 +1466,74 @@
 
                                 </LinearLayout>
 
+                                <View
+                                    android:layout_width="30dp"
+                                    android:layout_height="10dp"
+                                    android:layout_marginBottom="5dp"
+                                    android:layout_marginTop="5dp"
+                                    android:background="@drawable/next_match_arrow" />
+
+                                <!--match-->
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center_vertical"
+                                    android:orientation="horizontal">
+
+                                    <LinearLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical">
+
+                                        <LinearLayout
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_margin="10dp"
+                                            android:background="@android:color/white"
+                                            android:elevation="2dp"
+                                            android:gravity="center_vertical|center_horizontal"
+                                            android:orientation="vertical"
+                                            android:paddingLeft="10dp"
+                                            android:paddingRight="10dp">
+
+                                            <TextView
+                                                android:id="@+id/match19"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginBottom="5dp"
+                                                android:layout_marginLeft="5dp"
+                                                android:layout_marginRight="5dp"
+                                                android:layout_marginTop="10dp"
+                                                android:text="MATCH18"
+                                                android:textAllCaps="true"
+                                                android:textSize="12sp" />
+
+                                            <TextView
+                                                android:id="@+id/match19teams"
+                                                android:layout_width="120dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginBottom="10dp"
+                                                android:layout_marginLeft="2dp"
+                                                android:layout_marginRight="2dp"
+                                                android:ellipsize="marquee"
+                                                android:fadingEdge="horizontal"
+                                                android:gravity="center"
+                                                android:marqueeRepeatLimit="marquee_forever"
+                                                android:scrollHorizontally="true"
+                                                android:singleLine="true"
+                                                android:text=""
+                                                android:textAlignment="center"
+                                                android:textAllCaps="false"
+                                                android:textColor="@color/colorTabtext"
+                                                android:textSize="15sp"
+                                                android:textStyle="bold" />
+
+                                        </LinearLayout>
+
+                                    </LinearLayout>
+
+                                </LinearLayout>
+
                             </LinearLayout>
 
                         </LinearLayout>
@@ -1602,15 +1542,15 @@
 
                     <View
                         android:layout_width="25dp"
-                        android:layout_height="250dp"
-                        android:layout_marginTop="30dp"
+                        android:layout_height="253dp"
+                        android:layout_marginTop="28dp"
                         android:background="@drawable/large_indicator_bracket" />
 
                     <!--pre final-->
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="30dp"
+                        android:layout_marginTop="27dp"
                         android:gravity="center_vertical"
                         android:orientation="horizontal">
 

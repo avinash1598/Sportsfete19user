@@ -36,11 +36,12 @@ import org.json.JSONObject;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
 import java.util.TimeZone;
 
-import io.saeid.fabloading.LoadingView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -60,7 +61,6 @@ public class LeaderboardFragment extends Fragment implements Callback<List<Leade
     private RecyclerView recyclerView;
     List<Leaderboard> standingList = new ArrayList<>();
     LeaderboardRecyclerAdapter leaderboardRecyclerAdapter;
-    LoadingView loadingView;
     SwipeRefreshLayout swipeRefreshLayout;
     Call<List<Leaderboard>> call;
     ApiInterface apiInterface;
@@ -121,19 +121,6 @@ public class LeaderboardFragment extends Fragment implements Callback<List<Leade
         jazzyRecyclerViewScrollListener = new JazzyRecyclerViewScrollListener();
         jazzyRecyclerViewScrollListener.setTransitionEffect(currentTransitionEffect);
         //recyclerView.setOnScrollListener(jazzyRecyclerViewScrollListener);
-
-        loadingView = (LoadingView)view. findViewById(R.id.leaderboard_loading_view);
-        loadingView.addAnimation(Color.WHITE,R.drawable.basketball, LoadingView.FROM_LEFT);
-        loadingView.addAnimation(Color.WHITE,R.drawable.cricket, LoadingView.FROM_TOP);
-        loadingView.addAnimation(Color.WHITE,R.drawable.badminton, LoadingView.FROM_RIGHT);
-        loadingView.addAnimation(Color.WHITE,R.drawable.tennisball, LoadingView.FROM_BOTTOM);
-        loadingView.addAnimation(Color.WHITE,R.drawable.chess, LoadingView.FROM_LEFT);
-        loadingView.addAnimation(Color.WHITE,R.drawable.pingpong, LoadingView.FROM_TOP);
-        loadingView.addAnimation(Color.WHITE,R.drawable.waterpolo, LoadingView.FROM_RIGHT);
-        loadingView.addAnimation(Color.WHITE,R.drawable.soccer, LoadingView.FROM_BOTTOM);
-        loadingView.setRepeat(100);
-        loadingView.setVisibility(View.GONE);
-
         leaderboardRecyclerAdapter = new LeaderboardRecyclerAdapter(standingList, context, new LeaderboardRecyclerAdapter.MyAdapterListener() {
             @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
@@ -171,25 +158,19 @@ public class LeaderboardFragment extends Fragment implements Callback<List<Leade
             if(responseList.size()>0) {
                 Log.d(TAG, "onResponse:response received ");
 
-                /*Thread thread=new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        try {
-                            TableUtils.clearTable(helper.getConnectionSource(), Leaderboard.class);
-                            for(Leaderboard leaderboard: responseList)
-                                dao.create(leaderboard);
 
-                        } catch (SQLException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                });
-                thread.start();
-*/
                 swipeRefreshLayout.setRefreshing(false);
 
                 standingList.clear();
                 standingList.addAll(responseList);
+
+                Collections.sort(standingList, new Comparator<Leaderboard>(){
+                    @Override
+                    public int compare(Leaderboard o1, Leaderboard o2) {
+                        return (int) (o2.getTotal() - o1.getTotal());
+                    }
+                });
+
                 leaderboardRecyclerAdapter.notifyDataSetChanged();
             }
 
@@ -202,7 +183,6 @@ public class LeaderboardFragment extends Fragment implements Callback<List<Leade
         leaderboardRecyclerAdapter.notifyDataSetChanged();
         Log.d(TAG, "onResponse: ");
 
-        loadingView.setVisibility(View.INVISIBLE);
     }
 
     private void putLeaderboardLastUpdate() {
@@ -225,7 +205,6 @@ public class LeaderboardFragment extends Fragment implements Callback<List<Leade
     @Override
     public void onFailure(Call<List<Leaderboard>> call, Throwable t) {
         Log.d(TAG, "onFailure: "+t.toString());
-        loadingView.setVisibility(View.INVISIBLE);
         Toast.makeText(context, "Device Offline", Toast.LENGTH_SHORT).show();
         //updateAdapter();
         leaderboardRecyclerAdapter.notifyDataSetChanged();

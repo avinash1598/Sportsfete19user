@@ -138,7 +138,7 @@ public class SubscribeSport extends Fragment {
                     prefs.edit().putBoolean(sportsArraySharedPreference[selected]+"Checked", true).apply();
                 }else {
                     checked[selected]=false;
-                    Toast.makeText(getContext(), "Unsubscribed to "+sportsArraySharedPreference[selected], Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Unsubscribed from "+sportsArraySharedPreference[selected], Toast.LENGTH_SHORT).show();
                     FirebaseMessaging.getInstance().unsubscribeFromTopic(
                             sportsArraySharedPreference[selected].replace("(","_")
                                     .replace(")","_"));

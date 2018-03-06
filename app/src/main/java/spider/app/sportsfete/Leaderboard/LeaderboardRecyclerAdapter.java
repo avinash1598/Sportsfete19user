@@ -17,8 +17,11 @@ import android.widget.ImageView;
 import net.cachapa.expandablelayout.ExpandableLayout;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import spider.app.sportsfete.API.Leaderboard;
 import spider.app.sportsfete.R;
 
@@ -90,10 +93,27 @@ public class LeaderboardRecyclerAdapter extends RecyclerView.Adapter<Leaderboard
         points_distribution.clear();
         points_distribution.addAll(standing.getSplitup());
 
-        switch(position){
-            case 0: holder.medalIv.setImageDrawable(context.getDrawable(R.drawable.gold));
-            case 1: holder.medalIv.setImageDrawable(context.getDrawable(R.drawable.silver));
-            case 2: holder.medalIv.setImageDrawable(context.getDrawable(R.drawable.bronze));
+        if(standing.getDept().equalsIgnoreCase("m_tech")){
+            holder.departmentTV.setText("M.Tech");
+        }else if(standing.getDept().equalsIgnoreCase("phd_msc_ms")) {
+            holder.departmentTV.setText("PhD/MsC/MS");
+        }
+
+        holder.medalIv.setVisibility(View.GONE);
+        {
+            if(standingList.get(0)==standingList.get(1)||
+                    standingList.get(1)!=standingList.get(2)){
+                holder.medalIv.setVisibility(View.GONE);
+            }else{
+                switch(position){
+                    case 0: holder.medalIv.setImageDrawable(context.getDrawable(R.drawable.gold));
+                        holder.medalIv.setVisibility(View.VISIBLE);break;
+                    case 1: holder.medalIv.setImageDrawable(context.getDrawable(R.drawable.silver));
+                        holder.medalIv.setVisibility(View.VISIBLE);break;
+                    case 2: holder.medalIv.setImageDrawable(context.getDrawable(R.drawable.bronze));
+                        holder.medalIv.setVisibility(View.VISIBLE);break;
+                }
+            }
         }
 
         setDeptIcon(holder.department_icon,standing.getDept().trim());
@@ -101,11 +121,24 @@ public class LeaderboardRecyclerAdapter extends RecyclerView.Adapter<Leaderboard
         if(!standing.getSplitup().isEmpty()) {
             holder.recyclerView.setHasFixedSize(true);
             holder.recyclerView.setLayoutManager(new LinearLayoutManager(context));
+
+            Collections.sort(points_distribution, new Comparator<String>(){
+                @Override
+                public int compare( String o1, String o2) {
+                    return (int) (Integer.parseInt(o2.split(":")[1].trim()) -
+                            Integer.parseInt(o1.split(":")[1].trim()));
+                }
+            });
+
+            PointsDistributionRecyclerAdapter recyclerAdapter = new PointsDistributionRecyclerAdapter(points_distribution, context);
+            holder.recyclerView.setAdapter(recyclerAdapter);
+        }else{
+            points_distribution.clear();
             PointsDistributionRecyclerAdapter recyclerAdapter = new PointsDistributionRecyclerAdapter(points_distribution, context);
             holder.recyclerView.setAdapter(recyclerAdapter);
         }
 
-        holder.arrow_indicator.setOnClickListener(new View.OnClickListener() {
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 onClickListener.onItemSelected(position, holder.expandableLayout, holder.arrow_indicator);
@@ -114,22 +147,36 @@ public class LeaderboardRecyclerAdapter extends RecyclerView.Adapter<Leaderboard
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    public void setDeptIcon(ImageView imageView, String dept){
+    public void setDeptIcon(CircleImageView imageView, String dept){
         switch(dept){
-            case "ARCH":imageView.setImageDrawable(context.getDrawable(dept_icon[0]));break;
-            case "CHEM":imageView.setImageDrawable(context.getDrawable(dept_icon[1]));break;
-            case "CIVIL":imageView.setImageDrawable(context.getDrawable(dept_icon[2]));break;
-            case "CSE":imageView.setImageDrawable(context.getDrawable(dept_icon[3]));break;
-            case "DOMS":imageView.setImageDrawable(context.getDrawable(dept_icon[4]));break;
-            case "ECE":imageView.setImageDrawable(context.getDrawable(dept_icon[5]));break;
-            case "EEE":imageView.setImageDrawable(context.getDrawable(dept_icon[6]));break;
-            case "ICE":imageView.setImageDrawable(context.getDrawable(dept_icon[7]));break;
-            case "MCA":imageView.setImageDrawable(context.getDrawable(dept_icon[8]));break;
-            case "MECH":imageView.setImageDrawable(context.getDrawable(dept_icon[9]));break;
-            case "META":imageView.setImageDrawable(context.getDrawable(dept_icon[10]));break;
-            case "MTECH":imageView.setImageDrawable(context.getDrawable(dept_icon[11]));break;
-            case "PHD":imageView.setImageDrawable(context.getDrawable(dept_icon[12]));break;
-            case "PROD":imageView.setImageDrawable(context.getDrawable(dept_icon[13]));break;
+            case "ARCHI":imageView.setImageResource((dept_icon[0]));
+                imageView.setFillColor(Color.WHITE);break;
+            case "CHEM":imageView.setImageResource((dept_icon[1]));
+                imageView.setFillColor(Color.WHITE);break;
+            case "CIVIL":imageView.setImageResource((dept_icon[2]));
+                imageView.setFillColor(Color.WHITE);break;
+            case "CSE":imageView.setImageResource((dept_icon[3]));
+                imageView.setFillColor(Color.parseColor("#16282a"));break;
+            case "DOMS":imageView.setImageResource((dept_icon[4]));
+                imageView.setFillColor(Color.WHITE);break;
+            case "ECE":imageView.setImageResource((dept_icon[5]));
+                imageView.setFillColor(Color.WHITE);break;
+            case "EEE":imageView.setImageResource((dept_icon[6]));
+                imageView.setFillColor(Color.WHITE);break;
+            case "ICE":imageView.setImageResource((dept_icon[7]));
+                imageView.setFillColor(Color.WHITE);break;
+            case "MCA":imageView.setImageResource((dept_icon[8]));
+                imageView.setFillColor(Color.WHITE);break;
+            case "MECH":imageView.setImageResource((dept_icon[9]));
+                imageView.setFillColor(Color.WHITE);break;
+            case "META":imageView.setImageResource((dept_icon[10]));
+                imageView.setFillColor(Color.WHITE);break;
+            case "M_TECH":imageView.setImageResource((dept_icon[11]));
+                imageView.setFillColor(Color.WHITE);break;
+            case "Phd_MSc_MS":imageView.setImageResource((dept_icon[12]));
+                imageView.setFillColor(Color.WHITE);break;
+            case "PROD":imageView.setImageResource((dept_icon[13]));
+                imageView.setFillColor(Color.WHITE);break;
         }
     }
 

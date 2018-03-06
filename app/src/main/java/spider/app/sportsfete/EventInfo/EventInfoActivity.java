@@ -1,6 +1,7 @@
 package spider.app.sportsfete.EventInfo;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
@@ -57,7 +58,9 @@ public class EventInfoActivity extends AppCompatActivity{
 
     private static final String TAG="EventInfoActivity";
     TextView eventNameTv,team1Tv,team2Tv,participantsTv,eventHintTv,roundTv,score1Tv,score2Tv,eventTimeTv,
-            noCommentsTv,eventVenue, eventstatus,eventStartTime, undecided_match1, undecided_match2, commentary;
+            noCommentsTv,eventVenue, eventstatus,eventStartTime, undecided_match1, undecided_match2, commentary,
+            last_updated_timestamp;
+
     CircleImageView team_1_icon, team_2_icon;
     LinearLayout versusEventLl,nonVersusEventLl;
     Context context = getBaseContext();
@@ -97,7 +100,6 @@ public class EventInfoActivity extends AppCompatActivity{
             R.drawable.prod2
     };
 
-    @RequiresApi(api = Build.VERSION_CODES.M)
     private void setScoreColours(TextView sc1, TextView sc2){
         if(sc1!=null&&sc2!=null) {
             int score1 = Integer.parseInt(((String)sc1.getText()).replaceAll("\\s+",""));
@@ -109,29 +111,12 @@ public class EventInfoActivity extends AppCompatActivity{
                 sc2.setTextColor(Color.parseColor("#00AA00"));  //green
                 sc1.setTextColor(Color.parseColor("#AA0000"));  //red
             } else {
-                sc1.setTextColor(getColor(R.color.colorTabtext));  //buish
-                sc2.setTextColor(getColor(R.color.colorTabtext));  //blueish
+                sc1.setTextColor(getResources().getColor(R.color.colorTabtext));  //buish
+                sc2.setTextColor(getResources().getColor(R.color.colorTabtext));  //blueish
             }
         }
 
     }
-
-    private String formatTime(String timestamp){
-        if(timestamp!=null) {
-            String time = timestamp.substring(0, 5);
-            String hours = "";
-            String minutes = timestamp.substring(3, 5);
-            if (Integer.parseInt(time.substring(0, 2)) > 12) {
-                hours = String.valueOf(Integer.parseInt(time.substring(0, 2)) - 12);
-                return hours + ":" + minutes + "pm";
-            } else {
-                return hours + ":" + minutes + "am";
-            }
-        }else{
-            return "";
-        }
-    }
-
 
 
     String event_id = "";
@@ -203,6 +188,7 @@ public class EventInfoActivity extends AppCompatActivity{
         slidingUpPanelLayout = (SlidingUpPanelLayout) findViewById(R.id.sliding_layout);
         upper_bound = (LinearLayout) findViewById(R.id.upper_bound_height);
         lower_bound = (LinearLayout) findViewById(R.id.lower_bound_layout);
+        last_updated_timestamp = (TextView) findViewById(R.id.last_updated_timestamp);
 
 
         loaderGIF = (GifTextView)findViewById(R.id.loader);
@@ -218,6 +204,7 @@ public class EventInfoActivity extends AppCompatActivity{
         score1Tv.setTypeface(hammersmithOnefont);
         score2Tv.setTypeface(hammersmithOnefont);
         eventHintTv.setTypeface(hammersmithOnefont);
+        last_updated_timestamp.setTypeface(hammersmithOnefont);
 
 
         if (eventInfo.getEliminationType().equalsIgnoreCase("single")||
@@ -316,7 +303,7 @@ public class EventInfoActivity extends AppCompatActivity{
         eventstatus.setText(status);
 
         recyclerView = (RecyclerView)findViewById(R.id.commentary_recycler_view);
-        commentRecyclerAdapter = new CommentRecyclerAdapter(commentList, context);
+        commentRecyclerAdapter = new CommentRecyclerAdapter(commentList, EventInfoActivity.this);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(commentRecyclerAdapter);
 
@@ -331,6 +318,8 @@ public class EventInfoActivity extends AppCompatActivity{
         event_id = eventInfo.getId();
         commentList.clear();
 
+        //slidingUpPanelLayout.setAnchorPoint(448);
+
         slidingUpPanelLayout.setPanelHeight(0);
         lower_bound.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
@@ -343,7 +332,10 @@ public class EventInfoActivity extends AppCompatActivity{
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            slidingUpPanelLayout.setPanelHeight(pxToDp(lower_bound.getHeight()));
+                            //slidingUpPanelLayout.setPanelHeight((int) (convertPixelsToDp(upper_bound.getHeight(),EventInfoActivity.this)
+                              //      -convertPixelsToDp(lower_bound.getHeight(), EventInfoActivity.this)));
+                            //slidingUpPanelLayout.setPanelHeight((int) ((upper_bound.getHeight())
+                              //      -(lower_bound.getHeight())));
                         }
                     },300);
                 }
@@ -351,11 +343,30 @@ public class EventInfoActivity extends AppCompatActivity{
             }
         });
 
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Log.d("heigh",""+(lower_bound.getHeight()-slidingUpPanelLayout.getHeight()));
+                slidingUpPanelLayout.setPanelHeight((int) ((slidingUpPanelLayout.getHeight())
+                        -(lower_bound.getHeight())));
+                //slidingUpPanelLayout.setPanelHeight((int) convertDpToPixel(250,EventInfoActivity.this));
+            }
+        },500);
+
     }
 
-    public int pxToDp(int px) {
-        DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
-        int dp = Math.round(px / (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT));
+    public static float convertDpToPixel(float dp, Context context){
+        Resources resources = context.getResources();
+        DisplayMetrics metrics = resources.getDisplayMetrics();
+        float px = dp * ((float)metrics.densityDpi / DisplayMetrics.DENSITY_DEFAULT);
+        return px;
+    }
+
+    public static float convertPixelsToDp(float px, Context context){
+        Resources resources = context.getResources();
+        DisplayMetrics metrics = resources.getDisplayMetrics();
+        float dp = px / ((float)metrics.densityDpi / DisplayMetrics.DENSITY_DEFAULT);
         return dp;
     }
 
@@ -406,16 +417,17 @@ public class EventInfoActivity extends AppCompatActivity{
             case "MCA":imageView.setImageResource((dept_icon[8]));break;
             case "MECH":imageView.setImageResource((dept_icon[9]));break;
             case "META":imageView.setImageResource((dept_icon[10]));break;
-            case "M.TECH":imageView.setImageResource((dept_icon[11]));break;
-            case "Phd/MSc/MS":imageView.setImageResource((dept_icon[12]));break;
+            case "M_TECH":imageView.setImageResource((dept_icon[11]));break;
+            case "Phd_MSc_MS":imageView.setImageResource((dept_icon[12]));break;
             case "PROD":imageView.setImageResource((dept_icon[13]));break;
         }
     }
 
     private String getCurrentTime(Long time) {
         String delegate = "hh:mm aaa";
-        return (String) DateFormat.format(delegate, new Date(time*1000L));
+        return (String) DateFormat.format(delegate, new Date(time));
     }
+
     //used to check whether if we need to call removeloadingscreen
     boolean doinbg = true;
     class RemoveLoadingGif extends AsyncTask<String, String, String> {
@@ -470,7 +482,7 @@ public class EventInfoActivity extends AppCompatActivity{
 
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                Comment new_comment = dataSnapshot.child("nameValuePairs").getValue(Comment.class);
+                Comment new_comment = dataSnapshot.getValue(Comment.class);
                 commentList.add(0,new_comment);
                 doinbg = false;
                 loaderGIF.setVisibility(View.GONE);
@@ -504,7 +516,6 @@ public class EventInfoActivity extends AppCompatActivity{
         //Fetching scores here
         DatabaseReference scoreDatabase= FirebaseDatabase.getInstance().getReference("events").child(event_id);
         scoreDatabase.addValueEventListener(new ValueEventListener() {
-            @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Score score = dataSnapshot.getValue(Score.class);
@@ -513,7 +524,8 @@ public class EventInfoActivity extends AppCompatActivity{
                     try {
                         score1Tv.setText(score.getDept1_score());
                         score2Tv.setText(score.getDept2_score());
-                        //setScoreColours(score1Tv, score2Tv);
+                        last_updated_timestamp.setText("Last Updated at: "+getCurrentTime(score.getScore_timestamp()));
+                        setScoreColours(score1Tv, score2Tv);
                     }
                     catch(NumberFormatException e){
                         e.printStackTrace();

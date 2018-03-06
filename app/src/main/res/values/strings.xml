@@ -57,7 +57,7 @@
     </string-array>
 
     <string-array name="department_array_shared_preference">
-        <item>ARCH</item>
+        <item>ARCHI</item>
         <item>CHEM</item>
         <item>CIVIL</item>
         <item>CSE</item>
@@ -68,8 +68,8 @@
         <item>MCA</item>
         <item>MECH</item>
         <item>META</item>
-        <item>MTECH</item>
-        <item>PHD_MSC</item>
+        <item>M_TECH</item>
+        <item>PHD_MSC_MS</item>
         <item>PROD</item>
     </string-array>
 
@@ -91,11 +91,11 @@
 
             <p>MEN’S EVENTS-100m, 200m, 400m, 800m, 1500m, 5000m, 4*100 relay, 4*400 relay.
             Long Jump, High Jump, Triple Jump, Shotput, Discuss Throw, Javelin
-            Throw.</p>
+            Throw and Mixed Relay.</p>
 
             <p>GIRL’S EVENTS-
             100m, 200m, 400m, 800m, 1500m, 4*100 relay, 4 *400 relay
-            Long Jump, High Jump, Shotput and Discuss Throw.:</p>
+            Long Jump, High Jump, Shotput and Discuss Throw and Mixed Relay.:</p>
             <p>Rules:
                 <ul class="rules">
                 <li>For each event, only 2 participants can take part from each department.</li>
@@ -107,8 +107,8 @@
                 </ul>
             </p>
             <p>CONTACT :
-                   <p>Girish Babu :9629392048(Boys)</p>
-                   <p>Ankita:9962290429(Girls)</p>
+                   <p>Ahmed Hasan :9994699175(Boys)</p>
+                   <p>Pragya Rai: 9487730851(Girls)</p>
 
             </p>
     ]]>
@@ -142,14 +142,14 @@
 
                <li>The order of play can be changed only if both the departments are willing to change.</li>
                 <li>Each game will be played for best for 3 sets and each set will be played for 15 points. Finals alone will be best of 3 sets for 21 points. </li>
-                <li>Initial rounds will be played in plastic shuttles. </li>
+                <li>All rounds will be played in plastic shuttles. </li>
                 <li>Umpire’s decision is final in any dispute (point, line judgement, faults etc....).</li>
                 <li>Standard BWF rules apply.</li>
 
                 </ul>
             </p>
             <p>CONTACT :
-                   <p>Senthil Kumar: 8754174358 </p>
+                   <p>Roshan Joseph: 9940866409 </p>
 
             </p>
 
@@ -192,7 +192,7 @@
             </p>
 
             <p>CONTACT :
-                   <p>Jana Lakshman: 7598140119 </p>
+                   <p>Ninada Ashok: 9790483112 </p>
 
             </p><br>
 
@@ -231,6 +231,7 @@
                 <li>Each player will be given 3 personal fouls before she is made to leave court. That player is not allowed to participate in the game. A substitute may be called on.</li>
                 <li>All the violations will be judged according to FIBA rules and regulations.</li>
                 <li>Referee’s decision is final.</li>
+                <li>NOTE: All the matches will be conducted in half court only.</li>
 
             </ul>
 
@@ -249,7 +250,7 @@
 
             </p>
              <p>CONTACT :
-                   <p>Ritu Choudhary: 9629605830 </p>
+                   <p>Ridhima Pebbisetty: 9597311801 </p>
 
             </p>
 
@@ -270,7 +271,8 @@
                 <li>Thumbing is allowed.</li>
                 <li>National carrom rules will be followed.</li>
                 <li>Each department will consist of one pair of girls’ team and two pairs of boys’ team. (Total – 4 boys, 2 girls).</li>
-                <li>Each pair will play best of three games.</li>
+                <li>Each pair will play best of three matches. If two of the three pairs win,
+                    then that department will win that tie.</li>
                 <li>Strikers and coins will be provided. Each player is also allowed to bring his own striker.</li>
 
             </ul>
@@ -279,15 +281,14 @@
             <p>Game Format:
             <ul class="rules">
                 <li>First round will be of knock out. The winners of the knock out round will advance to the double elimination format.</li>
-                <li>If two of the three pairs win, then that department will win that tie.</li>
                 <li>Only finals will be of points format. Each team from a department will play for 21 points. Red/queen value is 3 points. The team which reaches 21 points first wins that round.</li>
-
+                <li>NOTE: For each strike, 30-sec time limit for positioning the striker.</li>
 
             </ul>
 
             </p>
             <p>CONTACT :
-                   <p>Deepak Chauhan:9659229695</p>
+                   <p>Rahitya Rongali: 9790064258</p>
 
             </p>
 
@@ -310,14 +311,14 @@
                 <li>Time Control: 30 min + 15 sec increment for each move.</li>
                 <li>Walk over time 15 min. Inform the arbiter and opposing captain beforehand if a player will arrive late for the game.</li>
                 <li>Players are requested to bring their own CHESS SETS.</li>
-                <li>All FIDE rules will be followed.></li>
+                <li>All FIDE rules will be followed.</li>
                 <li>Arbiter’s decision is final.</li>
 
             </ul>
 
             </p>
             <p>CONTACT :
-                   <p>Ashiq Mohammed:9941132953</p>
+                   <p>Siddarth:9840954969</p>
 
             </p>
 
@@ -351,7 +352,8 @@
                 12 overs -50 mins<br>
                 15 overs - 60 mins<br>
                 </li>
-                <li>Penalty of runs for exceeding time limit.</li>
+                <li>Penalty of runs or reducing the number of overs to be bowled for
+                    exceeding time limit.</li>
             </ul>
         </p>
         <p>
@@ -369,7 +371,7 @@
 
         </p>
         <p>CONTACT :
-                   <p>Sreedhar Babu: 8489302366</p>
+                   <p>Kaushik: 8105841034</p>
 
 
             </p><br>
@@ -384,13 +386,14 @@
             <h3>Cricket(Girls)</h3>
             <p>
                 <b>POINTS:-
-                <br>&emsp;&emsp;&emsp;1st place - 12 points
+                <br>&emsp;&emsp;&emsp;1st place - 15 points
                 <br>&emsp;&emsp;&emsp;2nd place - 8 points
                 <br>&emsp;&emsp;&emsp;3rd place - 5 points</b>
             </p>
 
             <p>Rules:
             <ul class="rules">
+                <li>Tournament is conducted on Knockout basis.</li>
                 <li>6 girls per side (+1 sub). Sub allowed only when any player is injured.
                 6 overs per innings.</li>
                 <li>In 6 overs match minimum of 3 bowlers to be used.</li>
@@ -412,13 +415,18 @@
             <ul class="rules">
                 <li>The decision of the umpire will be final and any form of violation in terms of arguments with the umpire will eventually lead to the disqualification of the team.</li>
                 <li>Teams should report at the given time on the field, failing to do so will lead to the disqualification of the team.</li>
-
+                <li>If the team didn’t turn up for the match, then it is taken as loss of
+                     match for them and other team will be rewarded the winning points.</li>
+                <li>Except the captains, no other member (maybe a team members or
+                    team management or coach) has the right to have discussion with the
+                    umpire regarding any decision made by the umpire and any violation
+                    of this rule will eventually lead to the disqualification of the team.</li>
 
             </ul>
 
         </p>
         <p>CONTACT :
-                   <p>Sreedhar Babu: 8489302366</p>
+                   <p>Kaushik: 8105841034</p>
 
 
         </p>
@@ -452,18 +460,22 @@
                 • Goals scored.<br>
                 </li>
                 <li>If there is still a tie between two teams then the result will be declared by a coin toss.</li>
+                <li>If a knockout match ends in a draw, match proceeds to Penalties(No Extra Time).</li>
                 <li>Winners of each group proceed to the knockout stage.</li>
                 <li>Maximum of 16 players per department.</li>
                 <li>Rolling substitutions are allowed.</li>
-                <li>Teams are expected to report 10 minutes before the start of each match.</li>
+                <li>Teams are expected to report 10 minutes before the start of each match.Any team that reports late or not coming without prior information will be
+                   will be awarded negative points.</li>
                 <li>The Referee’s decision is final and abiding.</li>
+                <li>Foul language or fighting will not be entertained. Strict action will be
+                    taken against the team involved in any of these acts.</li>
                 <li>All other standard rules apply.</li>
 
             </ul>
 
             </p>
             <p>CONTACT :
-                   <p>Ameet Majhi :9566166787</p>
+                   <p>Uzair Iqbal :9790487713</p>
 
 
             </p><br>
@@ -477,7 +489,7 @@
             <h3>Football(Girls)</h3>
             <p>
                 <b>POINTS:-
-                <br>&emsp;&emsp;&emsp;1st place - 12 points
+                <br>&emsp;&emsp;&emsp;1st place - 15 points
                 <br>&emsp;&emsp;&emsp;2nd place - 8 points
                 <br>&emsp;&emsp;&emsp;3rd place - 5 points</b>
             </p>
@@ -490,8 +502,11 @@
                 <li>If a knockout match ends in a draw, the match will proceed directly to penalty shootouts. (There will be no extra-time)</li>
                 <li>Each team can have a maximum of 8 players with 5 players taking the field including a goal keeper.</li>
                 <li>Rolling substitutions are allowed.</li>
-                <li>Teams are requested to be there in the ground 10 minutes before the start of their match.</li>
+                <li>Teams are requested to be there in the ground 10 minutes before the start of their match.Any team that reports late or not coming without
+                    prior information will be awarded negative points.</li>
                 <li>The Referee’s decision is final and abiding.</li>
+                <li>Foul language or fighting will not be entertained. Strict action will be
+                    taken against the team involved in any of these acts.</li>
                 <li>All other standard rules apply.</li>
 
 
@@ -499,7 +514,7 @@
 
             </p>
             <p>CONTACT :
-                   <p>Ameet Majhi :9566166787</p>
+                   <p>Uzair Iqbal :9790487713</p>
 
 
             </p>
@@ -525,17 +540,20 @@
                 <li>Decisions of free throw, 7-meter penalty, corner in and throw in rests on referee.</li>
                 <li>The final decision is made by the field referee which must strictly be adhered to.</li>
                 <li>All the players should wear sports shoes. Being barefoot and wearing boots and spikes are not allowed.</li>
+                <li>All the players must cut their nails properly before the game starts.</li>
                 <li>All the players should wear shorts. Track pants and jeans are not allowed.</li>
                 <li>The Goal Keeper can wear track pants.</li>
                 <li>If the match ends in a tie, 5 minutes’ extra time (maximum twice). If it’s still a tie, the outcome of the match will be decided by penalty shoot-out.</li>
-
+                <li>Arguing with the referees, fighting with other team players and late
+                  reporting without prior information will lead to disqualification of the
+                    team.</li>
 
 
             </ul>
 
             </p>
             <p>CONTACT :
-                   <p>C Hitvinson:7402374522</p>
+                   <p>Chaitanya:9790065834</p>
 
 
             </p>
@@ -547,7 +565,7 @@
             <![CDATA[
  <p>
                 <b>POINTS:-
-                <br>&emsp;&emsp;&emsp;1st place - 20 points
+                <br>&emsp;&emsp;&emsp;1st place - 15 points
                 <br>&emsp;&emsp;&emsp;2nd place - 12 points
                 <br>&emsp;&emsp;&emsp;3rd place - 8 points</b>
             </p>
@@ -561,17 +579,20 @@
                 <li>Decisions of free throw, 7-meter penalty, corner in and throw in rests on referee.</li>
                 <li>The final decision is made by the field referee which must strictly be adhered to.</li>
                 <li>All the players should wear sports shoes. Being barefoot and wearing boots and spikes are not allowed.</li>
-                <li>All the players should wear shorts. Track pants and jeans are not allowed.</li>
+                <li>All the players should wear shorts or track pants and jeans are notallowed.</li>
                 <li>The Goal Keeper can wear track pants.</li>
+                <li>All the players must cut their nails properly before the game starts.</li>
                 <li>If the match ends in a tie, 5 minutes’ extra time (maximum twice). If it’s still a tie, the outcome of the match will be decided by penalty shoot-out.</li>
-
+                <li>Arguing with the referees, fighting with other team players and late
+                   reporting without prior information will lead to disqualification of the
+                    team.</li>
 
 
             </ul>
 
             </p>
             <p>CONTACT :
-                   <p>C Hitvinson:7402374522</p>
+                   <p>Chaitanya:9790065834</p>
 
 
             </p>
@@ -590,9 +611,8 @@
 
             <p>
                 TEAM:-<br>
-            A Team consists of maximum 9 players composed of maximum 6 players on field and up to 3 substitutes.<br>
-            Field player: Players other than goal keeper. 5 on field.<br>
-            Goal keeper: One goalkeeper interchangeable among the on field 6 players.
+            A Team consists of maximum 7 players composed of maximum 5
+            players on field and up to 2 substitutes.
             </p>
 
             <p>RULES:-
@@ -605,6 +625,7 @@
                 <li>Passes and shots should be strictly either push or tap, other means will be considered as foul.</li>
                 <li>Rolling substitutions are allowed.</li>
                 <li>If a knockout match ends in a draw, match proceeds to Penalties.</li>
+                <li>The Penalty stroke will start from center line.</li>
             </ul>
             </p>
             <p>Fouls and Violations:
@@ -627,7 +648,7 @@
 
             </p>
             <p>CONTACT :
-                   <p>Ashwin C :9487367126</p>
+                   <p>Himanshu Mewara :9413903714</p>
 
 
             </p>
@@ -675,7 +696,7 @@
                 </ul>
             </p>
             <p>CONTACT :
-                   <p>Bharath : 8464954210</p>
+                   <p>Venkateswarlu :9487731437</p>
             </p>
    ]]>
     </string>
@@ -691,21 +712,28 @@
 
             <p>RULES:-
                 <ul class="rules">
-                    <li>First round will be Knock out. The winners will advance to league stage.</li>
                     <li>Each team consists of 12 players, 9 players take the field, 3 substitutes.</li>
-                    <li>A match consists of four innings. An innings consists of chasing or running turns of 7 minutes each.</li>
-                    <li>The duration of first and third innings break is 5 minutes. The duration of second innings break is 7 minutes. </li>
+                    <li>A match consists of two innings. An innings consists of chasing and
+                        running turns of 6 minutes each for league stages and 7 minutes each
+                        for semifinals and finals.</li>
+                    <li>5 minutes break for each innings. </li>
                     <li>1 team sits/kneels in the middle of the court, in a row, with adjacent members facing opposite directions.</li>
                     <li>The chasers end in the shortest time possible.</li>
                     <li>The team that takes the shortest time to tag/tap all the opponents in the field wins.</li>
                     <li>Players must sit in a zig-zag manner.</li>
-                    <li>Referee’s decision is final. </li>
-                    <li>Other standard A.K.K.F. rules apply.</li>
+                    <li>Any team that reports late by half an hour or more without prior
+information will be disqualified and opponent will be judged as winners.</li>
+                    <li>Umpires decision is final in any dispute (faults, point, judgements).</li>
+                    <li>Runners shouldn’t touch chasers(Intentionally). Warning will be given for
+two times. If runner repeats, he will be given out.</li>
+                    <li>In case of walkover, opponent team will be declared as winners with 9
+points difference.</li>
+
 
                 </ul>
             </p>
             <p>CONTACT :
-                    <p>Bibek : 8122349537</p>
+                    <p>Naveen Maloth : 9677949627</p>
             </p><br>
 
    ]]>
@@ -722,21 +750,28 @@
             </p>
             <p>RULES:-
                 <ul class="rules">
-                    <li>The first round is knockout. The winners will advance to league stage.</li>
                     <li>Each team consists of 12 players, 9 players take the field, 3 substitutes.</li>
-                    <li>A match consists of four innings. An innings consists of chasing and running turns of 5 minutes each.</li>
-                    <li>The duration of first and third innings break is 5 minutes. The duration of second innings break is 5 minutes. </li>
+                    <li>A match consists of two innings. An innings consists of chasing and
+                        running turns of 6 minutes each for league stages and 7 minutes each
+                        for semifinals and finals.</li>
+                    <li>5 minutes break for each innings. </li>
                     <li>1 team sits/kneels in the middle of the court, in a row, with adjacent members facing opposite directions.</li>
                     <li>The chasers end in the shortest time possible.</li>
-                    <li>The team that takes the shortest time to tag/tap all the opponents in the field wins</li>
-                    <li>Players must sit in a zig zag manner</li>
-                    <li>Referee’s decision is final. </li>
-                    <li>Other standard A.K.K.F. rules apply.</li>
+                    <li>The team that takes the shortest time to tag/tap all the opponents in the field wins.</li>
+                    <li>Players must sit in a zig-zag manner.</li>
+                    <li>Any team that reports late by half an hour or more without prior
+information will be disqualified and opponent will be judged as winners.</li>
+                    <li>Umpires decision is final in any dispute (faults, point, judgements).</li>
+                    <li>Runners shouldn’t touch chasers(Intentionally). Warning will be given for
+two times. If runner repeats, he will be given out.</li>
+                    <li>In case of walkover, opponent team will be declared as winners with 9
+points difference.</li>
+
 
                 </ul>
             </p>
             <p>CONTACT :
-                    <p>Supriya : 9629527138</p>
+                    <p>Shankuntala Done: 9629915655</p>
             </p>
    ]]>
     </string>
@@ -765,13 +800,9 @@
 
                     <p>GIRLS-</p>
                     <p>PD OFFICE - LIBRARY- SHOPPING COMPLEX - BERY HOSTEL - AGATE HOSTEL – ORION - CHEMICAL DEPT – PD OFFICE
-                    <br> Note: (For Girls only)
-                    <br>The finish line will be in NSO ground. </p>
+
                 </p>
-                <p>CONTACT :
-                    <p>BOYS - Girish Babu : 9629392048</p>
-                    <p>GIRLS - Ankita : 9962290429</p>
-                </p>
+
    ]]>
     </string>
 
@@ -806,7 +837,7 @@
     <string name="PowerLifting">
             <![CDATA[
    <p><b>POINTS:-
-                <br>&emsp;&emsp;&emsp;1st place - 5 points
+                <br>&emsp;&emsp;&emsp;1st place - 7 points
                 <br>&emsp;&emsp;&emsp;2nd place - 3 points
                 <br>&emsp;&emsp;&emsp;3rd place - 1 point</b>
                 </p>
@@ -821,29 +852,42 @@
                     </ul>
                 </p>
                 <p>RULES:-
-                <p>The Following Three Lifts must be taken:-</p>
+                <p>The competition will be held as per the International Powerlifting
+                    Federation Rules unless otherwise modified.</p>
+                <p>Athletes in the sport are divided in six weight classes and placing is
+                    based on the total weight lifted on the three main lifts:</p>
                 <p>&emsp;&emsp;&emsp;A. Squats</p>
                 <p>&emsp;&emsp;&emsp;B. Bench Press</p>
                 <p>&emsp;&emsp;&emsp;C. Deadlift</p>
                     <ul class="rules">
-                        <li>Each department can be represented by a maximum of two participants per category.</li>
-                        <li>A minimum of 5 different departments have to register for an event to take place.</li>
-                        <li>Each competitor is allowed three attempts on each lift.</li>
-                        <li>The lifter’s best valid attempt on each lift counts toward his competition total.</li>
-                        <li>The Lifter is to decide the weights he will be lifting.</li>
-                        <li>Once a certain weight is decided it cannot be lowered for the next lift,     it can only be higher or the same weight is to be used.</li>
-                        <li>Gloves will not be allowed for the lifts.</li>
-                        <li>The judge’s decision will be final.</li>
+                        <li>From each Department Only 2 participants would be allowed per
+                             category.</li>
+                        <li>For an event to take place, minimum 5 different Departments should
+                            register the event.</li>
+                        <li>During the weighing of athlete, he must mention his first lift for squat
+                          (minimum 50kg), bench-press(minimum 40kg) and deadlift(minimum
+                           70kg) to referee.</li>
+                        <li>Each competitor is allowed three attempts on each lift. The lifter’s best
+                            valid attempt on each lift counts toward his competition total.</li>
+                        <li>Once the highest value has been collected for each lift, the total weight
+                           lifted in squat, bench press and deadlift added up. The lifter with the
+                           highest combined weight lifted becomes the champion. In the case of a
+                           tie, the lifter whose body weight is less becomes the champion.</li>
+                        <li>Player must come with proper kit during competition and Gloves are not
+                             allowed.</li>
+                        <li>A player can participate in only one category.</li>
+                        <li>In case of any controversy during competition and weighing, judge’s
+                               decision will consider as final decision.</li>
                     </ul>
                 </p>
                 <p>General Rules for Squats:</p>
-                <p>The knees should be bended and the body should be lowered until the top surface of the legs at the hip joint is lower than the top of the knees.</p>
+                <p>The lifter must Squat down until their hip joint is lower than their knee joint,failure to which, will lead to disqualification of that lift.</p>
                 <p>General Rules for Bench Press:</p>
                 <p>The bar is to be lowered to the chest area until it touches the chest and then raised, failure of which will lead to disqualification.</p>
                 <p>General Rules for Deadlift:</p>
-                <p>The knees should be locked straight at the completion of the lift and finally should be able to stand erect with the shoulders back.</p>
+                <p>As soon as you lift the bar, set your shoulders back and ensure your kneesare locked out. Any downward movement of the bar before it reaches thefinal position will lead to disqualification.</p>
                 <p>CONTACT :
-                    <p>Aman Bakolia : 9965186109</p>
+                    <p>Shiroya Vivek : 9790484626</p>
                 </p>
    ]]>
     </string>
@@ -866,7 +910,7 @@
                 <br>RELAY (for 4x25m freestyle relay only):
                       <br>&emsp;&emsp;&emsp;1st place - 5 points
                       <br>&emsp;&emsp;&emsp;2nd place - 3 points
-                      <br>&emsp;&emsp;&emsp;3rd place - 2 points </b></p>
+                      <br>&emsp;&emsp;&emsp;3rd place - 1 points </b></p>
                 <p>MEN’S EVENTS:-</p>
                    <p>&emsp;&emsp;&emsp;Freestyle: 50m, 100m, 200m.</p>
                     <p>&emsp;&emsp;&emsp;Back stroke: 50m, 100m.</p>
@@ -892,12 +936,13 @@
                         <li>All events will be conducted on a time trial basis only. (NO heats and finals process)</li>
                         <li>All participants shall bring their own swimming gear. The Swimming gear will not be provided to them by the organizers.</li>
                         <li>Participants should report to the venue on time. The events will happen as scheduled and late comers will not be given a second chance to participate in the events they had missed.</li>
+                        <li>Events will be conducted only once.</li>
                         <li>Standard FINA rules apply.</li>
                     </ul>
                 </p>
                 <p>CONTACT :
-                    <p>Aravind MK : 9445153324</p>
-                    <p>Snigdha Nagarajan : 9629478442</p>
+                    <p>Esun Selvam : 9940222566</p>
+                    <p>Dhakshaayani : 9486580217</p>
                 </p>
    ]]>
     </string>
@@ -906,21 +951,21 @@
     <string name="TableTennis">
             <![CDATA[
   <p><b>POINTS:-
-                <br>&emsp;&emsp;&emsp;1st place - 12 points
-                <br>&emsp;&emsp;&emsp;2nd place - 8 points
-                <br>&emsp;&emsp;&emsp;3rd place - 5 points</b>
+                <br>&emsp;&emsp;&emsp;1st place - 10 points
+                <br>&emsp;&emsp;&emsp;2nd place - 6 points
+                <br>&emsp;&emsp;&emsp;3rd place - 4 points</b>
                 </p>
                 <p>RULES:-
                     <ul class="rules">
-                        <li>The tournament is conducted on a knock out basis.</li>
-                        <li>Each team must have a minimum of 3 boys and 1 girl.</li>
+                         <li>Each team must have a minimum of 2 boys.</li>
+                         <li>The first round matches will be for Best of 3.</li>
+                         <li>From quarters, the matches will be for Best of 5.</li>
                         <li>All matches will be decided on best of 5 sets.</li>
                         <li>Match order:
                         <br>1. Singles boys
-                        <br>2. Singles girls
-                        <br>3. Mixed doubles
-                        <br>4. Doubles boys
-                        <br>5. Singles boys</li>
+
+                        <br>2. Doubles boys
+                        <br>3. Singles boys</li>
                         <li>Each player can play maximum 2 matches (i.e., one singles and one doubles but not two singles).</li>
                         <li>All ITTF rules are applicable.</li>
                         <li>Report 15 minutes prior to the scheduled time.</li>
@@ -929,7 +974,33 @@
                     </ul>
                 </p>
                 <p>CONTACT :
-                    <p>Dwarak Varadharajan : 9884063262</p>
+                    <p>Kanha Sodani : 9460327981</p>
+                </p>
+   ]]>
+    </string>
+
+    <string name="TableTennis_girls">
+            <![CDATA[
+  <p><b>POINTS:-
+                <br>&emsp;&emsp;&emsp;1st place - 7 points
+                <br>&emsp;&emsp;&emsp;2nd place - 5 points
+                <br>&emsp;&emsp;&emsp;3rd place - 3 points</b>
+                </p>
+                <p>RULES:-
+                    <ul class="rules">
+                         <li>Each department can send max 2 girl players</li>
+                         <li>Girls Singles is the only event.</li>
+                         <li>In the initial rounds, the matches will be for Best of 3.</li>
+                         <li>From quarters, the matches will be for Best of 5.</li>
+                        <li>Umpire decision will be final.</li>
+                        <li>All ITTF rules are applicable.</li>
+                        <li>Report 15 minutes prior to the scheduled time.</li>
+                        <li>If the respective team does not report for its match as per the schedule the opponent team will get a walk-over.</li>
+                        <li>All the participants are requested to bring their own bats but the balls will be provided by the organizers for all the matches.</li>
+                    </ul>
+                </p>
+                <p>CONTACT :
+                    <p>Kanha Sodani : 9460327981</p>
                 </p>
    ]]>
     </string>
@@ -946,20 +1017,22 @@
                     <ul class="rules">
                         <li>Maximum of two teams can register per department.</li>
                         <li>Minimum of two players and maximum of four players per team. </li>
-                        <li>Each round will have 3 matches – First Singles, Doubles, followed by Reverse singles. </li>
+                        <li>Three matches will be played in the order of 1st singles, doubles, 2nd
+                            singles. </li>
                         <li>The team which wins two matches qualifies to the next round.</li>
                         <li>A player can play a maximum of two matches (a singles and a doubles).</li>
                         <li>All matches will be conducted on knockout basis. </li>
-                        <li>All matches till (including) quarter-finals will be played best of 15 games (7-all, tiebreak). </li>
+                        <li>All matches till (including) quarter-finals will be played best of 13 games (6-all, tiebreak). </li>
                         <li>Semi-finals for boys will be best of 17 games (8-all tie breaker).</li>
-                        <li>Final: best of 3 sets (6-all tie breaker) for boys.</li>
+                        <li>Final: best 19 games (9-all tie breaker).</li>
                         <li>Standard International Tennis Federation (ITF) rules apply.</li>
                         <li>The referee’s decision will be final. Teams not adhering to the rules and regulations will be disqualified from the event.</li>
                         <li>Tennis balls will be provided. The players are requested to bring their own accessories and equipment.</li>
                     </ul>
                 </p>
                 <p>CONTACT :
-                    <p>Siddharth Palanichamy : 8754112843</p>
+                    <p>Hariharan Jayakumar: 9003103462</p>
+                    <p>Kousik R: 9710097997</p>
                 </p><br>
 
    ]]>
@@ -976,18 +1049,19 @@
                 </p>
                 <p>RULES:-
                     <ul class="rules">
-                        <li>Each round will have 1 Singles match. The team which wins the match qualifies to the next round</li>
+                        <li>Only singles will be conducted. The team which wins the match qualifiesto the next round.</li>
                         <li>A maximum of two teams from a department is allowed in a team.</li>
-                        <li>All matches except the semi-finals and finals will be played for the best of 11 games (first to reach 6).</li>
-                        <li>Semifinals and finals will be played for the best of 17 games (first to reach 9).</li>
+                        <liAll matches conducted will be conducted on knockout basis.</li>
+                        <li>All Matches will be played best of 15 games (7-all tiebreak).</li>
                         <li>Standard International Tennis Federation (ITF)  rules apply. </li>
                         <li>The referee’s decision will be final. Teams not adhering to the rules and regulations will be disqualified from the event. </li>
                         <li>Tennis balls will be provided. The players have to bring their own accessories and equipment.</li>
                     </ul>
                 </p>
                 <p>CONTACT :
-                    <p>Rishmitha : 9994688344</p>
-                </p>
+                    <p>Hariharan Jayakumar: 9003103462</p>
+                    <p>Kousik R: 9710097997</p>
+                </p><br>
    ]]>
     </string>
 
@@ -1020,7 +1094,7 @@
                     </ul>
                 </p>
                 <p>CONTACT :
-                    <p>Nirmitha Rao : 9629606757</p>
+                    <p>Manasvi Surasani : 7032910997/p>
                 </p>
    ]]>
     </string>
@@ -1049,7 +1123,7 @@
                     </ul>
                 </p>
                 <p>CONTACT :
-                   <p>Aravind : 9791504254</p>
+                   <p>T.J.Dhivyabhaarath : 9489129471</p>
                 </p><br>
 
 
@@ -1082,7 +1156,7 @@
                     </ul>
                 </p>
                 <p>CONTACT :
-                    <p>Nirmitha Rao : 9629606757</p>
+                    <p>Manasvi Surasani : 7032910997/p>
                 </p>
    ]]>
     </string>
@@ -1113,7 +1187,7 @@
                     </ul>
                 </p>
                 <p>CONTACT :
-                    <p>Aravind MK : 9445153324</p>
+                    <p>Esun Selvam: 9940222566</p>
                 </p>
    ]]>
     </string>

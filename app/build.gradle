@@ -44,8 +44,6 @@ dependencies {
     compile 'com.squareup.retrofit2:retrofit:2.1.0'
     compile 'com.google.code.gson:gson:2.6.1'
     compile 'com.squareup.retrofit2:converter-gson:2.1.0'
-    compile 'io.saeid:fab-loading:1.0.0'
-    compile 'com.mxn.soul:flowingdrawer-core:2.0.0'
     compile 'com.nineoldandroids:library:2.4.0'
     compile 'com.github.varunest:sparkbutton:1.0.3'
     compile 'com.google.firebase:firebase-messaging:11.8.0'
