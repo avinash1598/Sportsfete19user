@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#f1f1f1">
 
     <LinearLayout
@@ -17,6 +18,20 @@
             android:gravity="center_horizontal"
             android:orientation="vertical">
 
+            <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="10dp"
+                android:id="@+id/individual_recycler"
+                android:clipToPadding="false">
+
+            </android.support.v7.widget.RecyclerView>
+
+            <net.cachapa.expandablelayout.ExpandableLayout
+                android:layout_width="match_parent"
+                app:el_expanded="false"
+                android:id="@+id/expandableLayout"
+                android:layout_height="wrap_content">
                 <!--status-->
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -135,6 +150,8 @@
                     </LinearLayout>
 
                 </LinearLayout>
+
+            </net.cachapa.expandablelayout.ExpandableLayout>
 
         </LinearLayout>
 

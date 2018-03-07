@@ -1,8 +1,6 @@
 package spider.app.sportsfete.SportDetails;
 
 
-import android.animation.AnimatorInflater;
-import android.animation.AnimatorSet;
 import android.animation.ArgbEvaluator;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
@@ -13,6 +11,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
@@ -25,8 +24,6 @@ import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
 import android.view.animation.ScaleAnimation;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
@@ -37,6 +34,10 @@ import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.stmt.PreparedQuery;
 import com.j256.ormlite.stmt.QueryBuilder;
+import com.twotoasters.jazzylistview.JazzyHelper;
+import com.twotoasters.jazzylistview.recyclerview.JazzyRecyclerViewScrollListener;
+
+import net.cachapa.expandablelayout.ExpandableLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,7 +50,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import spider.app.sportsfete.API.ApiInterface;
 import spider.app.sportsfete.API.Event;
 import spider.app.sportsfete.API.FixturePOJO;
-import spider.app.sportsfete.API.StatusEventDetailsPOJO;
 import spider.app.sportsfete.DatabaseHelper;
 import spider.app.sportsfete.R;
 
@@ -61,14 +61,17 @@ import static android.content.ContentValues.TAG;
 public class FixturesFragment extends Fragment {
 
     List<Event> eventList = new ArrayList<>();
-    FixturesRecyclerAdapter fixturesRecyclerAdapter;
-    RecyclerView recyclerView;
+    IndividualEventRecyclerAdapter individualEventRecyclerAdapter;
+    JazzyRecyclerViewScrollListener jazzyRecyclerViewScrollListener;
+    private int currentTransitionEffect = JazzyHelper.TILT;
+    RecyclerView individual_recycler;
     DatabaseHelper helper;
     Dao<Event, Long> dao;
     Context context;
     View view;
     String selectedSport,selectedSportName, selectedLayout = "";
     ArrayList<FixturePOJO> fixtureArrayList;
+    List<List<String>> eventsStanding;
 
     public int fixtureType = 0;
     String[] sportNames;
@@ -200,6 +203,7 @@ public class FixturesFragment extends Fragment {
         context = getContext();
 
         fixtureArrayList = new ArrayList<>();
+        eventsStanding = new ArrayList<>();
 
         try {
             helper = OpenHelperManager.getHelper(context, DatabaseHelper.class);
@@ -368,11 +372,57 @@ public class FixturesFragment extends Fragment {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                getFixtureForGame(selectedSportName.toUpperCase());
-                getStandingsForGame(selectedSportName.toUpperCase());
+
+                if(fixtureType == 0){
+                    Log.d("fixturetype","0");
+                    getStandingforIndividualGame(selectedSportName.toUpperCase());
+                }else {
+                    getFixtureForGame(selectedSportName.toUpperCase());
+                    getStandingsForGame(selectedSportName.toUpperCase());
+                }
             }
         },150);
 
+        individual_recycler = (RecyclerView) getActivity().findViewById(R.id.individual_recycler);
+        individual_recycler.setHasFixedSize(true);
+        individual_recycler.setLayoutManager(new LinearLayoutManager(getActivity()));
+        jazzyRecyclerViewScrollListener = new JazzyRecyclerViewScrollListener();
+        jazzyRecyclerViewScrollListener.setTransitionEffect(currentTransitionEffect);
+
+        individualEventRecyclerAdapter = new IndividualEventRecyclerAdapter(eventsStanding, getActivity(), new IndividualEventRecyclerAdapter.MyAdapterListener() {
+            @Override
+            public void onItemSelected(int position, ExpandableLayout expandableLayout) {
+                expandableLayout.toggle();
+            }
+        });
+        individual_recycler.setAdapter(individualEventRecyclerAdapter);
+
+    }
+
+
+    public void getStandingforIndividualGame(String sport_name){
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://us-central1-sportsfete-732bf.cloudfunctions.net")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        final ApiInterface apiInterface = retrofit.create(ApiInterface.class);
+
+        apiInterface.getIndividualStanding(sport_name).enqueue(new Callback<List<List<String>>>() {
+            @Override
+            public void onResponse(Call<List<List<String>>> call, Response<List<List<String>>> response) {
+                if(response.isSuccessful()){
+                    Log.d("size",response.body().size()+"");
+                    eventsStanding.clear();
+                    eventsStanding.addAll(response.body());
+                    individualEventRecyclerAdapter.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<List<String>>> call, Throwable t) {
+
+            }
+        });
     }
 
     public void getStandingsForGame(String sport_name){

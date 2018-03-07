@@ -47,4 +47,7 @@ public interface ApiInterface {
     @GET("/positions")
     Call<List<String>> getStanding(@Query("sport") String sport);
 
+    @GET("/positions")
+    Call<List<List<String>>> getIndividualStanding(@Query("sport") String sport);
+
 }

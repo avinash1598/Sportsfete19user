@@ -23,10 +23,6 @@ android {
     }
 }
 
-aaptOptions {
-    cruncherEnabled = false
-}
-
 allprojects {
     repositories {
         mavenCentral()
