@@ -26,6 +26,24 @@
         <item>PROD</item>
     </string-array>
 
+    <string-array name="filter_department_array">
+        <item>ALL</item>
+        <item>ARCHI</item>
+        <item>CHEM</item>
+        <item>CIVIL</item>
+        <item>CSE</item>
+        <item>DOMS</item>
+        <item>ECE</item>
+        <item>EEE</item>
+        <item>ICE</item>
+        <item>MCA</item>
+        <item>MECH</item>
+        <item>META</item>
+        <item>M_TECH</item>
+        <item>PhD_MSc_MS</item>
+        <item>PROD</item>
+    </string-array>
+
     <string-array name="sport_array">
         <item>Athletics</item>
         <item>Badminton(Mixed)</item>

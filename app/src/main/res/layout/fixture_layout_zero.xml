@@ -14,21 +14,13 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#f1f1f1"
+            android:gravity="center_horizontal"
             android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="20dp"
-                android:gravity="center_horizontal"
-                android:orientation="horizontal">
 
                 <!--status-->
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_marginRight="30dp"
                     android:gravity="center_horizontal"
                     android:orientation="vertical">
 
@@ -144,7 +136,6 @@
 
                 </LinearLayout>
 
-            </LinearLayout>
         </LinearLayout>
 
     </LinearLayout>

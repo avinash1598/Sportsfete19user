@@ -207,8 +207,8 @@ public class SubscribeSport extends Fragment {
     }
 
     @Override
-    public void onDestroy(){
+    public void onDestroyView(){
         Runtime.getRuntime().gc();
-        super.onDestroy();
+        super.onDestroyView();
     }
 }

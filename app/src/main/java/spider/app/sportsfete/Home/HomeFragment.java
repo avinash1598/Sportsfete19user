@@ -136,25 +136,13 @@ public class HomeFragment extends Fragment implements Callback<List<StatusEventD
         eventRecyclerAdapter=new StatusEventsDetailRecyclerAdapter(eventList, context, new StatusEventsDetailRecyclerAdapter.MyAdapterListener() {
             @Override
             public void onItemSelected(int position, View view1, View view2, View view3, View view4) {
-
-                //setupWindowAnimations();
-
                 StatusEventDetailsPOJO selectedEvent=eventList.get(position);
                 Intent intent = new Intent(context, EventInfoActivity.class);
-
-                Log.d("transition","yooo");
-
                 intent.putExtra("SELECTED_EVENT", new Gson().toJson(selectedEvent));
-                Pair<View,String> pair1 = Pair.create(view1,"event_name");
-                Pair<View,String> pair2 = Pair.create(view2,"event_round");
-                Pair<View,String> pair3 = Pair.create(view3,"versus_event");
-                Pair<View,String> pair4 = Pair.create(view4,"non_versus_event");
-                //ActivityCompat.startActivity(getActivity(), intent, options.toBundle());
-                ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
-                        getActivity(), pair1,pair2,pair3,pair4);
                 startActivity(intent);
             }
         });
+
         recyclerView.setAdapter(eventRecyclerAdapter);
 
         swipeRefreshLayout= (SwipeRefreshLayout) view.findViewById(R.id.home_swipe_to_refresh);
@@ -185,8 +173,6 @@ public class HomeFragment extends Fragment implements Callback<List<StatusEventD
                         view,
                         "scene_transition");
                 intent.putExtra("SELECTED_EVENT", new Gson().toJson(selectedEvent));
-                //Pair<View,String> pair = Pair.create();
-                //ActivityCompat.startActivity(getActivity(), intent, options.toBundle());
                 startActivity(intent);
             }
         });
@@ -237,7 +223,7 @@ public class HomeFragment extends Fragment implements Callback<List<StatusEventD
         //loadingView.setVisibility(View.INVISIBLE);
         swipeRefreshLayout.setRefreshing(false);
         Toast.makeText(context, "Device Offline", Toast.LENGTH_SHORT).show();
-        updateAdapter();
+        //updateAdapter();
         eventRecyclerAdapter.notifyDataSetChanged();
 
     }

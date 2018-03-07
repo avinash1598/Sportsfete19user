@@ -24,7 +24,7 @@ public class Leaderboard {
     @DatabaseField
     @SerializedName("total")
     @Expose
-    private Integer total;
+    private float total;
     @DatabaseField(dataType = DataType.SERIALIZABLE)
     @SerializedName("splitup")
     @Expose
@@ -38,11 +38,11 @@ public class Leaderboard {
         this.dept = dept;
     }
 
-    public Integer getTotal() {
+    public float getTotal() {
         return total;
     }
 
-    public void setTotal(Integer total) {
+    public void setTotal(float total) {
         this.total = total;
     }
 

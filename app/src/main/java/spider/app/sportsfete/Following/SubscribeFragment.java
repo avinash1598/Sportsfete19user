@@ -134,4 +134,10 @@ public class SubscribeFragment extends Fragment {
 
     }
 
+    @Override
+    public void onDestroyView(){
+        Runtime.getRuntime().gc();
+        super.onDestroyView();
+    }
+
 }

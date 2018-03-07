@@ -355,4 +355,10 @@ public class MarathonRegistration extends android.support.v4.app.Fragment {
 
         return true;
     }
+
+    @Override
+    public void onDestroyView(){
+        Runtime.getRuntime().gc();
+        super.onDestroyView();
+    }
 }

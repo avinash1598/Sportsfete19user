@@ -313,9 +313,8 @@ public class Day3Fragment extends Fragment implements Callback<List<EventDetails
     }
 
     @Override
-    public void onDestroy(){
+    public void onDestroyView(){
         Runtime.getRuntime().gc();
-        super.onDestroy();
+        super.onDestroyView();
     }
-
 }

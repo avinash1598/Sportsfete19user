@@ -69,7 +69,8 @@ public class DeptSelectionRecyclerAdapter extends RecyclerView.Adapter<DeptSelec
 
         if(selectedDepartment!=null) {
             //Log.d("selected dept",""+selectedDepartment);
-            if (points.get(position).equalsIgnoreCase(selectedDepartment)) {
+            if (points.get(position).equalsIgnoreCase(selectedDepartment.replace("_","/"))
+                    ||points.get(position).equalsIgnoreCase(selectedDepartment.replace("_","."))) {
                 Log.d("selected dept2",""+selectedDepartment);
                 holder.departmentTV.setTextColor(context.getResources().getColor(android.R.color.white));
                 holder.departmentTV.setBackgroundColor(context.getResources().getColor(R.color.green_text));

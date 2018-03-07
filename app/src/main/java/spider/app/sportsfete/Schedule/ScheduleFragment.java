@@ -55,7 +55,7 @@ public class ScheduleFragment extends Fragment{
     ViewPager viewPager;
     RecyclerView recyclerView;
     String[] deptArraySharedPreference=new String[15];
-    List<String> deptlist;
+    List<String> deptlist, recycler_deptList;
     DeptSelectionRecyclerAdapter recyclerAdapter;
 
     public static boolean refresh_check = true;
@@ -89,11 +89,16 @@ public class ScheduleFragment extends Fragment{
                 Log.d("boolean------------",false+"");
             }
 
-        deptArraySharedPreference=getResources().getStringArray(R.array.department_array);
+        deptArraySharedPreference=getResources().getStringArray(R.array.filter_department_array);
         deptlist = new ArrayList<>();
+        recycler_deptList = new ArrayList<>();
 
         for ( int i = deptArraySharedPreference.length-1; i >=0; i--)
             deptlist.add(deptArraySharedPreference[i]);
+
+        deptArraySharedPreference=getResources().getStringArray(R.array.department_array);
+        for ( int i = deptArraySharedPreference.length-1; i >=0; i--)
+            recycler_deptList.add(deptArraySharedPreference[i]);
 
         prefs = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
 
@@ -171,7 +176,7 @@ public class ScheduleFragment extends Fragment{
         recyclerView = (RecyclerView) getActivity().findViewById(R.id.dept_recycler);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL,true));
-        recyclerAdapter = new DeptSelectionRecyclerAdapter(deptlist, selectedDept,
+        recyclerAdapter = new DeptSelectionRecyclerAdapter(recycler_deptList, selectedDept,
                 getActivity(), new DeptSelectionRecyclerAdapter.MyAdapterListener() {
             @Override
             public void onItemSelected(int position) {
