@@ -969,7 +969,8 @@
                                         android:layout_marginLeft="10dp"
                                         android:layout_marginRight="5dp"
                                         android:layout_marginTop="5dp"
-                                        android:background="@drawable/circular_solid" />
+                                        android:background="@drawable/circular_solid"
+                                        android:visibility="invisible" />
 
                                     <View
                                         android:layout_width="9dp"
@@ -977,7 +978,8 @@
                                         android:layout_margin="5dp"
                                         android:layout_marginBottom="5dp"
                                         android:layout_marginTop="5dp"
-                                        android:background="@drawable/circular_solid" />
+                                        android:background="@drawable/circular_solid"
+                                        android:visibility="invisible" />
 
                                     <View
                                         android:layout_width="9dp"
@@ -985,7 +987,8 @@
                                         android:layout_margin="5dp"
                                         android:layout_marginBottom="5dp"
                                         android:layout_marginTop="5dp"
-                                        android:background="@drawable/circular_solid" />
+                                        android:background="@drawable/circular_solid"
+                                        android:visibility="invisible" />
 
                                     <View
                                         android:layout_width="9dp"
@@ -993,7 +996,8 @@
                                         android:layout_margin="5dp"
                                         android:layout_marginBottom="5dp"
                                         android:layout_marginTop="5dp"
-                                        android:background="@drawable/circular_solid" />
+                                        android:background="@drawable/circular_solid"
+                                        android:visibility="invisible" />
 
                                     <View
                                         android:layout_width="9dp"
@@ -1001,7 +1005,8 @@
                                         android:layout_margin="5dp"
                                         android:layout_marginBottom="5dp"
                                         android:layout_marginTop="5dp"
-                                        android:background="@drawable/circular_solid" />
+                                        android:background="@drawable/circular_solid"
+                                        android:visibility="invisible" />
 
                                     <View
                                         android:layout_width="9dp"
@@ -1009,7 +1014,8 @@
                                         android:layout_margin="5dp"
                                         android:layout_marginBottom="5dp"
                                         android:layout_marginTop="5dp"
-                                        android:background="@drawable/circular_solid" />
+                                        android:background="@drawable/circular_solid"
+                                        android:visibility="invisible" />
 
                                     <View
                                         android:layout_width="9dp"
@@ -1017,7 +1023,8 @@
                                         android:layout_margin="5dp"
                                         android:layout_marginBottom="5dp"
                                         android:layout_marginTop="5dp"
-                                        android:background="@drawable/circular_solid" />
+                                        android:background="@drawable/circular_solid"
+                                        android:visibility="invisible" />
 
                                     <View
                                         android:layout_width="9dp"
@@ -1025,7 +1032,8 @@
                                         android:layout_margin="5dp"
                                         android:layout_marginBottom="5dp"
                                         android:layout_marginTop="5dp"
-                                        android:background="@drawable/circular_solid" />
+                                        android:background="@drawable/circular_solid"
+                                        android:visibility="invisible" />
 
 
                                     <View
@@ -1308,7 +1316,7 @@
                                                         android:textSize="12sp" />
 
                                                     <TextView
-                                                        android:id="@+id/match16teams"
+                                                        android:id="@+id/match15teams"
                                                         android:layout_width="120dp"
                                                         android:layout_height="wrap_content"
                                                         android:layout_marginBottom="10dp"

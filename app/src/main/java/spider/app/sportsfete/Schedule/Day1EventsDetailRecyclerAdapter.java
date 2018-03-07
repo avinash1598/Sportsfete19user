@@ -97,8 +97,9 @@ public class Day1EventsDetailRecyclerAdapter extends RecyclerView.Adapter<EventV
     @Override
     public void onBindViewHolder(final EventViewHolder holder, final int position) {
         EventDetailsPOJO event=eventList.get(position);
+
         String status="";
-        Log.d("bind",position+"");
+        String round = event.getRound();
 
         if(event.getEliminationType()!=null) {
             {
@@ -166,6 +167,8 @@ public class Day1EventsDetailRecyclerAdapter extends RecyclerView.Adapter<EventV
                         holder.team2Tv.setText("PhD/MsC/MS");
                     }
 
+                    round = round + " : " + event.getId();
+
                 } else {
                     holder.nonVersusEventLl.setVisibility(View.VISIBLE);
                     holder.versusEventLl.setVisibility(View.GONE);
@@ -185,9 +188,9 @@ public class Day1EventsDetailRecyclerAdapter extends RecyclerView.Adapter<EventV
             holder.nameTV.setTypeface(hammersmithOnefont);
             holder.nameTV.setText(event.getName());
             holder.roundTv.setTypeface(hammersmithOnefont);
-            String round = event.getRound();
-            if (!round.equals(event.getFixture()))
-                round = round + " : " + event.getId();
+            holder.participantsTV.setTypeface(hammersmithOnefont);
+            holder.participantsTV.setSelected(true);
+
             holder.roundTv.setText(round);
             holder.venueTV.setTypeface(hammersmithOnefont);
             holder.venueTV.setText(event.getVenue());

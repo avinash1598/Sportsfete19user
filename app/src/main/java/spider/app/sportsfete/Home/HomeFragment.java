@@ -293,4 +293,10 @@ public class HomeFragment extends Fragment implements Callback<List<StatusEventD
             //Snackbar.make(viewGroup, lastUpdatedTimestamp,Snackbar.LENGTH_LONG).show();
         }
     }
+
+    @Override
+    public void onDestroy(){
+        Runtime.getRuntime().gc();
+        super.onDestroy();
+    }
 }

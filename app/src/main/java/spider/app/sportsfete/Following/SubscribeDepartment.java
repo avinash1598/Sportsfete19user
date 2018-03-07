@@ -196,4 +196,10 @@ public class SubscribeDepartment extends Fragment {
             }
         });
     }
+
+    @Override
+    public void onDestroy(){
+        Runtime.getRuntime().gc();
+        super.onDestroy();
+    }
 }

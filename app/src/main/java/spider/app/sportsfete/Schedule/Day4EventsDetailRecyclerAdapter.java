@@ -87,6 +87,8 @@ public class Day4EventsDetailRecyclerAdapter extends RecyclerView.Adapter<EventV
         EventDetailsPOJO event=eventList.get(position);
 
         String status="";
+        String round = event.getRound();
+
         if(event.getEliminationType()!=null) {
             {
                 if (event.getEliminationType().equalsIgnoreCase("single")||
@@ -153,6 +155,8 @@ public class Day4EventsDetailRecyclerAdapter extends RecyclerView.Adapter<EventV
                         holder.team2Tv.setText("PhD/MsC/MS");
                     }
 
+                    round = round + " : " + event.getId();
+
                 } else {
                     holder.nonVersusEventLl.setVisibility(View.VISIBLE);
                     holder.versusEventLl.setVisibility(View.GONE);
@@ -160,6 +164,7 @@ public class Day4EventsDetailRecyclerAdapter extends RecyclerView.Adapter<EventV
                     for(String participants: event.getParticipatingTeams()){
                         holder.participantsTV.setText(holder.participantsTV.getText()+"  "+participants+"  ");
                     }
+
                 }
             }
 
@@ -172,14 +177,13 @@ public class Day4EventsDetailRecyclerAdapter extends RecyclerView.Adapter<EventV
             holder.nameTV.setTypeface(hammersmithOnefont);
             holder.nameTV.setText(event.getName());
             holder.roundTv.setTypeface(hammersmithOnefont);
-            String round = event.getRound();
-            if (!round.equals(event.getFixture()))
-                round = round + " : " + event.getId();
+            holder.participantsTV.setTypeface(hammersmithOnefont);
             holder.roundTv.setText(round);
             holder.venueTV.setTypeface(hammersmithOnefont);
             holder.venueTV.setText(event.getVenue());
             holder.statusTv.setAllCaps(true);
             holder.venueTV.setText(event.getVenue());
+            holder.participantsTV.setSelected(true);
 
             if (eventList.get(position).getStatus().equals(FLAG_STATUS_UPCOMING)) {
                 holder.statusTv.setTextColor(Color.parseColor("#009688"));

@@ -252,4 +252,10 @@ public class ScheduleFragment extends Fragment{
         selectedDay=viewPager.getCurrentItem()+1;
         putSelectedDay();
     }
+
+    @Override
+    public void onDestroy(){
+        Runtime.getRuntime().gc();
+        super.onDestroy();
+    }
 }

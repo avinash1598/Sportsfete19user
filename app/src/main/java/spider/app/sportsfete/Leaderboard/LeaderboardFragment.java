@@ -239,4 +239,9 @@ public class LeaderboardFragment extends Fragment implements Callback<List<Leade
         mFirebaseAnalytics.logEvent("LeaderBoard", bundle);
     }
 
+    @Override
+    public void onDestroy(){
+        Runtime.getRuntime().gc();
+        super.onDestroy();
+    }
 }

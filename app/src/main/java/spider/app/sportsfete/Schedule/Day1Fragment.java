@@ -143,7 +143,7 @@ public class Day1Fragment extends Fragment implements Callback<List<EventDetails
 
         jazzyRecyclerViewScrollListener = new JazzyRecyclerViewScrollListener();
         jazzyRecyclerViewScrollListener.setTransitionEffect(currentTransitionEffect);
-       // recyclerView.setOnScrollListener(jazzyRecyclerViewScrollListener);
+        recyclerView.setOnScrollListener(jazzyRecyclerViewScrollListener);
 
         Log.d(TAG, "onViewCreated: selectedDept"+selectedDept);
 
@@ -359,6 +359,12 @@ public class Day1Fragment extends Fragment implements Callback<List<EventDetails
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
         this.isVisibleToUser=isVisibleToUser;
+    }
+
+    @Override
+    public void onDestroy(){
+        Runtime.getRuntime().gc();
+        super.onDestroy();
     }
 
 }

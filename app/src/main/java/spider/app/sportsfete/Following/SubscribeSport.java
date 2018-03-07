@@ -205,4 +205,10 @@ public class SubscribeSport extends Fragment {
             }
         });
     }
+
+    @Override
+    public void onDestroy(){
+        Runtime.getRuntime().gc();
+        super.onDestroy();
+    }
 }

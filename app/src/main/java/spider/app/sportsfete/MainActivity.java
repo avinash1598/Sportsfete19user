@@ -11,6 +11,7 @@ import android.support.design.internal.BottomNavigationMenuView;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
@@ -244,6 +245,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             public void run() {
 
         if (id == R.id.nav_home) {
+            //clearBackStackInclusive("F2");
             navigationTabBar.setSelected(true);
             navigationTabBar.setModelIndex(0);
             navigationTabBar.setVisibility(View.VISIBLE);
@@ -254,18 +256,24 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             homeFragment.setArguments(arguments);
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.fragment_container, homeFragment);
+            fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
+            invalidateOptionsMenu();
             getSupportActionBar().setTitle("Live");
         } else if (id == R.id.nav_leaderboard) {
+            //clearBackStackInclusive("F2");
             navigationTabBar.setVisibility(View.GONE);
             lastViewFragment = 1;
             LeaderboardFragment leaderboardFragment = new LeaderboardFragment();
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.fragment_container, leaderboardFragment);
+            fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
+            invalidateOptionsMenu();
             getSupportActionBar().setTitle("LeaderBoard");
 
         }else if(id==R.id.nav_schedule){
+            //clearBackStackInclusive("F2");
             navigationTabBar.setVisibility(View.GONE);
             lastViewFragment=2;
             Bundle arguments = new Bundle();
@@ -274,35 +282,46 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             scheduleFragment.setArguments(arguments);
             FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.fragment_container,scheduleFragment);
+            fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
+            invalidateOptionsMenu();
             getSupportActionBar().setElevation(0);
             getSupportActionBar().setTitle("Schedule");
 
         }
         else if(id==R.id.nav_following){
+            //clearBackStackInclusive("F2");
             navigationTabBar.setVisibility(View.GONE);
             lastViewFragment=3;
             SubscribeFragment subscribeFragment =new SubscribeFragment();
             FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.fragment_container, subscribeFragment);
+            fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
+            invalidateOptionsMenu();
             getSupportActionBar().setTitle("Following");
         }
         else if(id==R.id.nav_events){
+            //clearBackStackInclusive("F2");
             navigationTabBar.setVisibility(View.GONE);
             lastViewFragment=4;
             SportDetailsFragment sportDetailsFragment = new SportDetailsFragment();
             FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.fragment_container, sportDetailsFragment);
+            fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
+            invalidateOptionsMenu();
             getSupportActionBar().setTitle("Sports");
         }else if(id == R.id.nav_registration){
+            //clearBackStackInclusive("F2");
             navigationTabBar.setVisibility(View.GONE);
             lastViewFragment = 5;
             MarathonRegistration marathonRegistration = new MarathonRegistration();
             FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.fragment_container, marathonRegistration);
+            fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
+            invalidateOptionsMenu();
             getSupportActionBar().setTitle("Marathon Registration");
         }
 
@@ -412,4 +431,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             super.onBackPressed();
     }
 
+    @Override
+    public void onDestroy(){
+        super.onDestroy();
+        Runtime.getRuntime().gc();
+    }
+
+    public void clearBackStackInclusive(String tag) {
+        getSupportFragmentManager().popBackStack(tag, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+    }
+
+    public void clearFragments(){
+
+    }
 }

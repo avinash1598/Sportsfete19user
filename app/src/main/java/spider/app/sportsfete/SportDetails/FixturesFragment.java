@@ -1,6 +1,11 @@
 package spider.app.sportsfete.SportDetails;
 
 
+import android.animation.AnimatorInflater;
+import android.animation.AnimatorSet;
+import android.animation.ArgbEvaluator;
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -20,6 +25,8 @@ import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 import android.view.animation.ScaleAnimation;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
@@ -499,6 +506,10 @@ public class FixturesFragment extends Fragment {
 
                 matchTeams[fixtureElement.getFixtureIndex()].setText(sb);
             }
+
+            if(fixtureElement.getStatus().trim().equalsIgnoreCase("live")){
+                startBlinkAnimation(matchTeams[fixtureElement.getFixtureIndex()]);
+            }
         }
     }
 
@@ -566,6 +577,10 @@ public class FixturesFragment extends Fragment {
                     matchTeams[fixtureElement.getFixtureIndex()].setText(sb);
                 }
 
+                if(fixtureElement.getStatus().equalsIgnoreCase("live")){
+                    startBlinkAnimation(matchTeams[fixtureElement.getFixtureIndex()]);
+                }
+
             } else {
 
             }
@@ -628,6 +643,10 @@ public class FixturesFragment extends Fragment {
                                     text.split(" ")[2].length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
 
                     matchTeams[fixtureElement.getFixtureIndex()].setText(sb);
+                }
+
+                if(fixtureElement.getStatus().equalsIgnoreCase("live")){
+                    startBlinkAnimation(matchTeams[fixtureElement.getFixtureIndex()]);
                 }
 
             }else{
@@ -694,6 +713,10 @@ public class FixturesFragment extends Fragment {
                     matchTeams[fixtureElement.getFixtureIndex()].setText(sb);
                 }
 
+                if(fixtureElement.getStatus().equalsIgnoreCase("live")){
+                    startBlinkAnimation(matchTeams[fixtureElement.getFixtureIndex()]);
+                }
+
             } else {
 
             }
@@ -756,11 +779,25 @@ public class FixturesFragment extends Fragment {
                     matchTeams[fixtureElement.getFixtureIndex()].setText(sb);
                 }
 
+                if(fixtureElement.getStatus().equalsIgnoreCase("live")){
+                    startBlinkAnimation(matchTeams[fixtureElement.getFixtureIndex()]);
+                }
+
             } else {
 
             }
         }
     }
 
+    public void startBlinkAnimation(TextView textView){
 
+        ObjectAnimator colorAnim = ObjectAnimator.ofInt(textView, "textColor",
+                Color.parseColor("#404f50"),Color.parseColor("#4ab556"));
+        colorAnim.setEvaluator(new ArgbEvaluator());
+        colorAnim.setRepeatCount(ValueAnimator.INFINITE);
+        colorAnim.setRepeatMode(ValueAnimator.REVERSE);
+        colorAnim.setDuration(500);
+        colorAnim.start();
+
+    }
 }

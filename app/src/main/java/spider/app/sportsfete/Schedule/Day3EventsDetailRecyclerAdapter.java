@@ -87,6 +87,8 @@ public class Day3EventsDetailRecyclerAdapter extends RecyclerView.Adapter<EventV
         EventDetailsPOJO event=eventList.get(position);
 
         String status="";
+        String round = event.getRound();
+
         if(event.getEliminationType()!=null) {
             {
                 if (event.getEliminationType().equalsIgnoreCase("single")||
@@ -153,6 +155,8 @@ public class Day3EventsDetailRecyclerAdapter extends RecyclerView.Adapter<EventV
                         holder.team2Tv.setText("PhD/MsC/MS");
                     }
 
+                    round = round + " : " + event.getId();
+
                 } else {
                     holder.nonVersusEventLl.setVisibility(View.VISIBLE);
                     holder.versusEventLl.setVisibility(View.GONE);
@@ -172,9 +176,9 @@ public class Day3EventsDetailRecyclerAdapter extends RecyclerView.Adapter<EventV
             holder.nameTV.setTypeface(hammersmithOnefont);
             holder.nameTV.setText(event.getName());
             holder.roundTv.setTypeface(hammersmithOnefont);
-            String round = event.getRound();
-            if (!round.equals(event.getFixture()))
-                round = round + " : " + event.getId();
+            holder.participantsTV.setTypeface(hammersmithOnefont);
+            holder.participantsTV.setSelected(true);
+
             holder.roundTv.setText(round);
             holder.venueTV.setTypeface(hammersmithOnefont);
             holder.venueTV.setText(event.getVenue());

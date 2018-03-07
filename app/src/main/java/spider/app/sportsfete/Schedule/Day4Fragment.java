@@ -309,4 +309,10 @@ public class Day4Fragment extends Fragment implements Callback<List<EventDetails
         super.setUserVisibleHint(isVisibleToUser);
         this.isVisibleToUser=isVisibleToUser;
     }
+
+    @Override
+    public void onDestroy(){
+        Runtime.getRuntime().gc();
+        super.onDestroy();
+    }
 }

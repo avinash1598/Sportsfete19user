@@ -170,7 +170,7 @@ public class EventInfoActivity extends AppCompatActivity{
         team2Tv= (TextView)findViewById(R.id.info_team_2);
         versusEventLl= (LinearLayout) findViewById(R.id.versus_event);
         nonVersusEventLl= (LinearLayout) findViewById(R.id.non_versus_event);
-        participantsTv = (TextView)findViewById(R.id.non_versus_event_participants);
+        participantsTv = (TextView)findViewById(R.id.info_non_versus_event_participants);
         eventHintTv = (TextView)findViewById(R.id.info_event_hint);
         score1Tv = (TextView)findViewById(R.id.info_score1);
         score2Tv = (TextView)findViewById(R.id.info_score2);
@@ -200,12 +200,16 @@ public class EventInfoActivity extends AppCompatActivity{
         eventNameTv.setTypeface(hammersmithOnefont);
         eventNameTv.setText(eventInfo.getName());
         roundTv.setTypeface(hammersmithOnefont);
+        participantsTv.setTypeface(hammersmithOnefont);
         roundTv.setText(eventInfo.getRound());
         score1Tv.setTypeface(hammersmithOnefont);
         score2Tv.setTypeface(hammersmithOnefont);
         eventHintTv.setTypeface(hammersmithOnefont);
         last_updated_timestamp.setTypeface(hammersmithOnefont);
 
+
+
+        String round = eventInfo.getRound();
 
         if (eventInfo.getEliminationType().equalsIgnoreCase("single")||
                 eventInfo.getEliminationType().equalsIgnoreCase("double")) {
@@ -251,6 +255,8 @@ public class EventInfoActivity extends AppCompatActivity{
             team2Tv.setTypeface(inconsolataBoldFont);
             team2Tv.setSelected(true);
             team2Tv.setSingleLine(true);
+            round = round + " : " + eventInfo.getFixture();
+
         } else {
             nonVersusEventLl.setVisibility(View.VISIBLE);
             versusEventLl.setVisibility(View.GONE);
@@ -261,6 +267,8 @@ public class EventInfoActivity extends AppCompatActivity{
         }
 
 
+        participantsTv.setSelected(true);
+
         blinkAnimation = new AlphaAnimation(0.0f, 1.0f);
         blinkAnimation.setDuration(250);
         blinkAnimation.setStartOffset(20);
@@ -270,9 +278,7 @@ public class EventInfoActivity extends AppCompatActivity{
         eventNameTv.setTypeface(hammersmithOnefont);
         eventNameTv.setText(eventInfo.getName());
         roundTv.setTypeface(hammersmithOnefont);
-        String round = eventInfo.getRound();
-        if (!round.equals(eventInfo.getFixture()))
-            round = round + " : " + eventInfo.getFixture();
+
         roundTv.setText(round);
         eventVenue.setTypeface(francoisOneRegularFont);
         eventVenue.setText(eventInfo.getVenue());
