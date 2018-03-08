@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#EF6C00</color>
-    <color name="colorPrimaryDark">#E65100</color>
+    <color name="colorPrimary">#16282a</color>
+    <color name="colorPrimaryDark">#274649</color>
+    <color name="colorTabtext">#404f50</color>
+    <color name="green_text">#4ab556</color>
     <color name="colorAccent">#89430d</color>
     <color name="splashColor">#FFFFFF</color>
-    <color name="selectedTextColor">#FFE0B2</color>
+    <color name="selectedTextColor">#5c5c5c</color>
+    <color name="green_theme">#cddc29</color>
+    <color name="blue_theme">#5295a6</color>
+    <color name="fixtureElement">#e5a5e9</color>
+    <color name="fixtureElementText">#434242</color>
 </resources>

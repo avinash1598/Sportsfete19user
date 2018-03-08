@@ -8,27 +8,19 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context="spider.app.sportsfete.MainActivity">
+        tools:context="spider.app.sportsfete18.MainActivity">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <android.support.v7.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:id="@+id/day_2_recycler_view"
+                android:paddingBottom="10dp"
+                android:clipToPadding="false"
                 android:layout_height="wrap_content">
 
             </android.support.v7.widget.RecyclerView>
-            <io.saeid.fabloading.LoadingView
-                android:id="@+id/day_2_loading_view"
-                android:background="#101010"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:scaleX="1.5"
-                android:layout_centerInParent="true"
-                android:scaleY="1.5"
-                app:mfl_duration="200"
-                android:layout_margin="50dp"
-                android:src="@mipmap/ic_launcher" />
+
         </RelativeLayout>
     </LinearLayout>
 </android.support.v4.widget.SwipeRefreshLayout>

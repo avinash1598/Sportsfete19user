@@ -2,9 +2,4 @@
     <item
         android:drawable="@color/splashColor"/>
 
-    <item>
-        <bitmap
-            android:gravity="center"
-            android:src="@drawable/logo"/>
-    </item>
 </layer-list>

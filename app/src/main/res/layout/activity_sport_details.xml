@@ -1,7 +1,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/triangle"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
@@ -22,9 +21,9 @@
             android:layout_height="wrap_content"
             app:tabTextColor="#FFFFFF"
             app:tabIndicatorHeight="3dp"
-            app:tabSelectedTextColor="@color/selectedTextColor"
+            app:tabSelectedTextColor="@android:color/white"
             android:background="@color/colorPrimary"
-            app:tabIndicatorColor="#ffffff"/>
+            app:tabIndicatorColor="@color/green_text"/>
 
     </android.support.design.widget.AppBarLayout>
 
