@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="#f1efef"
     android:fitsSystemWindows="true"
-    tools:context="spider.app.sportsfete.MainActivity">
+    tools:context="spider.app.sportsfete18.MainActivity">
 
     <LinearLayout
         android:id="@+id/scaling_layout"
@@ -43,6 +43,36 @@
             android:layout_below="@+id/appbar_id"
             android:background="#9e9c9c"
             android:visibility="gone" />
+
+        <RelativeLayout
+            android:id="@+id/selection_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/main_dept_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_toStartOf="@+id/switch_filter"
+                android:nestedScrollingEnabled="false"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp" />
+
+            <ImageView
+                android:id="@+id/switch_filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/ic_filter_switch" />
+
+        </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/fragment_container"

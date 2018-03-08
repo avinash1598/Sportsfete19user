@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="spider.app.sportsfete">
+    package="spider.app.sportsfete18">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
-
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
         android:allowBackup="true"
@@ -17,16 +15,9 @@
         <!--//android:hardwareAccelerated="true"-->
         <!--android:largeHeap="false"-->
 
-        <activity android:name=".HomeScreen"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-            </intent-filter>
-        </activity>
 
         <activity
-            android:name=".MainActivity"
+            android:name="spider.app.sportsfete18.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -34,7 +25,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SplashActivity"
+            android:name="spider.app.sportsfete18.SplashActivity"
             android:screenOrientation="portrait"
             android:theme="@style/SplashTheme">
             <intent-filter>
@@ -43,26 +34,26 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".FireBaseServices.MyFirebaseInstanceIDService">
+        <service android:name="spider.app.sportsfete18.FireBaseServices.MyFirebaseInstanceIDService">
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
-        <service android:name=".FireBaseServices.MyFirebaseMessagingService">
+        <service android:name="spider.app.sportsfete18.FireBaseServices.MyFirebaseMessagingService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
 
         <activity
-            android:name=".EventInfo.EventInfoActivity"
+            android:name="spider.app.sportsfete18.EventInfo.EventInfoActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Maratho.MarathonRegistrationActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".SportDetails.SportDetailsActivity"
+        <activity android:name="spider.app.sportsfete18.SportDetails.SportDetailsActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
     </application>

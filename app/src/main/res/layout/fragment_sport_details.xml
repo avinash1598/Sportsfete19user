@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent"
-    tools:context="spider.app.sportsfete.MainActivity">
+    tools:context="spider.app.sportsfete18.MainActivity">
 
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"

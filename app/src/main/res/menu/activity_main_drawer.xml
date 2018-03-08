@@ -6,33 +6,33 @@
 
                 <item
             android:id="@+id/nav_home"
-            android:icon="@drawable/live"
+            android:icon="@mipmap/ic_live"
             android:title="Live"
             />
 
                 <item
             android:id="@+id/nav_leaderboard"
-            android:icon="@drawable/leaderboard"
+            android:icon="@mipmap/ic_leaderboard"
             android:title="LeaderBoard" />
 
                 <item
             android:id="@+id/nav_schedule"
-            android:icon="@drawable/schedule"
+            android:icon="@mipmap/ic_schedule"
             android:title="Schedule" />
 
                 <item
             android:id="@+id/nav_following"
-            android:icon="@drawable/favorite"
+            android:icon="@mipmap/ic_following"
             android:title="Following" />
 
                 <item
             android:id="@+id/nav_events"
-            android:icon="@drawable/sports"
+            android:icon="@mipmap/ic_sports"
             android:title="Sports" />
 
                 <item
             android:id="@+id/nav_registration"
-            android:icon="@drawable/marathonregistration"
+            android:icon="@mipmap/ic_marathonregistration"
             android:title="Marathon Registration" />
         </group>
 

@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context="spider.app.sportsfete.MainActivity">
+        tools:context="spider.app.sportsfete18.MainActivity">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
