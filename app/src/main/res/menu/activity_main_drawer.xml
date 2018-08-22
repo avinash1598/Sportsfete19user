@@ -1,41 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <group android:checkableBehavior="single"
-        android:id="@+id/group3">
-        <item
+        <group android:checkableBehavior="single"
+            android:id="@+id/group3">
+
+                <item
             android:id="@+id/nav_home"
-            android:icon="@drawable/live"
+            android:icon="@mipmap/ic_live"
             android:title="Live"
             />
-    </group>
-    <group android:checkableBehavior="single"
-        android:id="@+id/group2">
-        <item
+
+                <item
             android:id="@+id/nav_leaderboard"
-            android:icon="@drawable/podium"
+            android:icon="@mipmap/ic_leaderboard"
             android:title="LeaderBoard" />
-    </group >
-    <group android:checkableBehavior="single"
-        android:id="@+id/group1">
-        <item
+
+                <item
             android:id="@+id/nav_schedule"
-            android:icon="@drawable/calendar"
+            android:icon="@mipmap/ic_schedule"
             android:title="Schedule" />
-    </group>
-    <group android:checkableBehavior="single"
-        android:id="@+id/group4">
-        <item
+
+                <item
             android:id="@+id/nav_following"
-            android:icon="@drawable/favorite"
+            android:icon="@mipmap/ic_following"
             android:title="Following" />
-    </group>
-    <group android:checkableBehavior="single"
-        android:id="@+id/group5">
-        <item
+
+                <item
             android:id="@+id/nav_events"
-            android:icon="@drawable/sports"
+            android:icon="@mipmap/ic_sports"
             android:title="Sports" />
-    </group>
-    
+
+                <item
+            android:id="@+id/nav_registration"
+            android:icon="@mipmap/ic_marathonregistration"
+            android:title="Marathon Registration" />
+        </group>
+
 </menu>
